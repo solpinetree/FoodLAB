@@ -23,7 +23,7 @@ public class ReviewController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String res( Model model) {
-		logger.info("reviews.jsp ì§„ìž…");
+		logger.info("reviews.jsp ÁøÀÔ");
 		
 		return "reviews";
 	}

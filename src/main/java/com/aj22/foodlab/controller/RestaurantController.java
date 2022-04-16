@@ -23,7 +23,7 @@ public class RestaurantController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String res( Model model) {
-		logger.info("restaurants.jsp ì§„ì…");
+		logger.info("restaurants.jsp ÁøÀÔ");
 		
 
 		return "restaurants";
