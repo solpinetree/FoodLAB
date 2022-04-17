@@ -1,5 +1,7 @@
 package com.aj22.foodlab.controller;
 
+import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,18 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/restaurants")
-public class RestaurantController {
+@RequestMapping("/chat")
+public class ChatController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(RestaurantController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
-	
-	@GetMapping("/list")
-	public String res( Model model) {
-		logger.info("restaurants.jsp 진입");
+	@GetMapping("")
+	public String home(Locale locale, Model model) {
+		logger.info("chat.jsp 진입");
 		
-
-		return "restaurants";
+		return "chat";
 	}
 	
 }

@@ -28,12 +28,12 @@
                                     <li><a href="./listing-details.html">오늘의 서비스왕</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">오픈채팅</a></li>
+                            <li><a href="${root}/chat">오픈채팅</a></li>
                         </ul>
                     </nav>
                     <div class="header__menu__right">
                         <a href="#" class="primary-btn">로그인/회원가입</a>
-                        <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
+                        <a href="#" class="login-btn"><i class="fa fa-user" style="margin-top: 25%"></i></a>
                     </div>
                 </div>
             </div>
