@@ -703,7 +703,7 @@ ol {
 	bottom: -58px;
 	margin: 0 auto;
 	font-family: "FontAwesome";
-	content: "";
+	content: "�꼵";
 	color: #f03250;
 	opacity: 0.2;
 	font-size: 60px;
@@ -2131,7 +2131,7 @@ ol {
 	top: 0;
 	font-family: "FontAwesome";
 	color: #ffffff;
-	content: "";
+	content: "�꼨";
 }
 
 .breadcrumb__option span {
@@ -3127,6 +3127,8 @@ ol {
 	}
 }
 
+
+
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
@@ -3273,6 +3275,8 @@ ol {
 		float: none;
 	}
 }
+
+
 
 /* Small Device = 320px */
 

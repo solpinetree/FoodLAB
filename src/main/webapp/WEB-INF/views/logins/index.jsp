@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="includes/common.jsp" %>
+<%@ include file="common.jsp" %>
 
 
 <head>
@@ -14,7 +14,7 @@
     </div> 
 
     <!-- Header Section Begin -->
-	<jsp:include page="logins/header.jsp"/>
+	<jsp:include page="header.jsp"/>
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
@@ -1544,11 +1544,11 @@
     <!-- Newslatter Section End -->
 
     <!-- Footer Section Begin -->
-	<jsp:include page="includes/footer.jsp"/>
+	<jsp:include page="footer.jsp"/>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-	<%@ include file="includes/plugins.jsp" %>
+	<%@ include file="plugins.jsp" %>
 </body>
 
 </html>
