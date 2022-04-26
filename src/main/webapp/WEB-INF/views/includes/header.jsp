@@ -25,7 +25,7 @@
                             <li><a href="#">맛집 추천</a>
                                 <ul class="dropdown">
                                     <li><a href="${root}/restaurants/list">맛집 정보</a></li>
-                                    <li><a href="./listing-details.html">오늘의 서비스왕</a></li>
+                                    <li><a href="${root}/restaurants/rank">오늘의 서비스왕</a></li>
                                 </ul>
                             </li>
                             <li><a href="${root}/chat">오픈채팅</a></li>

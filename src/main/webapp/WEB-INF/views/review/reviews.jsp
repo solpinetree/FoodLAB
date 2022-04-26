@@ -22,10 +22,6 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>리뷰 게시판</h2>
-                        <div class="breadcrumb__option">
-                            <a href="#"><i class="fa fa-home"></i> Home</a>
-                            <span>Our Blog</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -154,6 +150,8 @@
                             </div>
                         </div>
                     </div>
+                    
+ 					<!--  pagination div 시작 -->      
                     <div class="blog__pagination">
                         <a href="#"><i class="fa fa-long-arrow-left"></i> Pre</a>
                         <a href="#">1</a>
@@ -161,6 +159,7 @@
                         <a href="#">3</a>
                         <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
                     </div>
+                    <!--  pagination div 끝 -->
                 </div>
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
@@ -177,8 +176,8 @@
                                     <img src="${resources}/img/blog/recent-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Shopping</span>
-                                    <h6>Tortoise grilled on salt</h6>
+                                    <span><i class="fa fa-tags"></i> 양식 </span>
+                                    <h6>샐러드파스타</h6>
                                     <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
                                 </div>
                             </a>
@@ -187,8 +186,8 @@
                                     <img src="${resources}/img/blog/recent-2.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Hotels</span>
-                                    <h6>Shrimp floured and fried</h6>
+                                    <span><i class="fa fa-tags"></i> 샐러드</span>
+                                    <h6>샐러드 도시락</h6>
                                     <p><i class="fa fa-clock-o"></i> 22th March, 2019</p>
                                 </div>
                             </a>
@@ -197,19 +196,9 @@
                                     <img src="${resources}/img/blog/recent-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Restaurant</span>
-                                    <h6>Sweet and sour pork ribs</h6>
+                                    <span><i class="fa fa-tags"></i> 디저트, 카페</span>
+                                    <h6>수플레 팬케이크</h6>
                                     <p><i class="fa fa-clock-o"></i> 25th March, 2019</p>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="${resources}/img/blog/recent-4.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Videos</span>
-                                    <h6>Crab fried with tamarind</h6>
-                                    <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
                                 </div>
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -217,8 +206,8 @@
                                     <img src="${resources}/img/blog/recent-5.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Travel</span>
-                                    <h6>Tortoise grilled on salt</h6>
+                                    <span><i class="fa fa-tags"></i> 치킨</span>
+                                    <h6>치킨 테이크아웃 전문점</h6>
                                     <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
                                 </div>
                             </a>
@@ -226,11 +215,13 @@
                         <div class="blog__sidebar__categories">
                             <h5>Categories</h5>
                             <ul>
-                                <li><a href="#">Finance <span>18</span></a></li>
-                                <li><a href="#">Business <span>20</span></a></li>
-                                <li><a href="#">Loan <span>07</span></a></li>
-                                <li><a href="#">Consulting <span>22</span></a></li>
-                                <li><a href="#">Credit <span>19</span></a></li>
+                                <li><a href="#">양식 <span>18</span></a></li>
+                                <li><a href="#">중식 <span>20</span></a></li>
+                                <li><a href="#">일식 <span>07</span></a></li>
+                                <li><a href="#">한식 <span>22</span></a></li>
+                                <li><a href="#">치킨 <span>19</span></a></li>
+                                <li><a href="#">분식 <span>19</span></a></li>
+                                <li><a href="#">디저트, 카페 <span>23</span></a></li>
                             </ul>
                         </div>
                         <div class="blog__sidebar__tags">
@@ -253,26 +244,6 @@
     </section>
     <!-- Blog Section End -->
 
-    <!-- Newslatter Section Begin -->
-    <section class="newslatter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="newslatter__text">
-                        <h3>Subscribe Newsletter</h3>
-                        <p>Subscribe to our newsletter and donât miss anything</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <form action="#" class="newslatter__form">
-                        <input type="text" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Newslatter Section End -->
 
      <!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp"/>

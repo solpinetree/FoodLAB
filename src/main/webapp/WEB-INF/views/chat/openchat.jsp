@@ -135,7 +135,6 @@
 
 	<!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp" />
-	<!-- Footer Section End -->
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
