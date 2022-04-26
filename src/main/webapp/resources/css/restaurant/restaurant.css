@@ -1,0 +1,23 @@
+.listing {
+    width: 70%;
+    height: 100%;
+    padding: 0 40px;
+    padding-top: 140px;
+    overflow-y: auto;
+    float: left;
+}
+
+.listing__map {
+    height: 100%;
+    width: 30%;
+    margin-top: 105px;
+    float: left;
+}
+
+.icon_zoom-in_alt, .icon_heart_alt{
+	line-height: 2.5;
+}
+
+.listing__item{
+	cursor: pointer;
+}

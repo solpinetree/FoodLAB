@@ -21,8 +21,21 @@ public class RestaurantController {
 	public String res( Model model) {
 		logger.info("restaurants.jsp 진입");
 		
-
-		return "restaurants";
+		return "restaurant/restaurants";
+	}
+	
+	@GetMapping("/rank")
+	public String restaurantRank( Model model) {
+		logger.info("restaurant-ranking.jsp 진입");
+		
+		return "restaurant/ranking";
+	}
+	
+	@GetMapping("/detail")
+	public String restaurantDetail( Model model) {
+		logger.info("detail.jsp 진입");
+		
+		return "restaurant/detail";
 	}
 	
 }
