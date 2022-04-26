@@ -1,0 +1,24 @@
+.col-lg-8 {
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    max-width: none;
+}
+
+.blog__item__pic{
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+    cursor: pointer;
+}
+
+.blog__item__text{
+    border-radius: 5px;
+	 cursor: pointer;
+ }
+
+ 
+.blog__item__text h5, .blog__item__text h3{
+    font-size: 20px;
+    color: #323232;
+    font-weight: 700;
+    line-height: 30px;
+}

@@ -18,7 +18,7 @@
                             <li class="active"><a href="${root}/">Home</a></li>
                             <li><a href="#">리뷰</a>
                                 <ul class="dropdown">
-                                    <li><a href="./listing.html">리뷰 작성</a></li>
+                                    <li><a href="${root}/reviews/write">리뷰 작성</a></li>
                                     <li><a href="${root}/reviews/list">리뷰 보기</a></li>
                                 </ul>
                             </li>

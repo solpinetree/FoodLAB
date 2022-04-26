@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="includes/common.jsp" %>
+<%@ include file="../includes/common.jsp" %>
 
 <head>
     <title>리뷰 보기</title>
@@ -12,7 +12,7 @@
     </div>
 
     <!-- Header Section Begin -->
-	<jsp:include page="includes/header.jsp"/>
+	<jsp:include page="../includes/header.jsp"/>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -275,11 +275,11 @@
     <!-- Newslatter Section End -->
 
      <!-- Footer Section Begin -->
-	<jsp:include page="includes/footer.jsp"/>
+	<jsp:include page="../includes/footer.jsp"/>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-	<%@ include file="includes/plugins.jsp" %>
+	<%@ include file="../includes/plugins.jsp" %>
 </body>
 
 </html>
