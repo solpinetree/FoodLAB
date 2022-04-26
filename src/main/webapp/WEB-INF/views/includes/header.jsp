@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="${root}/"><img id="header-logo-custom" src="${resources}/img/Logo.png" alt=""></a>
+                   <h1 style = "color: #f03250"><a href = "${root}/">FOOD LAB</a></h1>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">

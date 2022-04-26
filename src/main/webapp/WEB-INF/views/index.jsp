@@ -1123,6 +1123,20 @@
             </div>
         </div>
     </section>
+    
+    
+    <section class="most-search spad">
+        <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+	               <div class="section-title">
+	                  <h2>오픈채팅</h2>
+	                  <a href = "${root}/chat/openchat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
+	               </div>
+               </div>
+            </div>
+        </div>
+    </section>
     <!-- Most Search Section End -->
 
     <!-- Work Section Begin -->
