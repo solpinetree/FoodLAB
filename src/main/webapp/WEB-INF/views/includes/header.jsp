@@ -16,7 +16,7 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="${root}/">Homesss</a></li>
+                            <li class="active"><a href="${root}/">Homesssss</a></li>
                             <li><a href="#">리뷰</a>
                                 <ul class="dropdown">
                                     <li><a href="${root}/reviews/write">리뷰 작성</a></li>
