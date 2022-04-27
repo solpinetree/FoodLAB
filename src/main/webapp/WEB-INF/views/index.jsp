@@ -14,7 +14,7 @@
     </div> 
 
     <!-- Header Section Begin -->
-	<jsp:include page="logins/header.jsp"/>
+	<jsp:include page="includes/header.jsp"/>
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->

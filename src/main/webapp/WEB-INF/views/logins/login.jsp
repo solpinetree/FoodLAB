@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/includes/login/NewFile1.jsp" %>
+<%@ include file="../includes/common.jsp" %>
+<%@ include file="../includes/login/NewFile1.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
@@ -34,7 +35,7 @@
 
     <body>
     
-    <jsp:include page="header.jsp" />
+    <jsp:include page="../includes/header.jsp" />
     
 
         <!-- Top content -->
@@ -43,7 +44,7 @@
             <div class="inner-bg">
                 <div class="container">
                 	
-                    <div class="row">
+                    <div class="row description">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Bootstrap</strong> Login &amp; Register Forms</h1>
                             <div class="description">
@@ -177,10 +178,10 @@
         </footer>
 
         <!-- Javascript -->
-        <script type="text/javascript" src="${resources}/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="${resources}/js/login/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="${resources}/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="${resources}/js/jquery.backstretch.min.js"></script>
-        <script type="text/javascript" src="${resources}/js/scripts.js"></script>
+        <script type="text/javascript" src="${resources}/js/login/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="${resources}/js/login/scripts.js"></script>
        
         <!--[if lt IE 10]>
             <script src="..resources/js/placeholder.js"></script>

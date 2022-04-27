@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/login/NewFile.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../includes/common.jsp" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 </head>
     <body>
         <!-- Responsive navbar-->
-        <jsp:include page="header.jsp" />
+        <jsp:include page="../includes/header.jsp" />
         <c:choose>
         <c:when test="${empty sessionId}">
         <!-- Header - set the background image for the header in the line below-->

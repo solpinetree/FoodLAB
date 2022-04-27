@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
 <%
-String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false"; // MySQL Connector J 8.0
+String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
 String DB_SCHEMAS = "sampledb";
 String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
 String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
-String USER = "root";
-String PASS = "014850kk!";
+String USER = "root2";
+String PASS = "1234";
 
 Class.forName(JDBC_DRIVER);
 Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);

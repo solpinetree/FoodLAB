@@ -23,35 +23,35 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String res( Model model) {
-		logger.info("login.jsp ÁøÀÔ");
+		logger.info("login.jsp ì§„ìž…");
 		
 		return "/logins/login";
 	}
 	
 	@RequestMapping(value = "/login_success", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res2( Model model) {
-		logger.info("login_success.jsp ÁøÀÔ");
+		logger.info("login_success.jsp ì§„ìž…");
 		
 		return "/logins/login_success";
 	}
 	
 	@RequestMapping(value = "/mypage", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res3( Model model) {
-		logger.info("mypage.jsp ÁøÀÔ");
+		logger.info("mypage.jsp ì§„ìž…");
 		
 		return "/logins/mypage";
 	}
 	
 	@RequestMapping(value = "/processAddMember", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res4( Model model) {
-		logger.info("processAddMember.jsp ÁøÀÔ");
+		logger.info("processAddMember.jsp ì§„ìž…");
 		
 		return "/logins/processAddMember";
 	}
 	
 	@RequestMapping(value = "/resultMember", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res5( Model model) {
-		logger.info("resultMember.jsp ÁøÀÔ");
+		logger.info("resultMember.jsp ì§„ìž…");
 		
 		return "/logins/resultMember";
 	}
@@ -59,21 +59,21 @@ public class LoginController {
 	
 	@RequestMapping(value = "/processLoginMember", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res6( Model model) {
-		logger.info("processLoginMember.jsp ÁøÀÔ");
+		logger.info("processLoginMember.jsp ì§„ìž…");
 		
 		return "/logins/processLoginMember";
 	}
 	
 	@RequestMapping(value = "/logoutMember", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res7( Model model) {
-		logger.info("logoutMember.jsp ÁøÀÔ");
+		logger.info("logoutMember.jsp ì§„ìž…");
 		
 		return "/logins/logoutMember";
 	}
 	
 	@RequestMapping(value = "/index", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res8( Model model) {
-		logger.info("index.jsp ÁøÀÔ");
+		logger.info("index.jsp ì§„ìž…");
 		
 		return "/logins/index";
 	}

@@ -1,13 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ include file="../includes/common.jsp" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
+
 <html>
 <head>
-<link rel="stylesheet" href="loginbootstrap.min.css" />
+<link rel="stylesheet" href="../css/loginbootstrap.min.css" />
 <title>회원 정보</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../includes/header.jsp" />
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">회원정보</h1>

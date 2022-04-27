@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
+
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <header class="header">
@@ -31,10 +32,21 @@
                             <li><a href="${root}/chat">오픈채팅</a></li>
                         </ul>
                     </nav>
-                    <div class="header__menu__right">
-                        <a href="#" class="primary-btn">로그인/회원가입</a>
-                        <a href="#" class="login-btn"><i class="fa fa-user" style="margin-top: 25%"></i></a>
+                    <%-- 로그인/로그아웃 --%>
+                  <c:choose>
+                  <c:when test="${empty sessionId}">
+                   <div class="header__menu__right">
+                        <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
+                       
                     </div>
+                  </c:when>
+                  <c:otherwise>
+                   <div class="header__menu__right">
+                        <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>
+                        <a href="${root}/logins/mypage" class="login-btn"><i class="fa fa-user"></i></a>
+                    </div>
+                  </c:otherwise>
+                  </c:choose>
                 </div>
             </div>
         </div>
