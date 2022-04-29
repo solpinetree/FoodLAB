@@ -16,20 +16,15 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="${root}/">Homesssss</a></li>
-                            <li><a href="#">리뷰</a>
+                            <li class="active"><a href="${root}/">홈</a></li>
+                            <li><a href="#">푸드로그</a>
                                 <ul class="dropdown">
                                     <li><a href="${root}/reviews/write">리뷰 작성</a></li>
                                     <li><a href="${root}/reviews/list">리뷰 보기</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">맛집 추천</a>
-                                <ul class="dropdown">
-                                    <li><a href="${root}/restaurants/list">맛집 정보</a></li>
-                                    <li><a href="${root}/restaurants/rank">오늘의 서비스왕</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="${root}/chat">오픈채팅</a></li>
+                            <li><a href="${root}/restaurants/list">맛집 정보</a> </li>
+                            <li><a href="${root}/chat">푸드톡</a></li>
                         </ul>
                     </nav>
                     <%-- 로그인/로그아웃 --%>
