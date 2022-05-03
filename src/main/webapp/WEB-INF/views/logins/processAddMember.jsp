@@ -31,7 +31,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
 <sql:setDataSource var="dataSource"
 	url="jdbc:mysql://localhost/sampledb?&useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=UTC&useSSL=false"
-	driver="com.mysql.cj.jdbc.Driver" user="root" password="014850kk!"/>
+	driver="com.mysql.cj.jdbc.Driver" user="root2" password="1234"/>
 
 <sql:update dataSource="${dataSource}" var="resultSet">
    INSERT INTO member VALUES (?, ?, ?, ?)

@@ -15,10 +15,11 @@
        	  <!--  식당 하나 div 시작 -->
            <div class="listing__item">
                <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-1.jpg">
-                  <div class="listing__item__pic__tag">Popular</div>
+                  <div class="listing__item__pic__tag">중식</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -40,9 +41,7 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>중식</span>
-                      </div>
+                      
                       <div class="listing__item__text__info__right">Open Now</div>
                   </div>
               </div>
@@ -50,10 +49,11 @@
           <!--  식당 하나 div 끝 -->
           <div class="listing__item">
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-2.jpg">
-                  <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                  <div class="listing__item__pic__tag">양식</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -75,9 +75,7 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>양식</span>
-                      </div>
+                     
                       <div class="listing__item__text__info__right closed">Closed</div>
                   </div>
               </div>
@@ -85,10 +83,11 @@
           <!--  식당 하나 div 끝 -->
           <div class="listing__item">
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
-                  <div class="listing__item__pic__tag">Popular</div>
+                  <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -110,9 +109,7 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>디저트, 카페</span>
-                      </div>
+                      
                       <div class="listing__item__text__info__right closed">Closed</div>
                   </div>
               </div>
@@ -120,10 +117,11 @@
            <!--  식당 하나 div 끝 -->
           <div class="listing__item">
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-3.jpg">
-                  <div class="listing__item__pic__tag">Popular</div>
+                  <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -145,20 +143,19 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>디저트, 카페</span>
-                      </div>
+                      
                       <div class="listing__item__text__info__right">Open Now</div>
                   </div>
               </div>
           </div>
           <!--  식당 하나 div 끝 -->
           <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-5.jpg">
-                  <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
+              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
+                  <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -180,9 +177,7 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>치킨</span>
-                      </div>
+                      
                       <div class="listing__item__text__info__right">Open Now</div>
                   </div>
               </div>
@@ -190,10 +185,11 @@
            <!--  식당 하나 div 끝 -->
           <div class="listing__item">
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-6.jpg">
-                  <div class="listing__item__pic__tag">Popular</div>
+                  <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                      <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                      <a href="#"><span class="icon_heart_alt"></span></a>
+                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-danger">찜한음식</button>
+                      </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -215,12 +211,25 @@
                       </ul>
                   </div>
                   <div class="listing__item__text__info">
-                      <div class="listing__item__text__info__left">
-                          <span>디저트, 카페</span>
-                      </div>
+                      
                       <div class="listing__item__text__info__right">Open Now</div>
                   </div>
               </div>
           </div>
       </div>
+      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group" style = "float:none; margin:0 auto;">
+    <button type="button" class="btn btn-outline-secondary">1</button>
+    <button type="button" class="btn btn-outline-secondary">2</button>
+    <button type="button" class="btn btn-outline-secondary">3</button>
+    <button type="button" class="btn btn-outline-secondary">4</button>
+    <button type="button" class="btn btn-outline-secondary">5</button>
+    <button type="button" class="btn btn-outline-secondary">6</button>
+    <button type="button" class="btn btn-outline-secondary">7</button>
+    <button type="button" class="btn btn-outline-secondary">8</button>
+    <button type="button" class="btn btn-outline-secondary">9</button>
+    <button type="button" class="btn btn-outline-secondary">10</button>
+    <button type="button" class="btn btn-outline-secondary">></button>
+  </div>
+  </div>
   </section>

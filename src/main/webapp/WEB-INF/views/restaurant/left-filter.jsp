@@ -10,21 +10,7 @@
             <input type="text" placeholder="식당 이름으로 검색하기">
             <i class="fa fa-map-marker"></i>
         </div>
-        <div class="filter__radius">
-            <p>반경:</p>
-            <div class="price-range-wrap">
-                <div
-                    class="price-range-radius ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                </div>
-                <div class="range-slider">
-                    <div class="price-input">
-                        <input type="text" id="radius">
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="filter__tags">
             <h6>카테고리</h6>
             <label for="coupon">
@@ -64,7 +50,7 @@
             </label>
         </div>
         <div class="filter__btns">
-            <button type="submit">Filter Results</button>
-            <button type="submit" class="filter__reset">Reset All</button>
+            <button type="submit">필터링</button>
+            <button type="submit" class="filter__reset">필터 초기화</button>
         </div>
     </div>
