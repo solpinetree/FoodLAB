@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
+<%@ include file="../includes/login/NewFile1.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,7 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
 </head>
 <body>
+<jsp:include page="../includes/header.jsp" />
 <div id="download">
 		<div class="action fullscreen parallax" style="background-image:url('images/macbook-336704.jpg');" data-img-width="1920" data-img-height="1281" data-diff="100">
 			<div class="overlay">
@@ -36,7 +38,7 @@
 					<div class="row">
 						<div class="col-lg-8 mr-lg-auto ml-lg-auto col-md-12 text-center">
 							<h2>Would like to know more?</h2>
-							<p class="download-text">We'll research the market, identify the right target audience, analyze competitors and avoid users churn to increase retention. Download now for free and join with thousands happy clients.</p>
+							<p class="download-text" style="color:white">We'll research the market, identify the right target audience, analyze competitors and avoid users churn to increase retention. Download now for free and join with thousands happy clients.</p>
 
 							<!-- /.subscribe form -->
 							<div class="subscribe-form wow fadeInUp">
