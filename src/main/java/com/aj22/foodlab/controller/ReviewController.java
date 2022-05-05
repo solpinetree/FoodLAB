@@ -25,7 +25,7 @@ public class ReviewController {
 		return "review/reviews";
 	}
 	
-	// 기존의 리뷰작성
+	// 리뷰작성
 	@GetMapping("/write")
 	public String writeReview() {
 		logger.info("review-write.jsp 진입");
@@ -33,12 +33,6 @@ public class ReviewController {
 		return "review/review-write";
 	}
 	
-	// 수정된 리뷰작성 with multi form progress bar 
-	@GetMapping("/write1")
-	public String writeReview1() {
-		logger.info("review-write1.jsp 진입");
-		
-		return "review/review-write1";
-	}
+
 	
 }
