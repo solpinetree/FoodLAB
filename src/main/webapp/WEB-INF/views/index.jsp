@@ -14,15 +14,10 @@
         <div class="loader"></div>
     </div> 
 
-<<<<<<< Updated upstream
     <!-- Header Section Begin -->
 	<jsp:include page="includes/header.jsp"/>
     <!-- Header Section End -->
-=======
-    <!-- Header 영역 -->
-	<jsp:include page="logins/header.jsp"/>
-    <!-- Header 영역 끝 -->
->>>>>>> Stashed changes
+ 
 
     <!-- Food Lab Main page Background -->
     <section class="hero set-bg" data-setbg="resources/img/hero/hero-bg.jpg">
