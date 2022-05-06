@@ -250,7 +250,7 @@ p {
 #menu_wrap .option button {margin-left:5px;}
 #placesList li {list-style: none;}
 #placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
+ #placesList .item span {display: block;margin-top:4px;} 
 #placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 #placesList .item .info{padding:10px 0 10px 55px;}
 #placesList .info .gray {color:#8a8a8a;}
@@ -272,6 +272,27 @@ p {
 #placesList .item .marker_13 {background-position: 0 -562px;}
 #placesList .item .marker_14 {background-position: 0 -608px;}
 #placesList .item .marker_15 {background-position: 0 -654px;}
+#placesList .item .selected_marker {  
+/* 	float:left;position:absolute;width:35px; margin:10px 0 0 10px;
+    height: 35px; */
+    min-width: 0px;
+    min-height: 0px;
+    max-width: 99999px;
+    max-height: none;
+    border: 0px;
+    position: absolute;
+    user-select: none;
+    -webkit-user-drag: none;
+    clip: rect(0px, 35px, 35px, 0px);
+    top: 0px;
+    left: 0px;
+    width: 35px;
+    height: 35px;
+     background-image: url(https://tistory2.daumcdn.net/tistory/3056305/skin/images/map-marker-red.png);
+    background-size : 35px 35px;
+    background-repeat: no-repeat;
+    margin: 10px 0 0 5px;
+}
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
