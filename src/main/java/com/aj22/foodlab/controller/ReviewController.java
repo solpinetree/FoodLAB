@@ -25,11 +25,14 @@ public class ReviewController {
 		return "review/reviews";
 	}
 	
+	// 리뷰작성
 	@GetMapping("/write")
 	public String writeReview() {
 		logger.info("review-write.jsp 진입");
 		
 		return "review/review-write";
 	}
+	
+
 	
 }
