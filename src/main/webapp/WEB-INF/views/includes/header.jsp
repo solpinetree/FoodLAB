@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                   <a href = "${root}/"><img src="${resources}/img/logos/foodLAB-logos_transparent.png" style="width: 191px;height: 44px;"></a>
+                   <a href = "${root}/"><img src="${resources}/img/logos/foodLAB-logos_main.png" style="width: 274px;height: 112px;"></a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
