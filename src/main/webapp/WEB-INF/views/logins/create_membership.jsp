@@ -15,15 +15,15 @@
 	function checkForm() {
 		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-		if (!document.newMember.id.value) {
-			alert("아이디를 입력하세요.");
+		if (!document.newMember.email.value) {
+			alert("이메일을 입력하세요.");
 			return false;
 		}
 		
-		if (!pwdCheck.test(document.newMember.id.value)) {
-		    alert("아이디는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");		  
-		    return false;
-		  }			
+		if (!regEmail.test(document.newMember.email.value)) {
+            alert("이메일 형식이 올바르지 않습니다");         
+            return false;
+      }	
 
 		if (!document.newMember.password.value) {
 			alert("비밀번호를 입력하세요.");
@@ -39,10 +39,7 @@
 		    alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");		  
 		    return false;
 		  }
-		if (!regEmail.test(document.newMember.email.value)) {
-	            alert("이메일 형식이 올바르지 않습니다");         
-	            return false;
-	      }
+		
 
 
 	
