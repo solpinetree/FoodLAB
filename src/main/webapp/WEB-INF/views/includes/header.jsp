@@ -9,7 +9,8 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                   <a href = "${root}/"><img src="${resources}/img/logos/foodLAB-logos_transparent.png" style="width: 191px;height: 44px;"></a>
+                <!--  style="width: 191px;height: 44px;" -->
+                   <a href = "${root}/"><img src="${resources}/img/logos/logo.jpeg" style="width: 210px;height: 150px;"></a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">

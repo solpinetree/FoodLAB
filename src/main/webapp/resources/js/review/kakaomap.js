@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$(".searchButton").on('click', function(){
 		getAddress();
 	});
@@ -13,7 +14,7 @@ function enterkey(){
 
 function getAddress(){
 	const address = document.getElementById('address').value;
-	loadMap('단국대 '+address); // 검색된 키워드에 단국대를 앞에 넣어준 후 카카오 맵 api로 넘긴다.
+	loadMap('단국대 '+address);
 }
 
 
@@ -30,18 +31,14 @@ function loadMap(address){
 	
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	
 	// 장소 검색 객체를 생성합니다
 	var ps = new kakao.maps.services.Places();  
-	
 	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-	
 	// 클릭한 마커를 담을 변수
 	var selectedMarker = null;
 	// 이전 클릭된 리스트의 index를 저장할 변수
 	var prevSelectedListIdx = null;
-
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
 	
@@ -87,10 +84,10 @@ function loadMap(address){
 	    listStr = '';
 	    
 	    // 검색 결과 목록에 추가된 항목들을 제거합니다
-	    removeAllChildNods(listEl);
+	    listEl = removeAllChildNods(listEl);
 	
 	    // 지도에 표시되고 있는 마커를 제거합니다
-	    removeMarker();
+	    markers = removeMarker(markers);
 	    
 	    for ( var i=0; i<places.length; i++ ) {
 		
@@ -113,52 +110,7 @@ function loadMap(address){
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	    map.setBounds(bounds);
 	}
-	
-	// 검색결과 항목을 Element로 반환하는 함수입니다
-	function getListItem(index, places) {
-	
-	    var el = document.createElement('li'),
-	
-	    itemStr = '<span class="markerbg marker_' + (index+1) + '" id="marker_' + (index+1) + '" ></span>' +
-	                '<div class="info">' +
-	                '   <h5>' +  places.place_name + '</h5>';
 
-	
-	    if (places.road_address_name) {
-	        itemStr += '    <span>' + places.road_address_name + '</span>' +
-	                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-	    } else {
-	        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-	    }
-	                 
-	      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-	                '</div>';           
-	
-	    el.innerHTML = itemStr;
-	    el.className = 'item';
-	
-	    return el;
-	}
-
-	// selected 된 식당의 인포윈도우 정보의 마커도 일치시켜준다.
-	function changeListItem(idx, prevSelectedListIdx){
-		if(prevSelectedListIdx!=null){
-			if(prevSelectedListIdx != idx){
-				const prevSpan = document.querySelector('#marker_'+(prevSelectedListIdx+1));
-				prevSpan.classList.add("markerbg");
-				prevSpan.classList.add("marker_"+(prevSelectedListIdx+1));
-				prevSpan.classList.remove('selected_marker');
-			}
-		}
-		
-		if(prevSelectedListIdx!=idx){
-			const currentSpan = document.querySelector('#marker_'+(idx+1));
-			currentSpan.classList.remove("markerbg");
-			currentSpan.classList.remove("marker_"+(idx+1));
-			currentSpan.classList.add('selected_marker');
-		}
-
-	}
 	
 	// 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
 	function addMarker(position, itemEl, places, idx) {
@@ -178,6 +130,7 @@ function loadMap(address){
 	    // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
 	    marker.normalImage = normalImage;
 
+		// 마커나 특정 infowindow 리스트에 마우스 오버를 했을 때 실행되는 함수
 		function mouseover(){
 	        // 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면
 	        // 마커의 이미지를 오버 이미지로 변경합니다
@@ -187,6 +140,7 @@ function loadMap(address){
 	        }
 		}
 		
+		// 마커나 특정 infowindow 리스트에 마우스 아웃이 되었을 때 실행되는 함수
 		function mouseout(){
         	// 클릭된 마커가 없고, mouseout된 마커가 클릭된 마커가 아니면
 	        // 마커의 이미지를 기본 이미지로 변경합니다
@@ -196,6 +150,7 @@ function loadMap(address){
 	        }
 		}
 		
+		// 마커나 특정 infowindow 리스트를 클릭했을 때 실행되는 함수
 		function click(idx){
 	        // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
 	        // 마커의 이미지를 클릭 이미지로 변경합니다
@@ -209,14 +164,15 @@ function loadMap(address){
 	            marker.setImage(clickImage);
 	        }
 
-			
-			changeListItem(idx, prevSelectedListIdx);
+			// selected 된 식당의 인포윈도우 정보란의 마커도 변경시킵니다.
+			toggleSelectedMarker(idx, prevSelectedListIdx);
 
 			prevSelectedListIdx = idx;
 	        
 			// 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
 	        selectedMarker = marker;
 
+			// selectedMarker가 있을 때만 Next 버튼을 보인다.
 			showFirstNextBtn(places);	
 		}
 	
@@ -225,6 +181,7 @@ function loadMap(address){
 			mouseover();
 	    });
 	
+		// infowindow 식당 정보에 mouseover 이벤트를 등록합니다
         itemEl.onmouseover =  function () {
       		mouseover();
         };
@@ -234,7 +191,7 @@ function loadMap(address){
 			mouseout();
 	    });
 
-
+		// infowindow 식당 정보에 mouseout 이벤트를 등록합니다.
         itemEl.onmouseout =  function () {
 			mouseout();
         };
@@ -255,46 +212,6 @@ function loadMap(address){
 	    return marker;
 	}
 
-
-	
-	// MakrerImage 객체를 생성하여 반환하는 함수입니다
-	function createMarkerImage(idx, option) {
-
-		var MARKER_URL, markerImage;
-
-		if(option === 'normal'){
-			MARKER_URL = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
-			markerImage = new kakao.maps.MarkerImage(
-				MARKER_URL, 
-				new kakao.maps.Size(36, 37), // 마커의 크기
-				{
-					spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-					spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-					offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-				}
-			);
-		}else{
-			MARKER_URL = 'https://tistory2.daumcdn.net/tistory/3056305/skin/images/map-marker-red.png';
-			markerImage = new kakao.maps.MarkerImage(
-				MARKER_URL, 
-				new kakao.maps.Size(35, 35), // 마커의 크기
-				{
-					offset: new kakao.maps.Point(17, 40)
-				}
-			);
-		}
-	    
-	    return markerImage;
-	}
-	
-	
-	// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-	function removeMarker() {
-	    for ( var i = 0; i < markers.length; i++ ) {
-	        markers[i].setMap(null);
-	    }   
-	    markers = [];
-	}
 	
 	// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 	function displayPagination(pagination) {
@@ -335,22 +252,111 @@ function loadMap(address){
 	    infowindow.setContent(content);
 	    infowindow.open(map, marker);
 	}
+
+} // loadMap() 함수 끝
+
+//next 버튼을 보여주는 함수
+function showFirstNextBtn(places){
+	const firstNextBtn = document.getElementById('firstNextBtn');
+	firstNextBtn.style.visibility = 'visible';
 	
-	 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-	function removeAllChildNods(el) {   
-	    while (el.hasChildNodes()) {
-	        el.removeChild (el.lastChild);
-	    }
+	var restaurantName = document.getElementById('place-name');
+	restaurantName.innerText = places.place_name;
+	
+	var restaurantAddress = document.getElementById('road-address-name');
+	restaurantAddress.innerText = places.road_address_name;
+}
+
+// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+function removeAllChildNods(el) {   
+	while (el.hasChildNodes()) {
+		el.removeChild (el.lastChild);
+	}
+	return el;
+}
+
+// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+function removeMarker(markers) {
+	for ( var i = 0; i < markers.length; i++ ) {
+		markers[i].setMap(null);
+	}   
+	markers = [];
+
+	return markers;
+}
+
+// MakrerImage 객체를 생성하여 반환하는 함수입니다
+function createMarkerImage(idx, option) {
+
+	var MARKER_URL, markerImage;
+
+	if(option === 'normal'){
+		MARKER_URL = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
+		markerImage = new kakao.maps.MarkerImage(
+			MARKER_URL, 
+			new kakao.maps.Size(36, 37), // 마커의 크기
+			{
+				spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+				spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+				offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+			}
+		);
+	}else{
+		MARKER_URL = 'https://tistory2.daumcdn.net/tistory/3056305/skin/images/map-marker-red.png';
+		markerImage = new kakao.maps.MarkerImage(
+			MARKER_URL, 
+			new kakao.maps.Size(35, 35), // 마커의 크기
+			{
+				offset: new kakao.maps.Point(17, 40)
+			}
+		);
+	}
+	
+	return markerImage;
+}
+
+// selected 된 식당의 인포윈도우 정보의 마커를 변경시키는 함수
+function toggleSelectedMarker(idx, prevSelectedListIdx){
+	if(prevSelectedListIdx!=null){
+		if(prevSelectedListIdx != idx){
+			const prevSpan = document.querySelector('#marker_'+(prevSelectedListIdx+1));
+			prevSpan.classList.add("markerbg");
+			prevSpan.classList.add("marker_"+(prevSelectedListIdx+1));
+			prevSpan.classList.remove('selected_marker');
+		}
+	}
+	
+	if(prevSelectedListIdx!=idx){
+		const currentSpan = document.querySelector('#marker_'+(idx+1));
+		currentSpan.classList.remove("markerbg");
+		currentSpan.classList.remove("marker_"+(idx+1));
+		currentSpan.classList.add('selected_marker');
 	}
 
-	function showFirstNextBtn(places){
-		const firstNextBtn = document.getElementById('firstNextBtn');
-		firstNextBtn.style.visibility = 'visible';
-		
-		var restaurantName = document.getElementById('place-name');
-		restaurantName.innerText = places.place_name;
-		
-		var restaurantAddress = document.getElementById('road-address-name');
-		restaurantAddress.innerText = places.road_address_name;
+}
+
+// 검색결과 항목을 Element로 반환하는 함수입니다
+function getListItem(index, places) {
+
+	var el = document.createElement('li'),
+
+	var itemStr = '<span class="markerbg marker_' + (index+1) + '" id="marker_' + (index+1) + '" ></span>' +
+				'<div class="info">' +
+				'   <h5>' +  places.place_name + '</h5>';
+
+
+	if (places.road_address_name) {
+		itemStr += '    <span>' + places.road_address_name + '</span>' +
+					'   <span class="jibun gray">' +  places.address_name  + '</span>';
+	} else {
+		itemStr += '    <span>' +  places.address_name  + '</span>'; 
 	}
+					
+		itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+				'</div>';           
+
+	el.innerHTML = itemStr;
+	el.className = 'item';
+
+	return el;
 }
