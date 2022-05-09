@@ -37,6 +37,7 @@ img { max-width: 100%; }
 ::selection { background: #19b9e7; color: #fff; text-shadow: none; }
 
 
+
 .btn-link-1 {
 	display: inline-block;
 	height: 50px;
@@ -136,7 +137,7 @@ img { max-width: 100%; }
 }
 
 .form-bottom {
-	padding: 25px 25px 30px 25px;
+	padding: 25px 25px 10px 25px;
 	background: #eee;
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 	text-align: left;

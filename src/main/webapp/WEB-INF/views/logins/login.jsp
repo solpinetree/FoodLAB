@@ -46,25 +46,19 @@
                 	
                     <div class="row description">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1>로그인</h1>
-                            <div class="description">
-                            	<p>
-	                            	This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap. 
-	                            	Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>, 
-	                            	customize and use it as you like!
-                            	</p>
-                            </div>
+                            <h1 style="margin-top:60px;">로그인</h1>
+                            
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2">
                         	
-                        	<div class="form-box">
+                        	<div class="form-box" style="width:500px; margin:auto;" >
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>Login to our site</h3>
-	                            		<p>Enter username and password to log on:</p>
+	                        			<h3>FoodLab에 로그인하세요</h3>
+	                            		<p>이메일과 비밀번호를 입력해주세요</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
@@ -78,20 +72,26 @@
 					out.println("</div>");
 				}
 			%>
-	                            <div class="form-bottom">
+	                            <div class="form-bottom" style="padding-bottom:10px;">
 	                            
 				                    <form role="form" action="${root}/logins/processLoginMember" method="post" class="login-form">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="inputUserName">Username</label>
-				                        	<input type="text" name="id" placeholder="아이디" class="form-username form-control" id="form-username">
+				                        	<input type="text" name="id" placeholder="이메일" class="form-username form-control" id="form-username">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="inputPassword">Password</label>
 				                        	<input type="password" name="password" placeholder="비밀번호" class="form-password form-control" id="form-password">
 				                        </div>
 				                        <button type="submit" class="btn">로그인</button>	
+				                        <div style="margin-top: 20px;">
+				                        <a href="${root}/logins/create_membership3" style="color:gray; text-decoration: underline; text-underline-position:under;">아직 가입하지 않았다면 회원가입</a>
+				                        </div>
+				                        <div>
+				                        <a href="${root}/logins/email_access">email_access test</a>
 				                        
-				                        <a href="${root}/logins/create_membership" style="color:gray;">회원가입</a>
+				                        </div>
+				                        
 				                        
 				                        
 				                        
@@ -100,20 +100,7 @@
 			                    </div>
 		                    </div>
 		                
-		                	<div class="social-login">
-	                        	<h3>...or login with:</h3>
-	                        	<div class="social-login-buttons">
-		                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
-		                        		<i class="fa fa-facebook"></i> Facebook
-		                        	</a>
-		                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
-		                        		<i class="fa fa-twitter"></i> Twitter
-		                        	</a>
-		                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
-		                        		<i class="fa fa-google-plus"></i> Google Plus
-		                        	</a>
-	                        	</div>
-	                        </div>
+		                	
 	                        
                         </div>
                         
@@ -128,16 +115,7 @@
         <!-- Footer -->
         <!--  style="background-color:#19b9e7;" -->
         <footer style="background-color:#19b9e7;">
-        	<div class="container" >
-        		<div class="row">
-        			
-        			<div class="col-sm-8 col-sm-offset-2">
-        				<div class="footer-border"></div>
-        				<p>Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
-        			</div>
-        			
-        		</div>
-        	</div>
+        	
         </footer>
 
         <!-- Javascript -->

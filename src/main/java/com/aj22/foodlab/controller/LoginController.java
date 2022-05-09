@@ -85,6 +85,20 @@ public class LoginController {
 		return "/logins/create_membership";
 	}
 	
+	@RequestMapping(value = "/email_access", method = RequestMethod.GET)
+	public String res10( Model model) {
+		logger.info("email_access.jsp 진입");
+		
+		return "/logins/email_access";
+	}
+	
+	@RequestMapping(value = "/create_membership3", method = RequestMethod.GET)
+	public String res11( Model model) {
+		logger.info("create_membership3.jsp 진입");
+		
+		return "/logins/create_membership3";
+	}
+	
 	
 	
 	
