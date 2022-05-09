@@ -340,7 +340,7 @@ function getListItem(index, places) {
 
 	var el = document.createElement('li'),
 
-	var itemStr = '<span class="markerbg marker_' + (index+1) + '" id="marker_' + (index+1) + '" ></span>' +
+	itemStr = '<span class="markerbg marker_' + (index+1) + '" id="marker_' + (index+1) + '" ></span>' +
 				'<div class="info">' +
 				'   <h5>' +  places.place_name + '</h5>';
 
