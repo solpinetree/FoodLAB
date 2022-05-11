@@ -17,9 +17,9 @@
                <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-1.jpg">
                   <div class="listing__item__pic__tag">중식</div>
                   <div class="listing__item__pic__btns">
-                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                      <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -51,9 +51,9 @@
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-2.jpg">
                   <div class="listing__item__pic__tag">양식</div>
                   <div class="listing__item__pic__btns">
-                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                      <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -85,9 +85,9 @@
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
                   <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                       <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -119,9 +119,9 @@
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-3.jpg">
                   <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                      <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -153,9 +153,9 @@
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
                   <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                       <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
@@ -187,9 +187,9 @@
               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-6.jpg">
                   <div class="listing__item__pic__tag">디저트, 카페</div>
                   <div class="listing__item__pic__btns">
-                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-danger">찜한음식</button>
-                      </div>
+                       <div class="listing__item__pic__btns">
+                                                <a href="#"><span class="icon_heart_alt"></span></a>
+                                            </div>
                   </div>
               </div>
               <div class="listing__item__text">
