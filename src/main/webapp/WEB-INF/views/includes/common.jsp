@@ -19,6 +19,8 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 	
+	
+	<link rel="icon" type="image/x-icon" href="${resources}/ico/favicon.png">
 	<link rel="stylesheet" href="${resources}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${resources}/css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="${resources}/css/elegant-icons.css" type="text/css">

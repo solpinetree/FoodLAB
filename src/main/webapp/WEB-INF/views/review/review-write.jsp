@@ -49,9 +49,9 @@
 	                <form id="msform" onsubmit="return false;">
 	                    <!-- progress bar -->
 	                    <ul id="progressbar">
-	                        <li class="active" id="account"><strong>주소 검색</strong></li>
-	                        <li id="payment"><strong>썸네일 입력</strong></li>
-	                        <li id="payment"><strong>리뷰 작성</strong></li>
+	                        <li class="active" id="search"><strong>주소 검색</strong></li>
+	                        <li id="thumbnail"><strong>썸네일 입력</strong></li>
+	                        <li id="review"><strong>리뷰 작성</strong></li>
 	                        <li id="personal"><strong>가격, 인원, 별점 등록</strong></li>
 	                        <li id="confirm"><strong>작성 완료</strong></li>
 	                    </ul>
