@@ -6,8 +6,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String id = request.getParameter("id");
+	String email = request.getParameter("email");
 	String password = request.getParameter("password");
+	String id = email;
 %>
 
 <sql:setDataSource var="dataSource"
@@ -15,14 +16,14 @@
 	driver="com.mysql.cj.jdbc.Driver" user="root2" password="1234" />
 
 <sql:query dataSource="${dataSource}" var="resultSet">
-   SELECT * FROM member WHERE id=? and password=?  
-   <sql:param value="<%=id%>" />
+   SELECT * FROM member WHERE email=? and password=?  
+    <sql:param value="<%=email%>" />
 	<sql:param value="<%=password%>" />
 </sql:query>
 
 <c:forEach var="row" items="${resultSet.rows}">
 	<%
-		session.setAttribute("sessionId", id);
+		session.setAttribute("sessionemail", email);
 	%>
 	<c:redirect url="resultMember?msg=2" />
 </c:forEach>

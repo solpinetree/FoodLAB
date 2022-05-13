@@ -30,7 +30,7 @@
                     </nav>
                     <%-- 로그인/로그아웃 --%>
                   <c:choose>
-                  <c:when test="${empty sessionId}">
+                  <c:when test="${empty sessionemail}">
                    <div class="header__menu__right">
                         <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
                        
