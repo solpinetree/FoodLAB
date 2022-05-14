@@ -12,8 +12,8 @@
 %>
 
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost/sampledb?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
-	driver="com.mysql.cj.jdbc.Driver" user="root2" password="1234" />
+	url="jdbc:mysql://localhost/foodlab?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
+	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234" />
 
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM member WHERE email=? and password=?  
