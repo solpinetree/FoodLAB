@@ -77,8 +77,8 @@
 	                            
 				                    <form role="form" action="${root}/logins/processLoginMember" method="post" class="login-form">
 				                    	<div class="form-group">
-				                    		<label class="sr-only" for="inputUserName">Username</label>
-				                        	<input type="text" name="id" placeholder="이메일" class="form-username form-control" id="form-username">
+				                    		<label class="sr-only" for="inputUserName">email</label>
+				                        	<input type="text" name="email" placeholder="이메일" class="form-username form-control" id="form-username">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="inputPassword">Password</label>
