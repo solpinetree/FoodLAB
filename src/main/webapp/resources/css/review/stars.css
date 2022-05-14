@@ -70,22 +70,3 @@ label.star:before{
   content:'\f006';
   font-family: FontAwesome;
 }
-
-.rev-box{
-  overflow: hidden;
-  height: 0;
-  width: 100%;
-  transition: all .25s;
-}
-
-label.review{
-  display: block;
-  transition:opacity .25s;
-}
-
-
-
-input.star:checked ~ .rev-box{
-  height: 125px;
-  overflow: visible;
-}

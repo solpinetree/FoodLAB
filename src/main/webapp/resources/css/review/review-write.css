@@ -35,7 +35,7 @@ p {
 }
 
 .form-card {
-    text-align: left;
+  /*   text-align: left; */
     flex-direction: row;
 }
 
@@ -70,7 +70,7 @@ p {
 
 #msform .action-button {
     width: 100px;
-    background: #673AB7;
+    background: var(--theme-color);;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -83,7 +83,7 @@ p {
 
 #msform .action-button:hover,
 #msform .action-button:focus {
-    background-color: #311B92
+    background-color: #f03250
 }
 
 #msform .action-button-previous {
@@ -112,7 +112,7 @@ p {
 
 .fs-title {
     font-size: 25px;
-    color: #673AB7;
+    color: #f03250;
     margin-bottom: 15px;
     font-weight: normal;
     text-align: left
@@ -143,7 +143,7 @@ p {
 }
 
 #progressbar .active {
-    color: #673AB7
+    color: var(--theme-color);
 }
 
 #progressbar li {
@@ -207,7 +207,7 @@ p {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #673AB7
+    background: var(--theme-color);
 }
 
 .progress {
@@ -234,8 +234,8 @@ p {
 .searchButton {
   width: 10%;
   height: 36px;
-  border: 1px solid #673AB7;
-  background: #673AB7;
+  border: 1px solid var(--theme-color);;
+  background: var(--theme-color);;
   text-align: center;
   color: #fff;
   border-radius: 20px;

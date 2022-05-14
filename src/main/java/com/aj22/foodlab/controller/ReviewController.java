@@ -19,17 +19,13 @@ public class ReviewController {
 	
 	
 	@GetMapping("/list")
-	public String res( Model model) {
-		logger.info("reviews.jsp 진입");
-		
+	public String loadReviewListPage( Model model) {
 		return "review/reviews";
 	}
 	
 	// 리뷰작성
 	@GetMapping("/write")
 	public String writeReview() {
-		logger.info("review-write.jsp 진입");
-		
 		return "review/review-write";
 	}
 	

@@ -33,6 +33,10 @@
 
 /* 메인 페이지 Food Lab 로고 폰트 'Black Han Sans' */
 
+:root{
+	--theme-color: #f9adbd;
+}
+
 html,
 body {
 	height: 100%;
