@@ -37,25 +37,26 @@
     
     <jsp:include page="../includes/header.jsp" />
     
+    <!-- 헤더의 배경화면이 흰색일 경우 -->
+    <script type="text/javascript">
+    	var element = document.querySelector('header');
+    	element.classList.add('header--normal');
+    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
+    </script>
 
         <!-- Top content -->
-        <div class="top-content top-padding-login" style="background-color:#19b9e7 ;">
+        <div class="top-content top-padding-login" style="background-color:white ;">
         	
             <div class="inner-bg">
-                <div class="container">
+                <div class="container" style="margin-top:60px;">
                 	
-                    <div class="row description">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1 style="margin-top:60px;">로그인</h1>
-                            
-                        </div>
-                    </div>
+               
                     
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2">
                         	
-                        	<div class="form-box" style="width:500px; margin:auto;" >
-	                        	<div class="form-top">
+                        	<div class="form-box" style="width:500px; margin:80 auto;" >
+	                        	<div class="form-top" style="border:1px solid #e3e3e3">
 	                        		<div class="form-top-left">
 	                        			<h3>FoodLab에 로그인하세요</h3>
 	                            		<p>이메일과 비밀번호를 입력해주세요</p>
@@ -72,7 +73,7 @@
 					out.println("</div>");
 				}
 			%>
-	                            <div class="form-bottom" style="padding-bottom:10px;">
+	                            <div class="form-bottom" style="padding-bottom:10px; border:1px solid #e3e3e3;">
 	                            
 				                    <form role="form" action="${root}/logins/processLoginMember" method="post" class="login-form">
 				                    	<div class="form-group">
@@ -114,7 +115,7 @@
 
         <!-- Footer -->
         <!--  style="background-color:#19b9e7;" -->
-        <footer style="background-color:#19b9e7;">
+        <footer style="background-color:#F9ADBD;">
         	
         </footer>
 
