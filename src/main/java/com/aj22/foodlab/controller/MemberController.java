@@ -26,21 +26,10 @@ public class MemberController extends HttpServlet {
 		
 		
 		MemberBean bean = new MemberBean();
-		bean.setId(id);
 		bean.setPassword(password);
 		request.setAttribute("bean",bean);
 		
-		boolean status = bean.validate();
 		
-		if (status) {
-			RequestDispatcher rd = request.getRequestDispatcher("login_success.jsp");
-			rd.forward(request, response);
-			
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("login_error.jsp");
-			rd.forward(request, response);
-		}
 		
 		
 
