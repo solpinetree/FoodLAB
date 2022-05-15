@@ -2,20 +2,25 @@ package dto;
 
 public class MemberBean implements java.io.Serializable {
 
-    
+    private int id;
     private String password;
     private String email;
-    private String nickname;
+    private String username;
     
     public MemberBean() { 
-    	this("a", "b","c"); 
+    	this(1,"", "",""); 
 	}
 
-    public MemberBean(String password, String email, String nickname) {
+    public MemberBean(int id, String password, String email, String username) {
+    	this.id = id;
         this.password = password;
         this.email = email;
-        this.nickname = nickname;
+        this.username = username;
     }
+    
+    public void setId(int id) { 
+		this.id = id; 
+	}
 
     
 	public void setEmail(String email) { 
@@ -26,8 +31,12 @@ public class MemberBean implements java.io.Serializable {
 		this.password = password; 
 	}
 	
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public int getId() { 
+		return id; 
 	}
     
 	
@@ -39,8 +48,8 @@ public class MemberBean implements java.io.Serializable {
 		return email; 
 	}
     
-    public String getNickname() { 
-		return nickname; 
+    public String getusername() { 
+		return username; 
 	}
 
     public void print() { 
@@ -50,7 +59,7 @@ public class MemberBean implements java.io.Serializable {
   
 
     @Override public String toString() { 
-		return "Password=" + password + " Email=" + email
-				+ "Member Nickname =" + nickname; 
+		return "id="+id+"Password=" + password + " Email=" + email
+				+ "Member username =" + username; 
 	}
 }

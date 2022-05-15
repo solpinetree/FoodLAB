@@ -10,27 +10,9 @@
 
 	String email = request.getParameter("email");
 	String password = request.getParameter("password");
-	String name = "lll";
 %>
 
-<%
-String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
-String DB_SCHEMAS = "foodlab";
-String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
-String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
-String USER = "labadmin";
-String PASS = "1234";
 
-Class.forName(JDBC_DRIVER);
-Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-		
-String sql = "select * from member";
-PreparedStatement pstmt = conn.prepareStatement(sql);
-ResultSet rs = pstmt.executeQuery();
-		if (rs.next()) {
-			name = rs.getString("username");
-		}
-%>
 
 
 <sql:setDataSource var="dataSource"
@@ -43,18 +25,12 @@ ResultSet rs = pstmt.executeQuery();
 	<sql:param value="<%=password%>" />
 </sql:query>
 
+<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
 
 <c:forEach var="row" items="${resultSet.rows}">
-	<%
-	MemberBean member= new MemberBean();
-	member.setEmail(email);
-	member.setPassword(password);
-	member.setNickname(name);
-		session.setAttribute("sessionemail", email);
-		session.setAttribute("sessionpassword", password);
-		session.setAttribute("sessionname", name);
-		session.setAttribute("user",member);
-	%>
+	<jsp:setProperty name="sessionMember" property="id" value="${row.member_id}"/>
+	<jsp:setProperty name="sessionMember" property="email" value="${row.email}"/>
+	<jsp:setProperty name="sessionMember" property="username" value="${row.username}"/>
 	<c:redirect url="resultMember?msg=2" />
 </c:forEach>
 

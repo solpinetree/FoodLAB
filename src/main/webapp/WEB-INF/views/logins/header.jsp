@@ -5,10 +5,14 @@
 
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
+
+
+<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
 <%
-	String sessionId = (String) session.getAttribute("sessionId");
+	String username = sessionMember.getusername();
 %>
 <header class="header">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-3">
@@ -37,12 +41,14 @@
                         </ul>
                     </nav>
                     <%-- 로그인/로그아웃 --%>
-                  <c:choose>
-                  <c:when test="${empty sessionId}">
+                  <c:choose>                
+                  <c:when test="${empty username}">
+                  
                    <div class="header__menu__right">
                         <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
                        
                     </div>
+                    
                   </c:when>
                   <c:otherwise>
                    <div class="header__menu__right">
