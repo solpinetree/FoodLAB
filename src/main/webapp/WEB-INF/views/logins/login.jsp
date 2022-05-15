@@ -86,7 +86,8 @@
 				                        </div>
 				                        <button type="submit" class="btn">로그인</button>	
 				                        <div style="margin-top: 20px;">
-				                        <a href="${root}/logins/create_membership3" style="color:gray; text-decoration: underline; text-underline-position:under;">아직 가입하지 않았다면 회원가입</a>
+				                        <a href="${root}/logins/clause" style="color:gray; text-decoration: underline; text-underline-position:under;">아직 가입하지 않았다면 회원가입</a>
+				                        
 				                        </div>
 				                        <div>
 				                        <a href="${root}/logins/email_access">email_access test</a>
