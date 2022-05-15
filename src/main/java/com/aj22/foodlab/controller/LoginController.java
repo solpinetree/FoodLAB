@@ -99,6 +99,12 @@ public class LoginController {
 		return "/logins/create_membership3";
 	}
 	
+	@RequestMapping(value = "/joinemailCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res12( Model model) {
+		logger.info("joinemailCheck.jsp 진입");
+		
+		return "/logins/joinemailCheck";
+	}
 	
 	
 	

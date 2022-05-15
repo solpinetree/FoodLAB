@@ -21,7 +21,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 <%
 	request.setCharacterEncoding("UTF-8");
 
-    java.util.Random random = new Random();
+   
 	String password = request.getParameter("password");
 	String name = request.getParameter("name");
 	String email = request.getParameter("email");
