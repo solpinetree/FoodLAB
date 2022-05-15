@@ -21,10 +21,13 @@
 	<sql:param value="<%=password%>" />
 </sql:query>
 
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
+
 <c:forEach var="row" items="${resultSet.rows}">
-	<%
-		session.setAttribute("sessionemail", email);
-	%>
+	<jsp:setProperty name="sessionMember" property="memberId" value="${row.member_id}"/>
+	<jsp:setProperty name="sessionMember" property="email" value="${row.email}"/>
+	<jsp:setProperty name="sessionMember" property="username" value="${row.username}"/>
+	
 	<c:redirect url="resultMember?msg=2" />
 </c:forEach>
 

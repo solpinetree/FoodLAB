@@ -258,7 +258,8 @@ ol {
 }
 
 .header.header--normal {
-	background: #ffffff;
+	/* background: #ffffff; */
+	background: #F2F2F2;
 	-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 	position: fixed;
@@ -274,7 +275,8 @@ ol {
 }
 
 .header__logo {
-	padding: 30px 0;
+/* 	padding: 30px 0; */
+	padding: 15px 0 0 0;
 }
 
 .header__nav {

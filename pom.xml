@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.35</version>
+			<version>8.0.22</version>
 		</dependency>
 
 		<!-- Spring -->
@@ -125,6 +125,11 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
 
 		<!-- File Upload (대용량 파일 처리) -->
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
@@ -138,6 +143,14 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
+		</dependency>
+		
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.0 </version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

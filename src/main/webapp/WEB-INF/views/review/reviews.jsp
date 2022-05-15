@@ -2,7 +2,7 @@
 <%@ include file="../includes/common.jsp" %>
 
 <head>
-    <title>리뷰 보기</title>
+    <title>푸드로그</title>
 </head>
 
 <body>
@@ -15,144 +15,35 @@
 	<jsp:include page="../includes/header.jsp"/>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-area set-bg" data-setbg="${resources}/img/breadcrumb/breadcrumb-blog.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>리뷰 게시판</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
 
     <!-- Blog Section Begin -->
-    <section class="blog-section spad">
+    <section class="blog-section spad" style="padding-top: 130px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="blog__item__large">
-                        <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/blog-large.jpg">
-                            <a href="https://www.youtube.com/watch?v=8EJ3zbKTWQ8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="blog__item__text">
-                            <ul class="blog__item__tags">
-                                <li><i class="fa fa-tags"></i> Travel</li>
-                                <li>Videos</li>
-                            </ul>
-                            <h3><a href="#">Internet Banner Advertising Most Reliable</a></h3>
-                            <ul class="blog__item__widget">
-                                <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                <li><i class="fa fa-user"></i> John Smith</li>
-                            </ul>
-                            <p>One of my favourite things I like to watch is the bloopers and outtakes that are shown of
-                                mistakes made during the making of a movie.</p>
-                        </div>
-                    </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-1.jpg"></div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Travel</li>
-                                        <li>Videos</li>
-                                    </ul>
-                                    <h5><a href="#">Florida for 20 YEARS swims in the Gulf for the FIRST</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-2.jpg">
-                                    <a href="https://www.youtube.com/watch?v=8EJ3zbKTWQ8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Videos</li>
-                                        <li>Restaurant</li>
-                                    </ul>
-                                    <h5><a href="#">Florida Bar Removes Famous Dollar Bill Decor</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-3.jpg"></div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Hotel</li>
-                                    </ul>
-                                    <h5><a href="#">'Junior detectives' help Roseville, Calif police</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-4.jpg">
-                                    <a href="https://www.youtube.com/watch?v=8EJ3zbKTWQ8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Restaurant</li>
-                                    </ul>
-                                    <h5><a href="#">Dog Rescues Florida Woman After Her iPad Catches</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-5.jpg"></div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Videos</li>
-                                    </ul>
-                                    <h5><a href="#">Citrus Heights Snack Man Helps Feed The Homeless</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-6.jpg"></div>
-                                <div class="blog__item__text">
-                                    <ul class="blog__item__tags">
-                                        <li><i class="fa fa-tags"></i> Travel</li>
-                                    </ul>
-                                    <h5><a href="#">Homeless womanâs viral subway opera performance</a></h5>
-                                    <ul class="blog__item__widget">
-                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                        <li><i class="fa fa-user"></i> John Smith</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    	<c:forEach items="${reviews}" var="review">
+	                        <div class="col-lg-6 col-md-6">
+	                            <div class="blog__item">
+	                                <div class="blog__item__pic set-bg" data-setbg="'${resources}/'+${review.savedPath}"></div>
+	                                <div class="blog__item__text">
+	                                    <ul class="blog__item__tags">
+	                                        <li><i class="fa fa-tags"></i> Travel</li>
+	                                        <li>Videos</li>
+	                                    </ul>
+	                                    <h5><a href="#">Florida for 20 YEARS swims in the Gulf for the FIRST</a></h5>
+	                                    <ul class="blog__item__widget">
+	                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
+	                                        <li><i class="fa fa-user"></i> John Smith</li>
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </div>
+                        </c:forEach>
                     </div>
                     
  					<!--  pagination div 시작 -->      
-                    <div class="blog__pagination">
+                    <div class="blog__pagination" style="align-items:center">
                         <a href="#"><i class="fa fa-long-arrow-left"></i> Pre</a>
                         <a href="#">1</a>
                         <a href="#">2</a>
@@ -160,6 +51,7 @@
                         <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                     <!--  pagination div 끝 -->
+                    
                 </div>
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
@@ -250,6 +142,8 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+   	<script type="text/javascript"
+	src="${resources}/js/nav-text-in-black.js"></script>
 	<%@ include file="../includes/plugins.jsp" %>
 </body>
 

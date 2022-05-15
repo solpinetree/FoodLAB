@@ -9,10 +9,9 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.aj22.foodlab.dto.FileDTO;
-
 
 public class FileUpload {
+	
 	
 	// 고유 식별값
 	private UUID uid = UUID.randomUUID();
@@ -26,9 +25,11 @@ public class FileUpload {
 	 * @throws IOException 
 	 */
 	public String uploadFileForQuill(String uploadPath, String savedDirectory,  MultipartFile image) throws IOException {
-		String originFileName = image.getOriginalFilename();
+		
+		String originName = image.getOriginalFilename();
+		originName = new String(originName.getBytes("8859_1"), "UTF-8"); //한글꺠짐 방지
 		// 같은 이름의 파일이 서버에도 같은 이름의 파일로 저장되면 안되므로 uid와 결합해서 저장
-		String savedName = getSavedName(originFileName);	
+		String savedName = getSavedName(originName);	
 		String savedPath = getSavedPath(uploadPath, savedDirectory, savedName); 
 				
 		byte[] bytes = image.getBytes();
@@ -59,4 +60,5 @@ public class FileUpload {
 	private String getSavedName(String originFileName) {
 		return uid + "_" + originFileName;
 	}
+
 }
