@@ -56,7 +56,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 	   
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
-	   script.println("alert('인증에 성공했습니다.');");
+	   script.println("alert('회원가입이 완료되었습니다.');");
 	   script.println("location.href = '../'");
 	   script.println("</script>");
 	   script.close();
@@ -64,7 +64,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
    } else {
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
-	   script.println("alert('유효하지 않은 코드입니다.');");
+	   script.println("alert('회원가입을 실패하였습니다.');");
 	   script.println("location.href = '../'");
 	   script.println("</script>");
 	   script.close();

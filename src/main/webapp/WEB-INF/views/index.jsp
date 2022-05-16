@@ -1,7 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="includes/common.jsp" %>
+<%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
+String DB_SCHEMAS = "foodlab";
+String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
+String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
+String USER = "labadmin";
+String PASS = "1234";
 
+Class.forName(JDBC_DRIVER);
+Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+%>
+<sql:setDataSource var="dataSource"
+	url="jdbc:mysql://localhost/foodlab?&useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=UTC&useSSL=false"
+	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234"/>
 
+<sql:update dataSource="${dataSource}" var="resultSet">
+   DELETE FROM member WHERE userEmailChecked = 0
+</sql:update>
 <head>
     <title>Food LAB</title>
     <link rel="stylesheet" href="${resources}/css/main/main.css">

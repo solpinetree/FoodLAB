@@ -19,6 +19,7 @@
 	url="jdbc:mysql://localhost/foodlab?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
 	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234" />
 
+
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM member WHERE email=? and password=?  
     <sql:param value="<%=email%>" />

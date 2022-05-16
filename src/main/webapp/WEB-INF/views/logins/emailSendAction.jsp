@@ -75,14 +75,7 @@
 </head>
 <body>
 
-    <jsp:include page="../includes/header.jsp" />
     
-    <!-- 헤더의 배경화면이 흰색일 경우 -->
-    <script type="text/javascript">
-    	var element = document.querySelector('header');
-    	element.classList.add('header--normal');
-    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
-    </script>
 
         <!-- Top content -->
         <div class="top-content top-padding-login" style="background-color:white ;">
@@ -99,7 +92,8 @@
 	                        	<div class="form-top" style="border:1px solid #e3e3e3">
 	                        		<div class="form-top-left">
 	                        			<h3>FoodLab에 로그인하세요</h3>
-	                            		<p>이메일 인증번호를 보냄</p>
+	                            		<p>이메일 인증번호를 보냄.</p>
+	                            		<p>이메일 인증까지 마쳐야 회원가입이 완료됩니다.</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
