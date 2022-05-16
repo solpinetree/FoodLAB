@@ -120,6 +120,12 @@ public class LoginController {
 		return "/logins/clause";
 	}
 	
+	@RequestMapping(value = "/emailSendAction", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res15( Model model) {
+		logger.info("emailSendAction.jsp 진입");
+		
+		return "/logins/emailSendAction";
+	}
 	
 	
 	

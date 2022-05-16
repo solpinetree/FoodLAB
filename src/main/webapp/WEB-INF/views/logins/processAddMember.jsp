@@ -51,16 +51,16 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 session.setAttribute("useremail", email);
 %>
 
-<%--<c:if test="${resultSet>=1}">
+<c:if test="${resultSet>=1}">
 	<c:redirect url="emailSendAction" />
 </c:if> 
---%>
+
  > 
 
 
-
- <c:if test="${resultSet>=1}">
+<%-- <c:if test="${resultSet>=1}">
 	<c:redirect url="resultMember?msg=1" />
 </c:if> 
+ --%>
 
 
