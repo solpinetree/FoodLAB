@@ -127,6 +127,13 @@ public class LoginController {
 		return "/logins/emailSendAction";
 	}
 	
+	@RequestMapping(value = "/emailCheckAction", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res16( Model model) {
+		logger.info("emailCheckAction.jsp 진입");
+		
+		return "/logins/emailCheckAction";
+	}
+	
 	
 	
 

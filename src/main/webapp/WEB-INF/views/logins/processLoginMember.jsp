@@ -31,6 +31,7 @@
 	<jsp:setProperty name="sessionMember" property="id" value="${row.member_id}"/>
 	<jsp:setProperty name="sessionMember" property="email" value="${row.email}"/>
 	<jsp:setProperty name="sessionMember" property="username" value="${row.username}"/>
+	<jsp:setProperty name="sessionMember" property="userEmailChecked" value="${row.userEmailChecked}"/>
 	<c:redirect url="resultMember?msg=2" />
 </c:forEach>
 

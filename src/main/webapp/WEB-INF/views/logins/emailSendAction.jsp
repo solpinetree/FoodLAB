@@ -19,9 +19,9 @@
 	String host = "http://localhost:8085/foodlab/";
 	String from = "foodLAB1357@gmail.com";
 	String to = (String)session.getAttribute("useremail");
-	String subject = "강의평가를 위한 이메일 확인 메일입니다.";
+	String subject = "FoodLAB 회원가입을 위한 이메일 확인 메일입니다.";
 	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
-		"<a href='" + host + "emailCheckAction.jsp?code=" + new SHA256().getSHA256(to) + "'>이메일 인증하기</a>";
+		"<a href='" + host + "logins/emailCheckAction?code=" + new SHA256().getSHA256(to) + "'>이메일 인증하기</a>";
 		
 		
 		// SMTP에 접속하기 위한 정보를 기입합니다.
