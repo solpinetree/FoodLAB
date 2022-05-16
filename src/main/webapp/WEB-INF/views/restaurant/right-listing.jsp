@@ -12,210 +12,47 @@
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
        </div>
        <div class="listing__list">
-       	  <!--  식당 하나 div 시작 -->
-           <div class="listing__item">
-               <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-1.jpg">
-                  <div class="listing__item__pic__tag">중식</div>
-                  <div class="listing__item__pic__btns">
-                      <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Chinese Sausage Restaurant</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
+       
+       	<c:forEach items="${restaurants}" var="restaurant">
+       	
+	       	  <!--  식당 하나 div 시작 -->
+	           <div class="listing__item">
+	               <div class="listing__item__pic set-bg" data-setbg="${restaurant.imgUrl}">
+	                  <div class="listing__item__pic__tag">${restaurant.category}</div>
+	                  <div class="listing__item__pic__btns">
+	                      <div class="listing__item__pic__btns">
+                           	<a href="#"><span class="icon_heart_alt"></span></a>
                           </div>
-                      </div>
-                      <ul>
-                          <li><span class="icon_pin_alt"></span> 주소 </li>
-                          <li><span class="icon_phone"></span> 번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                      
-                      <div class="listing__item__text__info__right">Open Now</div>
-                  </div>
-              </div>
-          </div>
-          <!--  식당 하나 div 끝 -->
-          <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-2.jpg">
-                  <div class="listing__item__pic__tag">양식</div>
-                  <div class="listing__item__pic__btns">
-                      <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Shrimp floured and fried</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
-                          </div>
-                      </div>
-   					  <ul>
-                          <li><span class="icon_pin_alt"></span> 주소 </li>
-                          <li><span class="icon_phone"></span> 번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                     
-                      <div class="listing__item__text__info__right closed">Closed</div>
-                  </div>
-              </div>
-          </div>
-          <!--  식당 하나 div 끝 -->
-          <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
-                  <div class="listing__item__pic__tag">디저트, 카페</div>
-                  <div class="listing__item__pic__btns">
-                       <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Crab fried with tamarind</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
-                          </div>
-                      </div>
-                      <ul>
-                          <li><span class="icon_pin_alt"></span>주소</li>
-                          <li><span class="icon_phone"></span>번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                      
-                      <div class="listing__item__text__info__right closed">Closed</div>
-                  </div>
-              </div>
-          </div>
-           <!--  식당 하나 div 끝 -->
-          <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-3.jpg">
-                  <div class="listing__item__pic__tag">디저트, 카페</div>
-                  <div class="listing__item__pic__btns">
-                      <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Sweet and sour pork ribs</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
-                          </div>
-                      </div>
-                      <ul>
-                          <li><span class="icon_pin_alt"></span> 주소</li>
-                          <li><span class="icon_phone"></span> 번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                      
-                      <div class="listing__item__text__info__right">Open Now</div>
-                  </div>
-              </div>
-          </div>
-          <!--  식당 하나 div 끝 -->
-          <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-4.jpg">
-                  <div class="listing__item__pic__tag">디저트, 카페</div>
-                  <div class="listing__item__pic__btns">
-                       <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Tortoise grilled on salt</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
-                          </div>
-                      </div>
-                      <ul>
-                          <li><span class="icon_pin_alt"></span> 주소</li>
-                          <li><span class="icon_phone"></span> 번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                      
-                      <div class="listing__item__text__info__right">Open Now</div>
-                  </div>
-              </div>
-          </div>
-           <!--  식당 하나 div 끝 -->
-          <div class="listing__item">
-              <div class="listing__item__pic set-bg" data-setbg="${resources}/img/listing/list-6.jpg">
-                  <div class="listing__item__pic__tag">디저트, 카페</div>
-                  <div class="listing__item__pic__btns">
-                       <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                  </div>
-              </div>
-              <div class="listing__item__text">
-                  <div class="listing__item__text__inside">
-                      <h5>Fish cooked with fishsauce</h5>
-                      <div class="listing__item__text__rating">
-                          <div class="listing__item__rating__star">
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star"></span>
-                              <span class="icon_star-half_alt"></span>
-                          </div>
-                      </div>
-                      <ul>
-                          <li><span class="icon_pin_alt"></span> 주소</li>
-                          <li><span class="icon_phone"></span> 번호</li>
-                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>
-                      </ul>
-                  </div>
-                  <div class="listing__item__text__info">
-                      
-                      <div class="listing__item__text__info__right">Open Now</div>
-                  </div>
-              </div>
-          </div>
+	                  </div>
+	              </div>
+	              <div class="listing__item__text">
+	                  <div class="listing__item__text__inside">
+	                      <h5>${restaurant.name}</h5>
+	                      <div class="listing__item__text__rating">
+	                          <div class="listing__item__rating__star">
+	                              <span class="icon_star"></span>
+	                              <span class="icon_star"></span>
+	                              <span class="icon_star"></span>
+	                              <span class="icon_star"></span>
+	                              <span class="icon_star-half_alt"></span>
+	                          </div>
+	                      </div>
+	                      <ul>
+	                          <li><span class="icon_pin_alt"></span> ${ restaurant.address} </li>
+	                          <li><span class="icon_phone"></span> ${ restaurant.tel} </li>
+	                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
+	                      </ul>
+	                  </div>
+	                  <div class="listing__item__text__info">
+	                      
+	                      <div class="listing__item__text__info__right">${ restaurant.operationHour} </div>
+	                  </div>
+	              </div>
+	          </div>
+	          <!--  식당 하나 div 끝 -->
+          
+          </c:forEach>
+        
       </div>
       <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group" style = "float:none; margin:0 auto;">

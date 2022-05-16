@@ -26,12 +26,7 @@
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
 
-    <!-- 헤더의 배경화면이 흰색일 경우 -->
-    <script type="text/javascript">
-    	var element = document.querySelector('header');
-    	element.classList.add('header--normal');
-    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
-    </script>
+
 
 
 	<div class="container-fluid" style="margin-top: 120px;">
@@ -210,6 +205,8 @@
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
+	<script type="text/javascript"
+		src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/image-upload.js"></script>
 	<script type="text/javascript"
