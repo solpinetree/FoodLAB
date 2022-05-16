@@ -31,10 +31,10 @@
 	                                        <li><i class="fa fa-tags"></i> Travel</li>
 	                                        <li>Videos</li>
 	                                    </ul>
-	                                    <h5><a href="#">Florida for 20 YEARS swims in the Gulf for the FIRST</a></h5>
+	                                    <h5><a href="#">${ review.title }</a></h5>
 	                                    <ul class="blog__item__widget">
-	                                        <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-	                                        <li><i class="fa fa-user"></i> John Smith</li>
+	                                        <li><i class="fa fa-clock-o"></i> ${ review.createdAt}</li>
+	                                        <li><i class="fa fa-user"></i> ${ review.writerId} </li>
 	                                    </ul>
 	                                </div>
 	                            </div>

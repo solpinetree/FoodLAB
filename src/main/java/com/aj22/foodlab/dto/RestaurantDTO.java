@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class RestaurantDTO {
-	private int restaurantId;
+	private Integer restaurantId;
 	private String name;
 	private String address;
-	private float avgRate;
+	private Float avgRate;
 	private String tel;
 	private String category;
 	private String imgUrl;

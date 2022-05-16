@@ -44,7 +44,7 @@ p {
 }
 
 #msform input,
-#msform textarea {
+#msform textarea{
     padding: 8px 15px 8px 15px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -60,7 +60,7 @@ p {
 }
 
 #msform input:focus,
-#msform textarea:focus {
+#msform textarea:focus{
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -119,7 +119,7 @@ p {
 }
 
 .purple-text {
-    color: #673AB7;
+    color: #f9adbd;
     font-weight: normal
 }
 
