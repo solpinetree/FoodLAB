@@ -12,7 +12,8 @@
 <%@ page import="util.SHA256"%>
 <%@ page import="util.Gmail"%>
 <%@ page import="java.io.PrintWriter"%>
-
+<%@ include file="../includes/common.jsp" %>
+<%@ include file="../includes/login/NewFile1.jsp" %>
 <%
 //사용자에게 보낼 메시지를 기입합니다.
 
@@ -73,10 +74,68 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
-	    <div class="alert alert-success mt-4" role="alert">
-		  이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가셔서 인증해주세요.
-		</div>
-    </div>
+
+    <jsp:include page="../includes/header.jsp" />
+    
+    <!-- 헤더의 배경화면이 흰색일 경우 -->
+    <script type="text/javascript">
+    	var element = document.querySelector('header');
+    	element.classList.add('header--normal');
+    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
+    </script>
+
+        <!-- Top content -->
+        <div class="top-content top-padding-login" style="background-color:white ;">
+        	
+            <div class="inner-bg">
+                <div class="container" style="margin-top:60px;">
+                	
+               
+                    
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                        	
+                        	<div class="form-box" style="width:500px; margin:80 auto;" >
+	                        	<div class="form-top" style="border:1px solid #e3e3e3">
+	                        		<div class="form-top-left">
+	                        			<h3>FoodLab에 로그인하세요</h3>
+	                            		<p>이메일 인증번호를 보냄</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	               
+	                            
+		                    </div>
+		                
+		                	
+	                        
+                        </div>
+                        
+                       
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <!--  style="background-color:#19b9e7;" -->
+        <footer style="background-color:#F9ADBD;">
+        	
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="${resources}/js/login/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="${resources}/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${resources}/js/login/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="${resources}/js/login/scripts.js"></script>
+       
+        <!--[if lt IE 10]>
+            <script src="..resources/js/placeholder.js"></script>
+        <![endif]-->
+
 </body>
 </html>

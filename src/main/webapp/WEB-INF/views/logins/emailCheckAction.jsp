@@ -5,6 +5,7 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page import="java.sql.*" %>
+<%@ include file="../includes/common.jsp" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <%

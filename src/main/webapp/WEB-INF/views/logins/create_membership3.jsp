@@ -52,6 +52,7 @@
 		
 		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
+		var name = /^(?=.*[a-zA-Z]).{2,20}$/;
 		
 		if (!regEmail.test(document.newMember.email.value)) {
 			var str = document.getElementById("checkemail");
@@ -89,6 +90,11 @@
 			str1.innerHTML = ""        
             
       }
+		
+		
+		
+		
+		
 		
 		
 		
@@ -176,7 +182,7 @@
 	                            </div>
 	                            <div class="form-bottom">
 				                    <form name="newMember" role="form" action="${root}/logins/processAddMember" method="post" class="registration-form" onsubmit="return checkForm()">
-				                    	<div class="form-group">
+				                    	<div class="form-group" style="margin-bottom:0px;">
 				                        	<label class="sr-only" for="form-email">이메일</label>
 				                        	<input type="text" name="email" placeholder="이메일" class="form-email form-control" id="form-email" onkeyup='mykeydown()'>
 				                        	<p id=checkemail></p>
