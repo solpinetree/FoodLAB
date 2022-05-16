@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page import="dto.*"%>
 
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
+<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
+
 <header class="header">
+
+
+<%
+
+	String username = sessionMember.getusername();
+
+%>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-3">
@@ -29,8 +38,29 @@
                         </ul>
                     </nav>
                     <%-- 로그인/로그아웃 --%>
+                    <%
+                    if (username=="") {
+                    %>
+                    <div class="header__menu__right">
+                        <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
+                       
+                    </div>
+                    <%              
+                    }
+                     
+                    else {%>
+                    	
+                    	<div class="header__menu__right">
+                        <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>     
+                        <a href="${root}/logins/mypage" class="login-btn"><i class="fa fa-user"></i></a>
+                    </div>
+                    <% }
+                   
+                    
+                    %>
+                    <%-- 
                   <c:choose>
-                  <c:when test="${empty sessionemail}">
+                  <c:when test="${empty username}">
                    <div class="header__menu__right">
                         <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
                        
@@ -43,6 +73,7 @@
                     </div>
                   </c:otherwise>
                   </c:choose>
+                  --%>
                 </div>
             </div>
         </div>

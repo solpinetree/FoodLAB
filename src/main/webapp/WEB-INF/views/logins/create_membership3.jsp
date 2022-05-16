@@ -13,7 +13,7 @@
         <title>Bootstrap Login &amp; Register Templates</title>
 <script type="text/javascript">
 	function checkForm() {
-		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
 		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 		if (!document.newMember.email.value) {
 			alert("이메일을 입력하세요.");
@@ -36,21 +36,22 @@
 		}
 		
 		if (!pwdCheck.test(document.newMember.password.value)) {
-		    alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");		  
+		    alert("비밀번호는 영문자+숫자 조합으로 6~25자리 사용해야 합니다.");		  
 		    return false;
 		  }
 		
 
 
 	
-		
+		<%--var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){3}$/;
+		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,25}$/; --%>
 		
 	}
 	
 	function mykeydown() {
 		
 		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
 		
 		if (!regEmail.test(document.newMember.email.value)) {
 			var str = document.getElementById("checkemail");
@@ -67,7 +68,7 @@
 		
 		if (!pwdCheck.test(document.newMember.password.value)) {
 			var str2 = document.getElementById("checkpassword");
-			str2.innerHTML = "비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다."        
+			str2.innerHTML = "비밀번호는 영문자+숫자 조합으로 6~25자리 사용해야 합니다."        
            
       }
 		
@@ -100,6 +101,31 @@
 	}
 	
 	
+	function winopen(){
+		//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
+		//1. 아이디가 없으면 알림창과 진행x
+		if(document.newMember.email.value =="" || document.newMember.email.value.length < 0){
+			alert("이메일을 먼저 입력해주세요")
+			document.newMember.email.focus();
+		}else{
+			//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
+			//자바스크립트로 어떻게 DB에 접근할까? => 파라미터로 id값을 가져가서 jsp페이지에서 진행하면 된다.
+			window.open("${root}/logins/joinemailCheck?useremail="+document.newMember.email.value,"","width=500, height=300");
+		}
+	}
+	
+	function winopen2(){
+		//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
+		//1. 아이디가 없으면 알림창과 진행x
+		if(document.newMember.name.value =="" || document.newMember.name.value.length < 0){
+			alert("닉네임을 먼저 입력해주세요")
+			document.newMember.name.focus();
+		}else{
+			//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
+			//자바스크립트로 어떻게 DB에 접근할까? => 파라미터로 id값을 가져가서 jsp페이지에서 진행하면 된다.
+			window.open("${root}/logins/joinnameCheck?username="+document.newMember.name.value,"","width=500, height=300");
+		}
+	}
 	
 	
 </script>
@@ -155,6 +181,7 @@
 				                        	<input type="text" name="email" placeholder="이메일" class="form-email form-control" id="form-email" onkeyup='mykeydown()'>
 				                        	<p id=checkemail></p>
 				                        </div>
+				                        <input type="button" value="중복확인" class="dup" onclick="winopen()"><br>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-last-name">비밀번호</label>
 				                        	<input type="text" name="password" placeholder="비밀번호" class="form-last-name form-control" id="form-last-name" onkeyup='mykeydown()' >
@@ -167,9 +194,9 @@
 				                        </div>				                        
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-email">닉네임</label>
-				                        	<input type="text" name="name" placeholder="성명" class="form-email form-control" id="form-email">
+				                        	<input type="text" name="name" placeholder="닉네임" class="form-email form-control" id="form-email">
 				                        </div>
-				                        
+				                         <input type="button" value="중복확인" class="dup" onclick="winopen2()"><br>
 				                        <button type="submit" class="btn" value="등록">회원가입</button>
 				                    </form>
 			                    </div>

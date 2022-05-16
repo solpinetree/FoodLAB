@@ -92,13 +92,33 @@ public class LoginController {
 		return "/logins/email_access";
 	}
 	
-	@RequestMapping(value = "/create_membership3", method = RequestMethod.GET)
+	@RequestMapping(value = "/create_membership3", method = {RequestMethod.GET, RequestMethod.POST})
 	public String res11( Model model) {
 		logger.info("create_membership3.jsp 진입");
 		
 		return "/logins/create_membership3";
 	}
 	
+	@RequestMapping(value = "/joinemailCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res12( Model model) {
+		logger.info("joinemailCheck.jsp 진입");
+		
+		return "/logins/joinemailCheck";
+	}
+	
+	@RequestMapping(value = "/joinnameCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res13( Model model) {
+		logger.info("joinnameCheck.jsp 진입");
+		
+		return "/logins/joinnameCheck";
+	}
+	
+	@RequestMapping(value = "/clause", method = {RequestMethod.GET, RequestMethod.POST})
+	public String res14( Model model) {
+		logger.info("clause.jsp 진입");
+		
+		return "/logins/clause";
+	}
 	
 	
 	
