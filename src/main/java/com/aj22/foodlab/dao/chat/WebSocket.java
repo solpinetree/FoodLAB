@@ -16,6 +16,9 @@ import javax.websocket.server.ServerEndpoint;
 public class WebSocket {
 	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
 
+	
+	
+	
 	/*
 	 *  websocket으로 브라우저가 접속하면 요청
 	 */
@@ -27,6 +30,7 @@ public class WebSocket {
 		// WebSocket세션을 리스트에 저장
 		sessions.add(session);
 	}
+	
 	
 	// websocket과 브라우저가 접속이 끊기면 요청
 	@OnClose
@@ -43,6 +47,8 @@ public class WebSocket {
 	public void onError(Throwable t){
 		t.printStackTrace();
 	}
+	
+
 	
 	//webSocket 으로 메시지가 오면 요청
 	@OnMessage

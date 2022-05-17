@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body onkeypress = "keypress()" >
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -121,7 +121,7 @@
 						</textarea>
 					</div>
 					[${sessionScope.sessionMember.id}]<input type = "text" id = "sendmsg" placeholder = "메시지를 입력해주세요" autocomplete = "on">
-					<button id = "sendbtn" onclick = "sendmessage()">보내기</button>
+					<button id = "sendbtn" onclick = "sendmessage">보내기</button>
 					
 					
 				</section>

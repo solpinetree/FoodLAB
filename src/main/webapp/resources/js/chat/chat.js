@@ -1,24 +1,20 @@
 
 var sendbtn = document.getElementById('sendbtn');
 sendbtn.addEventListener('click', sendmessage);
-	
+var sessionId = document.getElementById('sessionScope.sessionMember.id');
 function sendmessage()
 {
-	console.log("버튼을 누르셨습니다.");
-	/*
+	//"[${sessionScope.sessionMember.id}]"
 	//	메시지 박스에 있는 데이터를 전송한다.
-	var msg = "[${sessionScope.sessionMember.id}]" + document.getElementById("sendmsg").value;
+	var msg = sessionId + document.getElementById("sendmsg").value;
 	websocket.send(msg);
 	
 	//	메시지를 보내고, 메시지 입력 부분을 지워준다. 
 	document.getElementById("sendmsg").value = "";
 	
-	//	나의 메시지
-	document.getElementById("chat").value = 
-		document.getElementById("chat").value + "\n"+msg; 
-	*/
+	
 }
-var websocket = new WebSocket("ws://localhost:8085/wsocket");
+var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
 var line = 0;
 	
 //	아래는 웹 소켓에서 사용하는 4가지 이벤트들이다.
