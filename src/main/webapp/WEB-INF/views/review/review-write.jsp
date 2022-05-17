@@ -115,7 +115,7 @@
 								<%-- Quill Editor 시작--%>
 								<div id="standalone-container"
 									style="width: 100%; height: 100%; position: relative; overflow: hidden;">
-									<div id="toolbar-container">
+									<div id="toolbar-container" style="border-radius: 30px 30px 0 0">
 										<span class="ql-formats">
 											<button class="ql-bold"></button>
 											<button class="ql-italic"></button>
@@ -136,7 +136,7 @@
 											<button class="ql-clean"></button>
 										</span>
 									</div>
-									<div id="editor-container"></div>
+									<div id="editor-container" style="overflow:auto; height: 500px; border-radius: 0 0 10px 10px"></div>
 								</div>
 								<!-- 	    Quill Editor 끝 -->
 

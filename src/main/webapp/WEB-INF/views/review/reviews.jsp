@@ -25,7 +25,7 @@
                     	<c:forEach items="${reviews}" var="review">
 	                        <div class="col-lg-6 col-md-6">
 	                            <div class="blog__item">
-	                                <div class="blog__item__pic set-bg" data-setbg="${resources}/upload/review-thumb/${review.thumbnailSavedName}"></div>
+	                                <div class="blog__item__pic set-bg" data-setbg="${resources}/upload/review-thumb/${review.thumbnailSavedName}" style="border-radius: 40px 40px 0 0"></div>
 	                                <div class="blog__item__text">
 	                                    <ul class="blog__item__tags">
 	                                        <li><i class="fa fa-tags"></i> Travel</li>
@@ -57,7 +57,7 @@
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
                             <form action="#">
-                                <input type="text" placeholder="Searching...">
+                                <input type="text" placeholder="리뷰를 볼 식당을 검색하세요.">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -105,7 +105,7 @@
                             </a>
                         </div>
                         <div class="blog__sidebar__categories">
-                            <h5>Categories</h5>
+                            <h5>카테고리</h5>
                             <ul>
                                 <li><a href="#">양식 <span>18</span></a></li>
                                 <li><a href="#">중식 <span>20</span></a></li>
@@ -115,19 +115,6 @@
                                 <li><a href="#">분식 <span>19</span></a></li>
                                 <li><a href="#">디저트, 카페 <span>23</span></a></li>
                             </ul>
-                        </div>
-                        <div class="blog__sidebar__tags">
-                            <h5>Popular Tag</h5>
-                            <a href="#">Business</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">Payment</a>
-                            <a href="#">Travel</a>
-                            <a href="#">Finance</a>
-                            <a href="#">Videos</a>
-                            <a href="#">Ideas</a>
-                            <a href="#">Unique</a>
-                            <a href="#">Music</a>
-                            <a href="#">Key</a>
                         </div>
                     </div>
                 </div>

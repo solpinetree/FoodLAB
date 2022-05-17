@@ -21,7 +21,7 @@
 	<!-- Header Section End -->
 
     <!-- Blog Hero Begin -->
-    <div class="blog-details-hero set-bg" style="background-color:#EFF8E2">
+    <div class="blog-details-hero set-bg" style="background-color:black;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -44,27 +44,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text">
-                     
+                 <div class="blog__details__text" style="margin-bottom: 50px">
                      	<img src="${resources}/upload/review-thumb/${review.thumbnailSavedName}" style="background-size:cover; overflow: hidden"/>
                      <hr><br>
                      <div style="position: relative; float:left;">${review.content }</div>
+                     
+                     
                  </div>
+                  
                   
                  
                    
-	             <div class="listing__details__comment">
-	                <h4>리뷰</h4>
+	             <div class="listing__details__comment" style="margin-top: 50px; display:inline-block">
+	                <h4>댓글</h4>
 	              
 	                <div class="listing__details__comment__item">
 	                    <div class="listing__details__comment__item__pic">
 	                        <img src="${resources }/img/defaultProfile.jpeg" alt="">
 	                    </div>
 	                    <div class="listing__details__comment__item__text">
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
+	                        <span>5/18/2022 2:44</span>
+	                        <h5>죽전 맛집 탐방러</h5>
+	                        <p>1호점 맞나요?</p>
 	                        <ul>
 	                            <li><i class="fa fa-share-square-o"></i> 대댓글 달기</li>
 	                        </ul>
@@ -74,7 +75,7 @@
                 
                	<div class="listing__details__review">
                     <form action="#">
-                        <textarea placeholder="Review"></textarea>
+                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
                         <button type="submit" class="site-btn">댓글 달기</button>
                     </form>
                 </div>
@@ -121,7 +122,7 @@
                     	
                     	 <c:if test="${ restaurant ne null }">
 	                    	<div class="listing__sidebar__contact">
-	                            <div class="listing__sidebar__contact__map" id="review-detail-map">
+	                            <div class="listing__sidebar__contact__map" id="review-detail-map" style="border-radius: 40px 40px 0 0;">
 	                            </div>
 	                            <div class="listing__sidebar__contact__text">
 	                                <h4>${restaurant.name }</h4>
@@ -159,6 +160,44 @@
                                     	</c:if>
 	                                </ul>
 	                            </div>
+	                            <script type="text/javascript">
+		                            var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
+		                            mapOption = {
+		                                center: new kakao.maps.LatLng(37.3216, 127.1268), // 지도의 중심좌표 - 단국대
+		                                level: 3 // 지도의 확대 레벨
+		                            };  
+	
+			                        // 지도를 생성합니다    
+			                        var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+			                        // 주소-좌표 변환 객체를 생성합니다
+			                        var geocoder = new kakao.maps.services.Geocoder();
+		
+			                        // 주소로 좌표를 검색합니다
+			                        geocoder.addressSearch('${restaurant.address}', function(result, status) {
+		
+			                            // 정상적으로 검색이 완료됐으면 
+			                             if (status === kakao.maps.services.Status.OK) {
+		
+			                                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+			                                // 결과값으로 받은 위치를 마커로 표시합니다
+			                                var marker = new kakao.maps.Marker({
+			                                    map: map,
+			                                    position: coords
+			                                });
+		
+			                                // 인포윈도우로 장소에 대한 설명을 표시합니다
+			                                var infowindow = new kakao.maps.InfoWindow({
+			                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${restaurant.name}</div>'
+			                                });
+			                                infowindow.open(map, marker);
+		
+			                                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			                                map.setCenter(coords);
+			                            } 
+			                        });    
+	                            </script>
 	                        </div>
                			 </c:if>
                         <div class="blog__sidebar__recent">
@@ -168,9 +207,9 @@
                                     <img src="${resources }/img/blog/recent-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Shopping</span>
-                                    <h6>Tortoise grilled on salt</h6>
-                                    <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 샐러드</span>
+                                    <h6>그릴드 치킨 바질 샐러드</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/16/2022</p>
                                 </div>
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -178,9 +217,9 @@
                                     <img src="${resources}/img/blog/recent-2.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Hotels</span>
-                                    <h6>Shrimp floured and fried</h6>
-                                    <p><i class="fa fa-clock-o"></i> 22th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 퓨전한식</span>
+                                    <h6>대나무밥 써니사이드업</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/17/22</p>
                                 </div>
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -188,20 +227,20 @@
                                     <img src="${ resources}/img/blog/recent-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Restaurant</span>
-                                    <h6>Sweet and sour pork ribs</h6>
-                                    <p><i class="fa fa-clock-o"></i> 25th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 디저트</span>
+                                    <h6>달지 않은 마카롱</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/18/22</p>
                                 </div>
                             </a>
                         </div>
                         <div class="blog__sidebar__categories">
-                            <h5>Categories</h5>
+                            <h5>카테고리</h5>
                             <ul>
-                                <li><a href="#">Finance <span>18</span></a></li>
-                                <li><a href="#">Business <span>20</span></a></li>
-                                <li><a href="#">Loan <span>07</span></a></li>
-                                <li><a href="#">Consulting <span>22</span></a></li>
-                                <li><a href="#">Credit <span>19</span></a></li>
+                                <li><a href="#">양식 <span>18</span></a></li>
+                                <li><a href="#"> 펍<span>20</span></a></li>
+                                <li><a href="#">한식 <span>07</span></a></li>
+                                <li><a href="#">디저트 <span>22</span></a></li>
+                                <li><a href="#">회 <span>19</span></a></li>
                             </ul>
                         </div>
                     </div>

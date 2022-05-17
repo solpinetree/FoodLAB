@@ -23,7 +23,7 @@
     <!-- Listing Section -->
    	<jsp:include page="right-listing.jsp"/>
    	
-   	<jsp:include page="kakaomap.jsp"/>
+  <%--  	<jsp:include page="kakaomap.jsp"/> --%>
 
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
