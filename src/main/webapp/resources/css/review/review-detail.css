@@ -18,3 +18,15 @@
 	margin-right: auto;
 	margin-bottom: 20px;
 }
+
+.listing__sidebar__contact__text ul li span {
+    top: 0; 
+}
+
+.icon_clock{
+	content: "\7d";
+}
+
+.icon_category{
+	content: "\f0b0";
+}

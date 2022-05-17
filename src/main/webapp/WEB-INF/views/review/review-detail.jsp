@@ -6,6 +6,8 @@
 <head>
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
 </head>
 
 <body>
@@ -53,81 +55,27 @@
                    
 	             <div class="listing__details__comment">
 	                <h4>리뷰</h4>
+	              
 	                <div class="listing__details__comment__item">
 	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
+	                        <img src="${resources }/img/defaultProfile.jpeg" alt="">
 	                    </div>
 	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
 	                        <span>March 22, 2019</span>
 	                        <h5>Marry Jane</h5>
 	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
 	                            establish to the fleeting dynamism of pop-ups.</p>
 	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="listing__details__comment__item">
-	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
-	                    </div>
-	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
-	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="listing__details__comment__item">
-	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
-	                    </div>
-	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
-	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
+	                            <li><i class="fa fa-share-square-o"></i> 대댓글 달기</li>
 	                        </ul>
 	                    </div>
 	                </div>
 	            </div>
                 
                	<div class="listing__details__review">
-                    <h4>Add Review</h4>
                     <form action="#">
-                        <input type="text" placeholder="Name">
-                        <input type="text" placeholder="Email">
                         <textarea placeholder="Review"></textarea>
-                        <button type="submit" class="site-btn">Submit Now</button>
+                        <button type="submit" class="site-btn">댓글 달기</button>
                     </form>
                 </div>
                 </div>
@@ -173,18 +121,42 @@
                     	
                     	 <c:if test="${ restaurant ne null }">
 	                    	<div class="listing__sidebar__contact">
-	                            <div class="listing__sidebar__contact__map">
-	                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24168.833995532765!2d-74.79633710628465!3d40.78172222265886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c384de7a5300b9%3A0x8afc61979217d49d!2sLong%20Valley%2C%20NJ%2007853%2C%20USA!5e0!3m2!1sen!2sbd!4v1586852528126!5m2!1sen!2sbd" height="200" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-	                                <img src="img/listing/details/map-icon.png" alt="">
+	                            <div class="listing__sidebar__contact__map" id="review-detail-map">
 	                            </div>
 	                            <div class="listing__sidebar__contact__text">
 	                                <h4>${restaurant.name }</h4>
 	                                <ul>
+                                		<c:if test="${!empty restaurant.category}">
+	                                    	<li><span>${restaurant.category }</span></li><br><br>
+                                    	</c:if>
 	                                    <li><span class="icon_pin_alt"></span> ${restaurant.address }</li>
 	                                    <li><span class="icon_phone"></span>  ${restaurant.tel }</li>
-	                                    <li><span class="icon_mail_alt"></span> ${restaurant.avgRate }</li>
-	                                    <li><span class="icon_globe-2"></span> ${restaurant.category }</li>
-	                                    <li><span class="icon_globe-2"></span> ${restaurant.operationHour }</li>
+                                    	<c:if test="${restaurant.avgRate ne 0.0}">
+		                                    <li>
+	                                    	<span>평점 </span> 
+                                    		<c:forEach var="i" begin="1" end="5" >
+                                    			<c:if test="${restaurant.avgRate>i}">
+			                                		<span class="star-rate-icon icon_star"></span>
+			                                		<c:if test="${restaurant.avgRate < i+1}">
+			                                			<c:if test="${restaurant.avgRate > i+0.3 }">
+			                                				<c:if test="${restaurant.avgRate < i+0.7 }">
+			                                					<span class="star-rate-icon icon_star_half"></span>
+			                                				</c:if>
+			                                				<c:if test="${restaurant.avgRate > i+0.7 }">
+			                                					<span class="star-rate-icon icon_star"></span>
+			                                				</c:if>
+			                                			</c:if>
+			                                			<c:if  test="${restaurant.avgRate < i+0.3}">
+			                                				<span class="star-rate-icon icon_star_alt"></span>
+			                                			</c:if>
+			                                		</c:if>
+                                    			</c:if>
+		                                	</c:forEach>
+		                                    </li>
+                                    	</c:if>
+                                    	<c:if test="${!empty restaurant.operationHour}">
+		                                    <li><span class="icon_clock"></span> ${restaurant.operationHour }</li>
+                                    	</c:if>
 	                                </ul>
 	                            </div>
 	                        </div>
@@ -246,7 +218,8 @@
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
-	
+	<script type="text/javascript"
+		src="${resources}/js/review/review-detail-kakomap.js"></script>
 </body>
 
 </html>

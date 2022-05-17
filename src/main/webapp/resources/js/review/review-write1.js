@@ -18,9 +18,7 @@ $(document).ready(function() {
 					content.value = getQuillContent();
 					
 					next($(this));
-					setTimeout(function() {
-					  console.log('Works!');
-					}, 5000);
+					sleep(5000);
 					document.getElementById('reviewSubmitBtn').click();
 				}else{
 					showError();

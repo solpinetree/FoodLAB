@@ -91,6 +91,7 @@ public class ReviewController {
 			model.addAttribute("review", review);
 			if(restaurant!=null) {
 				model.addAttribute("restaurant", restaurant);
+				System.out.println("restaurant: " +restaurant);
 			}
 		}
 		return "review/review-detail";
