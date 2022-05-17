@@ -89,10 +89,7 @@
 				                        <a href="${root}/logins/clause" style="color:gray; text-decoration: underline; text-underline-position:under;">아직 가입하지 않았다면 회원가입</a>
 				                        
 				                        </div>
-				                        <div>
-				                        <a href="${root}/logins/email_access">email_access test</a>
 				                        
-				                        </div>
 				                        
 				                        
 				                        

@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="dto.*"%>
-
+<%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
@@ -14,6 +17,8 @@
 	String username = sessionMember.getusername();
 
 %>
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-3">
