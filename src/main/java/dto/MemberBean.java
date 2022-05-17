@@ -6,12 +6,12 @@ public class MemberBean implements java.io.Serializable {
     private String password;
     private String email;
     private String username;
-    private boolean userEmailChecked;
+    private int userEmailChecked;
     public MemberBean() { 
-    	this(1,"", "","",false); 
+    	this(1,"", "","",0); 
 	}
 
-    public MemberBean(int id, String password, String email, String username,boolean userEmailChecked) {
+    public MemberBean(int id, String password, String email, String username,int userEmailChecked) {
     	this.id = id;
         this.password = password;
         this.email = email;
@@ -36,7 +36,7 @@ public class MemberBean implements java.io.Serializable {
 		this.username = username;
 	}
 	
-	public void setuserEmailChecked(boolean userEmailChecked) {
+	public void setuserEmailChecked(int userEmailChecked) {
 		this.userEmailChecked = userEmailChecked;
 	}
 	
@@ -57,7 +57,7 @@ public class MemberBean implements java.io.Serializable {
 		return username; 
 	}
     
-    public boolean getuserEmailChecked() {
+    public int getuserEmailChecked() {
     	return userEmailChecked;
     }
 
