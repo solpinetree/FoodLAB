@@ -25,13 +25,13 @@
                     	<c:forEach items="${reviews}" var="review">
 	                        <div class="col-lg-6 col-md-6">
 	                            <div class="blog__item">
-	                                <div class="blog__item__pic set-bg" data-setbg="'${resources}/'+${review.savedPath}"></div>
+	                                <div class="blog__item__pic set-bg" data-setbg="${resources}/upload/review-thumb/${review.thumbnailSavedName}"></div>
 	                                <div class="blog__item__text">
 	                                    <ul class="blog__item__tags">
 	                                        <li><i class="fa fa-tags"></i> Travel</li>
 	                                        <li>Videos</li>
 	                                    </ul>
-	                                    <h5><a href="#">${ review.title }</a></h5>
+	                                    <h5><a href="${root}/reviews/review?reviewId=${review.reviewId}">${ review.title }</a></h5>
 	                                    <ul class="blog__item__widget">
 	                                        <li><i class="fa fa-clock-o"></i> ${ review.createdAt}</li>
 	                                        <li><i class="fa fa-user"></i> ${ review.writerId} </li>

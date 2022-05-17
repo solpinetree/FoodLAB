@@ -27,5 +27,21 @@ public class RestaurantService {
 		dao.close();
 		return categories;
 	}
+	
+	public Integer getRestaurantIdFromName(String name) throws SQLException {
+		Integer id = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		id = dao.getRestaurantIDByName(name);
+		dao.close();
+		return id;
+	}
+	
+	public RestaurantDTO getRestaurantById(int id) throws SQLException{
+		RestaurantDTO restaurant = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurant = dao.select(id);
+		dao.close();
+		return restaurant;
+	}
 
 }

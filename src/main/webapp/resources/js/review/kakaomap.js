@@ -265,6 +265,8 @@ function showFirstNextBtn(places){
 	var restaurantName = document.getElementById('place-name');
 	restaurantName.innerText = places.place_name;
 	
+	document.getElementById('restaurantName').value=places.place_name;
+	
 	var restaurantAddress = document.getElementById('road-address-name');
 	restaurantAddress.innerText = places.road_address_name;
 }

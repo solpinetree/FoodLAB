@@ -1,0 +1,20 @@
+.listing__sidebar__contact__map iframe{
+	border-radius :15% 15% 0 0;
+}
+
+.listing__sidebar__contact{
+ 	border-radius:15%;
+}
+
+.star-category{
+	width: 30%;
+	color: black !important;
+	font-weight: bold;
+}
+
+.rate-box{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}

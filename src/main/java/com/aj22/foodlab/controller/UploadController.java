@@ -41,7 +41,7 @@ public class UploadController {
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");	// 프로젝트 내의 views 파일 경로
 	
 		if(!image.isEmpty()) {
-			savedName = new FileUpload().uploadFileForQuill(uploadPath, "quilleditor", image);
+			savedName = new FileUpload().uploadFile(uploadPath, "quilleditor", image).getSavedName();
 		}
 		
 		// quilleditor에 입력된 이미지를 세션에 저장해둔 후 최종적으로 저장된 html 코드와 비교해야하므로 세션으로 저장해둔다.

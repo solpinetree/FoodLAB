@@ -5,12 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.aj22.foodlab.common.ConnectionProvider;
-import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.dto.RestaurantDTO;
 
 public class RestaurantDAOImpl implements RestaurantDAO {
@@ -156,6 +154,23 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		}
 		
 		return categories;
+	}
+	
+	@Override
+	public Integer getRestaurantIDByName(String name) throws SQLException {
+		
+		Integer id = null;
+		
+		String sql = "select restaurant_id from restaurant where name=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			id = rs.getInt("restaurant_id");
+		}
+		
+		return id;
 	}
 
 }

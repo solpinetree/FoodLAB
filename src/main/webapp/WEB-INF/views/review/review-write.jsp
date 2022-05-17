@@ -156,6 +156,7 @@
 									<h2 class="fs-title" id="place-name"></h2>
 									<p id="road-address-name"></p>
 								</div>
+								<input type="hidden" name="restaurantName" id="restaurantName"/>
 								<br>
 								<br> <label class="fieldlabels">가격 만족도</label>
 								<div class="cont">
@@ -222,6 +223,7 @@
 								<h5 class="purple-text text-center" style="font-size: 15px">
 										잠시 후 방금 작성한 리뷰 페이지로 이동합니다.</h5>
 								<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+								<input type="hidden" name="writerId" value="${sessionScope.sessionMember.id}"/>
 								<input type="submit" name="submit" id="reviewSubmitBtn" style="display:none" /> 
 							</div>
 						</fieldset>

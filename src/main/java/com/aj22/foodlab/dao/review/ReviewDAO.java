@@ -7,7 +7,8 @@ import com.aj22.foodlab.dto.ReviewDTO;
 
 
 public interface ReviewDAO {
-	int insert(ReviewDTO review) throws SQLException;
+	Integer insert(ReviewDTO review) throws SQLException;
+	void close() throws SQLException;
 	int delete(int id) throws SQLException;
 	int edit(ReviewDTO review) throws SQLException;
 	ReviewDTO select(int id) throws SQLException;

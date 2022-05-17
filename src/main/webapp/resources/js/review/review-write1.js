@@ -17,11 +17,10 @@ $(document).ready(function() {
 					let content = document.getElementById("content");
 					content.value = getQuillContent();
 					
-					console.log('content.value = '+content.value);
 					next($(this));
 					setTimeout(function() {
 					  console.log('Works!');
-					}, 3000);
+					}, 5000);
 					document.getElementById('reviewSubmitBtn').click();
 				}else{
 					showError();
