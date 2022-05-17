@@ -1,88 +1,34 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../includes/common.jsp"%>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Directing Template">
-    <meta name="keywords" content="Directing, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Directing | Template</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+<title>${review.title}</title>
+<link rel="stylesheet" href="${resources}/css/review/review-detail.css">
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+   	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
-                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+	<!-- Header Section Begin -->
+	<jsp:include page="../includes/header.jsp" />
+	<!-- Header Section End -->
 
     <!-- Blog Hero Begin -->
-    <div class="blog-details-hero set-bg" data-setbg="img/blog/details/blog-hero.jpg">
+    <div class="blog-details-hero set-bg" style="background-color:#EFF8E2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
                     <div class="blog__hero__text">
                         <div class="label">Trending</div>
-                        <h2>Gray Computer Set With Tablet And Eyeglasses</h2>
+                        <h2>${review.title}</h2>
                         <ul>
-                            <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                            <li><i class="fa fa-user"></i> John Smith</li>
+                            <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
+                            <li><i class="fa fa-user"></i> ${ review.writerId} </li>
                         </ul>
                     </div>
                 </div>
@@ -96,132 +42,158 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="blog__details__text">
-                        <div class="blog__details__video set-bg" data-setbg="img/blog/details/blog-video-bg.jpg">
-                            <a href="https://www.youtube.com/watch?v=8EJ3zbKTWQ8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <p>You have finished building your own website. You have introduced your company and presented
-                            your products and services. You have added propositions and promos to catch your target
-                            audience’s attention. You think you are doing everything “right”, but all your promotions
-                            have failed to produce growth in your new internet business. There are many ways for your
-                            web site to be promoted, but maybe you’re missing the “key” to the “best” promotion. Here
-                            are some things to consider: – If you have started to promote your web site, keep it
-                            constant. If you promote your site with persistence, it will catch your audience’s
-                            attention. – Be patient. Try each different promotion until you find the best.</p>
-                        <h5>Cattle She’d Days Lights Light Saw Spirit Shall</h5>
-                        <p>Free promotions such as search engines and directories would give your web site the deserved
-                            traffic you always wanted. Make sure to check your web site’s ranking to know whether or not
-                            this type of free promotion is right for you. – Make a deal with other web sites on trading
-                            links which could help both web sites. Make sure to use words that could easily interest the
-                            audience.</p>
-                        <img src="img/blog/details/blog-item.jpg" alt="">
-                        <p>Analyze your techniques, keep track of your customers and learn what works. Then be ready to
-                            try new methods and repeat those methods that are already working. It has been said that the
-                            best things in life are free and this saying also applies to the many forms of free
-                            advertising that are available on the internet. Give this form of advertising a try and you
-                            also may become a true believer in the power of free internet advertising.</p>
-                    </div>
-                    <div class="blog__details__tags">
-                        <span>Tags</span>
-                        <a href="#">Ideas</a>
-                        <a href="#">Unique</a>
-                        <a href="#">Video</a>
-                    </div>
-                    <div class="blog__details__share">
-                        <a href="#" class="blog__details__share__item">
-                            <i class="fa fa-facebook"></i>
-                            <span>Share</span>
-                        </a>
-                        <a href="#" class="blog__details__share__item twitter">
-                            <i class="fa fa-twitter"></i>
-                            <span>Share</span>
-                        </a>
-                        <a href="#" class="blog__details__share__item google">
-                            <i class="fa fa-google"></i>
-                            <span>Share</span>
-                        </a>
-                        <a href="#" class="blog__details__share__item linkedin">
-                            <i class="fa fa-linkedin"></i>
-                            <span>Share</span>
-                        </a>
-                    </div>
-                    <div class="blog__details__new__post">
-                        <div class="blog__details__new__post__title">
-                            <h4>News Post</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="blog__item">
-                                    <div class="blog__item__pic set-bg" data-setbg="img/blog/bp-5.jpg"></div>
-                                    <div class="blog__item__text">
-                                        <ul class="blog__item__tags">
-                                            <li><i class="fa fa-tags"></i> Videos</li>
-                                        </ul>
-                                        <h5><a href="#">Citrus Heights Snack Man Helps Feed The Homeless</a></h5>
-                                        <ul class="blog__item__widget">
-                                            <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                            <li><i class="fa fa-user"></i> John Smith</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="blog__item">
-                                    <div class="blog__item__pic set-bg" data-setbg="img/blog/bp-6.jpg"></div>
-                                    <div class="blog__item__text">
-                                        <ul class="blog__item__tags">
-                                            <li><i class="fa fa-tags"></i> Travel</li>
-                                        </ul>
-                                        <h5><a href="#">Homeless woman’s viral subway opera performance</a></h5>
-                                        <ul class="blog__item__widget">
-                                            <li><i class="fa fa-clock-o"></i> 19th March, 2019</li>
-                                            <li><i class="fa fa-user"></i> John Smith</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog__details__comment__form">
-                        <div class="blog__details__comment__title">
-                            <h4>Leave A Reply</h4>
-                        </div>
-                        <form action="#">
-                            <div class="input-list">
-                                <div class="input-item">
-                                    <p>Name</p>
-                                    <input type="text">
-                                </div>
-                                <div class="input-item">
-                                    <p>Email</p>
-                                    <input type="text">
-                                </div>
-                                <div class="input-item">
-                                    <p>Website</p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="input-comment">
-                                <p>Comment</p>
-                                <textarea></textarea>
-                            </div>
-                            <button type="submit" class="site-btn">Submit Now</button>
-                        </form>
-                    </div>
+                 <div class="blog__details__text">
+                     
+                     	<img src="${resources}/upload/review-thumb/${review.thumbnailSavedName}" style="background-size:cover; overflow: hidden"/>
+                     <hr><br>
+                     <div style="position: relative; float:left;">${review.content }</div>
+                 </div>
+                  
+                 
+                   
+	             <div class="listing__details__comment">
+	                <h4>리뷰</h4>
+	                <div class="listing__details__comment__item">
+	                    <div class="listing__details__comment__item__pic">
+	                        <img src="img/listing/details/comment.png" alt="">
+	                    </div>
+	                    <div class="listing__details__comment__item__text">
+	                        <div class="listing__details__comment__item__rating">
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                        </div>
+	                        <span>March 22, 2019</span>
+	                        <h5>Marry Jane</h5>
+	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
+	                            establish to the fleeting dynamism of pop-ups.</p>
+	                        <ul>
+	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
+	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
+	                        </ul>
+	                    </div>
+	                </div>
+	                <div class="listing__details__comment__item">
+	                    <div class="listing__details__comment__item__pic">
+	                        <img src="img/listing/details/comment.png" alt="">
+	                    </div>
+	                    <div class="listing__details__comment__item__text">
+	                        <div class="listing__details__comment__item__rating">
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                        </div>
+	                        <span>March 22, 2019</span>
+	                        <h5>Marry Jane</h5>
+	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
+	                            establish to the fleeting dynamism of pop-ups.</p>
+	                        <ul>
+	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
+	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
+	                        </ul>
+	                    </div>
+	                </div>
+	                <div class="listing__details__comment__item">
+	                    <div class="listing__details__comment__item__pic">
+	                        <img src="img/listing/details/comment.png" alt="">
+	                    </div>
+	                    <div class="listing__details__comment__item__text">
+	                        <div class="listing__details__comment__item__rating">
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                        </div>
+	                        <span>March 22, 2019</span>
+	                        <h5>Marry Jane</h5>
+	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
+	                            establish to the fleeting dynamism of pop-ups.</p>
+	                        <ul>
+	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
+	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+                
+               	<div class="listing__details__review">
+                    <h4>Add Review</h4>
+                    <form action="#">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <textarea placeholder="Review"></textarea>
+                        <button type="submit" class="site-btn">Submit Now</button>
+                    </form>
                 </div>
+                </div>
+               
+               
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Searching...">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
+                    
+	                    <div class="rate-box">
+	                      	<div class="listing__hero__widget">
+	                    			<div class="star-category">가격 만족도</div>
+	                                <div class="listing__hero__widget__rating">
+	                                	<c:if test="${ review.priceSatisfaction ne null }">
+		                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
+		                                		<span class="star-rate-icon icon_star"></span>
+		                                	</c:forEach>
+		                                	<c:if test="${review.priceSatisfaction<5} ">
+		                                		<c:forEach var="i" begin="${review.priceSatisfaction + 1 }" end="5">
+		                                			<span class="star-rate-icon icon_star_alt"></span>
+		                                		</c:forEach>
+		                                	</c:if>
+	                                	</c:if>
+	                                </div>
+	                         </div>	
+	                         
+	                    	<div class="listing__hero__widget">
+	                    		<div  class="star-category">평점</div>
+	                       		 <div class="listing__hero__widget__rating">
+                                	<c:if test="${ review.rate ne null }">
+	                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+	                                		<span class="star-rate-icon icon_star"></span>
+	                                	</c:forEach>
+                                		<c:if test="${review.rate <5} ">
+	                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+	                                			<span class="star-rate-icon icon_star_alt"></span>
+	                                		</c:forEach>
+	                                	</c:if>
+                                	</c:if>
+	                            </div>	
+	                         </div>
+	                    </div>
+                  	
+                    	
+                    	 <c:if test="${ restaurant ne null }">
+	                    	<div class="listing__sidebar__contact">
+	                            <div class="listing__sidebar__contact__map">
+	                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24168.833995532765!2d-74.79633710628465!3d40.78172222265886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c384de7a5300b9%3A0x8afc61979217d49d!2sLong%20Valley%2C%20NJ%2007853%2C%20USA!5e0!3m2!1sen!2sbd!4v1586852528126!5m2!1sen!2sbd" height="200" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+	                                <img src="img/listing/details/map-icon.png" alt="">
+	                            </div>
+	                            <div class="listing__sidebar__contact__text">
+	                                <h4>${restaurant.name }</h4>
+	                                <ul>
+	                                    <li><span class="icon_pin_alt"></span> ${restaurant.address }</li>
+	                                    <li><span class="icon_phone"></span>  ${restaurant.tel }</li>
+	                                    <li><span class="icon_mail_alt"></span> ${restaurant.avgRate }</li>
+	                                    <li><span class="icon_globe-2"></span> ${restaurant.category }</li>
+	                                    <li><span class="icon_globe-2"></span> ${restaurant.operationHour }</li>
+	                                </ul>
+	                            </div>
+	                        </div>
+               			 </c:if>
                         <div class="blog__sidebar__recent">
-                            <h5>Recent Post</h5>
+                            <h5>최근 게시물</h5>
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/recent-1.jpg" alt="">
+                                    <img src="${resources }/img/blog/recent-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <span><i class="fa fa-tags"></i> Shopping</span>
@@ -231,7 +203,7 @@
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/recent-2.jpg" alt="">
+                                    <img src="${resources}/img/blog/recent-2.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <span><i class="fa fa-tags"></i> Hotels</span>
@@ -241,32 +213,12 @@
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/recent-3.jpg" alt="">
+                                    <img src="${ resources}/img/blog/recent-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
                                     <span><i class="fa fa-tags"></i> Restaurant</span>
                                     <h6>Sweet and sour pork ribs</h6>
                                     <p><i class="fa fa-clock-o"></i> 25th March, 2019</p>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/recent-4.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Videos</span>
-                                    <h6>Crab fried with tamarind</h6>
-                                    <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/recent-5.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Travel</span>
-                                    <h6>Tortoise grilled on salt</h6>
-                                    <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
                                 </div>
                             </a>
                         </div>
@@ -280,19 +232,6 @@
                                 <li><a href="#">Credit <span>19</span></a></li>
                             </ul>
                         </div>
-                        <div class="blog__sidebar__tags">
-                            <h5>Popular Tag</h5>
-                            <a href="#">Business</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">Payment</a>
-                            <a href="#">Travel</a>
-                            <a href="#">Finance</a>
-                            <a href="#">Videos</a>
-                            <a href="#">Ideas</a>
-                            <a href="#">Unique</a>
-                            <a href="#">Music</a>
-                            <a href="#">Key</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -300,116 +239,14 @@
     </section>
     <!-- Blog Details Section End -->
 
-    <!-- Newslatter Section Begin -->
-    <section class="newslatter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="newslatter__text">
-                        <h3>Subscribe Newsletter</h3>
-                        <p>Subscribe to our newsletter and don’t miss anything</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <form action="#" class="newslatter__form">
-                        <input type="text" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Newslatter Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                        <p>Challenging the way things have always been done can lead to creative new options that reward
-                            you.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1 col-md-6">
-                    <div class="footer__address">
-                        <ul>
-                            <li>
-                                <span>Call Us:</span>
-                                <p>(+12) 345-678-910</p>
-                            </li>
-                            <li>
-                                <span>Email:</span>
-                                <p>info.colorlib@gmail .com</p>
-                            </li>
-                            <li>
-                                <span>Fax:</span>
-                                <p>(+12) 345-678-910</p>
-                            </li>
-                            <li>
-                                <span>Connect Us:</span>
-                                <div class="footer__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6">
-                    <div class="footer__widget">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">How it work</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="#">How it Work</a></li>
-                            <li><a href="#">Advantages</a></li>
-                            <li><a href="#">Direo App</a></li>
-                            <li><a href="#">Packages</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                        </div>
-                        <div class="footer__copyright__links">
-                            <a href="#">Terms</a>
-                            <a href="#">Privacy Policy</a>
-                            <a href="#">Cookie Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+ 	<!-- Footer Section Begin -->
+	<jsp:include page="../includes/footer.jsp" />
+	<!-- Footer Section End -->
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+	<!-- Js Plugins -->
+	<%@ include file="../includes/plugins.jsp"%>
+	
 </body>
 
 </html>

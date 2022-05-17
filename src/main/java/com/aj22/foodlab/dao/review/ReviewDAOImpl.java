@@ -29,6 +29,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 	// DB 자원 반납
+	@Override
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
 		if(stmt != null) stmt.close();
@@ -37,15 +38,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public int insert(ReviewDTO review) throws SQLException {
+	public Integer insert(ReviewDTO review) throws SQLException {
 		
-		int cnt = 0;
-		
+		Integer autoIncrement = null;
 
 		String sql = "INSERT INTO review" + 
 				"(number_in_party, content, price_satisfaction, rate, title, thumbnail_origin_name, thumbnail_saved_name, thumbnail_saved_path, member_id, restaurant_id) " + 
 				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		pstmt = conn.prepareStatement(sql);
+		pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		pstmt.setInt(1, review.getNumberInParty());
 		pstmt.setString(2, review.getContent());
 		pstmt.setInt(3, review.getPriceSatisfaction());
@@ -56,10 +56,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setString(8, review.getThumbnailSavedPath());
 		pstmt.setInt(9, review.getWriterId());
 		pstmt.setInt(10, review.getRestaurantId());
-		cnt = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		
+		rs = pstmt.getGeneratedKeys(); 	// 쿼리 실행 후 생성된 AI 값 반환
+		if(rs.next()) {
+			autoIncrement = rs.getInt(1);
+		}
 		
-		return cnt;
+		return autoIncrement;
 	}
 
 	@Override
@@ -126,8 +130,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 		int priceSatisfaction = rs.getInt("price_satisfaction");
 		int rate = rs.getInt("rate");
 		String title = rs.getString("title");
-		Timestamp createdAt = rs.getTimestamp("created_at");
-		Timestamp updatedAt = rs.getTimestamp("updated_at");
+		Timestamp createdAt = rs.getTimestamp("createdAt");
+		Timestamp updatedAt = rs.getTimestamp("updatedAt");
 		String thumbnailOriginName = rs.getString("thumbnail_origin_name");
 		String thumbnailSavedName = rs.getString("thumbnail_saved_name");
 		String thumbnailSavedPath = rs.getString("thumbnail_saved_path");

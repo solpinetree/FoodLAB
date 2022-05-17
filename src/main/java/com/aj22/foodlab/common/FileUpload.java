@@ -9,6 +9,8 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aj22.foodlab.dto.FileDTO;
+
 
 public class FileUpload {
 	
@@ -24,14 +26,20 @@ public class FileUpload {
 	 * @return : 서버에서의 image 파일명
 	 * @throws IOException 
 	 */
-	public String uploadFileForQuill(String uploadPath, String savedDirectory,  MultipartFile image) throws IOException {
+	public FileDTO uploadFile(String uploadPath, String savedDirectory,  MultipartFile image) throws IOException {
+		
+		FileDTO filedto = new FileDTO();
 		
 		String originName = image.getOriginalFilename();
 		originName = new String(originName.getBytes("8859_1"), "UTF-8"); //한글꺠짐 방지
+		
+		filedto.setOriginName(originName);
 		// 같은 이름의 파일이 서버에도 같은 이름의 파일로 저장되면 안되므로 uid와 결합해서 저장
 		String savedName = getSavedName(originName);	
 		String savedPath = getSavedPath(uploadPath, savedDirectory, savedName); 
-				
+		
+		filedto.setSavedPath(savedDirectory);
+		filedto.setSavedName(savedName);
 		byte[] bytes = image.getBytes();
 
 		// upload or {savedDirectory} 디렉토리가 없다면 생성해준다.
@@ -50,7 +58,7 @@ public class FileUpload {
 		
 		System.out.println(savedPath + ": 에 저장됨");
 		
-		return savedName;
+		return filedto;
 	}
 
 	private String getSavedPath(String uploadPath, String savedDirectory, String savedName) {

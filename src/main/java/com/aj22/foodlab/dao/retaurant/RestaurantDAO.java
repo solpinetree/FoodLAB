@@ -14,4 +14,5 @@ public interface RestaurantDAO {
 	List<RestaurantDTO> selectList() throws SQLException;
 	List<String> selectCategories() throws SQLException;
 	//List<ReviewDTO> selectListByCategory(String category) throws SQLException;
+	Integer getRestaurantIDByName(String name) throws SQLException;
 }

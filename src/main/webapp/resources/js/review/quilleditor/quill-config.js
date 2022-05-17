@@ -1,3 +1,4 @@
+
 var quill = new Quill('#editor-container', {
 	  modules: {
 	    toolbar: '#toolbar-container',
@@ -12,10 +13,10 @@ quill.getModule('toolbar').addHandler('image', function(){
 	selectLocalImage();
 }); 
 
-// quill img value testing function
-function showDelta(){
+
+function getQuillContent(){
 	let html = quill.root.innerHTML;
-	console.log(html);
+	return html;
 }
 
 function selectLocalImage(){
@@ -53,5 +54,18 @@ function selectLocalImage(){
 		});
 	}
 	
-	
 }
+
+const quillNextBtn = document.getElementById('quillNextBtn');
+
+window.addEventListener("keydown", e => {
+
+	const title = document.getElementById('title').value;
+	
+	if(getQuillContent()!=="<p><br></p>" && title!== ""){
+		quillNextBtn.style.display = 'block';
+	}else{
+		quillNextBtn.style.display = 'none';
+	}
+});
+  

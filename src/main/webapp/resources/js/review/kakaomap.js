@@ -37,6 +37,8 @@ function loadMap(address){
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	// 클릭한 마커를 담을 변수
 	var selectedMarker = null;
+	// 첫번째 필드셋의 next 버튼을 숨깁니다
+	hideFirstNextBtn();
 	// 이전 클릭된 리스트의 index를 저장할 변수
 	var prevSelectedListIdx = null;
 	// 키워드로 장소를 검색합니다
@@ -263,8 +265,16 @@ function showFirstNextBtn(places){
 	var restaurantName = document.getElementById('place-name');
 	restaurantName.innerText = places.place_name;
 	
+	document.getElementById('restaurantName').value=places.place_name;
+	
 	var restaurantAddress = document.getElementById('road-address-name');
 	restaurantAddress.innerText = places.road_address_name;
+}
+
+// next 버튼을 숨기는 함수
+function hideFirstNextBtn(){
+	const firstNextBtn = document.getElementById('firstNextBtn');
+	firstNextBtn.style.visibility = 'hidden';
 }
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
