@@ -70,7 +70,7 @@ public class WebSocket {
 	
 	public void sendAll(Session session, String message)
 	{
-		System.out.println(session.getId() + ":" +message);
+		System.out.println("sendAll : " + session.getId() + ":" +message);
 		try {
 			int i = 0;
 			//	웹 소켓에 연결되어 있는 모든 아이디를 찾는다.	
