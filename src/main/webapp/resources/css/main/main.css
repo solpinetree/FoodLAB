@@ -9,7 +9,7 @@
 	font-family: 'Nanum Pen Script', cursive;
 }
 
-/* ¿À´ÃÀÇ ¼­ºñ½º¿Õ CSS */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ñ½º¿ï¿½ CSS */
 
 .slide__link{
 	border-radius: 5px;
@@ -22,8 +22,8 @@
 
 
 #slide {   
-  width:100%;    /* ³Êºñ */ 
-  overflow:hidden;   /* ¿µ¿ª ³ÑÄ¡¸é °¨Ãã */ 
+  width:100%;    /* ï¿½Êºï¿½ */ 
+  overflow:hidden;   /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */ 
   position: relative;
 }
 
@@ -51,34 +51,34 @@
 }
 button{
   position: absolute;
-  height:100%;  /* À§¾Æ·¡ °¡µæ Â÷°Ô */ 
+  height:100%;  /* ï¿½ï¿½ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */ 
   top:0;
-  border:none;  /* Å×µÎ¸® ¾øÀÌ */  
+  border:none;  /* ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ */  
   padding:20px;
-  background-color: transparent;  /* Åõ¸í ¹è°æ */ 
-  color:#000;  /* È­»ìÇ¥ »öÀº °ËÁ¤ */  
-  font-weight:800;  /* ±½°Ô */ 
-  font-size: 24px;  /* È­»ìÇ¥ Å©±â */ 
-  opacity: 0.5;  /* ¹ÝÅõ¸í */ 
+  background-color: transparent;  /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ */ 
+  color:#000;  /* È­ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */  
+  font-weight:800;  /* ï¿½ï¿½ï¿½ï¿½ */ 
+  font-size: 24px;  /* È­ï¿½ï¿½Ç¥ Å©ï¿½ï¿½ */ 
+  opacity: 0.5;  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */ 
 }
 #prev {
-  left:0;  /* ¿ÞÂÊÀ¸·Î ºÙ¿©¼­ */ 
+  left:0;  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ */ 
 }
 #next {
-  right:0;  /* ¿À¸¥ÂÊÀ¸·Î ºÙ¿©¼­ */ 
+  right:0;  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ */ 
 }
 button:hover {
-  background-color:#222;  /* Â£Àº È¸»ö ¹è°æ */
-  color:#fff;   /* Èò»ö È­»ìÇ¥ */ 
-  opacity:0.6;   /* ºÒÅõ¸íµµ¸¦ Á¶±Ý ³ôÀÓ */ 
-  cursor:pointer;  /* Ä¿¼­ ¸ð¾çÀ» Æ÷ÀÎÅÍ·Î */ 
+  background-color:#222;  /* Â£ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ */
+  color:#fff;   /* ï¿½ï¿½ï¿½ È­ï¿½ï¿½Ç¥ */ 
+  opacity:0.6;   /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */ 
+  cursor:pointer;  /* Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ */ 
 }
 button:focus {
-  outline:0;  /* ¾Æ¿ôÆ®¶óÀÎ ¾ø¾Ú */
+  outline:0;  /* ï¿½Æ¿ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
 
-/* ¸®ºä°Ô½ÃÆÇ ( Çªµå·Î±× ) */
+/* ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ( Çªï¿½ï¿½Î±ï¿½ ) */
 
 .FoodLog__Item {
 	-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
@@ -86,6 +86,7 @@ button:focus {
 	margin-bottom: 30px;
 	background-color : white;
 	border: 1px solid #fff;
+	border-radius:10px;
 }
 .FoodLog__Title {
 	border-radius: 5px;
@@ -94,6 +95,7 @@ button:focus {
 	padding-right: 30px;
 	padding-top: 40px;
 	padding-bottom: 10px;
+	border: 1px solid #e3e3e3;
 	
 }
 .FoodLog__item__text {
@@ -108,7 +110,7 @@ button:focus {
 	position: relative;
 	cursor: pointer;
 }
-/* ½Ä´çÀÌ¸§ */
+/* ï¿½Ä´ï¿½ï¿½Ì¸ï¿½ */
 .FoodLog__item__text__inside h5 {
 	font-size: 20px;
 	color: #323232;
@@ -119,7 +121,7 @@ button:focus {
 
 .FoodLog__item__text__inside h6 {
 	font-size: 14px;
-	color: #6a6a6a; /* ¹àÀºÈ¸»ö */
+	color: #6a6a6a; /* ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ */
 	font-weight: 600;
 	margin-bottom: 6px;
 	overflow: hidden;
@@ -138,7 +140,7 @@ button:focus {
 .FoodLog__item__text__rating .FoodLog__item__rating__star span,
 .slide__item__text__rating .slide__item__rating__star span {
 	font-size: 14px;
-	color: #F09D17; /* ÁÖÈ²»ö */
+	color: #F09D17; /* ï¿½ï¿½È²ï¿½ï¿½ */
 	margin-right: -3px;
 }
 
@@ -149,6 +151,6 @@ button:focus {
 
 .FoodLog__item__text__rating .FoodLog__item__rating__star .FoodLog__item__rating__people__price {
 	font-size: 14px;
-	color: #6a6a6a; /* ¹àÀºÈ¸»ö */
+	color: #6a6a6a; /* ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ */
 	margin-right: 5px;
 }
