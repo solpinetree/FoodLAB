@@ -9,12 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberDTO implements java.io.Serializable {
 
-    private int memberId;
-    private String password;
-    private String email;
-    private String username;
-    
-    
+	 	private int id;
+	    private String password;
+	    private String email;
+	    private String username;
+	    private int userEmailChecked;
+	    private String profile_img_origin_name;
+		private String profile_img_saved_name;
+		private String profile_img_saved_path;
+	  
 
     public void print() { 
 		System.out.println(this); 
@@ -28,7 +31,7 @@ public class MemberDTO implements java.io.Serializable {
     }
 
     @Override public String toString() { 
-		return "Member Id=" + memberId + " Password=" + password + " Email=" + email
+		return "Member Id=" + id + " Password=" + password + " Email=" + email
 				+ "Member Nickname =" + username; 
 	}
 }

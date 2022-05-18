@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.aj22.foodlab.dao.member.*" %>
+<%@ page import = "com.aj22.foodlab.dto.MemberDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page import="dto.*"%>
+
+
 <%
 	request.setCharacterEncoding("UTF-8");
-
 	String email = request.getParameter("email");
 	String password = request.getParameter("password");
+	MemberDTO member = new MemberDTO();
+	MemberDAOImpl MemberDAO = new MemberDAOImpl();
+	member = MemberDAO.select(email);
 %>
 
 
