@@ -53,17 +53,11 @@ public class ReviewController {
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
 	public String writeReviewProcess(ReviewDTO review, MultipartFile thumbImage, String restaurantName, HttpServletRequest request) throws SQLException, IOException {
+		// 사용자가 입력한 식당 이름으로 
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
-		
-		String savedName = null;
-		FileDTO filedto = new FileDTO();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");	// 프로젝트 내의 views 파일 경로
+		FileDTO filedto =(new FileUpload()).uploadFileToDirectoryUnderUploadPath(thumbImage, "review-thumb");
 	
-		if(!thumbImage.isEmpty()) {
-			filedto = new FileUpload().uploadFile(uploadPath, "review-thumb", thumbImage);
-		}
-		
 		review.setThumbnailOriginName(filedto.getOriginName());
 		review.setThumbnailSavedName(filedto.getSavedName());
 		review.setThumbnailSavedPath(filedto.getSavedPath());
@@ -71,7 +65,7 @@ public class ReviewController {
 		Integer reviewId = reviewService.insert(review);
 		
 		if(reviewId == null) {
-			
+			// 리뷰 인서트 실패한 경우 로직	
 		}else {
 			returnUrl = "redirect:/reviews/review?reviewId="+reviewId;
 		}
@@ -83,15 +77,20 @@ public class ReviewController {
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
-		RestaurantDTO restaurant = restaurantService.getRestaurantById(review.getRestaurantId()); 
+		RestaurantDTO restaurant = null;
+		
+		if(review.getRestaurantId()!=null) {
+			restaurant = restaurantService.getRestaurantById(review.getRestaurantId()); 
+		}else { // 리뷰가 참조하고 있는 레스토랑이 restaurant table에 없는 경우
+			
+		}
 		
 		if(review==null) {
-			
+			// 리뷰 가져오기 실패한 경우
 		}else {
 			model.addAttribute("review", review);
 			if(restaurant!=null) {
 				model.addAttribute("restaurant", restaurant);
-				System.out.println("restaurant: " +restaurant);
 			}
 		}
 		return "review/review-detail";

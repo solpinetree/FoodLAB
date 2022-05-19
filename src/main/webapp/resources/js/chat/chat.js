@@ -22,7 +22,8 @@ websocket.onmessage = function(message)
 		document.getElementById("chat").innerHTML = "";
 	}
 	*/
-	addChat(message.data);
+	//addChat(message.data);
+	addChatTest(message.data);
 	
 }
 
@@ -56,6 +57,28 @@ function addChat(message){
 	
 	el.innerHTML = itemStr;
 	el.setAttribute("class", "msg-box");
+	
+	console.log(el);
+	rmsg.appendChild(el);
+	
+	
+}
+
+function addChatTest(message){
+	
+	var rmsg = document.getElementById('chat-window');
+	console.log(message);
+	var el = document.createElement('article'); // <div> element 생성
+	
+	itemStr = '<div class="msg-box"><div class = "flr"><div class = "messages">' + 
+			'<p class = "msg" id = "chat">' + message + '</p></div>' +
+			'<span class = "timestamp">' + 
+			'<span class = "username"></span>' + "&bull;" +
+			'<span class = "posttime">Now</span></span>' + '</div>' +
+			'<img class = "user-img" id = "user-0" src = "//gravatar.com/avatar/56234674574535734573000000000001?d=retro" /></div>';
+	
+	el.innerHTML = itemStr;
+	el.setAttribute("class", "msg-container msg-self");
 	
 	console.log(el);
 	rmsg.appendChild(el);
