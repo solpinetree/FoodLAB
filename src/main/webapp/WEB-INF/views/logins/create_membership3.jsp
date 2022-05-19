@@ -181,7 +181,7 @@
 	                        			<i class="fa fa-pencil"></i>
 	                        		</div>
 	                            </div>
-	                            <div class="form-bottom">
+	                            <div class="form-bottom" style="border:1px solid #e3e3e3">
 				                    <form name="newMember" role="form" action="${root}/logins/processAddMember" method="post" class="registration-form" onsubmit="return checkForm()">
 				                    	<div class="form-group" style="margin-bottom:0px;">
 				                        	<label class="sr-only" for="form-email">이메일</label>

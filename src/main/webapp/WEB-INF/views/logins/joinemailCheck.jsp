@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.aj22.foodlab.dao.member.*" %>
+<%@ page import = "com.aj22.foodlab.dto.MemberDTO" %>
 <%@ page import = "java.util.*"%>
 <%@ page import="java.sql.*" %>
+<%@ include file="dbconn.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,46 +17,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
-String DB_SCHEMAS = "foodlab";
-String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
-String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
-String USER = "labadmin";
-String PASS = "1234";
 
-Class.forName(JDBC_DRIVER);
-Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-%>
 <h2>이메일중복체크</h2>
 <% request.setCharacterEncoding("UTF-8");
 String email = request.getParameter("useremail");
+MemberDTO member = new MemberDTO();
+MemberDAOImpl MemberDAO = new MemberDAOImpl();
+member = MemberDAO.select(email);
+request.setCharacterEncoding("UTF-8");
 int result = -1;
-try {
-	//1. DB연결
-	
-	//2. sql 구문 & pstmt생성
-	String sql = "select email from member where email=?";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, email);
 
-	//3. 실행 -> select -> rs저장
-	ResultSet rs = pstmt.executeQuery();
-
-	//4. 데이터처리
-
-	if(rs.next()){	
-		result = 0;
-	}else{
-		result = 1;
-	}
-
-	System.out.println("아이디 중복체크결과 : "+result);
-} catch (Exception e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-} finally {
-	if(conn != null) conn.close();
+if(member.getEmail()!=null){	
+	result = 0;
+}else{
+	result = 1;
 }
 
 if (result == 1){

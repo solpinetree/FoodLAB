@@ -8,7 +8,7 @@
 <%@ page import="javax.mail.Session" %>
 <%@ page import="javax.mail.Authenticator" %>
 <%@ page import="java.util.Properties" %>
-<%@ page import="dto.*"%>
+
 <%@ page import="util.SHA256"%>
 <%@ page import="util.Gmail"%>
 <%@ page import="java.io.PrintWriter"%>

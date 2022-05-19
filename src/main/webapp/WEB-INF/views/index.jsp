@@ -24,7 +24,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 </sql:update>
 <head>
     <title>Food LAB</title>
-    <link rel="stylesheet" href="${resources}/css/main/main.css">
+    <link rel="stylesheet" href="${resources}/css/main/main.css?after">
 </head>
 
 
@@ -253,6 +253,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                              
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">      
                                             <div class="listing__item__pic__btns">
@@ -288,6 +293,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                             <div class="listing__item__pic__btns">
@@ -323,6 +333,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">
@@ -358,6 +373,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
 
@@ -394,6 +414,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
                                             <div class="listing__item__pic__btns">
@@ -433,6 +458,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
                                    
@@ -469,6 +499,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
                          
@@ -505,6 +540,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                             
@@ -541,6 +581,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">
@@ -576,6 +621,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
                                    
@@ -616,6 +666,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                           
@@ -652,6 +707,11 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">

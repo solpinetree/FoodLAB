@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="${resources}/css/jquery-ui.min.css" type="text/css">
 	<link rel="stylesheet" href="${resources}/css/owl.carousel.min.css" type="text/css">
 	<link rel="stylesheet" href="${resources}/css/slicknav.min.css" type="text/css">
-	<link rel="stylesheet" href="${resources}/css/style.css"> 
+	<link rel="stylesheet" href="${resources}/css/style.css?after"> 
 
 
 </head>
