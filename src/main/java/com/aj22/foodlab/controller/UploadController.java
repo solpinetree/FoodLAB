@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.aj22.foodlab.common.FileUpload;
 import com.aj22.foodlab.dto.FileDTO;
+import com.aj22.foodlab.util.FileUpload;
 
 
 @Controller
@@ -32,8 +32,6 @@ public class UploadController implements ServletContextAware {
 	
 	/**
 	 * quilleditor 안에서 삽입된 이미지를 서버에 저장하는 메소드(ajax 처리) 
-	 * @param image 서버에 올릴 사진
-	 * @param request 상대경로로 서버 안 경로를 얻기 위해 사용
 	 * @return 서버에서 저장된 이미지의 이름 (savedName)
 	 */
 	@PostMapping("/img/quilleditor")
@@ -46,8 +44,7 @@ public class UploadController implements ServletContextAware {
 		return filedto.getSavedName();
 	}
 	
-	// quilleditor에 입력된 이미지를 세션에 저장해둔 후 최종적으로 저장된 html 코드와 비교해서 최종적으로 저장된
-	// 이미지가 아니면 삭제해야하므로 세션으로 저장하고 관리한다.
+	// FIXME 세션 저장과 서버 저장 비교 관리, restaurant Image에 연결해줘야 한다.
 	private void addThisImageToSession(String imageName, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		List<String> quilleditorImages = (ArrayList<String>) session.getAttribute("quilleditorImgList");

@@ -30,7 +30,7 @@
                         <h2>${review.title}</h2>
                         <ul>
                             <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
-                            <li><i class="fa fa-user"></i> ${ review.writerId} </li>
+                            <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +45,6 @@
             <div class="row">
                 <div class="col-lg-8">
                  <div class="blog__details__text" style="margin-bottom: 50px">
-                     	<img src="${resources}/upload/review-thumb/${review.thumbnailSavedName}" style="background-size:cover; overflow: hidden"/>
                      <hr><br>
                      <div style="position: relative; float:left;">${review.content }</div>
                      
@@ -120,34 +119,34 @@
 	                    </div>
                   	
                     	
-                    	 <c:if test="${ restaurant ne null }">
+                    	 <c:if test="${ review.restaurant ne null }">
 	                    	<div class="listing__sidebar__contact">
 	                            <div class="listing__sidebar__contact__map" id="review-detail-map" style="border-radius: 40px 40px 0 0;">
 	                            </div>
 	                            <div class="listing__sidebar__contact__text">
-	                                <h4>${restaurant.name }</h4>
+	                                <h4>${review.restaurant.name }</h4>
 	                                <ul>
-                                		<c:if test="${!empty restaurant.category}">
-	                                    	<li><span>${restaurant.category }</span></li><br><br>
+                                		<c:if test="${!empty review.restaurant.category}">
+	                                    	<li><span>${review.restaurant.category }</span></li><br><br>
                                     	</c:if>
-	                                    <li><span class="icon_pin_alt"></span> ${restaurant.address }</li>
-	                                    <li><span class="icon_phone"></span>  ${restaurant.tel }</li>
-                                    	<c:if test="${restaurant.avgRate ne 0.0}">
+	                                    <li><span class="icon_pin_alt"></span> ${review.restaurant.address }</li>
+	                                    <li><span class="icon_phone"></span>  ${review.restaurant.tel }</li>
+                                    	<c:if test="${review.restaurant.avgRate ne 0.0}">
 		                                    <li>
 	                                    	<span>평점 </span> 
                                     		<c:forEach var="i" begin="1" end="5" >
-                                    			<c:if test="${restaurant.avgRate>i}">
+                                    			<c:if test="${review.restaurant.avgRate>i}">
 			                                		<span class="star-rate-icon icon_star"></span>
-			                                		<c:if test="${restaurant.avgRate < i+1}">
-			                                			<c:if test="${restaurant.avgRate > i+0.3 }">
-			                                				<c:if test="${restaurant.avgRate < i+0.7 }">
+			                                		<c:if test="${review.restaurant.avgRate < i+1}">
+			                                			<c:if test="${review.restaurant.avgRate > i+0.3 }">
+			                                				<c:if test="${review.restaurant.avgRate < i+0.7 }">
 			                                					<span class="star-rate-icon icon_star_half"></span>
 			                                				</c:if>
-			                                				<c:if test="${restaurant.avgRate > i+0.7 }">
+			                                				<c:if test="${review.restaurant.avgRate > i+0.7 }">
 			                                					<span class="star-rate-icon icon_star"></span>
 			                                				</c:if>
 			                                			</c:if>
-			                                			<c:if  test="${restaurant.avgRate < i+0.3}">
+			                                			<c:if  test="${reveiw.restaurant.avgRate < i+0.3}">
 			                                				<span class="star-rate-icon icon_star_alt"></span>
 			                                			</c:if>
 			                                		</c:if>
@@ -174,7 +173,7 @@
 			                        var geocoder = new kakao.maps.services.Geocoder();
 		
 			                        // 주소로 좌표를 검색합니다
-			                        geocoder.addressSearch('${restaurant.address}', function(result, status) {
+			                        geocoder.addressSearch('${review.restaurant.address}', function(result, status) {
 		
 			                            // 정상적으로 검색이 완료됐으면 
 			                             if (status === kakao.maps.services.Status.OK) {
@@ -189,7 +188,7 @@
 		
 			                                // 인포윈도우로 장소에 대한 설명을 표시합니다
 			                                var infowindow = new kakao.maps.InfoWindow({
-			                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${restaurant.name}</div>'
+			                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${review.restaurant.name}</div>'
 			                                });
 			                                infowindow.open(map, marker);
 		

@@ -9,8 +9,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.aj22.foodlab.common.ConnectionProvider;
 import com.aj22.foodlab.dto.CommentDTO;
+import com.aj22.foodlab.util.ConnectionProvider;
 
 public class CommentDAOImpl implements CommentDAO {
 

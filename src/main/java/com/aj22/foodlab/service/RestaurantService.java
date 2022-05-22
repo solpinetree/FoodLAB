@@ -36,7 +36,7 @@ public class RestaurantService {
 		return id;
 	}
 	
-	public RestaurantDTO getRestaurantById(int id) throws SQLException{
+	public RestaurantDTO selectById(int id) throws SQLException{
 		RestaurantDTO restaurant = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurant = dao.select(id);

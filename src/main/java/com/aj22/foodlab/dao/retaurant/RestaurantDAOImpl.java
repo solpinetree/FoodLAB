@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.aj22.foodlab.common.ConnectionProvider;
 import com.aj22.foodlab.dto.RestaurantDTO;
+import com.aj22.foodlab.util.ConnectionProvider;
 
 public class RestaurantDAOImpl implements RestaurantDAO {
 

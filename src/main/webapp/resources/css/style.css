@@ -56,6 +56,10 @@ h6 {
 	font-family: "Cairo", sans-serif;
 }
 
+.default-profile{
+	border-radius: 50%;
+}
+
 h1 {
 	font-size: 70px;
 }

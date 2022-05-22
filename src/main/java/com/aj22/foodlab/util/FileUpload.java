@@ -1,5 +1,5 @@
 
-package com.aj22.foodlab.common;
+package com.aj22.foodlab.util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,7 +51,6 @@ public class FileUpload {
 		out.close();
 	}
 	
-	// directory가 존재하지 않는다면 그 이름의 directory를 생성해주는 메소드
 	private void createDirectoryIfDirectoryNotExist(String directory) {
 		File savedDirectoryPath= new File(directory);
 		if(!savedDirectoryPath.exists()) {
@@ -62,8 +61,8 @@ public class FileUpload {
 	private String getSavedPath(String uploadPath, String savedDirectory, String savedName) {
 		return  uploadPath + File.separator+ savedDirectory + File.separator + savedName;
 	}
-	// 같은 이름의 파일이 서버에도 같은 이름의 파일로 저장되면 안되므로 uid와 결합해서 저장
 	
+	// 같은 이름의 파일이 서버에도 같은 이름의 파일로 저장되면 안되므로 uid와 결합해서 저장
 	private String getSavedName(String originFileName) {
 		return uid + "_" + originFileName;
 	}

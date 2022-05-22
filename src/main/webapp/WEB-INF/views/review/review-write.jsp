@@ -43,7 +43,6 @@
 						<!-- progress bar -->
 						<ul id="progressbar">
 							<li class="active" id="search"><strong>주소 검색</strong></li>
-							<li id="thumbnail"><strong>썸네일 입력</strong></li>
 							<li id="review"><strong>리뷰 작성</strong></li>
 							<li id="personal"><strong>가격, 인원, 별점 등록</strong></li>
 							<li id="confirm"><strong>작성 완료</strong></li>
@@ -76,36 +75,6 @@
 								style="visibility: hidden">NEXT</button>
 						</fieldset>
 						<!-- 식당이름으로 식당 주소 입력받는 fieldset 끝 -->
-						<!-- 썸네일 입력받는 fieldset 시작 -->
-						<fieldset>
-							<div class="form-card">
-								<%-- 썸네일 고르는 div 시작 --%>
-								<div class="image-upload-wrap">
-									<input class="file-upload-input" id="thumbFile" type='file'
-										onchange="readURL(this);" name="thumbImage" accept="image/*"
-										style="padding: 0; left: 0" />
-									<div class="drag-text">
-										<h3>+</h3>
-									</div>
-								</div>
-								<div class="file-upload-content">
-									<img class="file-upload-image" src="#" alt="your image" />
-									<div class="image-title-wrap">
-										<button type="button" onclick="removeUpload()"
-											class="remove-image">
-											<span class="image-title">Uploaded Image</span> 지우기
-										</button>
-									</div>
-								</div>
-								<%-- 썸네일 고르는 div 끝--%>
-							</div>
-							<input type="button" name="next" id="thumbNextBtn"
-								class="next thumbNextBtn action-button" value="NEXT"
-								style="display: none" /> 
-							<input type="button" name="previous"
-								class="previous action-button-previous" value="PREVIOUS" />
-						</fieldset>
-						<!--    썸네일 입력받는 fieldset 끝   -->
 						<fieldset>
 							<div class="form-card">
 								<input type="text" name="title" id="title"

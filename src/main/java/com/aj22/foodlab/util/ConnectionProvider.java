@@ -1,4 +1,4 @@
-package com.aj22.foodlab.common;
+package com.aj22.foodlab.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
