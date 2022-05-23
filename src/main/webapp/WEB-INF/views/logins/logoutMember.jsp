@@ -1,8 +1,8 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
-<%@ page import="dto.*"%>
-<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
+<%@ page import="com.aj22.foodlab.dto.*"%>
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
 
 	<jsp:setProperty name="sessionMember" property="id" value=""/>
 	<jsp:setProperty name="sessionMember" property="email" value=""/>

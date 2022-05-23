@@ -3,7 +3,7 @@
 <%@ page import = "com.aj22.foodlab.dto.MemberDTO" %>
 <%@ page import = "java.util.*"%>
 <%@ page import="java.sql.*" %>
-<%@ page import="util.SHA256"%>
+<%@ page import="com.aj22.foodlab.util.SHA256"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>

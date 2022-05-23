@@ -6,7 +6,7 @@
 <%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ page import="dto.*"%>
+<%@ page import="com.aj22.foodlab.dto.*"%>
 
 
 <%
@@ -32,7 +32,7 @@
 	<sql:param value="<%=password%>" />
 </sql:query>
 
-<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
 
 <c:forEach var="row" items="${resultSet.rows}">
 	<jsp:setProperty name="sessionMember" property="id" value="${row.member_id}"/>
