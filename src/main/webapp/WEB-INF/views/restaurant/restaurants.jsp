@@ -23,10 +23,34 @@
     <!-- Listing Section -->
    	<jsp:include page="right-listing.jsp"/>
    	
-  <%--  	<jsp:include page="kakaomap.jsp"/> --%>
-
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
+    
+
+	<script type="text/javascript">
+		//이전 버튼 이벤트
+		function fn_prev(page) {
+			loadUrl(page-1);
+		}
+
+	  	//페이지 번호 클릭
+		function fn_pagination(page) {
+			loadUrl(page);	
+		}
+
+		//다음 버튼 이벤트
+		function fn_next(page) {
+			loadUrl(page+1);
+		}
+		
+		function loadUrl(page){
+			var url = "${root}/restaurants/list";
+			url = url + "?currentPage=" + page;
+			location.href = url;
+		}
+	</script>
+
+    
 
     <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>

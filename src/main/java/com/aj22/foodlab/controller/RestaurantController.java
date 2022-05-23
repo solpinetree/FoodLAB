@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.util.Pagination;
 
 /**
  * Handles requests for the application home page.
@@ -23,10 +25,18 @@ public class RestaurantController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
+	static final int NumOfRecordsPerPage = 12;
 	
 	@GetMapping("/list")
-	public String res( Model model) throws SQLException {
-		model.addAttribute("restaurants", restaurantService.getRestaurants());
+	public String res( Model model, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		
+		int numOfRecords = restaurantService.getNumOfRecord();
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("restaurants", restaurantService.selectList(pagination));
 		model.addAttribute("categories", restaurantService.getCategories());
 		return "restaurant/restaurants";
 	}

@@ -20,6 +20,7 @@ import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.ReviewDTO;
 import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewService;
+import com.aj22.foodlab.util.Pagination;
 
 /**
  * Handles requests for the application home page.
@@ -27,55 +28,67 @@ import com.aj22.foodlab.service.ReviewService;
 @Controller
 @RequestMapping("/reviews")
 public class ReviewController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
-	
+
 	@Autowired
 	private ReviewService reviewService;
 	@Autowired
 	private RestaurantService restaurantService;
-	
-	// 푸드로그로 연결
+	static final int NumOfRecordsPerPage = 10;
+
+	// 푸드로그 게시판
 	@GetMapping("/list")
-	public String loadReviewListPage(Model model) throws SQLException {
-		model.addAttribute("reviews", reviewService.selectList());
+	public String loadReviewListPage(Model model, 
+			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		
+		// 전체 게시글 개수
+		int totalRecord = reviewService.getNumOfRecord();
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, totalRecord, NumOfRecordsPerPage);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("reviews", reviewService.selectList(pagination));
+
 		return "review/reviews";
 	}
-	
+
 	// 리뷰작성
 	@GetMapping("/write")
 	public String writeReview() {
 		return "review/review-write";
 	}
-	
+
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
-	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName, HttpServletRequest request) throws SQLException, IOException {
-		// 사용자가 입력한 식당 이름으로 
+	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
+			HttpServletRequest request) throws SQLException, IOException {
+		// 사용자가 입력한 식당 이름으로
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
 		Integer reviewId = reviewService.insert(review);
-		
-		if(reviewId == null) {
-			// TODO 리뷰 인서트 실패한 경우 로직	
-		}else {
-			returnUrl = "redirect:/reviews/review?reviewId="+reviewId;
+
+		if (reviewId == null) {
+			// TODO 리뷰 인서트 실패한 경우 로직
+		} else {
+			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
-		
+
 		return returnUrl;
 	}
-	
+
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
-		
-		if(review==null) {
+
+		if (review == null) {
 			// TODO 리뷰 가져오기 실패한 경우 로직
-		}else {
+		} else {
 			model.addAttribute("review", review);
 		}
-		
+
 		return "review/review-detail";
 	}
-	
+
 }

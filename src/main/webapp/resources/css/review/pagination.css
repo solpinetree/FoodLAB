@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.pagination{
+	display: inline-box;
+}
+
+.paginationBox{
+	text-align:center;
+}
+
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #f9adbd;
+    border-color: #f9adbd;
+}
+
+.page-link{
+	color: #f9adbd;
+}
+
+.page-item{
+	display: inline-block ;
+}

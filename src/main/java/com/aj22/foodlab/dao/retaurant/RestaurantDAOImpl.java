@@ -124,12 +124,14 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 
 	@Override
-	public List<RestaurantDTO> selectList() throws SQLException {
+	public List<RestaurantDTO> selectList(int startIdx, int listSize) throws SQLException {
 		
 		List<RestaurantDTO> restaurants = new ArrayList<>();
 		
-		String sql = "select * from restaurant";
+		String sql = "select * from restaurant limit ?, ?";
 		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, startIdx);
+		pstmt.setInt(2, listSize);
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
@@ -171,6 +173,21 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		}
 		
 		return id;
+	}
+
+	@Override
+	public int countRecords() throws SQLException {
+		int cnt = 0;
+		
+		String sql = "select count(*) from restaurant";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
 	}
 
 }

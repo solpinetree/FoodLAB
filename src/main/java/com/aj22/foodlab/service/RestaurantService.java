@@ -7,15 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
+import com.aj22.foodlab.dao.review.ReviewDAO;
+import com.aj22.foodlab.dao.review.ReviewDAOImpl;
 import com.aj22.foodlab.dto.RestaurantDTO;
+import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class RestaurantService {
 
-	public List<RestaurantDTO> getRestaurants() throws SQLException{
+	public List<RestaurantDTO> selectList(Pagination pagination) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.selectList();
+		restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
 		dao.close();
 		return restaurants;
 	}
@@ -44,4 +47,13 @@ public class RestaurantService {
 		return restaurant;
 	}
 
+	public int getNumOfRecord() throws SQLException {
+		int cnt = 0;
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.countRecords();
+		dao.close();
+		
+		return cnt;
+	}
 }

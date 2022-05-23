@@ -12,6 +12,7 @@ public interface ReviewDAO {
 	int delete(int id) throws SQLException;
 	int edit(Review review) throws SQLException;
 	Review select(int id) throws SQLException;
-	List<Review> selectList() throws SQLException;
+	List<Review> selectList(int startIdx, int listSize) throws SQLException;
+	int countRecords() throws SQLException;
 	//List<ReviewDTO> selectListByCategory(String category) throws SQLException;
 }

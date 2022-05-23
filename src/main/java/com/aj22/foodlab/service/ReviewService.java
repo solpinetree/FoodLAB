@@ -13,6 +13,7 @@ import com.aj22.foodlab.dao.review.ReviewDAO;
 import com.aj22.foodlab.dao.review.ReviewDAOImpl;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.ReviewDTO;
+import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class ReviewService {
@@ -23,13 +24,23 @@ public class ReviewService {
 	private MemberService memberService;
 	@Autowired
 	private LikesService likesService;
+	
+	public int getNumOfRecord() throws SQLException{
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecords();
+		dao.close();
+		
+		return cnt;
+	}
 
-	public List<ReviewDTO> selectList() throws SQLException{
+	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
 		List<Review> reviews = null;
 		List<ReviewDTO> reviewDTOs = new ArrayList<>();
 		
 		ReviewDAO dao = new ReviewDAOImpl();
-		reviews = dao.selectList();
+		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
 		dao.close();
 		
 		for(Review review : reviews) {

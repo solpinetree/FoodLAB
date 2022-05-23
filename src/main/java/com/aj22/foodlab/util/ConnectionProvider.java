@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 	// JDBC driver name and database URL
-	public static final String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false"; // MySQL Connector J 8.0
+	public static final String DB_PROPERTIES = "?serverTimezone=Asia/Seoul&useSSL=false"; // MySQL Connector J 8.0
 	private static final String DB_SCHEMAS = "foodlab";
 	public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
 	public static final String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES;

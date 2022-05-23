@@ -135,12 +135,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public List<Review> selectList() throws SQLException {
+	public List<Review> selectList(int startIdx, int listSize) throws SQLException {
 		
 		List<Review> reviews = new ArrayList<>();
 		
-		String sql = "select * from review order by createdAt desc";
+		String sql = "select * from review order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, startIdx);
+		pstmt.setInt(2, listSize);
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
@@ -149,6 +151,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 		
 		return reviews;
+	}
+	
+	@Override
+	public int countRecords() throws SQLException{
+		int cnt = 0;
+		
+		String sql = "select count(*) from review";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
 	}
 
 //	@Override
