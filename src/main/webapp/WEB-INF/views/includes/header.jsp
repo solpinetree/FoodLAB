@@ -43,31 +43,10 @@
                         </ul>
                     </nav>
                     <%-- 로그인/로그아웃 --%>
-                    <%
-                    if (username=="") {
-                    %>
-                    <div class="header__menu__right">
-                        <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
-                       
-                    </div>
-                    <%              
-                    }
-                     
-                    else {%>
-                    	
-                    	<div class="header__menu__right">
-                        <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>     
-                        <a href="${root}/logins/mypage" class="login-btn">
-                        	<img src="${resources }/img/defaultProfile.jpeg" alt="" class="default-profile">
-                        </a>
-                    </div>
-                    <% }
-                   
+
                     
-                    %>
-                    <%-- 
                   <c:choose>
-                  <c:when test="${empty username}">
+                  <c:when test="${empty sessionMember.username}">
                    <div class="header__menu__right">
                         <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
                        
@@ -80,7 +59,7 @@
                     </div>
                   </c:otherwise>
                   </c:choose>
-                  --%>
+                  
                 </div>
             </div>
         </div>
