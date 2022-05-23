@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="${resources}/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="${resources}/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="${resources}/css/loginform-elements.css">
-        <link rel="stylesheet" href="${resources}/css/loginstyle.css">
+		<link rel="stylesheet" href="${resources}/css/loginform-elements.css?after">
+        <link rel="stylesheet" href="${resources}/css/loginstyle.css?after">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+/* Main Title css */
+.section-title-main h2 {
+	font-size: 100px;
+	font-weight: 700;
+	color: white;
+	text-align: center;
+	font-family: 'Nanum Pen Script', cursive;
+}
+
+/* ������ ���񽺿� CSS */
+
+.slide__link{
+	border-radius: 5px;
+   
+    cursor: pointer;
+     
+    width: 100%
+    
+}
+
+
+#slide {   
+  width:100%;    /* �ʺ� */ 
+  overflow:hidden;   /* ���� ��ġ�� ���� */ 
+  position: relative;
+}
+
+.slide__item__text h5 {
+	font-size: 20px;
+	color: #323232;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.slide__item__text__rating {
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.slide__item__text__rating .slide__item__rating__star {
+	float: right;
+}
+
+.col-balance-1{
+	flex: 1;
+}
+.col-balance-2{
+	order:2;
+}
+button{
+  position: absolute;
+  height:100%;  /* ���Ʒ� ���� ���� */ 
+  top:0;
+  border:none;  /* �׵θ� ���� */  
+  padding:20px;
+  background-color: transparent;  /* ���� ��� */ 
+  color:#000;  /* ȭ��ǥ ���� ���� */  
+  font-weight:800;  /* ���� */ 
+  font-size: 24px;  /* ȭ��ǥ ũ�� */ 
+  opacity: 0.5;  /* ������ */ 
+}
+#prev {
+  left:0;  /* �������� �ٿ��� */ 
+}
+#next {
+  right:0;  /* ���������� �ٿ��� */ 
+}
+button:hover {
+  background-color:#222;  /* £�� ȸ�� ��� */
+  color:#fff;   /* ��� ȭ��ǥ */ 
+  opacity:0.6;   /* �������� ���� ���� */ 
+  cursor:pointer;  /* Ŀ�� ����� �����ͷ� */ 
+}
+button:focus {
+  outline:0;  /* �ƿ�Ʈ���� ���� */
+}
+
+
+/* ����Խ��� ( Ǫ��α� ) */
+
+.FoodLog__Item {
+	-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30px;
+	background-color : white;
+	border: 1px solid #fff;
+	border-radius:10px;
+}
+.FoodLog__Title {
+	border-radius: 5px;
+	cursor: pointer;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 40px;
+	padding-bottom: 10px;
+	border: 1px solid #e3e3e3;
+	
+}
+.FoodLog__item__text {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	
+}
+.FoodLog__item__pic {
+	height: 260px;
+	position: relative;
+	cursor: pointer;
+}
+/* �Ĵ��̸� */
+.FoodLog__item__text__inside h5 {
+	font-size: 20px;
+	color: #323232;
+	font-weight: 600;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.FoodLog__item__text__inside h6 {
+	font-size: 14px;
+	color: #6a6a6a; /* ����ȸ�� */
+	font-weight: 600;
+	margin-bottom: 6px;
+	overflow: hidden;
+}
+
+
+.FoodLog__item__text__rating {
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.FoodLog__item__text__rating .FoodLog__item__rating__star {
+	float: left;
+}
+
+.FoodLog__item__text__rating .FoodLog__item__rating__star span,
+.slide__item__text__rating .slide__item__rating__star span {
+	font-size: 14px;
+	color: #F09D17; /* ��Ȳ�� */
+	margin-right: -3px;
+}
+
+.FoodLog__item__text__rating .FoodLog__item__rating__star span:last-child, 
+.slide__item__text__rating .slide__item__rating__star span:last-child{
+	margin-right: 0px;
+}
+
+.FoodLog__item__text__rating .FoodLog__item__rating__star .FoodLog__item__rating__people__price {
+	font-size: 14px;
+	color: #6a6a6a; /* ����ȸ�� */
+	margin-right: 5px;
+}

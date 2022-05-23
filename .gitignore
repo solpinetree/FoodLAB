@@ -1,0 +1,14 @@
+pom.properties
+.classpath
+
+###Eclipse
+.metadata
+
+#Eclipse core
+.project
+
+##java compiled class file
+.class
+
+*.DS_Store
+DS_Store

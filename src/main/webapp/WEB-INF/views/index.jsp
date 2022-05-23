@@ -1,9 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="includes/common.jsp" %>
+<%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
+String DB_SCHEMAS = "foodlab";
+String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
+String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
+String USER = "labadmin";
+String PASS = "1234";
 
+Class.forName(JDBC_DRIVER);
+Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+%>
+<sql:setDataSource var="dataSource"
+	url="jdbc:mysql://localhost/foodlab?&useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=UTC&useSSL=false"
+	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234"/>
 
+<sql:update dataSource="${dataSource}" var="resultSet">
+   DELETE FROM member WHERE userEmailChecked = 0
+</sql:update>
 <head>
     <title>Food LAB</title>
+    <link rel="stylesheet" href="${resources}/css/main/main.css?after">
 </head>
 
 
@@ -14,16 +35,17 @@
     </div> 
 
     <!-- Header Section Begin -->
-	<jsp:include page="logins/header.jsp"/>
+	<jsp:include page="includes/header.jsp"/>
     <!-- Header Section End -->
+ 
 
-    <!-- Hero Section Begin -->
+    <!-- Food Lab Main page Background -->
     <section class="hero set-bg" data-setbg="resources/img/hero/hero-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero__text">
-                        <div class="section-title">
+                        <div class="section-title-main">
                             <h2>Food LAB</h2>
                         </div>
                     </div>
@@ -31,15 +53,107 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+    
 
+	<!-- 오늘의 서비스왕  -->
+	<section class = "most-search spad">
+		<div class = "container">
+			<div class = "row">
+				<div class = "col-lg-12">
+					<div class = "section-title">
+						<h2>오늘의 서비스왕</h2> <!-- 오늘의 서비스왕 탭하고 링크해야함 -->
+						<p>오늘의 서비스왕에 대한 설명입니다 블라블라블라<p>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class = "row">
+				<!-- 이미지 슬라이드  -->
+				
+				<div class = "col-balance-1 col-lg-6 col-md-6">
+					<div class = "most__search__tab"> <!-- padding 값 넣어주려고 한거임 나중에 css수정해서 이 부분 없애야됨 -->
+						<div id="slide" class="img-box">
+						
+					        <img class="slide__link" src="${resources}/img/blog/blog-1.jpg" alt="">
+					        <img class="slide__link" src="${resources}/img/blog/blog-2.jpg" alt="">
+					        <img class="slide__link" src="${resources}/img/blog/blog-3.jpg" alt="">
+					      
+					        <!-- 이전, 다음 버튼 구현 -->
+					        <button id = "prev">&lang;</button> 
+        					<button id = "next">&rang;</button>
+    					</div>
+    					
+    					
+					</div>
+				</div>
+	
+				
+			
+				<!-- 각 이미지마다 리뷰 3개씩 -->
+				<div class = "col-balance-1 col-lg-6 col-md-6">
+					<div class = "most__search__tab">
+						<div class="slide__item">
+                            <div class="slide__item__text">
+                               <!-- 추후에 db에서 받아올것임 리뷰 2줄로 제한해서 -->
+                               <h5>리뷰1</h5>
+                               
+                               <div class="slide__item__text__rating">
+                                   <div class="slide__item__rating__star">
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star-half_alt"></span>
+                                   </div>
+                               </div>        
+                            </div>                
+                        </div>
+                        
+                        <div class="slide__item">
+                            <div class="slide__item__text">
+                               <h5>리뷰2</h5>
+                               
+                               <div class="slide__item__text__rating">
+                                   <div class="slide__item__rating__star">
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star-half_alt"></span>
+                                   </div>
+                               </div>        
+                            </div>                
+                        </div>
+                        
+                        <div class="slide__item">
+                            <div class="slide__item__text">
+                               <h5>리뷰3</h5>
+                               
+                               <div class="slide__item__text__rating">
+                                   <div class="slide__item__rating__star">
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star"></span>
+                                       <span class="icon_star-half_alt"></span>
+                                   </div>
+                               </div>        
+                            </div>                
+                        </div>
+                    </div>
+				</div>				
+			</div>
+		</div>
+	</section>
     <!-- Most Search Section Begin -->
     <section class="most-search spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>리뷰 게시판</h2>
+                        <h2>푸드 로그</h2>
+                        <p>푸드로거분들의 식당 리뷰를 할 수 있는 공간입니다</p>
                     </div>
                 </div>
             </div>
@@ -103,41 +217,47 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                    <div class="FoodLog__Item">
+                                    	<div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
+                                    	<!-- 리뷰 썸네일 -->
+                                        <div class="FoodLog__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
+                                           
                                         </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>고반식당 용인보정점</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>30000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 기흥구 죽전로15번길 4-9</li>
-                                                    <li><span class="icon_phone"></span> 031-889-1506</li>
-                                                </ul>
+                                        
+                                        <div class="FoodLog__item__text">
+                                            <div class="FoodLog__item__text__inside">
+                                                <h5>식당 이름</h5> <!-- 식당이름  -->
+                                     
                                             </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
+                                            <div class = "listing__item__text__inside">
+                                                <h6>게시물 (2줄)</h6>
+                                                <hr>
                                             </div>
-                                        </div>
+                                            <div class="FoodLog__item__text__rating">
+                                                <div class="FoodLog__item__rating__star">
+                                                    <span class="icon_star"></span>
+                                                    <span class="icon_star"></span>
+                                                    <span class="icon_star"></span>
+                                                    <span class="icon_star"></span>
+                                                    <span class="icon_star-half_alt"></span><span class = "FoodLog__item__rating__people__price">(평점)</span>
+                                        			<span class = "FoodLog__item__rating__people__price"><br>명 가격</span>
+                                        			<!-- 평점, 인원수, 가격 데이터를 불러와야함 -->            
+                                            	</div>  	
+                                        	</div>
+                                      	</div>     
+                                   	  </div>
                                     </div>
-                                </div>
+                             
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">      
                                             <div class="listing__item__pic__btns">
@@ -173,6 +293,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                             <div class="listing__item__pic__btns">
@@ -208,6 +333,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">
@@ -243,6 +373,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
 
@@ -279,6 +414,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
                                             <div class="listing__item__pic__btns">
@@ -318,6 +458,11 @@
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
                                    
@@ -354,6 +499,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
                          
@@ -390,6 +540,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                             
@@ -426,6 +581,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">
@@ -461,6 +621,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
                                    
@@ -501,6 +666,11 @@
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                           
@@ -537,6 +707,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">
+                                <div class = "FoodLog__Title">
+                                    		<div class = "FoodLog__item__text__inside">
+                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    		</div>
+                                    	</div>
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
                                             <div class="listing__item__pic__btns">
@@ -1123,16 +1298,25 @@
             </div>
         </div>
     </section>
+    	
     
-    
+    <!-- 오픈 채팅 서비스로 이동 구현 -->
     <section class="most-search spad">
         <div class="container">
             <div class="row">
                <div class="col-lg-12">
 	               <div class="section-title">
 	                  <h2>오픈채팅</h2>
-	                  <a href = "${root}/chat/openchat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
+	                 
 	               </div>
+               </div>
+               
+               <div class = "col-lg-4 col-md-4">
+               	<h4>푸드로거 여러분들을 위한 공간입니다.</h4>
+               </div>
+               
+               <div class = "col-lg-8 col-md-8">
+               	<a href = "${root}/chat/openchat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
                </div>
             </div>
         </div>
@@ -1168,5 +1352,5 @@
     <!-- Js Plugins -->
 	<%@ include file="includes/plugins.jsp" %>
 </body>
-
+<script type = "text/javascript" src = "${resources}/js/main/slideshow.js"></script>
 </html>

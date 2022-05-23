@@ -1,0 +1,41 @@
+.listing__sidebar__contact__map iframe{
+	border-radius :15% 15% 0 0;
+}
+
+.listing__sidebar__contact{
+ 	border-radius:15%;
+}
+
+.star-category{
+	width: 30%;
+	color: black !important;
+	font-weight: bold;
+}
+
+.rate-box{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+.listing__sidebar__contact__text ul li span {
+    top: 0; 
+}
+
+.icon_clock{
+	content: "\7d";
+}
+
+.icon_category{
+	content: "\f0b0";
+}
+
+p{
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+.blog__details__text p {
+    line-height: 0px;
+}

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/login/NewFile.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../includes/common.jsp" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <!DOCTYPE html>
@@ -13,11 +14,13 @@
         <meta name="author" content="" />
         <title>Full Width Pics - Start Bootstrap Template</title>
 </head>
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
     <body>
+    <% String username = sessionMember.getUsername(); %>
         <!-- Responsive navbar-->
-        <jsp:include page="header.jsp" />
+        <jsp:include page="../includes/header.jsp" />
         <c:choose>
-        <c:when test="${empty sessionId}">
+        <c:when test="${empty sessionMember.email}">
         <!-- Header - set the background image for the header in the line below-->
         <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
             <div class="text-center my-5">
@@ -32,7 +35,7 @@
         <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
             <div class="text-center my-5">
                 <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
-                <h1 class="text-white fs-3 fw-bolder">Hello <%=(String) session.getAttribute("sessionId")%></h1>
+                <h1 class="text-white fs-3 fw-bolder">Hello <%= username %></h1>
                 <p class="text-white-50 mb-0">user-email</p>
             </div>
         </header>

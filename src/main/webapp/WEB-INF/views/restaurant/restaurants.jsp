@@ -16,25 +16,45 @@
     
     <!-- Header Section-->
 	<jsp:include page="../includes/header.jsp"/>
-    
-    <!-- 헤더의 배경화면이 흰색일 경우 -->
-    <script type="text/javascript">
-    	var element = document.querySelector('header');
-    	element.classList.add('header--normal');
-    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
-    </script>
 
     <!-- Filter -->
     <jsp:include page="left-filter.jsp"/>
 
     <!-- Listing Section -->
    	<jsp:include page="right-listing.jsp"/>
-
+   	
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
+    
+
+	<script type="text/javascript">
+		//이전 버튼 이벤트
+		function fn_prev(page) {
+			loadUrl(page-1);
+		}
+
+	  	//페이지 번호 클릭
+		function fn_pagination(page) {
+			loadUrl(page);	
+		}
+
+		//다음 버튼 이벤트
+		function fn_next(page) {
+			loadUrl(page+1);
+		}
+		
+		function loadUrl(page){
+			var url = "${root}/restaurants/list";
+			url = url + "?currentPage=" + page;
+			location.href = url;
+		}
+	</script>
+
+    
 
     <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
+ 	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
 </body>
 
