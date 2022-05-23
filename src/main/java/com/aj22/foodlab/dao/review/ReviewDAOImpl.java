@@ -9,8 +9,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.aj22.foodlab.common.ConnectionProvider;
-import com.aj22.foodlab.dto.ReviewDTO;
+import com.aj22.foodlab.domain.Review;
+import com.aj22.foodlab.util.ConnectionProvider;
 
 
 public class ReviewDAOImpl implements ReviewDAO {
@@ -38,24 +38,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public Integer insert(ReviewDTO review) throws SQLException {
+	public Integer insert(Review review) throws SQLException {
 		
 		Integer autoIncrement = null;
 
 		String sql = "INSERT INTO review" + 
-				"(number_in_party, content, price_satisfaction, rate, title, thumbnail_origin_name, thumbnail_saved_name, thumbnail_saved_path, member_id, restaurant_id) " + 
-				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				"(number_in_party, content, price_satisfaction, rate, title, member_id, restaurant_id) " + 
+				"VALUES(?, ?, ?, ?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		pstmt.setInt(1, review.getNumberInParty());
 		pstmt.setString(2, review.getContent());
 		pstmt.setInt(3, review.getPriceSatisfaction());
 		pstmt.setInt(4, review.getRate());
 		pstmt.setString(5, review.getTitle());
-		pstmt.setString(6, review.getThumbnailOriginName());
-		pstmt.setString(7, review.getThumbnailSavedName());
-		pstmt.setString(8, review.getThumbnailSavedPath());
-		pstmt.setInt(9, review.getWriterId());
-		pstmt.setInt(10, review.getRestaurantId());
+		pstmt.setInt(6, review.getWriterId());
+		pstmt.setInt(7, review.getRestaurantId());
 		pstmt.executeUpdate();
 		
 		rs = pstmt.getGeneratedKeys(); 	// 쿼리 실행 후 생성된 AI 값 반환
@@ -79,13 +76,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public int edit(ReviewDTO review) throws SQLException {
+	public int edit(Review review) throws SQLException {
 		
 		int cnt = 0;
 
 		String sql = "update review set number_in_party=?, content=?, price_satisfaction=?, rate=?,"
-				+ " title=?, updatedAt=?, thumbnail_origin_name=?, thumbnail_saved_name=?, "
-				+ " thumbnail_saved_path=?, restaurant_id=? where review_id=?";
+				+ " title=?, updatedAt=?, restaurant_id=? where review_id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, review.getNumberInParty());
 		pstmt.setString(2, review.getContent());
@@ -93,20 +89,17 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setInt(4, review.getRate());
 		pstmt.setString(5, review.getTitle());
 		pstmt.setTimestamp(6, review.getUpdatedAt());
-		pstmt.setString(7, review.getThumbnailOriginName());
-		pstmt.setString(8, review.getThumbnailSavedName());
-		pstmt.setString(9, review.getThumbnailSavedPath());
-		pstmt.setInt(10, review.getRestaurantId());
-		pstmt.setInt(11, review.getWriterId());
+		pstmt.setInt(7, review.getRestaurantId());
+		pstmt.setInt(8, review.getWriterId());
 		cnt = pstmt.executeUpdate();
 	
 		return cnt;
 	}
 
 	@Override
-	public ReviewDTO select(int id) throws SQLException {
+	public Review select(int id) throws SQLException {
 		
-		ReviewDTO review = new ReviewDTO();
+		Review review = new Review();
 		
 		String sql = "select * from review where review_id=?";
 		pstmt = conn.prepareStatement(sql);
@@ -120,9 +113,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return review;
 	}
 	
-	public ReviewDTO createFromResultSet(ResultSet rs) throws SQLException {
+	public Review createFromResultSet(ResultSet rs) throws SQLException {
 		
-		ReviewDTO review = null;
+		Review review = null;
 		
 		int reviewId = rs.getInt("review_id");
 		int numberInParty = rs.getInt("number_in_party");
@@ -132,25 +125,24 @@ public class ReviewDAOImpl implements ReviewDAO {
 		String title = rs.getString("title");
 		Timestamp createdAt = rs.getTimestamp("createdAt");
 		Timestamp updatedAt = rs.getTimestamp("updatedAt");
-		String thumbnailOriginName = rs.getString("thumbnail_origin_name");
-		String thumbnailSavedName = rs.getString("thumbnail_saved_name");
-		String thumbnailSavedPath = rs.getString("thumbnail_saved_path");
 		int writerId = rs.getInt("member_id");
 		int restaurantId = rs.getInt("restaurant_id");
 		
-		review = new ReviewDTO(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
-				thumbnailOriginName, thumbnailSavedName, thumbnailSavedPath, writerId, restaurantId);
+		review = new Review(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
+				 writerId, restaurantId);
 	
 		return review;
 	}
 
 	@Override
-	public List<ReviewDTO> selectList() throws SQLException {
+	public List<Review> selectList(int startIdx, int listSize) throws SQLException {
 		
-		List<ReviewDTO> reviews = new ArrayList<>();
+		List<Review> reviews = new ArrayList<>();
 		
-		String sql = "select * from review";
+		String sql = "select * from review order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, startIdx);
+		pstmt.setInt(2, listSize);
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
@@ -159,6 +151,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 		
 		return reviews;
+	}
+	
+	@Override
+	public int countRecords() throws SQLException{
+		int cnt = 0;
+		
+		String sql = "select count(*) from review";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
 	}
 
 //	@Override

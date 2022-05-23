@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 import org.junit.Test;
 
-import com.aj22.foodlab.common.ConnectionProvider;
+import com.aj22.foodlab.util.ConnectionProvider;
 
 public class DBConnectionTest {
 

@@ -6,6 +6,8 @@
 <head>
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
 	<!-- Header Section End -->
 
     <!-- Blog Hero Begin -->
-    <div class="blog-details-hero set-bg" style="background-color:#EFF8E2">
+    <div class="blog-details-hero set-bg" style="background-color:black;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -28,7 +30,7 @@
                         <h2>${review.title}</h2>
                         <ul>
                             <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
-                            <li><i class="fa fa-user"></i> ${ review.writerId} </li>
+                            <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
                         </ul>
                     </div>
                 </div>
@@ -42,92 +44,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text">
-                     
-                     	<img src="${resources}/upload/review-thumb/${review.thumbnailSavedName}" style="background-size:cover; overflow: hidden"/>
+                 <div class="blog__details__text" style="margin-bottom: 50px">
                      <hr><br>
                      <div style="position: relative; float:left;">${review.content }</div>
+                     
+                     
                  </div>
+                  
                   
                  
                    
-	             <div class="listing__details__comment">
-	                <h4>리뷰</h4>
+	             <div class="listing__details__comment" style="margin-top: 50px; display:inline-block">
+	                <h4>댓글</h4>
+	              
 	                <div class="listing__details__comment__item">
 	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
+	                        <img src="${resources }/img/defaultProfile.jpeg" alt="">
 	                    </div>
 	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
+	                        <span>5/18/2022 2:44</span>
+	                        <h5>죽전 맛집 탐방러</h5>
+	                        <p>1호점 맞나요?</p>
 	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="listing__details__comment__item">
-	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
-	                    </div>
-	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
-	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="listing__details__comment__item">
-	                    <div class="listing__details__comment__item__pic">
-	                        <img src="img/listing/details/comment.png" alt="">
-	                    </div>
-	                    <div class="listing__details__comment__item__text">
-	                        <div class="listing__details__comment__item__rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <span>March 22, 2019</span>
-	                        <h5>Marry Jane</h5>
-	                        <p>From ships to airports, museums to burger vans, from revered Michelin star
-	                            establish to the fleeting dynamism of pop-ups.</p>
-	                        <ul>
-	                            <li><i class="fa fa-hand-o-right"></i> Like</li>
-	                            <li><i class="fa fa-share-square-o"></i> Reply</li>
+	                            <li><i class="fa fa-share-square-o"></i> 대댓글 달기</li>
 	                        </ul>
 	                    </div>
 	                </div>
 	            </div>
                 
                	<div class="listing__details__review">
-                    <h4>Add Review</h4>
                     <form action="#">
-                        <input type="text" placeholder="Name">
-                        <input type="text" placeholder="Email">
-                        <textarea placeholder="Review"></textarea>
-                        <button type="submit" class="site-btn">Submit Now</button>
+                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
+                        <button type="submit" class="site-btn">댓글 달기</button>
                     </form>
                 </div>
                 </div>
@@ -171,22 +119,84 @@
 	                    </div>
                   	
                     	
-                    	 <c:if test="${ restaurant ne null }">
+                    	 <c:if test="${ review.restaurant ne null }">
 	                    	<div class="listing__sidebar__contact">
-	                            <div class="listing__sidebar__contact__map">
-	                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24168.833995532765!2d-74.79633710628465!3d40.78172222265886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c384de7a5300b9%3A0x8afc61979217d49d!2sLong%20Valley%2C%20NJ%2007853%2C%20USA!5e0!3m2!1sen!2sbd!4v1586852528126!5m2!1sen!2sbd" height="200" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-	                                <img src="img/listing/details/map-icon.png" alt="">
+	                            <div class="listing__sidebar__contact__map" id="review-detail-map" style="border-radius: 40px 40px 0 0;">
 	                            </div>
 	                            <div class="listing__sidebar__contact__text">
-	                                <h4>${restaurant.name }</h4>
+	                                <h4>${review.restaurant.name }</h4>
 	                                <ul>
-	                                    <li><span class="icon_pin_alt"></span> ${restaurant.address }</li>
-	                                    <li><span class="icon_phone"></span>  ${restaurant.tel }</li>
-	                                    <li><span class="icon_mail_alt"></span> ${restaurant.avgRate }</li>
-	                                    <li><span class="icon_globe-2"></span> ${restaurant.category }</li>
-	                                    <li><span class="icon_globe-2"></span> ${restaurant.operationHour }</li>
+                                		<c:if test="${!empty review.restaurant.category}">
+	                                    	<li><span>${review.restaurant.category }</span></li><br><br>
+                                    	</c:if>
+	                                    <li><span class="icon_pin_alt"></span> ${review.restaurant.address }</li>
+	                                    <li><span class="icon_phone"></span>  ${review.restaurant.tel }</li>
+                                    	<c:if test="${review.restaurant.avgRate ne 0.0}">
+		                                    <li>
+	                                    	<span>평점 </span> 
+                                    		<c:forEach var="i" begin="1" end="5" >
+                                    			<c:if test="${review.restaurant.avgRate>i}">
+			                                		<span class="star-rate-icon icon_star"></span>
+			                                		<c:if test="${review.restaurant.avgRate < i+1}">
+			                                			<c:if test="${review.restaurant.avgRate > i+0.3 }">
+			                                				<c:if test="${review.restaurant.avgRate < i+0.7 }">
+			                                					<span class="star-rate-icon icon_star_half"></span>
+			                                				</c:if>
+			                                				<c:if test="${review.restaurant.avgRate > i+0.7 }">
+			                                					<span class="star-rate-icon icon_star"></span>
+			                                				</c:if>
+			                                			</c:if>
+			                                			<c:if  test="${reveiw.restaurant.avgRate < i+0.3}">
+			                                				<span class="star-rate-icon icon_star_alt"></span>
+			                                			</c:if>
+			                                		</c:if>
+                                    			</c:if>
+		                                	</c:forEach>
+		                                    </li>
+                                    	</c:if>
+                                    	<c:if test="${!empty restaurant.operationHour}">
+		                                    <li><span class="icon_clock"></span> ${restaurant.operationHour }</li>
+                                    	</c:if>
 	                                </ul>
 	                            </div>
+	                            <script type="text/javascript">
+		                            var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
+		                            mapOption = {
+		                                center: new kakao.maps.LatLng(37.3216, 127.1268), // 지도의 중심좌표 - 단국대
+		                                level: 3 // 지도의 확대 레벨
+		                            };  
+	
+			                        // 지도를 생성합니다    
+			                        var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+			                        // 주소-좌표 변환 객체를 생성합니다
+			                        var geocoder = new kakao.maps.services.Geocoder();
+		
+			                        // 주소로 좌표를 검색합니다
+			                        geocoder.addressSearch('${review.restaurant.address}', function(result, status) {
+		
+			                            // 정상적으로 검색이 완료됐으면 
+			                             if (status === kakao.maps.services.Status.OK) {
+		
+			                                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+			                                // 결과값으로 받은 위치를 마커로 표시합니다
+			                                var marker = new kakao.maps.Marker({
+			                                    map: map,
+			                                    position: coords
+			                                });
+		
+			                                // 인포윈도우로 장소에 대한 설명을 표시합니다
+			                                var infowindow = new kakao.maps.InfoWindow({
+			                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${review.restaurant.name}</div>'
+			                                });
+			                                infowindow.open(map, marker);
+		
+			                                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			                                map.setCenter(coords);
+			                            } 
+			                        });    
+	                            </script>
 	                        </div>
                			 </c:if>
                         <div class="blog__sidebar__recent">
@@ -196,9 +206,9 @@
                                     <img src="${resources }/img/blog/recent-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Shopping</span>
-                                    <h6>Tortoise grilled on salt</h6>
-                                    <p><i class="fa fa-clock-o"></i> 19th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 샐러드</span>
+                                    <h6>그릴드 치킨 바질 샐러드</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/16/2022</p>
                                 </div>
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -206,9 +216,9 @@
                                     <img src="${resources}/img/blog/recent-2.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Hotels</span>
-                                    <h6>Shrimp floured and fried</h6>
-                                    <p><i class="fa fa-clock-o"></i> 22th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 퓨전한식</span>
+                                    <h6>대나무밥 써니사이드업</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/17/22</p>
                                 </div>
                             </a>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -216,20 +226,20 @@
                                     <img src="${ resources}/img/blog/recent-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> Restaurant</span>
-                                    <h6>Sweet and sour pork ribs</h6>
-                                    <p><i class="fa fa-clock-o"></i> 25th March, 2019</p>
+                                    <span><i class="fa fa-tags"></i> 디저트</span>
+                                    <h6>달지 않은 마카롱</h6>
+                                    <p><i class="fa fa-clock-o"></i> 5/18/22</p>
                                 </div>
                             </a>
                         </div>
                         <div class="blog__sidebar__categories">
-                            <h5>Categories</h5>
+                            <h5>카테고리</h5>
                             <ul>
-                                <li><a href="#">Finance <span>18</span></a></li>
-                                <li><a href="#">Business <span>20</span></a></li>
-                                <li><a href="#">Loan <span>07</span></a></li>
-                                <li><a href="#">Consulting <span>22</span></a></li>
-                                <li><a href="#">Credit <span>19</span></a></li>
+                                <li><a href="#">양식 <span>18</span></a></li>
+                                <li><a href="#"> 펍<span>20</span></a></li>
+                                <li><a href="#">한식 <span>07</span></a></li>
+                                <li><a href="#">디저트 <span>22</span></a></li>
+                                <li><a href="#">회 <span>19</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -246,7 +256,8 @@
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
-	
+	<script type="text/javascript"
+		src="${resources}/js/review/review-detail-kakomap.js"></script>
 </body>
 
 </html>
