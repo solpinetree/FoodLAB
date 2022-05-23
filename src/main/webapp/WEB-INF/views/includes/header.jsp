@@ -57,7 +57,9 @@
                     	
                     	<div class="header__menu__right">
                         <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>     
-                        <a href="${root}/logins/mypage" class="login-btn"><i class="fa fa-user"></i></a>
+                        <a href="${root}/logins/mypage" class="login-btn">
+                        	<img src="${resources }/img/defaultProfile.jpeg" alt="" class="default-profile">
+                        </a>
                     </div>
                     <% }
                    

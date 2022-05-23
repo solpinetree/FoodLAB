@@ -17,8 +17,8 @@
        	
 	       	  <!--  식당 하나 div 시작 -->
 	           <div class="listing__item">
-	               <div class="listing__item__pic set-bg" data-setbg="${restaurant.imgUrl}">
-	                  <div class="listing__item__pic__tag">${restaurant.category}</div>
+	               <div class="listing__item__pic set-bg" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
+	                  <div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 	                  <div class="listing__item__pic__btns">
 	                      <div class="listing__item__pic__btns">
                            	<a href="#"><span class="icon_heart_alt"></span></a>
@@ -54,19 +54,29 @@
           </c:forEach>
         
       </div>
-      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group me-2" role="group" aria-label="First group" style = "float:none; margin:0 auto;">
-    <button type="button" class="btn btn-outline-secondary">1</button>
-    <button type="button" class="btn btn-outline-secondary">2</button>
-    <button type="button" class="btn btn-outline-secondary">3</button>
-    <button type="button" class="btn btn-outline-secondary">4</button>
-    <button type="button" class="btn btn-outline-secondary">5</button>
-    <button type="button" class="btn btn-outline-secondary">6</button>
-    <button type="button" class="btn btn-outline-secondary">7</button>
-    <button type="button" class="btn btn-outline-secondary">8</button>
-    <button type="button" class="btn btn-outline-secondary">9</button>
-    <button type="button" class="btn btn-outline-secondary">10</button>
-    <button type="button" class="btn btn-outline-secondary">></button>
-  </div>
-  </div>
+		
+		
+		    <!-- pagination 시작 -->
+			<div id="paginationBox">
+				<ul class="pagination">
+					<c:if test="${pagination.previousPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
+					</c:if>
+		
+					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+						<li
+							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
+							class="page-link" href="#"
+							onClick="fn_pagination('${idx}')">
+								${idx} </a></li>
+					</c:forEach>
+		
+					<c:if test="${pagination.nextPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
+					</c:if>
+				</ul>
+			</div>
+			<!-- pagination 끝 -->
   </section>

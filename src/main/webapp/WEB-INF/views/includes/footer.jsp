@@ -4,8 +4,8 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <footer class="footer">
-    <div class="container">
-        <div class="row">
+    <div class="container" style="background: pink">
+<%--         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
@@ -76,6 +76,6 @@ All rights reserved | This template is made with <i class="fa fa-heart" aria-hid
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --%>
     </div>
 </footer>

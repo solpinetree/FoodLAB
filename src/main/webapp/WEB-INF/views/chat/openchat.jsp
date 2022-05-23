@@ -130,16 +130,14 @@
 	
 	<section class="blog-section spad">
 		<section class="chatbox">
-			<section class="chat-window">
+			<section class="chat-window" id="chat-window">
 			
 			<c:if test="${empty sessionScope.sessionMember.id}">
 				<!-- login page 로 이동 -->
 			</c:if>
 			
 			
-			<article class="msg-container msg-self" id="rmsg">
-				
-			</article>
+		
 			</section>
 			<form class = "chat-input" onsubmit = "return false" style="margin-block-end: 0em;">
 				
