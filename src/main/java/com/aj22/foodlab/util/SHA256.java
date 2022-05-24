@@ -1,4 +1,4 @@
-package util;
+package com.aj22.foodlab.util;
 
 import java.security.MessageDigest;
 
