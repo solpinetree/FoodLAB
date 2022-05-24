@@ -38,14 +38,14 @@
                                 </div>
                                 <div>120 Review</div>
                             </div>
-                            <p><span class="icon_pin_alt"></span> 1012 Vesper Dr. Columbus, Georgia, United States</p>
+                            <p><span class="icon_pin_alt"></span> ${restaurant.address}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__hero__btns">
                         <a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> Share</a>
-                        <a href="#" class="primary-btn"><i class="fa fa-bookmark"></i> Bookmark</a>
+                        <a href="#" class="primary-btn"><i class="fa fa-bookmark"></i> Like</a>
                     </div>
                 </div>
             </div>
@@ -61,21 +61,14 @@
                     <div class="listing__details__text">
                         <div class="listing__details__about">
                             <h4>Overview</h4>
-                            <p>Entries from over 70 countries cover every imaginable space; From ships to airports,
-                                museums to burger vans, from revered Michelin-starred establishments to the fleeting
-                                dynamism of pop-ups.</p>
-                            <p>The judges are the most influential global personalities from hospitality, design and
-                                lifestyle media and have previously included the Editor in Chief of Wallpaper*, Marcus
-                                Wareing and Thomas Heatherwick.
-                                The Awards are followed by over 40,000 of the most influential architects, designers,
-                                hospitality professionals and lifestyle media from around the globe.</p>
+                           
                         </div>
                         <div class="listing__details__gallery">
                             <h4>Gallery</h4>
                             <div class="listing__details__gallery__pic">
                                 <div class="listing__details__gallery__item">
                                     <img class="listing__details__gallery__item__large"
-                                        src="${resources}/img/listing/details/listing-details-1.jpg" alt="">
+                                        src="${restaurant.imgUrl}" alt="">
                                     <span><i class="fa fa-camera"></i> 170 Image</span>
                                 </div>
                                 <div class="listing__details__gallery__slider owl-carousel">
@@ -287,30 +280,18 @@
                             <div class="listing__sidebar__contact__text">
                                 <h4>Contacts</h4>
                                 <ul>
-                                    <li><span class="icon_pin_alt"></span> 236 Littleton St. New Philadelphia, Ohio,
-                                        United States</li>
-                                    <li><span class="icon_phone"></span> (+12) 345-678-910</li>
+                                    <li><span class="icon_pin_alt"></span> ${restaurant.address}</li>
+                                    <li><span class="icon_phone"></span> ${restaurant.tel}</li>
                                     <li><span class="icon_mail_alt"></span> Info.colorlib@gmail.com</li>
                                     <li><span class="icon_globe-2"></span> https://colorlib.com</li>
                                 </ul>
-                                <div class="listing__sidebar__contact__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google"><i class="fa fa-google"></i></a>
-                                </div>
+                      
                             </div>
                         </div>
                         <div class="listing__sidebar__working__hours">
                             <h4>Working Hours</h4>
                             <ul>
-                                <li>Monday <span>09:00 AM - 20:00 PM</span></li>
-                                <li>Tuesday <span>09:00 AM - 20:00 PM</span></li>
-                                <li>Wednesday <span>09:00 AM - 20:00 PM</span></li>
-                                <li>Thursday <span>09:00 AM - 20:00 PM</span></li>
-                                <li>Friday <span class="opening">Opening</span></li>
-                                <li>Saturday <span>09:00 AM - 20:00 PM</span></li>
-                                <li>Saturday <span class="closed">Closed</span></li>
+                                <li> <span>${restaurant.operationHour}</span></li>
                             </ul>
                         </div>
                     </div>
