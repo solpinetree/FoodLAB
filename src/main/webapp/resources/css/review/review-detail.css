@@ -66,3 +66,12 @@ p{
 .primary-btn{
 	border:none;
 }
+
+
+.reply-btn{
+	border: none;
+	background-color: inherit;
+	color: grey;
+	float: right;
+	margin-right: 50px;
+}

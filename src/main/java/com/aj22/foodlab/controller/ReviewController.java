@@ -91,9 +91,12 @@ public class ReviewController {
 		MemberDTO member = (MemberDTO)session.getAttribute("sessionMember");
 		
 		// 리뷰를 삭제할 경우를 대비해서 전의 페이지 url 을 저장한다.
-		if(member.equals(review.getWriter())){
-			String referer = (String)request.getHeader("REFERER");
-			session.setAttribute("urlHistory", referer);
+		if(member!=null){
+			if(member.equals(review.getWriter())) {
+				String referer = (String)request.getHeader("REFERER");
+				session.setAttribute("urlHistory", referer);
+			}
+			model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 		}
 
 		if (review == null) {
@@ -101,7 +104,6 @@ public class ReviewController {
 		} else {
 			model.addAttribute("review", review);
 		}
-		model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 
 		return "review/review-detail";
 	}

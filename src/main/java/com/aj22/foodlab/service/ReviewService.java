@@ -104,9 +104,12 @@ public class ReviewService {
 		return res;
 	}
 	
-	private static String formatTimestampForDetail(Timestamp timestamp) {
+	static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		String formattedDate = simpleDateFormat.format(timestamp);
+		String formattedDate = null;
+		if(timestamp != null) {
+			formattedDate = simpleDateFormat.format(timestamp);
+		}
 		
 		return formattedDate;
 	}

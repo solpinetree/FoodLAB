@@ -67,32 +67,7 @@
                   
                   <hr>
                  
-	             <div class="listing__details__comment" style="display:inline-block">
-             		<h4>댓글</h4>
-	              
-	                <div class="listing__details__comment__item">
-	                    <div class="listing__details__comment__item__pic">
-	                        <img src="${resources }/img/defaultProfile.jpeg" alt="">
-	                    </div>
-	                    <div class="listing__details__comment__item__text">
-	                        <span>5/18/2022 2:44</span>
-	                        <h5>죽전 맛집 탐방러</h5>
-	                        <p>1호점 맞나요?</p>
-	                        <ul>
-	                            <li><i class="fa fa-share-square-o"></i> 대댓글 달기</li>
-	                        </ul>
-	                    </div>
-	                </div>
-	            </div>
-                
-                <c:if test="${!empty sessionScope.sessionMember.username}">
-	               	<div class="listing__details__review">
-	                    <form action="#">
-	                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
-	                        <button type="submit" class="site-btn">댓글 달기</button>
-	                    </form>
-	                </div>
-                </c:if>
+	  			<jsp:include page="review-detail-comment.jsp"/>
                 
                 
                 </div>
@@ -238,9 +213,11 @@
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
 	<script type="text/javascript"
-		src="${resources}/js/review/review-detail-kakomap.js"></script>
+		src="${resources}/js/review/review-detail-kakaomap.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/likes.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/comment.js"></script>
     <script type="text/javascript">
        var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
        mapOption = {
