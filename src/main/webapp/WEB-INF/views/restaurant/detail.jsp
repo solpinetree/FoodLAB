@@ -217,7 +217,9 @@
                 <div class="col-lg-4">
                     <div class="listing__sidebar">
                         <div class="listing__sidebar__contact">
-                            <div class="listing__map" id="map"></div>
+                        
+                            <div>kakaomap</div>
+                            
                             <div class="listing__sidebar__contact__text">
                                 <h4>Contacts</h4>
                                 <ul>
