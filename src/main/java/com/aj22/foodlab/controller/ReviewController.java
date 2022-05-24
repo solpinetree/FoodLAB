@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public class ReviewController {
 	private ReviewService reviewService;
 	@Autowired
 	private RestaurantService restaurantService;
-	static final int NumOfRecordsPerPage = 10;
+	static final int NumOfRecordsPerPage = 8;
 
 	// 푸드로그 게시판
 	@GetMapping("/list")
@@ -79,8 +80,12 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review")
-	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model) throws SQLException {
+	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
+		
+		String referer = (String)request.getHeader("REFERER");
+		HttpSession session = request.getSession();
+		session.setAttribute("urlHistory", referer);
 
 		if (review == null) {
 			// TODO 리뷰 가져오기 실패한 경우 로직
@@ -89,6 +94,20 @@ public class ReviewController {
 		}
 
 		return "review/review-detail";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteReview(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
+		
+		String redirectUrl = null;
+		
+		if(reviewService.deleteReviewById(reviewId)==1) { // 삭제 성공한 경우 
+			redirectUrl = (String) request.getSession().getAttribute("urlHistory");
+		}else {	//TODO: 삭제 실패한 경우 로직 구현
+			
+		}
+		
+		return "redirect:"+redirectUrl;
 	}
 
 }

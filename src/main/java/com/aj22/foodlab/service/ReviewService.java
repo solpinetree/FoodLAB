@@ -94,6 +94,16 @@ public class ReviewService {
 		return dto;
 	}
 	
+	public int deleteReviewById(int id) throws SQLException {
+		int res = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		res = dao.delete(id);
+		dao.close();
+		
+		return res;
+	}
+	
 	private static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		String formattedDate = simpleDateFormat.format(timestamp);

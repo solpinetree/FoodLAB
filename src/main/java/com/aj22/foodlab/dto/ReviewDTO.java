@@ -1,7 +1,5 @@
 package com.aj22.foodlab.dto;
 
-import java.sql.Timestamp;
-
 import com.aj22.foodlab.domain.Review;
 
 import lombok.AllArgsConstructor;
