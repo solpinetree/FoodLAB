@@ -26,36 +26,49 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="blog__hero__text">
-                        <div class="label">Trending</div>
                         <h2>${review.title}</h2>
                         <ul>
                             <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
                             <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
+                            <li class="heart-icon-li">
+	                            <c:choose>
+				                    <c:when test="${empty sessionScope.sessionMember.username }"><%-- 비회원이라면 --%>
+				                    	<img class="heart-icon" src="${resources }/img/icon/heart-red.png" alt="좋아요"/>
+				                    </c:when>
+				                    <c:otherwise><%-- 회원이라면 --%>
+				                		<img title="좋아요를 눌러주세요!" id="heart-icon" class="heart-icon heart-icon-click" src="${heartImgUrl}" alt="좋아요"/>
+				                    </c:otherwise>
+			                    </c:choose>
+		                 	</li>
+		                 	<li id="likes-count">${fn:length(review.membersIdsWhoLike) }</li>
                         </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="listing__hero__btns">
+	                	<c:if test="${sessionScope.sessionMember.id == review.writer.id }">
+	                       <button onclick="confirmDelete()" class="primary-btn"> 삭제하기</button>
+	                    </c:if>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Blog Hero End -->
-
+    
     <!-- Blog Details Section Begin -->
     <section class="blog-details spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text" style="margin-bottom: 50px">
-                     <hr><br>
+                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
                      <div style="position: relative; float:left;">${review.content }</div>
-                     
-                     
                  </div>
                   
-                  
+                  <hr>
                  
-                   
-	             <div class="listing__details__comment" style="margin-top: 50px; display:inline-block">
-	                <h4>댓글</h4>
+	             <div class="listing__details__comment" style="display:inline-block">
+             		<h4>댓글</h4>
 	              
 	                <div class="listing__details__comment__item">
 	                    <div class="listing__details__comment__item__pic">
@@ -72,18 +85,21 @@
 	                </div>
 	            </div>
                 
-               	<div class="listing__details__review">
-                    <form action="#">
-                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
-                        <button type="submit" class="site-btn">댓글 달기</button>
-                    </form>
-                </div>
+                <c:if test="${!empty sessionScope.sessionMember.username}">
+	               	<div class="listing__details__review">
+	                    <form action="#">
+	                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
+	                        <button type="submit" class="site-btn">댓글 달기</button>
+	                    </form>
+	                </div>
+                </c:if>
+                
+                
                 </div>
                
                
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
-                    
 	                    <div class="rate-box">
 	                      	<div class="listing__hero__widget">
 	                    			<div class="star-category">가격 만족도</div>
@@ -159,44 +175,7 @@
                                     	</c:if>
 	                                </ul>
 	                            </div>
-	                            <script type="text/javascript">
-		                            var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
-		                            mapOption = {
-		                                center: new kakao.maps.LatLng(37.3216, 127.1268), // 지도의 중심좌표 - 단국대
-		                                level: 3 // 지도의 확대 레벨
-		                            };  
-	
-			                        // 지도를 생성합니다    
-			                        var map = new kakao.maps.Map(mapContainer, mapOption); 
-		
-			                        // 주소-좌표 변환 객체를 생성합니다
-			                        var geocoder = new kakao.maps.services.Geocoder();
-		
-			                        // 주소로 좌표를 검색합니다
-			                        geocoder.addressSearch('${review.restaurant.address}', function(result, status) {
-		
-			                            // 정상적으로 검색이 완료됐으면 
-			                             if (status === kakao.maps.services.Status.OK) {
-		
-			                                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		
-			                                // 결과값으로 받은 위치를 마커로 표시합니다
-			                                var marker = new kakao.maps.Marker({
-			                                    map: map,
-			                                    position: coords
-			                                });
-		
-			                                // 인포윈도우로 장소에 대한 설명을 표시합니다
-			                                var infowindow = new kakao.maps.InfoWindow({
-			                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${review.restaurant.name}</div>'
-			                                });
-			                                infowindow.open(map, marker);
-		
-			                                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			                                map.setCenter(coords);
-			                            } 
-			                        });    
-	                            </script>
+	             
 	                        </div>
                			 </c:if>
                         <div class="blog__sidebar__recent">
@@ -253,11 +232,62 @@
  	<!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp" />
 	<!-- Footer Section End -->
+	
+	<input type="hidden" id="reviewIdValue" value="${review.reviewId }"/>
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-detail-kakomap.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/likes.js"></script>
+    <script type="text/javascript">
+       var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
+       mapOption = {
+           center: new kakao.maps.LatLng(37.3216, 127.1268), // 지도의 중심좌표 - 단국대
+           level: 3 // 지도의 확대 레벨
+       };  
+
+      // 지도를 생성합니다    
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+      // 주소-좌표 변환 객체를 생성합니다
+      var geocoder = new kakao.maps.services.Geocoder();
+
+      // 주소로 좌표를 검색합니다
+      geocoder.addressSearch('${review.restaurant.address}', function(result, status) {
+
+          // 정상적으로 검색이 완료됐으면 
+           if (status === kakao.maps.services.Status.OK) {
+
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                  map: map,
+                  position: coords
+              });
+
+              // 인포윈도우로 장소에 대한 설명을 표시합니다
+              var infowindow = new kakao.maps.InfoWindow({
+                  content: '<div style="width:150px;text-align:center;padding:6px 0;">${review.restaurant.name}</div>'
+              });
+              infowindow.open(map, marker);
+
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map.setCenter(coords);
+          } 
+      });    
+    </script>
+    <script type="text/javascript">
+	    function confirmDelete(){
+	    	var con = confirm("리뷰를 삭제하시겠습니까?");
+	    	
+	    	if(con == true){
+	    		location.href = "${root}/reviews/delete?reviewId=${review.reviewId}";
+	    	}
+	    }
+    </script>
 </body>
 
 </html>

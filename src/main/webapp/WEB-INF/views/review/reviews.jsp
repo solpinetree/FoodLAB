@@ -25,7 +25,7 @@
 
 
 	<!-- Blog Section Begin -->
-	<section class="blog-section spad" style="padding-top: 130px">
+	<section class="blog-section spad" style="padding-top: 80px">
 		<div class="container">
 			<section class="ftco-section">
 				<div class="container">
@@ -62,12 +62,15 @@
 													</c:if></td>
 												<td class="writer">${ review.writer.username }</td>
 												<td class="createdAt">${ review.createdAt }</td>
-												<td class="likes"><span>${ review.likesCount }</span>
+												<td class="likes"><span>${ fn:length(review.membersIdsWhoLike) }</span>
 												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<c:if test="${ !empty sessionScope.sessionMember.username }">
+									<a href="${root }/reviews/write"><button class="reviews-write-btn">리뷰 작성하기</button></a>
+								</c:if>
 							</div>
 						</div>
 					</div>

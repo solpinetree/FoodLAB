@@ -24,3 +24,19 @@
 .page-item{
 	display: inline-block ;
 }
+
+.page-item.active .page-link {
+	border-radius: 	50%;
+}
+
+.page-item{
+	border-radius: 50%;
+}
+
+.page-item:last-child .page-link {
+	border-radius: 50%;
+}
+
+.page-item:first-child .page-link {
+	border-radius: 50%;	
+}

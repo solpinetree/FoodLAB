@@ -36,6 +36,22 @@ public class LikesDAOImpl implements LikesDAO {
 		if(pstmt != null) pstmt.close();			
 		if(conn != null) conn.close();
 	}
+	
+	@Override
+	public int insert(Likes likes) throws SQLException {
+		
+		int cnt = 0;
+
+		String sql = "INSERT INTO likes" + 
+				"(review_id, member_id) " + 
+				"VALUES(?, ?)";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, likes.getReviewId());
+		pstmt.setInt(2, likes.getMemberId());
+		cnt = pstmt.executeUpdate();
+		
+		return cnt;
+	}
 
 	public Likes createFromResultSet(ResultSet rs) throws SQLException {
 		
@@ -66,5 +82,49 @@ public class LikesDAOImpl implements LikesDAO {
 		return likes;
 	}
 	
+	@Override
+	public Likes selectByReviewIdAndMemberId(Likes likes) throws SQLException {
+		Likes res = null;
+		
+		String sql = "select * from likes where review_id=? and member_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, likes.getReviewId());
+		pstmt.setInt(2, likes.getMemberId());
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			res = createFromResultSet(rs);
+		}
+
+		return res;
+	}
+	
+	@Override
+	public int delete(Likes likes) throws SQLException {
+		int cnt = 0;
+		
+		String sql = "delete from likes where review_id=? and member_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, likes.getReviewId());
+		pstmt.setInt(2, likes.getMemberId());
+		cnt = pstmt.executeUpdate();
+
+		return cnt;
+	}
+	
+	@Override
+	public List<Integer> selectMemberIdByReviewId(int reviewId) throws SQLException{
+		List<Integer> memberIds = new ArrayList<>();
+		
+		String sql = "select member_id from likes where review_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, reviewId);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			memberIds.add(rs.getInt("member_id"));
+		}
+		return memberIds;
+	}
 	
 }
