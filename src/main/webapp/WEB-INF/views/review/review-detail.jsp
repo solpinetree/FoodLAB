@@ -32,15 +32,15 @@
                             <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
                             <li class="heart-icon-li">
 	                            <c:choose>
-				                    <c:when test="${empty sessionScope.sessionMember.username }">
+				                    <c:when test="${empty sessionScope.sessionMember.username }"><%-- 비회원이라면 --%>
 				                    	<img class="heart-icon" src="${resources }/img/icon/heart-red.png" alt="좋아요"/>
 				                    </c:when>
 				                    <c:otherwise><%-- 회원이라면 --%>
-				                		<img title="좋아요를 눌러주세요!" class="heart-icon" src="${resources}/img/icon/heart-empty.png" alt="좋아요"/>
+				                		<img title="좋아요를 눌러주세요!" id="heart-icon" class="heart-icon heart-icon-click" src="${heartImgUrl}" alt="좋아요"/>
 				                    </c:otherwise>
 			                    </c:choose>
 		                 	</li>
-		                 	<li>13</li>
+		                 	<li id="likes-count">${fn:length(review.membersIdsWhoLike) }</li>
                         </ul>
                     </div>
                 </div>
@@ -232,6 +232,8 @@
  	<!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp" />
 	<!-- Footer Section End -->
+	
+	<input type="hidden" id="reviewIdValue" value="${review.reviewId }"/>
 
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>

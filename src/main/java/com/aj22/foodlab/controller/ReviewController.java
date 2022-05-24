@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aj22.foodlab.domain.Likes;
 import com.aj22.foodlab.domain.Review;
+import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
+import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
@@ -36,6 +39,8 @@ public class ReviewController {
 	private ReviewService reviewService;
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private LikesService likesService;
 	static final int NumOfRecordsPerPage = 8;
 
 	// 푸드로그 게시판
@@ -82,16 +87,21 @@ public class ReviewController {
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
-		
-		String referer = (String)request.getHeader("REFERER");
 		HttpSession session = request.getSession();
-		session.setAttribute("urlHistory", referer);
+		MemberDTO member = (MemberDTO)session.getAttribute("sessionMember");
+		
+		// 리뷰를 삭제할 경우를 대비해서 전의 페이지 url 을 저장한다.
+		if(member.equals(review.getWriter())){
+			String referer = (String)request.getHeader("REFERER");
+			session.setAttribute("urlHistory", referer);
+		}
 
 		if (review == null) {
 			// TODO 리뷰 가져오기 실패한 경우 로직
 		} else {
 			model.addAttribute("review", review);
 		}
+		model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 
 		return "review/review-detail";
 	}

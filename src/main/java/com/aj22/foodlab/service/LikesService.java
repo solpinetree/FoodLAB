@@ -20,17 +20,33 @@ public class LikesService {
 		return likes;
 	}
 	
+	public List<Integer> selectMemberIdByReviewId(int reviewId) throws SQLException{
+		LikesDAO dao = new LikesDAOImpl();
+		List<Integer> membersIdsWhoLike = dao.selectMemberIdByReviewId(reviewId);
+		dao.close();
+		return membersIdsWhoLike;
+	}
+	
 	public int getLikesCount(int reviewId) throws SQLException {
 		return selectByReviewId(reviewId).size();
+	}
+	
+	public String getHeartImgUrl(Likes likes) throws SQLException{
+		if(!didThisMemberHitLike(likes)) {
+			return "/foodlab/resources/img/icon/heart-empty.png";
+		}
+		return "/foodlab/resources/img/icon/heart-red.png";
 	}
 	
 	public boolean didThisMemberHitLike(Likes likes) throws SQLException{
 		LikesDAO dao = new LikesDAOImpl();
 		Likes res = dao.selectByReviewIdAndMemberId(likes);
+		dao.close();
 		if(res == null) {
 			return false;
+		}else {
+			return true;
 		}
-		return true;
 	}
 	
 	public int insert(Likes likes) throws SQLException{

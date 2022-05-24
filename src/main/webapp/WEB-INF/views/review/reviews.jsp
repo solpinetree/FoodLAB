@@ -62,7 +62,7 @@
 													</c:if></td>
 												<td class="writer">${ review.writer.username }</td>
 												<td class="createdAt">${ review.createdAt }</td>
-												<td class="likes"><span>${ review.likesCount }</span>
+												<td class="likes"><span>${ fn:length(review.membersIdsWhoLike) }</span>
 												</td>
 											</tr>
 										</c:forEach>

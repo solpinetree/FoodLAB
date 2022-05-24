@@ -45,6 +45,7 @@ public class LikesDAOImpl implements LikesDAO {
 		String sql = "INSERT INTO likes" + 
 				"(review_id, member_id) " + 
 				"VALUES(?, ?)";
+		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, likes.getReviewId());
 		pstmt.setInt(2, likes.getMemberId());
 		cnt = pstmt.executeUpdate();
@@ -85,7 +86,7 @@ public class LikesDAOImpl implements LikesDAO {
 	public Likes selectByReviewIdAndMemberId(Likes likes) throws SQLException {
 		Likes res = null;
 		
-		String sql = "select * from likes where review_id=?, member_id=?";
+		String sql = "select * from likes where review_id=? and member_id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, likes.getReviewId());
 		pstmt.setInt(2, likes.getMemberId());
@@ -102,10 +103,10 @@ public class LikesDAOImpl implements LikesDAO {
 	public int delete(Likes likes) throws SQLException {
 		int cnt = 0;
 		
-		String sql = "delete from likes where review_id=?, member_id=?";
+		String sql = "delete from likes where review_id=? and member_id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, likes.getReviewId());
-		pstmt.setInt(1, likes.getMemberId());
+		pstmt.setInt(2, likes.getMemberId());
 		cnt = pstmt.executeUpdate();
 
 		return cnt;
@@ -121,7 +122,7 @@ public class LikesDAOImpl implements LikesDAO {
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
-			memberIds.add(rs.getInt(reviewId));
+			memberIds.add(rs.getInt("member_id"));
 		}
 		return memberIds;
 	}

@@ -62,3 +62,7 @@ p{
 .heart-icon-li{
 	margin-right:0 !important;
 }
+
+.primary-btn{
+	border:none;
+}

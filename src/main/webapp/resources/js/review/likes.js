@@ -1,10 +1,13 @@
-$(".heart-icon").click(function(){
+$(".heart-icon-click").click(function(){
+	
+	var reviewId = document.getElementById("reviewIdValue").value;
 	
 	$.ajax({
-		url: '/foodlab/toggle/'+${review.reviewId},
+		url: '/foodlab/likes/toggle?reviewId='+reviewId,
 		type: 'post',
-		success: function(){
-			
+		success: function(data){
+			document.getElementById("likes-count").innerHTML = data.likesCount;
+			document.getElementById("heart-icon").src = data.heartImgUrl;
 		}
 	});
 });

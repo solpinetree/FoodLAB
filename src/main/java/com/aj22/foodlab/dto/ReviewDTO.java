@@ -1,5 +1,7 @@
 package com.aj22.foodlab.dto;
 
+import java.util.List;
+
 import com.aj22.foodlab.domain.Review;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +22,7 @@ public class ReviewDTO {
 	private String updatedAt;
 	private MemberDTO writer;
 	private RestaurantDTO restaurant;
-	private Integer likesCount;
+	private List<Integer> membersIdsWhoLike;
 	
 	public ReviewDTO(Review review) {
 		this.reviewId = review.getReviewId();
@@ -33,7 +35,7 @@ public class ReviewDTO {
 		this.updatedAt = null;
 		this.writer = null;
 		this.restaurant = null;
-		this.likesCount = null;
+		this.membersIdsWhoLike = null;
 	}
 }
 
