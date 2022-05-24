@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="dto.*"%>
+<%@ page import="com.aj22.foodlab.dto.*"%>
 <%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
-<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
 
 <header class="header">
 
 
 <%
 
-	String username = sessionMember.getusername();
+	String username = sessionMember.getUsername();
 
 %>
 
@@ -43,31 +43,10 @@
                         </ul>
                     </nav>
                     <%-- 로그인/로그아웃 --%>
-                    <%
-                    if (username=="") {
-                    %>
-                    <div class="header__menu__right">
-                        <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
-                       
-                    </div>
-                    <%              
-                    }
-                     
-                    else {%>
-                    	
-                    	<div class="header__menu__right">
-                        <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>     
-                        <a href="${root}/logins/mypage" class="login-btn">
-                        	<img src="${resources }/img/defaultProfile.jpeg" alt="" class="default-profile">
-                        </a>
-                    </div>
-                    <% }
-                   
+
                     
-                    %>
-                    <%-- 
                   <c:choose>
-                  <c:when test="${empty username}">
+                  <c:when test="${empty sessionMember.username}">
                    <div class="header__menu__right">
                         <a href="${root}/logins/login" class="primary-btn">로그인/회원가입</a>
                        
@@ -80,7 +59,7 @@
                     </div>
                   </c:otherwise>
                   </c:choose>
-                  --%>
+                  
                 </div>
             </div>
         </div>

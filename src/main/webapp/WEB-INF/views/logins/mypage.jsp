@@ -14,9 +14,9 @@
         <meta name="author" content="" />
         <title>Full Width Pics - Start Bootstrap Template</title>
 </head>
-<jsp:useBean id="sessionMember" scope="session" class="dto.MemberBean" type="dto.MemberBean"/>
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
     <body>
-    <% String username = sessionMember.getusername(); %>
+    <% String username = sessionMember.getUsername(); %>
         <!-- Responsive navbar-->
         <jsp:include page="../includes/header.jsp" />
         <c:choose>

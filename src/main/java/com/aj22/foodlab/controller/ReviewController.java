@@ -37,12 +37,12 @@ public class ReviewController {
 	private RestaurantService restaurantService;
 	static final int NumOfRecordsPerPage = 10;
 
-	// 푸드로그 게시판
+	// �몃��濡�洹� 寃�����
 	@GetMapping("/list")
 	public String loadReviewListPage(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
-		// 전체 게시글 개수
+		// ��泥� 寃���湲� 媛���
 		int totalRecord = reviewService.getNumOfRecord();
 		
 		Pagination pagination = new Pagination();
@@ -54,23 +54,23 @@ public class ReviewController {
 		return "review/reviews";
 	}
 
-	// 리뷰작성
+	// 由щ럭����
 	@GetMapping("/write")
 	public String writeReview() {
 		return "review/review-write";
 	}
 
-	// 리뷰 작성 처리
+	// 由щ럭 ���� 泥�由�
 	@PostMapping("/writeProcess")
 	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
 			HttpServletRequest request) throws SQLException, IOException {
-		// 사용자가 입력한 식당 이름으로
+		// �ъ�⑹��媛� ���ν�� ���� �대��쇰�
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
 		Integer reviewId = reviewService.insert(review);
 
 		if (reviewId == null) {
-			// TODO 리뷰 인서트 실패한 경우 로직
+			// TODO 由щ럭 �몄���� �ㅽ�⑦�� 寃쎌�� 濡�吏�
 		} else {
 			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
@@ -83,12 +83,13 @@ public class ReviewController {
 		ReviewDTO review = reviewService.select(reviewId);
 
 		if (review == null) {
-			// TODO 리뷰 가져오기 실패한 경우 로직
+			// TODO 由щ럭 媛��몄�ㅺ린 �ㅽ�⑦�� 寃쎌�� 濡�吏�
 		} else {
 			model.addAttribute("review", review);
 		}
 
 		return "review/review-detail";
 	}
+		
 
 }

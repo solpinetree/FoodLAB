@@ -9,8 +9,8 @@
 <%@ page import="javax.mail.Authenticator" %>
 <%@ page import="java.util.Properties" %>
 
-<%@ page import="util.SHA256"%>
-<%@ page import="util.Gmail"%>
+<%@ page import="com.aj22.foodlab.util.*"%>
+
 <%@ page import="java.io.PrintWriter"%>
 <%@ include file="../includes/common.jsp" %>
 <%@ include file="../includes/login/NewFile1.jsp" %>
