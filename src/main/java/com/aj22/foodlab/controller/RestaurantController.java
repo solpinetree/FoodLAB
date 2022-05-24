@@ -42,8 +42,9 @@ public class RestaurantController {
 	}
 	
 	@GetMapping("/detail")
-	public String restaurantDetail( Model model) {
-		
+	public String restaurantDetail(@RequestParam(required = false) int restaurantId, Model model) throws SQLException {
+		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
+		// 페이지네이션으로 받은 8개의 리스트와는 다르게 나는 resId 값을 따른 딱 하나의 객체만 받으면 된다.
 		return "restaurant/detail";
 	}
 	

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="resources" value="${pageContext.request.contextPath }/resources" />
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <head>
     <title>Chinese Sausage Restaurant</title>
 </head>
@@ -14,9 +16,9 @@
 
     <!-- Header Section-->
 	<jsp:include page="../includes/header.jsp"/>
-	
+	<c:set var="restaurant" value="${restaurants}"/>
     <!-- Listing Section Begin -->
-    <section class="listing-hero set-bg" data-setbg="${resources}/img/listing/details/listing-hero.jpg">
+    <section class="listing-hero set-bg" data-setbg="${restaurant.imgUrl}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -25,7 +27,7 @@
                             <img src="${resources}/img/listing/details/ld-icon.png" alt="">
                         </div>
                         <div class="listing__hero__text">
-                            <h2>Cosiana Sour Restaurant</h2>
+                            <h2>${restaurant.name}</h2>
                             <div class="listing__hero__widget">
                                 <div class="listing__hero__widget__rating">
                                     <span class="icon_star"></span>
@@ -337,6 +339,7 @@
             </div>
         </div>
     </section>
+
     <!-- Newslatter Section End -->
 
  	<!-- Footer Section -->
