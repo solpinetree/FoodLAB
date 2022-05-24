@@ -30,7 +30,7 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="${root}/">홈</a></li>
+                            <li><a href="${root}/">홈</a></li>
                             <li><a href="${root}/reviews/list">푸드로그</a> </li>
                             <li><a href="${root}/restaurants/list">맛집 정보</a> </li>
                             <li><a href="${root}/chat">푸드톡</a></li>
