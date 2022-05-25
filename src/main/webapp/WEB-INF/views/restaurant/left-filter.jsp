@@ -11,8 +11,10 @@
             <input type="text">
         </div>
         <div class="filter__location">
-            <input type="text" placeholder="식당 이름으로 검색하기">
+        <form name="search_res" action="${root}/restaurants/search" class="search">
+            <input type="text" name="seach_text" placeholder="식당 이름으로 검색하기">
             <i class="fa fa-map-marker"></i>
+        </form>
         </div>
         
         <div class="filter__tags">

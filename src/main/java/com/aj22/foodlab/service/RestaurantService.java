@@ -67,6 +67,15 @@ public class RestaurantService {
 		return restaurants;
 	}
 
+	
+	public List<RestaurantDTO> selectByName(String name) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.select(name);
+		dao.close();
+		return restaurants;
+	}
+	
 	public int getNumOfRecord() throws SQLException {
 		int cnt = 0;
 		

@@ -85,6 +85,10 @@
 			</div>
 			</c:if>
 			
+					    <c:if test="${category!=null}">
+
+			</c:if>
+			
 			
 			<!-- pagination 끝 -->
   </section>
