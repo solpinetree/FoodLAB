@@ -11,6 +11,7 @@ public interface RestaurantDAO {
 	int delete(int id) throws SQLException;
 	int edit(RestaurantDTO restaurant) throws SQLException;
 	RestaurantDTO select(int id) throws SQLException;
+	List<RestaurantDTO> select(String category) throws SQLException;
 	List<RestaurantDTO> selectList(int startIdx, int listSize) throws SQLException;
 	List<String> selectCategories() throws SQLException;
 	Integer getRestaurantIDByName(String name) throws SQLException;

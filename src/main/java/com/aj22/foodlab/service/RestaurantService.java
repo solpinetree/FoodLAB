@@ -1,5 +1,6 @@
 package com.aj22.foodlab.service;
 
+import java.io.Console;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -45,6 +46,14 @@ public class RestaurantService {
 		restaurant = dao.select(id);
 		dao.close();
 		return restaurant;
+	}
+	
+	public List<RestaurantDTO> selectByCategory(String category) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.select(category);
+		dao.close();
+		return restaurants;
 	}
 
 	public int getNumOfRecord() throws SQLException {
