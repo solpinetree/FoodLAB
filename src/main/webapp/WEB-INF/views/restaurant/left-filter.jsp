@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="filter nice-scroll">
+<div class="filter">
         <div class="filter__title">
             <h5><i class="fa fa-filter"></i> Filter</h5>
         </div>
@@ -15,8 +15,8 @@
         <div class="filter__tags">
             <h6>카테고리</h6>
             	<c:forEach items="${categories}" var="category">
-            	       <label for="coupon"> ${category}
-			                <input type="checkbox" id="coupon">
+            	       <label for="${category}"> ${category}
+			                <input type="checkbox" id="${category}">
 			                <span class="checkmark"></span>
 			            </label>
             	</c:forEach>
