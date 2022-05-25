@@ -48,6 +48,28 @@
 			url = url + "?currentPage=" + page;
 			location.href = url;
 		}
+		
+		
+		//이전 버튼 이벤트
+		function fn_prev_category(page,category) {
+			loadUrl_category(page-1,category);
+		}
+
+	  	//페이지 번호 클릭
+		function fn_pagination_category(page) {
+			loadUrl_category(page,category);	
+		}
+
+		//다음 버튼 이벤트
+		function fn_next_category(page) {
+			loadUrl_category(page+1,category);
+		}
+		
+		function loadUrl_category(page,category){
+			var url = "${root}/restaurants/select_res";
+			url = url + "?currentPage=" + page;
+			location.href = url;
+		}
 	</script>
 
     

@@ -24,6 +24,17 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
+	
+	public List<RestaurantDTO> selectList_category(Pagination pagination, String category) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.selectList_category(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		dao.close();
+		return restaurants;
+	}
+	
+	
+	
 	public List<String> getCategories() throws SQLException{
 		List<String> categories = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
@@ -65,4 +76,16 @@ public class RestaurantService {
 		
 		return cnt;
 	}
+	
+	public int getNumOfRecord_category(String category) throws SQLException {
+		int cnt = 0;
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.countRecords_category(category);
+		dao.close();
+		
+		return cnt;
+	}
+	
+	
 }

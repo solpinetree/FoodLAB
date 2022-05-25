@@ -61,6 +61,7 @@
 		
 		
 		    <!-- pagination 시작 -->
+		    <c:if test="${category==null}">
 			<div id="paginationBox">
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
@@ -82,5 +83,8 @@
 					</c:if>
 				</ul>
 			</div>
+			</c:if>
+			
+			
 			<!-- pagination 끝 -->
   </section>

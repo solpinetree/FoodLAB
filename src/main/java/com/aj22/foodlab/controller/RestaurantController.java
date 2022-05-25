@@ -53,7 +53,7 @@ public class RestaurantController {
 		
 
 		
-		int numOfRecords = restaurantService.getNumOfRecord();
+		int numOfRecords = restaurantService.getNumOfRecord_category(category);
 		
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
