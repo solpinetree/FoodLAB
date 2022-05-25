@@ -7,12 +7,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aj22.foodlab.controller.UploadController;
 import com.aj22.foodlab.dto.FileDTO;
 
-
+@Component
 public class FileUpload {
 	
 	

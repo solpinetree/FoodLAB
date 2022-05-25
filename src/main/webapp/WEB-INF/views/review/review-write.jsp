@@ -9,14 +9,9 @@
 <link rel="stylesheet" href="${resources}/css/review/image-upload.css">
 <link rel="stylesheet" href="${resources}/css/review/review-write.css">
 <link rel="stylesheet" href="${resources}/css/review/uploading.css">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
-<!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<!-- Quill Image Resize Module -->
-<script src="${resources}/js/review/quilleditor/image-resize.min.js"></script>
 </head>
 
 <body>
@@ -73,46 +68,53 @@
 							<button type="button" name="next" id="firstNextBtn"
 								class="next action-button" onclick="next(this)"
 								style="visibility: hidden">NEXT</button>
-						</fieldset>
+						</fieldset> 
 						<!-- 식당이름으로 식당 주소 입력받는 fieldset 끝 -->
-						<fieldset>
+						<fieldset>  
 							<div class="form-card">
 								<input type="text" name="title" id="title"
-									placeholder="이 리뷰의 제목을 입력해주세요"
+									placeholder="이 장소를 한 문장으로 표현한다면 ..?"
 									style="background-color: white; font-weight: 500">
-								<input type="text" name="content" id="content" style="display:none">
-								<%-- Quill Editor 시작--%>
-								<div id="standalone-container"
-									style="width: 100%; height: 100%; position: relative; overflow: hidden;">
-									<div id="toolbar-container" style="border-radius: 30px 30px 0 0">
-										<span class="ql-formats">
-											<button class="ql-bold"></button>
-											<button class="ql-italic"></button>
-											<button class="ql-underline"></button>
-											<button class="ql-strike"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-header" value="1"></button>
-											<button class="ql-header" value="2"></button>
-											<button class="ql-blockquote"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-list" value="ordered"></button>
-											<button class="ql-list" value="bullet"></button>
-											<button class="ql-indent" value="-1"></button>
-											<button class="ql-indent" value="+1"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-image"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-clean"></button>
-										</span>
-									</div>
-									<div id="editor-container" style="overflow:auto; height: 500px; border-radius: 0 0 10px 10px"></div>
-								</div>
-								<!-- 	    Quill Editor 끝 -->
-
+									
+								   <!-- Slider main container -->
+							        <div class="swiper">
+							            <!-- Additional required wrapper -->
+							            <div class="swiper-wrapper">
+							
+							                <!-- Slides -->
+							                <div class="swiper-slide"> 
+											 	<input class="file-input" name="img1" id="img1" multiple="multiple" type="file">
+											 	<a class="Neon-input-choose-btn">사진을 공유해주세요</a>
+       										</div>
+							                <div class="swiper-slide">
+												<input class="file-input" name="img2" id="img2" multiple="multiple" type="file">
+											 	<a class="Neon-input-choose-btn">+</a>
+							                </div>
+							                <div class="swiper-slide">
+							                	<input class="file-input" name="img3" id="img3" multiple="multiple" type="file">
+											 	<a class="Neon-input-choose-btn">+</a>
+											</div>
+							                <div class="swiper-slide">
+												<input class="file-input" name="img4" id="img4" multiple="multiple" type="file">
+											 	<a class="Neon-input-choose-btn">+</a>
+							                </div>
+							
+							            </div>
+							            <!-- If we need pagination -->
+							            <div class="swiper-pagination"></div>
+							        
+							            <!-- If we need navigation buttons -->
+							            <div class="swiper-button-prev"></div>
+							            <div class="swiper-button-next"></div>
+							        
+							        </div>	
+								
+									
+								<textarea name="content" id="content" rows="0" cols="0" style="font-weight: 500; height: 141px" placeholder="간단한 리뷰"></textarea>
 							</div>
 
-							<input type="button" name="next" id="quillNextBtn"
-								class="next quillNextBtn action-button" value="NEXT"
+							<input type="button" name="next" id="contentNextBtn"
+								class="next contentNextBtn action-button" value="NEXT"
 								style="display: none" /> <input type="button" name="previous"
 								class="previous action-button-previous" value="PREVIOUS" />
 						</fieldset>
@@ -218,5 +220,8 @@
 	<script type="text/javascript" src="${resources}/js/review/kakaomap.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/quilleditor/quill-config.js"></script>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/review-write-swiper.js"></script>
 </body>
 </html>

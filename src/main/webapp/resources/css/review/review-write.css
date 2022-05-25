@@ -1,318 +1,564 @@
 * {
-    margin: 0;
-    padding: 0
+	margin: 0;
+	padding: 0
 }
 
 html {
-    height: 100%
+	height: 100%
 }
 
 p {
-    color: grey
+	color: grey
 }
 
 #heading {
-    text-transform: uppercase;
-    color: #673AB7;
-    font-weight: normal
+	text-transform: uppercase;
+	color: #673AB7;
+	font-weight: normal
 }
 
 #msform {
-    text-align: center;
-    position: relative;
-    margin-top: 20px
+	text-align: center;
+	position: relative;
+	margin-top: 20px
 }
 
 #msform fieldset {
-    background: white;
-    border: 0 none;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding-bottom: 20px;
-    position: relative
+	background: white;
+	border: 0 none;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding-bottom: 20px;
+	position: relative
 }
 
 .form-card {
-  /*   text-align: left; */
-    flex-direction: row;
+	/*   text-align: left; */
+	flex-direction: row;
 }
 
 #msform fieldset:not(:first-of-type) {
-    display: none
+	display: none
 }
 
-#msform input,
-#msform textarea{
-    padding: 8px 15px 8px 15px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin-bottom: 25px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    background-color: white;
-    font-size: 16px;
-    letter-spacing: 1px
+#msform input, #msform textarea {
+	padding: 8px 15px 8px 15px;
+	border: 1px solid #ccc;
+	border-radius: 30px;
+	margin-bottom: 25px;
+	margin-top: 2px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	background-color: white;
+	font-size: 16px;
+	letter-spacing: 1px
 }
 
-#msform input:focus,
-#msform textarea:focus{
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #673AB7;
-    outline-width: 0
+#msform input:focus, #msform textarea:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid #673AB7;
+	outline-width: 0
 }
 
 #msform .action-button {
-    width: 100px;
-    background: var(--theme-color);;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 0px 10px 5px;
-    float: right
+	width: 100px;
+	background: var(--theme-color);;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 0px 10px 5px;
+	float: right
 }
 
-#msform .action-button:hover,
-#msform .action-button:focus {
-    background-color: #f03250
+#msform .action-button:hover, #msform .action-button:focus {
+	background-color: #f03250
 }
 
 #msform .action-button-previous {
-    width: 100px;
-    background: #616161;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px 10px 0px;
-    float: right
+	width: 100px;
+	background: #616161;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px 10px 0px;
+	float: right
 }
 
-#msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
-    background-color: #000000
+#msform .action-button-previous:hover, #msform .action-button-previous:focus
+	{
+	background-color: #000000
 }
 
 .card {
-    z-index: 0;
-    border: none;
-    position: relative
+	z-index: 0;
+	border: none;
+	position: relative
 }
 
 .fs-title {
-    font-size: 25px;
-    color: #f03250;
-    margin-bottom: 15px;
-    font-weight: normal;
-    text-align: left
+	font-size: 25px;
+	color: #f03250;
+	margin-bottom: 15px;
+	font-weight: normal;
+	text-align: left
 }
 
 .purple-text {
-    color: #f9adbd;
-    font-weight: normal
+	color: #f9adbd;
+	font-weight: normal
 }
 
 .steps {
-    font-size: 25px;
-    color: gray;
-    margin-bottom: 10px;
-    font-weight: normal;
-    text-align: right
+	font-size: 25px;
+	color: gray;
+	margin-bottom: 10px;
+	font-weight: normal;
+	text-align: right
 }
 
 .fieldlabels {
-    color: gray;
-    text-align: left
+	color: gray;
+	text-align: left
 }
 
 #progressbar {
-    margin-bottom: 30px;
-    overflow: hidden;
-    color: lightgrey
+	margin-bottom: 30px;
+	overflow: hidden;
+	color: lightgrey
 }
 
 #progressbar .active {
-    color: var(--theme-color);
+	color: var(--theme-color);
 }
 
 #progressbar li {
-    list-style-type: none;
-    font-size: 15px;
-    width: 25%;
-    float: left;
-    position: relative;
-    font-weight: 400
+	list-style-type: none;
+	font-size: 15px;
+	width: 25%;
+	float: left;
+	position: relative;
+	font-weight: 400
 }
 
 #progressbar #search:before {
-    font-family: FontAwesome;
-    content: "\f002"
+	font-family: FontAwesome;
+	content: "\f002"
 }
 
 #progressbar #personal:before {
-    font-family: FontAwesome;
-    content: "\f005"
+	font-family: FontAwesome;
+	content: "\f005"
 }
 
 #progressbar #thumbnail:before {
-    font-family: FontAwesome;
-    content: "\f030"
+	font-family: FontAwesome;
+	content: "\f030"
 }
 
 #progressbar #confirm:before {
-    font-family: FontAwesome;
-    content: "\f00c"
+	font-family: FontAwesome;
+	content: "\f00c"
 }
 
 #progressbar #review:before {
-    font-family: FontAwesome;
-    content: "\f040"
+	font-family: FontAwesome;
+	content: "\f040"
 }
 
-
 #progressbar li:before {
-    width: 50px;
-    height: 50px;
-    line-height: 45px;
-    display: block;
-    font-size: 20px;
-    color: #ffffff;
-    background: lightgray;
-    border-radius: 50%;
-    margin: 0 auto 10px auto;
-    padding: 2px
+	width: 50px;
+	height: 50px;
+	line-height: 45px;
+	display: block;
+	font-size: 20px;
+	color: #ffffff;
+	background: lightgray;
+	border-radius: 50%;
+	margin: 0 auto 10px auto;
+	padding: 2px
 }
 
 #progressbar li:after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: lightgray;
-    position: absolute;
-    left: 0;
-    top: 25px;
-    z-index: -1
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: lightgray;
+	position: absolute;
+	left: 0;
+	top: 25px;
+	z-index: -1
 }
 
-#progressbar li.active:before,
-#progressbar li.active:after {
-    background: var(--theme-color);
+#progressbar li.active:before, #progressbar li.active:after {
+	background: var(--theme-color);
 }
 
 .progress {
-    height: 20px
+	height: 20px
 }
 
 .progress-bar {
-    background-color: #673AB7
+	background-color: #673AB7
 }
 
 .fit-image {
-    width: 100%;
-    object-fit: cover
+	width: 100%;
+	object-fit: cover
 }
 
-@media (min-width: 1200px){
+@media ( min-width : 1200px) {
 	.col-lg-6 {
-	    -ms-flex: 0 0 50%;
-	    flex: 0 0 50%;
-	    max-width: 50%;
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
 	}
 }
 
 .searchButton {
-  width: 10%;
-  height: 36px;
-  border: 1px solid var(--theme-color);;
-  background: var(--theme-color);;
-  text-align: center;
-  color: #fff;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 20px;
-  margin-top:auto;
-  margin-bottom: auto;
+	width: 10%;
+	height: 36px;
+	border: 1px solid var(--theme-color);;
+	background: var(--theme-color);;
+	text-align: center;
+	color: #fff;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
- 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
- #placesList .item span {display: block;margin-top:4px;} 
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#placesList .item .selected_marker {  
-/* 	float:left;position:absolute;width:35px; margin:10px 0 0 10px;
+
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-size: 12px;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+	color: #000;
+	text-decoration: none;
+}
+
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+#menu_wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	margin: 10px 0 30px 10px;
+	padding: 5px;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 1;
+	font-size: 12px;
+	border-radius: 10px;
+}
+
+.bg_white {
+	background: #fff;
+}
+
+#menu_wrap hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #5F5F5F;
+	margin: 3px 0;
+}
+
+#menu_wrap .option {
+	text-align: center;
+}
+
+#menu_wrap .option p {
+	margin: 10px 0;
+}
+
+#menu_wrap .option button {
+	margin-left: 5px;
+}
+
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 65px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#placesList .item .info {
+	padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+	color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+	padding-left: 26px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+		no-repeat;
+}
+
+#placesList .info .tel {
+	color: #009900;
+}
+
+#placesList .item .markerbg {
+	float: left;
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+		no-repeat;
+}
+
+#placesList .item .marker_1 {
+	background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+	background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+	background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+	background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+	background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+	background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+	background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+	background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+	background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+	background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+	background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+	background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+	background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+	background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+	background-position: 0 -654px;
+}
+
+#placesList .item .selected_marker {
+	/* 	float:left;position:absolute;width:35px; margin:10px 0 0 10px;
     height: 35px; */
-    min-width: 0px;
-    min-height: 0px;
-    max-width: 99999px;
-    max-height: none;
-    border: 0px;
-    position: absolute;
-    user-select: none;
-    -webkit-user-drag: none;
-    clip: rect(0px, 35px, 35px, 0px);
-    top: 0px;
-    left: 0px;
-    width: 35px;
-    height: 35px;
-     background-image: url(https://tistory2.daumcdn.net/tistory/3056305/skin/images/map-marker-red.png);
-    background-size : 35px 35px;
-    background-repeat: no-repeat;
-    margin: 10px 0 0 5px;
+	min-width: 0px;
+	min-height: 0px;
+	max-width: 99999px;
+	max-height: none;
+	border: 0px;
+	position: absolute;
+	user-select: none;
+	-webkit-user-drag: none;
+	clip: rect(0px, 35px, 35px, 0px);
+	top: 0px;
+	left: 0px;
+	width: 35px;
+	height: 35px;
+	background-image:
+		url(https://tistory2.daumcdn.net/tistory/3056305/skin/images/map-marker-red.png);
+	background-size: 35px 35px;
+	background-repeat: no-repeat;
+	margin: 10px 0 0 5px;
 }
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+#pagination {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#pagination a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#pagination .on {
+	font-weight: bold;
+	cursor: default;
+	color: #777;
+}
 
 h5 {
-    display: block;
-    font-size: 0.83em;
-    margin-block-start: 1.67em;
-    margin-block-end: 1.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+	display: block;
+	font-size: 0.83em;
+	margin-block-start: 1.67em;
+	margin-block-end: 1.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
 }
 
-.info{
+.info {
 	text-align: left;
+}
+
+.swiper {
+	width: 100%;
+	height: 50vh;
+	border: 1px solid #ccc;
+	border-radius: 30px;
+	margin-bottom: 10px;
+}
+
+.swiper-slide img {
+	width: 100%;
+}
+
+.swiper .swiper-button-prev, .swiper .swiper-button-next {
+	color: #f9adbd;
+}
+
+.swiper .swiper-pagination-bullet-active {
+	background: #f9adbd;
+}
+
+.file-input {
+	border: none !important;
+}
+
+/* 파일 업로드 */
+.Neon {
+	font-family: sans-serif;
+	font-size: 14px;
+	color: #494949;
+	position: relative;
+}
+
+.Neon * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Neon-input-dragDrop {
+	display: block;
+	width: 343px;
+	margin: 0 auto 25px auto;
+	padding: 25px;
+	color: #8d9499;
+	color: #97A1A8;
+	background: #fff;
+	text-align: center;
+	-webkit-transition: box-shadow 0.3s, border-color 0.3s;
+	-moz-transition: box-shadow 0.3s, border-color 0.3s;
+	transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.Neon-input-dragDrop .Neon-input-icon {
+	font-size: 48px;
+	margin-top: -10px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.Neon-input-text h3 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.Neon-input-text span {
+	font-size: 12px;
+}
+
+.Neon-input-choose-btn {
+	display: inline-block;
+	padding: 8px 14px;
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 30px;
+	font-weight: bold;
+	color: #8d9496;
+	vertical-align: middle;
+	background-color: #fff;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+	margin-top: 21vh;
+}
+
+.file-input {
+	z-index: 999;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	margin-right: auto;
+	margin-left: auto;
 }
