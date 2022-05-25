@@ -73,14 +73,14 @@ public class ReviewService {
 		return dto;
 	}
 	
-	// 리뷰 작성자와 식당, 좋아요수, 시간(작성시간, 수정시간)을  채워주는 함수
+	// 由щ럭 ���깆���� ����, 醫�������, ��媛�(���깆��媛�, ������媛�)��  梨���二쇰�� �⑥��
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
-		dto.setLikesCount(likesService.getLikesCount(review.getReviewId()));
+		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {
-		// review list 페이지와 상세페이지가 보여주는 작성시간과 수정시간의 포맷이 다르기 때문에 따로 처리해준다.
+		// review list ���댁��� ���명���댁�媛� 蹂댁�ъ＜�� ���깆��媛�怨� ������媛��� �щ㎎�� �ㅻⅤ湲� ��臾몄�� �곕� 泥�由ы�댁���.
 		case "listPage":
 			dto.setCreatedAt(formatTimestampForList(review.getCreatedAt()));
 			break;
@@ -94,9 +94,22 @@ public class ReviewService {
 		return dto;
 	}
 	
-	private static String formatTimestampForDetail(Timestamp timestamp) {
+	public int deleteReviewById(int id) throws SQLException {
+		int res = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		res = dao.delete(id);
+		dao.close();
+		
+		return res;
+	}
+	
+	static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		String formattedDate = simpleDateFormat.format(timestamp);
+		String formattedDate = null;
+		if(timestamp != null) {
+			formattedDate = simpleDateFormat.format(timestamp);
+		}
 		
 		return formattedDate;
 	}

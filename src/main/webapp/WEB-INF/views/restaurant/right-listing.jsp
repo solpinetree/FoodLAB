@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!--  resources 디렉토리 위치를 가리키는 변수 선언 -->
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
-
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <section class="listing nice-scroll">
        <div class="listing__text__top">
            <div class="listing__text__top__left">
@@ -16,8 +16,9 @@
        	<c:forEach items="${restaurants}" var="restaurant">
        	
 	       	  <!--  식당 하나 div 시작 -->
-	           <div class="listing__item">
-	               <div class="listing__item__pic set-bg" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
+	           <div class="listing__item">  
+	      
+	           <div class="listing__item__pic set-bg" style=" cursor: pointer;" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}';" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
 	                  <div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 	                  <div class="listing__item__pic__btns">
 	                      <div class="listing__item__pic__btns">
@@ -25,6 +26,9 @@
                           </div>
 	                  </div>
 	              </div>
+	          
+	      
+	           
 	              <div class="listing__item__text">
 	                  <div class="listing__item__text__inside">
 	                      <h5>${restaurant.name}</h5>

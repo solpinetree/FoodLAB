@@ -72,6 +72,8 @@
 					out.println("아이디와 비밀번호를 확인해 주세요");
 					out.println("</div>");
 				}
+				
+				System.out.println(session.getAttribute("sessionMember"));
 			%>
 	                            <div class="form-bottom" style="padding-bottom:10px; border:1px solid #e3e3e3;">
 	                            

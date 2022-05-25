@@ -22,7 +22,7 @@ public class MemberDAOImpl implements MemberDAO {
 	String DB_SCHEMAS = "foodlab";
 	String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver"; // try
 														// "com.mysql.cj.jdbc.Driver"
-	String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES;
+	String DB_URL = "jdbc:mysql://158.247.206.153/" + DB_SCHEMAS + DB_PROPERTIES;
 	String USER = "labadmin";
 	String PASS = "1234";
 	// Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,7 +33,7 @@ public class MemberDAOImpl implements MemberDAO {
 	private Statement stmt;
 	private ResultSet rs;
 
-	// FoodDAOImpl 객체가 생성될때 Connection도 생성된다.
+	// FoodDAOImpl 媛�泥닿� ���깅���� Connection�� ���깅����.
 	public MemberDAOImpl() {
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -42,7 +42,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	}
 
-	// DB 자원 반납
+	// DB ���� 諛���
 	public void close() throws SQLException {
 		if (rs != null)
 			rs.close();

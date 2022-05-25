@@ -39,3 +39,49 @@ p{
 .blog__details__text p {
     line-height: 0px;
 }
+
+.listing__hero__btns {
+    text-align: right;
+    padding-top: 85px;
+}
+
+.listing__details__comment {
+    border-top: none; 
+}
+
+.heart-icon{
+	width: 35px;
+	height: 35px;
+	vertical-align: sub;
+}
+
+.blog__hero__text ul li {
+	font-size: 1rem;
+}
+
+.heart-icon-li{
+	margin-right:0 !important;
+}
+
+.primary-btn{
+	border:none;
+}
+
+
+.reply-btn{
+	border: none;
+	background-color: inherit;
+	color: grey;
+	float: right;
+	margin-right: 50px;
+	font-size: 13px;
+}
+
+.listing__details__comment__item__pic img {
+    height: 45px;
+    width: 45px;
+}
+
+.listing__details__comment__item {
+    margin-bottom: 20px;
+}
