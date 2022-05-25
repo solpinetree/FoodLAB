@@ -2,6 +2,7 @@ package com.aj22.foodlab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aj22.foodlab.domain.Likes;
+import com.aj22.foodlab.domain.RestaurantPhoto;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
@@ -74,10 +76,21 @@ public class ReviewController {
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
 		Integer reviewId = reviewService.insert(review);
+		
+		
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
+			HttpSession session = request.getSession();
+			List<String> restaurantImgs = (List<String>)session.getAttribute("quilleditorImgList");
+			
+			for(String imgName : restaurantImgs) {
+				if(!review.getContent().contains(imgName)) {
+					restaurantImgs.remove(imgName);
+				}
+			}
+			
 			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
 
@@ -121,5 +134,4 @@ public class ReviewController {
 		
 		return "redirect:"+redirectUrl;
 	}
-
 }

@@ -74,4 +74,14 @@ p{
 	color: grey;
 	float: right;
 	margin-right: 50px;
+	font-size: 13px;
+}
+
+.listing__details__comment__item__pic img {
+    height: 45px;
+    width: 45px;
+}
+
+.listing__details__comment__item {
+    margin-bottom: 20px;
 }
