@@ -77,7 +77,7 @@ public class ReviewService {
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
-		dto.setLikesCount(likesService.getLikesCount(review.getReviewId()));
+		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {
 		// review list ���댁��� ���명���댁�媛� 蹂댁�ъ＜�� ���깆��媛�怨� ������媛��� �щ㎎�� �ㅻⅤ湲� ��臾몄�� �곕� 泥�由ы�댁���.
@@ -94,9 +94,22 @@ public class ReviewService {
 		return dto;
 	}
 	
-	private static String formatTimestampForDetail(Timestamp timestamp) {
+	public int deleteReviewById(int id) throws SQLException {
+		int res = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		res = dao.delete(id);
+		dao.close();
+		
+		return res;
+	}
+	
+	static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		String formattedDate = simpleDateFormat.format(timestamp);
+		String formattedDate = null;
+		if(timestamp != null) {
+			formattedDate = simpleDateFormat.format(timestamp);
+		}
 		
 		return formattedDate;
 	}

@@ -6,7 +6,7 @@ import lombok.Data;
 public class Pagination {
 
 	private int currentPage; // 현재 페이지의 페이지 번호
-	private int numOfRecords; // 전체 게시물의 개수
+	private int numOfRecords; // 전체 게시물의 개수 << 참고
 	private int numOfPages; // 전체 페이지의 개수
 	private int numOfRecordsPerPage; // 한 페이지당 보여질 리스트의 개수
 	private int numOfPagesPerRange=5;	// 한 범위의 페이지 수
@@ -14,7 +14,7 @@ public class Pagination {
 	private int endPage; // 현재 범위의 끝 번호	- next 활성화할지 말지 결정위해
 	private boolean previousPage; // 이전 페이지 존재 여부
 	private boolean nextPage; // 다음 페이지 존재 여부
-	private int firstReviewId; // 게시판 시작 리뷰 번호
+	private int firstReviewId; // 게시판 시작 리뷰 번호 <<
 	
 
 	public void pageInfo(int currentPage, int numOfRecords, int numOfRecordsPerPage) {

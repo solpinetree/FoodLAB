@@ -20,7 +20,60 @@ public class LikesService {
 		return likes;
 	}
 	
+	public List<Integer> selectMemberIdByReviewId(int reviewId) throws SQLException{
+		LikesDAO dao = new LikesDAOImpl();
+		List<Integer> membersIdsWhoLike = dao.selectMemberIdByReviewId(reviewId);
+		dao.close();
+		return membersIdsWhoLike;
+	}
+	
 	public int getLikesCount(int reviewId) throws SQLException {
 		return selectByReviewId(reviewId).size();
+	}
+	
+	public String getHeartImgUrl(Likes likes) throws SQLException{
+		if(!didThisMemberHitLike(likes)) {
+			return "/foodlab/resources/img/icon/heart-empty.png";
+		}
+		return "/foodlab/resources/img/icon/heart-red.png";
+	}
+	
+	public boolean didThisMemberHitLike(Likes likes) throws SQLException{
+		LikesDAO dao = new LikesDAOImpl();
+		Likes res = dao.selectByReviewIdAndMemberId(likes);
+		dao.close();
+		if(res == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	public int insert(Likes likes) throws SQLException{
+		int res = 0;
+		
+		LikesDAO dao = new LikesDAOImpl();
+		res = dao.insert(likes);
+		dao.close();
+		
+		return res;
+	}
+	
+	public int delete(Likes likes) throws SQLException{
+		int res = 0;
+		
+		LikesDAO dao = new LikesDAOImpl();
+		res = dao.delete(likes);
+		dao.close();
+		
+		return res;
+	}
+	
+	public void toggle(Likes likes) throws SQLException{
+		if(didThisMemberHitLike(likes)) {
+			delete(likes);
+		}else {
+			insert(likes);
+		}
 	}
 }

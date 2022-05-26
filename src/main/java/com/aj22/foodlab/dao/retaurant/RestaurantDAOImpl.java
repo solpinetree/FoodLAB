@@ -19,7 +19,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	// FoodDAOImpl 객체가 생성될때 Connection도 생성된다.
+	// FoodDAOImpl 媛�泥닿� ���깅���� Connection�� ���깅����.
 	public RestaurantDAOImpl() {
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -28,7 +28,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		}
 	}
 	
-	// DB 자원 반납
+	// DB ���� 諛���
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
 		if(stmt != null) stmt.close();
@@ -105,6 +105,34 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		return restaurant;
 	}
 	
+	@Override
+	public List<RestaurantDTO> select(String category) throws SQLException {
+		List<RestaurantDTO> restaurants = new ArrayList<>();
+		String sql = "select * from restaurant where category=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, category);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+		
+		return restaurants;
+	}
+	
+	@Override
+	public List<RestaurantDTO> select_name(String name) throws SQLException {
+		List<RestaurantDTO> restaurants = new ArrayList<>();
+		String sql = "select * from restaurant where name LIKE concat('%',?,'%')";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+		
+		return restaurants;
+	}
+	
 	public RestaurantDTO createFromResultSet(ResultSet rs) throws SQLException {
 		
 		RestaurantDTO restaurant = null;
@@ -132,6 +160,27 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, startIdx);
 		pstmt.setInt(2, listSize);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+	
+		
+		return restaurants;
+	}
+	
+	
+	@Override
+	public List<RestaurantDTO> selectList_category(int startIdx, int listSize,String category) throws SQLException {
+		
+		List<RestaurantDTO> restaurants = new ArrayList<>();
+		
+		String sql = "select * from restaurant where category=? limit ?, ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, category);
+		pstmt.setInt(2, startIdx);
+		pstmt.setInt(3, listSize);
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
@@ -181,6 +230,21 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		
 		String sql = "select count(*) from restaurant";
 		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
+	}
+	
+	public int countRecords_category(String category) throws SQLException {
+		int cnt = 0;
+		
+		String sql = "select count(*) from restaurant where category=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, category);
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
