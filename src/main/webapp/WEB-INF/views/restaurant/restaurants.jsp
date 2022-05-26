@@ -44,9 +44,11 @@
 		}
 		
 		function loadUrl(page){
-			var url = "${root}/restaurants/list";
-			url = url + "?currentPage=" + page;
-			location.href = url;
+			
+				var url = "${root}/restaurants/list";
+				url = url + "?currentPage=" + page;
+				location.href = url;	
+			
 		}
 		
 		

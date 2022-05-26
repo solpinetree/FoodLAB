@@ -50,18 +50,22 @@ public class RestaurantController {
 	
 	
 	@GetMapping("/select_res")
-	public String res2( Model model, @RequestParam(required = false) String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+	public String res2( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
 
 		
-		int numOfRecords = restaurantService.getNumOfRecord_category(category);
+		int numOfRecords = restaurantService.getNumOfRecord_category(category); // 수정해야함
+		String numOfRecords2 = Integer.toString(numOfRecords);
+		logger.info(numOfRecords2);
 		
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
 		model.addAttribute("pagination", pagination);
-		model.addAttribute("restaurants", restaurantService.selectByCategory(category));
+		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
 		model.addAttribute("categories", restaurantService.getCategories());
+		logger.info(category);
+		model.addAttribute("category", category);
 		return "restaurant/restaurants";
 	}
 	
@@ -69,7 +73,6 @@ public class RestaurantController {
 	@GetMapping("/search")
 	public String restaurant_search(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
 		model.addAttribute("search_text",search_text);
-		logger.info("text = " + search_text);
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
 		return "restaurant/restaurants";

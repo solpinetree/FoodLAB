@@ -61,34 +61,35 @@
 		
 		
 		    <!-- pagination 시작 -->
-		    <c:if test="${category==null}">
+	
 			<div id="paginationBox">
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
+							<c:if test="${category == null}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
+							</c:if>
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+								<c:if test="${category==null}">
 						<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
 							onClick="fn_pagination('${idx}')">
 								${idx} </a></li>
+								</c:if>
 					</c:forEach>
 		
-					<c:if test="${pagination.nextPage}">
+							
+					<c:if test="${category==null}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
-					</c:if>
+							</c:if>
+					
 				</ul>
 			</div>
-			</c:if>
 			
-					    <c:if test="${category!=null}">
-
-			</c:if>
-			
-			
+					  
 			<!-- pagination 끝 -->
   </section>
