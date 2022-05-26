@@ -52,9 +52,8 @@
 		}
 		
 		
-		//이전 버튼 이벤트
 		function fn_prev_category(page,category) {
-			loadUrl_category(page-1,category);
+			loadUrl_category(page-1);
 		}
 
 	  	//페이지 번호 클릭
@@ -68,10 +67,13 @@
 		}
 		
 		function loadUrl_category(page,category){
-			var url = "${root}/restaurants/select_res";
-			url = url + "?currentPage=" + page+ "&categoty=" + category;
-			location.href = url;
+			
+				var url = "${root}/restaurants/select_res";
+				url = url + "?currentPage=" + page + "&category=" + category;
+				location.href = url;	
+			
 		}
+
 	</script>
 
     

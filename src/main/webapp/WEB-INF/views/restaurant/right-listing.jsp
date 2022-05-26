@@ -69,6 +69,12 @@
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
 							</c:if>
+							
+							<c:if test="${category != null}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev_category('${pagination.currentPage}','${category}')">Previous</a></li>
+							</c:if>
+							
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
@@ -79,12 +85,28 @@
 							onClick="fn_pagination('${idx}')">
 								${idx} </a></li>
 								</c:if>
+								
+								
+								<c:if test="${category!=null}">
+						<li
+							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
+							class="page-link" href="#"
+							onClick="fn_pagination_category('${idx}','${category}')">
+								${idx} </a></li>
+								</c:if>
+								
 					</c:forEach>
 		
 							
 					<c:if test="${category==null}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
+							</c:if>
+							
+							
+							<c:if test="${category!=null}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_next_category('${pagination.currentPage}','${category}')">Next</a></li>
 							</c:if>
 					
 				</ul>
