@@ -12,12 +12,16 @@ import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.aj22.foodlab.service.ChatService;
+import com.aj22.foodlab.domain.Chat;
 @ServerEndpoint("/wsocket")
 public class WebSocket {
 	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
-
 	
-	
+	@Autowired
+	ChatService chatService;
 	
 	/*
 	 *  websocket으로 브라우저가 접속하면 요청
@@ -64,8 +68,10 @@ public class WebSocket {
 			final Basic basic = session.getBasicRemote();
 			basic.sendText(message);
 		}catch(Exception e) {
-			
+			e.getStackTrace();
 		}
+		
+		
 	}
 	
 	public void sendAll(Session session, String message)
