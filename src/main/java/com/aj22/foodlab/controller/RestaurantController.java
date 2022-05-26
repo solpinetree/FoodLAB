@@ -66,8 +66,9 @@ public class RestaurantController {
 	
 	
 	@GetMapping("/search")
-	public String restaurantDetail(@RequestParam(required = false)String search_text, Model model) throws SQLException {
+	public String restaurant_search(@RequestParam(required = false)String search_text, Model model) throws SQLException {
 		model.addAttribute("search_text",search_text);
+		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
 		return "restaurant/restaurants";
 	}

@@ -119,6 +119,20 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		return restaurants;
 	}
 	
+	@Override
+	public List<RestaurantDTO> select_name(String name) throws SQLException {
+		List<RestaurantDTO> restaurants = new ArrayList<>();
+		String sql = "select * from restaurant where name=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+		
+		return restaurants;
+	}
+	
 	public RestaurantDTO createFromResultSet(ResultSet rs) throws SQLException {
 		
 		RestaurantDTO restaurant = null;

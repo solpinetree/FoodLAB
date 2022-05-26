@@ -8,7 +8,7 @@
             <h5><i class="fa fa-filter"></i> Filter</h5>
         </div>
         <div class="filter__search">
-            <input type="text">
+            <input type="text" placeholder="${search_text}">
         </div>
         <div class="filter__location">
         <form name="search_res" action="${root}/restaurants/search" class="search">
