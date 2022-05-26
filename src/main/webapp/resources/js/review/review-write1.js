@@ -115,4 +115,12 @@ document.reviewForm.addEventListener("keydown", evt => {
     if ((evt.keyCode || evt.which) === 13) {
         evt.preventDefault();
     }
+
+	var contentNextBtn = document.getElementById("contentNextBtn");
+
+	if(document.getElementById("title").value!='' && document.getElementById("content").value!=''){
+		contentNextBtn.style.display="block";
+	}else{
+		contentNextBtn.style.display="none";
+	}
 });

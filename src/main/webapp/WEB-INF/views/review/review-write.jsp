@@ -83,19 +83,19 @@
 							
 							                <!-- Slides -->
 							                <div class="swiper-slide"> 
-											 	<input class="file-input" name="img1" id="img1" multiple="multiple" type="file">
+											 	<input class="file-input" name="img1" id="img1" multiple="multiple" type="file" accept="image/*">
 											 	<a class="Neon-input-choose-btn">사진을 공유해주세요</a>
        										</div>
 							                <div class="swiper-slide">
-												<input class="file-input" name="img2" id="img2" multiple="multiple" type="file">
+												<input class="file-input" name="img2" id="img2" multiple="multiple" type="file" accept="image/*">
 											 	<a class="Neon-input-choose-btn">+</a>
 							                </div>
 							                <div class="swiper-slide">
-							                	<input class="file-input" name="img3" id="img3" multiple="multiple" type="file">
+							                	<input class="file-input" name="img3" id="img3" multiple="multiple" type="file" accept="image/*">
 											 	<a class="Neon-input-choose-btn">+</a>
 											</div>
 							                <div class="swiper-slide">
-												<input class="file-input" name="img4" id="img4" multiple="multiple" type="file">
+												<input class="file-input" name="img4" id="img4" multiple="multiple" type="file" accept="image/*">
 											 	<a class="Neon-input-choose-btn">+</a>
 							                </div>
 							
@@ -218,8 +218,6 @@
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write1.js"></script>
 	<script type="text/javascript" src="${resources}/js/review/kakaomap.js"></script>
-	<script type="text/javascript"
-		src="${resources}/js/review/quilleditor/quill-config.js"></script>
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write-swiper.js"></script>
