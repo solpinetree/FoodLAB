@@ -1,9 +1,10 @@
 
 var sendbtn = document.getElementById('sendbtn');
-
+var memberId = document.getElementById('member_id');
 
 var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
 var line = 0;
+
 	
 //	아래는 웹 소켓에서 사용하는 4가지 이벤트들이다.
 websocket.onopen = function(message){
@@ -15,22 +16,14 @@ websocket.onerror = function(message){}
 
 websocket.onmessage = function(message)
 {
-	//	메시지가 18개이면, 채팅창의 내용을 지운다.
-	/*
-	if (++line % 18 == 0){
-		line = 0;
-		document.getElementById("chat").innerHTML = "";
-	}
-	*/
 	addChat(message.data);
-	
 }
 
 function sendmessage()
 {
 	//"[${sessionScope.sessionMember.id}]"
 	//	메시지 박스에 있는 데이터를 전송한다.
-	var msg = "[${sessionScope.sessionMember.id}] : " + document.getElementById("sendmsg").value;
+	var msg = memberId + document.getElementById("sendmsg").value;
 	websocket.send(msg);
 	
 	//	메시지를 보내고, 메시지 입력 부분을 지워준다. 
