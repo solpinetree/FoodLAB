@@ -122,7 +122,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public List<RestaurantDTO> select_name(String name) throws SQLException {
 		List<RestaurantDTO> restaurants = new ArrayList<>();
-		String sql = "select * from restaurant where name=?";
+		String sql = "select * from restaurant where name LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
 		rs = pstmt.executeQuery();

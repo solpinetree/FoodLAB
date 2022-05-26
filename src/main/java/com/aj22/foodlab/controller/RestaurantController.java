@@ -2,6 +2,7 @@ package com.aj22.foodlab.controller;
 
 import java.sql.SQLException;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,8 +67,9 @@ public class RestaurantController {
 	
 	
 	@GetMapping("/search")
-	public String restaurant_search(@RequestParam(required = false)String search_text, Model model) throws SQLException {
+	public String restaurant_search(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
 		model.addAttribute("search_text",search_text);
+		logger.info("text = " + search_text);
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
 		return "restaurant/restaurants";
