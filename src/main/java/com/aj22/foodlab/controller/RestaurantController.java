@@ -44,8 +44,33 @@ public class RestaurantController {
 	@GetMapping("/detail")
 	public String restaurantDetail(@RequestParam(required = false) int restaurantId, Model model) throws SQLException {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
-		// 페이지네이션으로 받은 8개의 리스트와는 다르게 나는 resId 값을 따른 딱 하나의 객체만 받으면 된다.
 		return "restaurant/detail";
+	}
+	
+	
+	@GetMapping("/select_res")
+	public String res2( Model model, @RequestParam(required = false) String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		
+
+		
+		int numOfRecords = restaurantService.getNumOfRecord_category(category);
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("restaurants", restaurantService.selectByCategory(category));
+		model.addAttribute("categories", restaurantService.getCategories());
+		return "restaurant/restaurants";
+	}
+	
+	
+	@GetMapping("/search")
+	public String restaurant_search(@RequestParam(required = false)String search_text, Model model) throws SQLException {
+		model.addAttribute("search_text",search_text);
+		model.addAttribute("categories", restaurantService.getCategories());
+		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
+		return "restaurant/restaurants";
 	}
 	
 }

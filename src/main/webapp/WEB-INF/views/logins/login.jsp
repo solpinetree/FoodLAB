@@ -29,7 +29,7 @@
 		}
 	}
 </script>
-<title>Insert title here</title>
+<title>loginpage</title>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 </head>
 
