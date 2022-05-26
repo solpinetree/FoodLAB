@@ -139,10 +139,12 @@
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style="margin-block-end: 0em;">
+			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" action = "${root}/chat/openchat/insert">
 				
 			<!--[${sessionScope.sessionMember.id}] -->
-				<input type = "text" id = "sendmsg" placeholder = "메시지를 입력해주세요" autocomplete = "on">
+				<input type = "text" name = "content" id = "sendmsg" placeholder = "메시지를 입력해주세요" autocomplete = "on">
+				<input type="hidden" name="member_id" value="${sessionScope.sessionMember.id}"/>
+				<input type="hidden" name="chatroom_id" value="1"/>
 				<button id = "sendbtn"  onclick = "sendmessage">
 					<svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
 					<path fill="rgba(0,0,0,.38)"
