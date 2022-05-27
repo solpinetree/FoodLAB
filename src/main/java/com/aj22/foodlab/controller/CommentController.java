@@ -23,13 +23,15 @@ public class CommentController {
 	
 	@PostMapping("/insert")
 	@ResponseBody
-	public void insertComment(Comment comment) throws SQLException {
-		int res = commentService.insert(comment);
+	public String insertComment(Comment comment) throws SQLException {
+		Integer commentId = commentService.insert(comment);
 		
 		
-		if(res != 0) {
+		if(commentId != null) {
 			System.out.println("댓글 등록 성공");
 		}
+		
+		return null;
 	}
 	
 	

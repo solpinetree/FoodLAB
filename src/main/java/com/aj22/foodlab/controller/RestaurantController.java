@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.util.Pagination;
-
-/**
- * Handles requests for the application home page.
- */
+ 
 @Controller
 @RequestMapping("/restaurants")
 public class RestaurantController {
@@ -25,15 +22,12 @@ public class RestaurantController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
-	static final int NumOfRecordsPerPage = 12;
+	static final int NumOfRecordsPerPage = 12; //FIXME : ì‚­ì œí•˜ê¸° - ì„œë¹„ìŠ¤ì—ì„œ 
 	
 	@GetMapping("/list")
-	public String res( Model model, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+	public String restaurantListPage( Model model, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
-		int numOfRecords = restaurantService.getNumOfRecord();
-		
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		Pagination pagination = restaurantService.getPagination(currentPage);
 		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("restaurants", restaurantService.selectList(pagination));
@@ -44,7 +38,6 @@ public class RestaurantController {
 	@GetMapping("/detail")
 	public String restaurantDetail(@RequestParam(required = false) int restaurantId, Model model) throws SQLException {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
-		// ÆäÀÌÁö³×ÀÌ¼ÇÀ¸·Î ¹ŞÀº 8°³ÀÇ ¸®½ºÆ®¿Í´Â ´Ù¸£°Ô ³ª´Â resId °ªÀ» µû¸¥ µü ÇÏ³ªÀÇ °´Ã¼¸¸ ¹ŞÀ¸¸é µÈ´Ù.
 		return "restaurant/detail";
 	}
 	

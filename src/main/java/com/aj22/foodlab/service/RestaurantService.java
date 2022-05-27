@@ -14,6 +14,8 @@ import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class RestaurantService {
+	
+	static final int NumOfRecordsPerPage = 12;
 
 	public List<RestaurantDTO> selectList(Pagination pagination) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
@@ -56,4 +58,15 @@ public class RestaurantService {
 		
 		return cnt;
 	}
+
+	public Pagination getPagination(int currentPage) throws SQLException {
+		
+		int numOfRecords = getNumOfRecord();
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
+	
 }

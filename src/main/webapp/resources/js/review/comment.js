@@ -4,6 +4,7 @@ function showComments(reviewId) {
 		//Get comment html code
 		url:"/foodlab/comments/list?reviewId="+reviewId,
 		method:"GET",
+		async: true,
 		success:function(response) {
 			$('#showComments').html(response);
 		}
@@ -23,9 +24,11 @@ $(document).ready(function(){
 		$.ajax({
 			url: "/foodlab/comments/insert",
 			method: "post",
+			aysnc: true,
 			data: $("#commentForm").serialize(),
-			success:function() {
-				document.getElementById("content").value ="";
+			success:function(data) {
+				document.getElementById("content").value="";
+				document.getElementById("parentCommentId").value="";
 				showComments(reviewId);
 			}
 		})

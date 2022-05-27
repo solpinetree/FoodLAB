@@ -6,7 +6,7 @@
 	<h4>댓글</h4>
 
   <div id="showComments"></div>
-   
+  
    <c:if test="${!empty sessionScope.sessionMember.username}">
 	 	<div class="listing__details__review">
 	      <form method="post" id="commentForm">
