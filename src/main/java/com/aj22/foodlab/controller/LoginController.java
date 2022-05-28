@@ -1,5 +1,6 @@
 package com.aj22.foodlab.controller;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -22,21 +26,14 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String res( Model model) {
+	public String login( Model model) {
 		logger.info("login.jsp 진입");
 		
 		return "/logins/login";
 	}
-	
-	@RequestMapping(value = "/login_success", method = {RequestMethod.GET,RequestMethod.POST})
-	public String res2( Model model) {
-		logger.info("login_success.jsp 진입");
 		
-		return "/logins/login_success";
-	}
-	
 	@RequestMapping(value = "/mypage", method = {RequestMethod.GET,RequestMethod.POST})
-	public String res3( Model model) {
+	public String mypage( Model model) {
 		logger.info("mypage.jsp 진입");
 		
 		return "/logins/mypage";
@@ -49,13 +46,14 @@ public class LoginController {
 		return "/logins/processAddMember";
 	}
 	
-	@RequestMapping(value = "/resultMember", method = {RequestMethod.GET,RequestMethod.POST})
-	public String res5( Model model) {
-		logger.info("resultMember.jsp 진입");
+
+		@GetMapping("/resultMember")
+		public String resultMember_wellcome(Model model, @RequestParam("msg") String msg) throws SQLException {
+			model.addAttribute("msg",msg);
+			return "/logins/resultMember";
+		}
 		
-		return "/logins/resultMember";
-	}
-	
+
 	
 	@RequestMapping(value = "/processLoginMember", method = {RequestMethod.GET,RequestMethod.POST})
 	public String res6( Model model) {

@@ -30,22 +30,37 @@
 
 	<div align="center">
 	
-		<%
-			String msg = request.getParameter("msg");
-
-			if (msg != null) {
-				if (msg.equals("0"))
-					out.println(" <h2 class='alert alert-danger resultmember'>회원정보가 수정되었습니다.</h2>");
-				else if (msg.equals("1"))
-					out.println(" <h2 class='alert alert-danger resultmember'>회원가입을 축하드립니다.</h2>");
-				else if (msg.equals("2")) {
-					 out.println(" <h2 class='alert alert-danger resultmember'>" + sessionMember.getUsername() + "님 환영합니다!</h2>");
-				}				
-			} else {
-				out.println("<h2 class='alert alert-danger resultmember'>회원정보가 삭제되었습니다.</h2>");
-			}
-		%>
+	<h1>${msg}</h1>
+	
+	
+	<c:if test="${msg != null}">
+		<c:if test="${msg eq '0'}">
+		<h2 class='alert alert-danger resultmember'>회원정보가 수정되었습니다.</h2>
+		</c:if>
+		
+		<c:if test="${msg eq '1'}">
+		<h2 class='alert alert-danger resultmember'>회원가입을 축하드립니다.</h2>
+		</c:if>
+		
+		<c:if test="${msg eq '2'}">
+		<h2 class='alert alert-danger resultmember'><img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<% out.println(sessionMember.getUsername()); %>님 환영합니다!
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/></h2>
+		</c:if>
+	
+	</c:if>
+	
+	<c:if test="${msg == null}">
+	
+	<h2 class='alert alert-danger resultmember'>회원정보가 삭제되었습니다.</h2>
+	
+	</c:if>
+
+		
 	</div>	
 	<%-- contoller로 resultMember를 보내서 ${resultMember}형식으로 jstl if문으로 코드를 재작성한다. --%>
 	<div>
