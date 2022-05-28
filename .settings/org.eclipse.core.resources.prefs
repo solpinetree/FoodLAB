@@ -3,6 +3,7 @@
 >>>>>>>=Stashed changes
 eclipse.preferences.version=1
 encoding//src/main/java/com/aj22/foodlab/controller/ChatController.java=UTF-8
+encoding//src/main/java/com/aj22/foodlab/controller/LoginController.java=UTF-8
 encoding//src/main/java/com/aj22/foodlab/controller/ReviewController.java=UTF-8
 encoding//src/main/java/com/aj22/foodlab/dao/member/MemberDAOImpl.java=UTF-8
 encoding//src/main/java/com/aj22/foodlab/dao/retaurant/RestaurantDAOImpl.java=UTF-8
