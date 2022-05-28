@@ -250,9 +250,24 @@ ol {
 }
 
 .resultmember {
-	margin-top:200px;
+	margin-top:100px;
 	padding-top:20px;
 	padding-bottom:20px;
+}
+
+.resultmember_bottom {
+	margin-top:50px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+.mypage_border {
+	border:2px solid #f9adbd;
+	margin-top:200px;
+	margin-left:100px;
+	margin-right:100px;
+	margin-bottom:100px;
+
 }
 
 .firecracker-icon {

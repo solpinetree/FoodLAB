@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,19 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.aj22.foodlab.dao.member.MemberDAOImpl;
+import com.aj22.foodlab.dto.MemberDTO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes("member")
 @RequestMapping("/logins/*")
 public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login( Model model) {
 		logger.info("login.jsp 진입");
 		
@@ -39,16 +46,24 @@ public class LoginController {
 		return "/logins/mypage";
 	}
 	
-	@RequestMapping(value = "/processAddMember", method = {RequestMethod.GET,RequestMethod.POST})
-	public String res4( Model model) {
+	@GetMapping("/processAddMember")
+	public String processAddMember(@ModelAttribute("member") Model model, @RequestParam("email") String email
+			, @RequestParam("password") String password, @RequestParam("name") String name) throws SQLException {
 		logger.info("processAddMember.jsp 진입");
 		
+		model.addAttribute("email",email);
+		model.addAttribute("password",password);
+		model.addAttribute("name",name);
+		
+
 		return "/logins/processAddMember";
-	}
 	
+	}
 
 		@GetMapping("/resultMember")
 		public String resultMember_wellcome(Model model, @RequestParam("msg") String msg) throws SQLException {
+			
+			logger.info("resultMember.jsp 진입");
 			model.addAttribute("msg",msg);
 			return "/logins/resultMember";
 		}
