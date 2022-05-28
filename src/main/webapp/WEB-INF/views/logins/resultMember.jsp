@@ -10,7 +10,7 @@
 <title>회원 정보</title>
 
 </head>
-<body>
+<body style="background-image: url('https://source.unsplash.com/Xaanw0s0pMk/1600x900')">
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
 	 
 
