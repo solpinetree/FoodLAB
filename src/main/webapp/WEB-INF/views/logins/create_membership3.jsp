@@ -182,7 +182,7 @@
 	                        		</div>
 	                            </div>
 	                            <div class="form-bottom" style="border:1px solid #e3e3e3">
-				                    <form name="newMember" role="form" action="${root}/logins/processAddMember" method="post" class="registration-form" onsubmit="return checkForm()">
+				                    <form name="newMember" role="form" action="${root}/logins/processAddMember" class="registration-form" onsubmit="return checkForm()">
 				                    	<div class="form-group" style="margin-bottom:0px;">
 				                        	<label class="sr-only" for="form-email">이메일</label>
 				                        	<input type="text" name="email" placeholder="이메일" class="form-email form-control" id="form-email" onkeyup='mykeydown()'>

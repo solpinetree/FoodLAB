@@ -66,7 +66,7 @@ if (result == 1){
     	opener.document.newMember.email.value = document.newMember.useremail.value;
     	
     	//6-3. 회원가입창 제어
-    	//readonly 속성제어(커멜표기가 아닐때는 제어가 안됨 신기하네 ㅋㅋㅋ)
+    	//readonly 속성제어
     	opener.document.newMember.email.readOnly=true;
     	
     	//6-2. 창닫기
