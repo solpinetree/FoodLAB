@@ -10,7 +10,7 @@
 <title>회원 정보</title>
 
 </head>
-<body>
+<body style="background-image: url('https://source.unsplash.com/Xaanw0s0pMk/1600x900')">
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
 	 
 
@@ -43,6 +43,8 @@
 		</c:if>
 		
 		<c:if test="${msg eq '2'}">
+		<div>
+		<div class="col-lg-9 col-md-9" >
 		<h2 class='alert alert-danger resultmember'><img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
@@ -50,6 +52,15 @@
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/></h2>
+		</div>
+		
+			<div class="col-lg-9 col-md-9">
+	<p class='alert alert-danger resultmember_bottom'>FoodLAB에서 마음에 맞는 맛집을 찾아보세요!<br><br>
+	푸드로그에서 맛집 리뷰를 확인해 보세요!<br><br>
+	맛집 정보에서 내마음에 맞는 맛집을 찾아보세요!<br><br>
+	푸드톡에서 음식에 대한 이야기를 나눠보세요!</p>
+	</div>
+	</div>
 		</c:if>
 	
 	</c:if>
@@ -61,10 +72,10 @@
 	</c:if>
 
 		
+	
+	
+
+	
 	</div>	
-	<%-- contoller로 resultMember를 보내서 ${resultMember}형식으로 jstl if문으로 코드를 재작성한다. --%>
-	<div>
-	<h2> hi </h2>
-	</div>
 </body>
 </html>
