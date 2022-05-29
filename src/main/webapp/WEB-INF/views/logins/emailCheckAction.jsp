@@ -12,26 +12,29 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 
+<%-- Check email authentication as the final procedure for membership registration --%>
+
 <%
    request.setCharacterEncoding("UTF-8");
    String code = null;
-   if(request.getParameter("code") != null) {
+   if(request.getParameter("code") != null) { // The code is an encrypted string that has hashed user email
 	   code = request.getParameter("code");
    }
   
    
    String userEmail = (String)session.getAttribute("useremail");
    boolean isRight = (new SHA256().getSHA256(userEmail).equals(code)) ? true : false;
+   // If the encrypted value of the user's email is the same as the authentication value of the email
    if(isRight == true) {
 	   
 	   
-	   
+	   // If the e-mail authentication is successful, change the user's e-mail authentication in the DB value to true
 	   String SQL = "UPDATE member SET userEmailChecked = true WHERE email = ?";    
     
-       PreparedStatement pstmt = null; //특정한 SQL 문장을 수행 하도록 하는 class
-       ResultSet rs = null; // 특정한 SQL 문장을 수행한 이후에 나온 결과값에 대해 처리하고자 할 때 사용하는 class
+       PreparedStatement pstmt = null; //Class that lets you perform a specific SQL statements
+       ResultSet rs = null; // The class you use to process results after performing a particular SQL statement
        try {                   
-           pstmt = conn.prepareStatement(SQL); //conn 객체에서 prepareStatement를 실행하도록 준비
+           pstmt = conn.prepareStatement(SQL); //Prepare to run prepareStatement on conn object
            pstmt.setString(1, userEmail);
            pstmt.executeUpdate();        
        } catch (Exception e) {
@@ -50,7 +53,7 @@
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
 	   script.println("alert('회원가입이 완료되었습니다.');");
-	   script.println("location.href = '../'");
+	   script.println("location.href = '../'"); // home
 	   script.println("</script>");
 	   script.close();
 	   return;
@@ -58,7 +61,7 @@
 	   PrintWriter script = response.getWriter();
 	   script.println("<script>");
 	   script.println("alert('회원가입을 실패하였습니다.');");
-	   script.println("location.href = '../'");
+	   script.println("location.href = '../'"); // home
 	   script.println("</script>");
 	   script.close();
 	   return;
