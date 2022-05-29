@@ -23,26 +23,20 @@ public class WebSocket {
 	@Autowired
 	ChatService chatService;
 	
-	/*
-	 *  websocketÀ¸·Î ºê¶ó¿ìÀú°¡ Á¢¼ÓÇÏ¸é ¿äÃ»
-	 */
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.println("client connect...");
 		System.out.println("session id : " +session.getId());
 		
-		// WebSocket¼¼¼ÇÀ» ¸®½ºÆ®¿¡ ÀúÀå
 		sessions.add(session);
 	}
 	
 	
-	// websocket°ú ºê¶ó¿ìÀú°¡ Á¢¼ÓÀÌ ²÷±â¸é ¿äÃ»
 	@OnClose
 	public void onClose(Session session){
 		System.out.println("client is disconnected...");
-		System.out.println(session.getId() + "Å¬¶óÀÌ¾ðÆ®°¡ ¿¬°áÀ» ÇØÁ¦Çß½À´Ï´Ù.");
+		System.out.println(session.getId() + "Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 		
-		//	¼¼¼ÇÀ» ´Ý´Â´Ù.
 		sessions.remove(session);
 	}
 	
@@ -54,12 +48,11 @@ public class WebSocket {
 	
 
 	
-	//webSocket À¸·Î ¸Þ½ÃÁö°¡ ¿À¸é ¿äÃ»
 	@OnMessage
 	public void onMessage(String message, Session session)
 	{
-		//	¼­¹ö°¡ ¹Þ´Â´Ù.
-		System.out.println("Å¬¶óÀÌ¾ðÆ®°¡ º¸³»¿Â ¸Þ½ÃÁö : ");
+		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½.
+		System.out.println("Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ : ");
 		System.out.println(message);
 		
 		this.sendAll(session, message);
@@ -79,7 +72,6 @@ public class WebSocket {
 		System.out.println("sendAll : " + session.getId() + ":" +message);
 		try {
 			int i = 0;
-			//	À¥ ¼ÒÄÏ¿¡ ¿¬°áµÇ¾î ÀÖ´Â ¸ðµç ¾ÆÀÌµð¸¦ Ã£´Â´Ù.	
 			for (Session s : WebSocket.sessions) 
 			{
 				System.out.println(++i);

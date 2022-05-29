@@ -41,7 +41,7 @@ public class ChatDAOImpl implements ChatDAO{
 	}
 	
 
-	// ÇÑÁÙ ¾¿ Ã¤ÆÃ°ª db¿¡ ÀÔ·Â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¤ï¿½Ã°ï¿½ dbï¿½ï¿½ ï¿½Ô·ï¿½
 	@Override
 	public int insert(Chat chat) throws SQLException {
 		
@@ -61,7 +61,6 @@ public class ChatDAOImpl implements ChatDAO{
 		return cnt;
 	}
 	
-	//chatroomId ·Î chatroomId ¿¡ ÀÖ´Â ÀüÃ¼ chat µ¥ÀÌÅÍ¸¦ List
 	public List<Chat> selectByChatroomId(int id) throws SQLException{
 		List<Chat> chats = new ArrayList<>();
 		

@@ -49,7 +49,7 @@ public class RestaurantController {
 		
 
 		
-		int numOfRecords = restaurantService.getNumOfRecord_category(category); // 수정해야함
+		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
 		String numOfRecords2 = Integer.toString(numOfRecords);
 		logger.info(numOfRecords2);
 		
