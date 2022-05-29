@@ -15,7 +15,8 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 <html>
 <head>
 <meta charset=utf-8">
-<title>Insert title here</title>
+<title>dbconnection</title>
+<%-- dbconnection --%>
 </head>
 <body>
 

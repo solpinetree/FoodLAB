@@ -37,7 +37,7 @@
     
     <jsp:include page="../includes/header.jsp" />
     
-    <!-- 헤더의 배경화면이 흰색일 경우 -->
+    <!-- If the header's wallpaper is white -->
     <script type="text/javascript">
     	var element = document.querySelector('header');
     	element.classList.add('header--normal');
@@ -65,6 +65,7 @@
 	                        			<i class="fa fa-key"></i>
 	                        		</div>
 	                            </div>
+	                            <%-- Login Error --%>
 	                            <%
 				String error = request.getParameter("error");
 				if (error != null) {
@@ -76,7 +77,7 @@
 				System.out.println(session.getAttribute("sessionMember"));
 			%>
 	                            <div class="form-bottom" style="padding-bottom:10px; border:1px solid #e3e3e3;">
-	                            
+	                            	<%-- Login Form --%>
 				                    <form role="form" action="${root}/logins/processLoginMember" method="post" class="login-form">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="inputUserName">email</label>
@@ -125,9 +126,7 @@
         <script type="text/javascript" src="${resources}/js/login/jquery.backstretch.min.js"></script>
         <script type="text/javascript" src="${resources}/js/login/scripts.js"></script>
        
-        <!--[if lt IE 10]>
-            <script src="..resources/js/placeholder.js"></script>
-        <![endif]-->
+
 
     </body>
 

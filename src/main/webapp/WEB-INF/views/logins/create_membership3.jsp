@@ -10,8 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login &amp; Register Templates</title>
+        <title>Membership registration page</title>
+        <%-- Receive user information about membership --%>
+        
 <script type="text/javascript">
+<%-- Type of membership entry for email, password --%>
 	function checkForm() {
 		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
 		var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -50,7 +53,7 @@
 	}
 	
 	function mykeydown() {
-		
+		<%-- Display warning statements if the user input does not match the format --%>
 		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
 		var name = /^(?=.*[a-zA-Z]).{2,20}$/;
@@ -107,29 +110,29 @@
 		
 	}
 	
-	
+	<%-- Duplicate confirmation of membership registration --%>
 	function winopen(){
-		//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
-		//1. 아이디가 없으면 알림창과 진행x
+		//Open a new window to open the page -> Check duplicate with member email information
+		//1. Do not proceed with notification window without email
 		if(document.newMember.email.value =="" || document.newMember.email.value.length < 0){
 			alert("이메일을 먼저 입력해주세요")
 			document.newMember.email.focus();
 		}else{
-			//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
-			//자바스크립트로 어떻게 DB에 접근할까? => 파라미터로 id값을 가져가서 jsp페이지에서 진행하면 된다.
+			//2. To check if you have a member information email, you need to access the DB.
+			//How do I access DB with JavaScript? Take the email value with the => parameter and proceed on the jsp page.
 			window.open("${root}/logins/joinemailCheck?useremail="+document.newMember.email.value,"","width=500, height=300");
 		}
 	}
 	
 	function winopen2(){
-		//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
-		//1. 아이디가 없으면 알림창과 진행x
+		//Open a new window to open the page -> Check duplicate with member nickname information
+		//1. Do not proceed with the notification window if you do not have an nickname
 		if(document.newMember.name.value =="" || document.newMember.name.value.length < 0){
 			alert("닉네임을 먼저 입력해주세요")
 			document.newMember.name.focus();
 		}else{
-			//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
-			//자바스크립트로 어떻게 DB에 접근할까? => 파라미터로 id값을 가져가서 jsp페이지에서 진행하면 된다.
+			//2. To check if you have a member information nickname, you need to access the DB.
+			//How do I access DB with JavaScript? Take the username value with the => parameter and proceed on the jsp page.
 			window.open("${root}/logins/joinnameCheck?username="+document.newMember.name.value,"","width=500, height=300");
 		}
 	}
@@ -144,7 +147,7 @@
     
     <jsp:include page="../includes/header.jsp" />
     
-    <!-- 헤더의 배경화면이 흰색일 경우 -->
+    <!-- If the header's wallpaper is white -->
     <script type="text/javascript">
     	var element = document.querySelector('header');
     	element.classList.add('header--normal');
@@ -170,7 +173,7 @@
                         
                         	
                         <div class="col-sm-8 col-sm-offset-2">
-                        	
+                        	<%-- Member registration form --%>
                         	<div class="form-box" style="width:500px; margin:auto;" >
                         		<div class="form-top">
 	                        		<div class="form-top-left">
