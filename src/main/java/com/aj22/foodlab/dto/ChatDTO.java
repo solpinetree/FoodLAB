@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class ChatDTO {
 	private ChatroomDTO chatroomId; // chatroom Id
 	private MemberDTO writer; // Member id
-	private String content; // 채팅내용
+	private String content; 
 	private Timestamp createdAt;
 	
 	

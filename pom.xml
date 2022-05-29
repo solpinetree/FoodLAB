@@ -170,6 +170,19 @@
 		    <version>2.9.2</version>
 		</dependency>
 		
+		<!-- websocket -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>5.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.websocket</groupId>
+		    <artifactId>javax.websocket-api</artifactId>
+		    <version>1.1</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 		<dependency>
     <groupId>javax.mail</groupId>
     <artifactId>mail</artifactId>
