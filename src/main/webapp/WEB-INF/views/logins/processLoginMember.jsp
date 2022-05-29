@@ -7,7 +7,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page import="com.aj22.foodlab.dto.*"%>
-
+<!--  resources 디렉토리 위치를 가리키는 변수 선언 -->
+<c:set var="resources" value="${pageContext.request.contextPath }/resources" />
+<c:set var="root" value="${pageContext.request.contextPath }" />
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -39,7 +41,7 @@
 	<jsp:setProperty name="sessionMember" property="email" value="${row.email}"/>
 	<jsp:setProperty name="sessionMember" property="username" value="${row.username}"/>
 	<jsp:setProperty name="sessionMember" property="userEmailChecked" value="${row.userEmailChecked}"/>
-	<c:redirect url="resultMember?msg=2" />
+	<c:redirect url="resultMember?msg=2"/>
 </c:forEach>
 
 <c:redirect url="login?error=1" />

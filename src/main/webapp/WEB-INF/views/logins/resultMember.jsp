@@ -8,33 +8,74 @@
 <head>
 <link rel="stylesheet" href="../css/loginbootstrap.min.css" />
 <title>회원 정보</title>
-</head>
-<body>
-<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
-	<jsp:include page="../includes/header.jsp" />
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">회원정보</h1>
-		</div>
-	</div>
-	<div class="container" align="center">
-	
-		<%
-			String msg = request.getParameter("msg");
 
-			if (msg != null) {
-				if (msg.equals("0"))
-					out.println(" <h2 class='alert alert-danger'>회원정보가 수정되었습니다.</h2>");
-				else if (msg.equals("1"))
-					out.println(" <h2 class='alert alert-danger'>회원가입을 축하드립니다.</h2>");
-				else if (msg.equals("2")) {
-					out.println(" <h2 class='alert alert-danger'>" + sessionMember.getUsername() + "님 환영합니다</h2>");
-				}				
-			} else {
-				out.println("<h2 class='alert alert-danger'>회원정보가 삭제되었습니다.</h2>");
-			}
-		%>
+</head>
+<body style="background-image: url('https://source.unsplash.com/Xaanw0s0pMk/1600x900')">
+<jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
+	 
+
+
+
+    <!-- Header Section Begin -->
+	<jsp:include page="../includes/header.jsp"/>
+    <!-- Header Section End -->
+
+	<!-- 헤더의 배경화면이 흰색일 경우 -->
+    <script type="text/javascript">
+    	var element = document.querySelector('header');
+    	element. classList.add('header--normal');
+    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
+    </script>
+    
+
+	<div align="center">
+	
+	<h1>${msg}</h1>
+	
+	
+	<c:if test="${msg != null}">
+		<c:if test="${msg eq '0'}">
+		<h2 class='alert alert-danger resultmember'>회원정보가 수정되었습니다.</h2>
+		</c:if>
 		
+		<c:if test="${msg eq '1'}">
+		<h2 class='alert alert-danger resultmember'>회원가입을 축하드립니다.</h2>
+		</c:if>
+		
+		<c:if test="${msg eq '2'}">
+		<div>
+		<div class="col-lg-9 col-md-9" >
+		<h2 class='alert alert-danger resultmember'><img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<% out.println(sessionMember.getUsername()); %>님 환영합니다!
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
+		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/></h2>
+		</div>
+		
+			<div class="col-lg-9 col-md-9">
+	<p class='alert alert-danger resultmember_bottom'>FoodLAB에서 마음에 맞는 맛집을 찾아보세요!<br><br>
+	푸드로그에서 맛집 리뷰를 확인해 보세요!<br><br>
+	맛집 정보에서 내마음에 맞는 맛집을 찾아보세요!<br><br>
+	푸드톡에서 음식에 대한 이야기를 나눠보세요!</p>
+	</div>
+	</div>
+		</c:if>
+	
+	</c:if>
+	
+	<c:if test="${msg == null}">
+	
+	<h2 class='alert alert-danger resultmember'>회원정보가 삭제되었습니다.</h2>
+	
+	</c:if>
+
+		
+	
+	
+
+	
 	</div>	
 </body>
 </html>
