@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.domain.Likes;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
-import com.aj22.foodlab.service.CommentService;
 import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewService;
@@ -64,14 +63,15 @@ public class ReviewController {
 
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
-	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
+	public String writeReviewProcess(Review review, MultipartHttpServletRequest multipartRequest, String restaurantName,
 			HttpServletRequest request) throws SQLException, IOException {
+		
+		multipartRequest.setCharacterEncoding("utf-8");
+		
 		// 사용자가 입력한 식당 이름으로
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
 		Integer reviewId = reviewService.insert(review);
-		
-		
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직

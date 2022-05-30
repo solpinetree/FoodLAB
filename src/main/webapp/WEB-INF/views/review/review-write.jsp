@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="${resources}/css/review/review-write.css">
 <link rel="stylesheet" href="${resources}/css/review/uploading.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
 </head>
 
 <body>
@@ -73,7 +71,7 @@
 						<fieldset>  
 							<div class="form-card">
 								<input type="text" name="title" id="title"
-									placeholder="이 장소를 한 문장으로 표현한다면 ..?"
+									placeholder="리뷰의 제목을 입력해주세요."
 									style="background-color: white; font-weight: 500">
 									
 								   <!-- Slider main container -->
@@ -110,7 +108,7 @@
 							        </div>	
 								
 									
-								<textarea name="content" id="content" rows="0" cols="0" style="font-weight: 500; height: 141px" placeholder="간단한 리뷰"></textarea>
+								<textarea name="content" id="content" rows="0" cols="0" style="font-weight: 500; height: 141px" placeholder="간단한 리뷰를 작성해주세요."></textarea>
 							</div>
 
 							<input type="button" name="next" id="contentNextBtn"
@@ -217,7 +215,6 @@
 		src="${resources}/js/review/image-upload.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write1.js"></script>
-	<script type="text/javascript" src="${resources}/js/review/kakaomap.js"></script>
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write-swiper.js"></script>

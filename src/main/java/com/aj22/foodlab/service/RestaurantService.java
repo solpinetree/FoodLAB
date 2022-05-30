@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
-import com.aj22.foodlab.dao.review.ReviewDAO;
-import com.aj22.foodlab.dao.review.ReviewDAOImpl;
 import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.Pagination;
 
@@ -104,5 +102,13 @@ public class RestaurantService {
 		return cnt;
 	}
 	
+	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
+		
+		int numOfRecords = getNumOfRecord_category(category);
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
 	
 }
