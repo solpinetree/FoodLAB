@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%-- Consent to the terms and conditions of membership --%>
 <link rel="stylesheet" href="${resources}/css/loginclause.css?after">
 
 
@@ -102,6 +103,7 @@
           </ul>
           
           <button onclick= "window.location.href='${root}/logins/create_membership3'" type="submit" class="next-button" disabled>확인</button>
+          <%-- You must agree to all the check boxes before you can go to the membership page --%>
                
         </form>
       </div>

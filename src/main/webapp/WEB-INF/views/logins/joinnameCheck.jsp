@@ -35,7 +35,7 @@ int result = -1;
 
 if (result == 1){
 	out.print("사용가능한 닉네임입니다");
-	//5. 아이디사용하기버튼추가 => 동기방식사용 but 요즘은 비동기방식을 더 많이사용한다
+	//5. Add name button => Use synchronous method
 	%>
 	 <input type="button" value="닉네임 사용하기" onclick="result();">
 	<%
@@ -59,17 +59,29 @@ if (result == 1){
 <!-- 6. 선택된아이디는 중복확인창에서 회원가입 페이지로 정보전달  -->
  <script type="text/javascript">
     function result(){
-    	//팝업창의 아이디정보를 회원가입창에 아이디정보로 전달
-    	//팝업창은 기존창과 종속관계를 가지고 있으므로 opener를 이용하면 된다.
-    	//alert("팝업창의 id값"+document.wfr.userid.value + ", 회원가입창의 id값 : " +opener.document.fr.id.value)
-    	//6-1. 회원가입페이지의 id값에 아이디중복으로 선택된 id값을 대입.
+    	/*
+    	The name information of the pop-up window is delivered 
+    	
+    	to the membership registration window as the name information
+    	
+    	The pop-up window has a dependent relationship with the existing window, 
+    	
+    	so you can use the opener.
+    	
+    	alert("name value of pop-up window"+document.wfr.username.value+",name value of membership window:"+opener.document.fr.name.value)
+    	
+    	6-1. Insert the name value selected by duplicate name into the name value of the membership registration page.
+    	*/
     	opener.document.newMember.name.value = document.newMember.username.value;
     	
-    	//6-3. 회원가입창 제어
-    	//readonly 속성제어(커멜표기가 아닐때는 제어가 안됨 신기하네 ㅋㅋㅋ)
+    	/*
+    	6-3. Member registration window control
+    	
+    	read only attribute control
+    	*/
     	opener.document.newMember.name.readOnly=true;
     	
-    	//6-2. 창닫기
+    	//6-2. Close a window
     	window.close();
     }
     

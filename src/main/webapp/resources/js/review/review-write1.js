@@ -11,18 +11,17 @@ $(document).ready(function() {
 	$(".next").click(function() {
 		
 		if($(this).hasClass('submitBtn')){
+			console.log('submitBtn 클릭');
 			let numberInPartyVal = document.getElementById('numberInParty').value;
 			if(numberInPartyVal!==''){
-				if(validateNumberInPartyVal(numberInPartyVal)){
-					let content = document.getElementById("content");
-					content.value = getQuillContent();
+				//if(validateNumberInPartyVal(numberInPartyVal)){
 					
 					next($(this));
 					setTimeout(() => document.getElementById('reviewSubmitBtn').click(), 3000);
 					
-				}else{
+			/*	}else{
 					showError();
-				}
+				}*/
 			}else{
 				next($(this));
 			}
@@ -115,4 +114,12 @@ document.reviewForm.addEventListener("keydown", evt => {
     if ((evt.keyCode || evt.which) === 13) {
         evt.preventDefault();
     }
+
+	var contentNextBtn = document.getElementById("contentNextBtn");
+
+	if(document.getElementById("title").value!='' && document.getElementById("content").value!=''){
+		contentNextBtn.style.display="block";
+	}else{
+		contentNextBtn.style.display="none";
+	}
 });

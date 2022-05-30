@@ -25,6 +25,8 @@ public class ReviewService {
 	@Autowired
 	private LikesService likesService;
 	
+	static final int NumOfRecordsPerPage = 8;
+	
 	public int getNumOfRecord() throws SQLException{
 		int cnt = 0;
 		
@@ -73,14 +75,12 @@ public class ReviewService {
 		return dto;
 	}
 	
-	// 由щ럭 ���깆���� ����, 醫�������, ��媛�(���깆��媛�, ������媛�)��  梨���二쇰�� �⑥��
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
 		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {
-		// review list ���댁��� ���명���댁�媛� 蹂댁�ъ＜�� ���깆��媛�怨� ������媛��� �щ㎎�� �ㅻⅤ湲� ��臾몄�� �곕� 泥�由ы�댁���.
 		case "listPage":
 			dto.setCreatedAt(formatTimestampForList(review.getCreatedAt()));
 			break;
@@ -102,6 +102,13 @@ public class ReviewService {
 		dao.close();
 		
 		return res;
+	}
+	
+	public Pagination getPagination(int currentPage) throws SQLException {
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, getNumOfRecord(), NumOfRecordsPerPage);
+		
+		return pagination;
 	}
 	
 	static String formatTimestampForDetail(Timestamp timestamp) {
@@ -133,5 +140,5 @@ public class ReviewService {
 		}
 		return false;
 	}
-
+	
 }

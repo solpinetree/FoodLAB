@@ -7,7 +7,7 @@ import com.aj22.foodlab.domain.Comment;
 import com.aj22.foodlab.dto.CommentDTO;
 
 public interface CommentDAO {
-	int insert(Comment comment) throws SQLException;
+	Integer insert(Comment comment) throws SQLException;
 	int delete(int id) throws SQLException;
 	int edit(Comment comment) throws SQLException;
 	List<Comment> selectByReviewId(int id) throws SQLException;

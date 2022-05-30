@@ -2,7 +2,6 @@ package com.aj22.foodlab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,10 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.domain.Likes;
-import com.aj22.foodlab.domain.RestaurantPhoto;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
@@ -43,18 +41,13 @@ public class ReviewController {
 	private RestaurantService restaurantService;
 	@Autowired
 	private LikesService likesService;
-	static final int NumOfRecordsPerPage = 8;
 
 	// 푸드로그 게시판
 	@GetMapping("/list")
 	public String loadReviewListPage(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
-		// 전체 게시글 개수
-		int totalRecord = reviewService.getNumOfRecord();
-		
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, totalRecord, NumOfRecordsPerPage);
+		Pagination pagination = reviewService.getPagination(currentPage);
 		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("reviews", reviewService.selectList(pagination));
@@ -70,27 +63,19 @@ public class ReviewController {
 
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
-	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
+	public String writeReviewProcess(Review review, MultipartHttpServletRequest multipartRequest, String restaurantName,
 			HttpServletRequest request) throws SQLException, IOException {
+		
+		multipartRequest.setCharacterEncoding("utf-8");
+		
 		// 사용자가 입력한 식당 이름으로
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		String returnUrl = null;
 		Integer reviewId = reviewService.insert(review);
-		
-		
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			HttpSession session = request.getSession();
-			List<String> restaurantImgs = (List<String>)session.getAttribute("quilleditorImgList");
-			
-			for(String imgName : restaurantImgs) {
-				if(!review.getContent().contains(imgName)) {
-					restaurantImgs.remove(imgName);
-				}
-			}
-			
 			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
 
@@ -128,6 +113,7 @@ public class ReviewController {
 		
 		if(reviewService.deleteReviewById(reviewId)==1) { // 삭제 성공한 경우 
 			redirectUrl = (String) request.getSession().getAttribute("urlHistory");
+			request.getSession().removeAttribute("urlHistory");
 		}else {	//TODO: 삭제 실패한 경우 로직 구현
 			
 		}

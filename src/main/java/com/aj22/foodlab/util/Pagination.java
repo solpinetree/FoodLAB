@@ -14,7 +14,7 @@ public class Pagination {
 	private int endPage; // 현재 범위의 끝 번호	- next 활성화할지 말지 결정위해
 	private boolean previousPage; // 이전 페이지 존재 여부
 	private boolean nextPage; // 다음 페이지 존재 여부
-	private int firstReviewId; // 게시판 시작 리뷰 번호
+	private int firstReviewId; // 현재 범위 게시판 시작 리뷰 번호
 	
 
 	public void pageInfo(int currentPage, int numOfRecords, int numOfRecordsPerPage) {

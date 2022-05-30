@@ -6,6 +6,7 @@
     <title>맛집 정보</title>
     <link rel="stylesheet" href="${resources}/css/restaurant/restaurant.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="ov-hid">
@@ -44,10 +45,36 @@
 		}
 		
 		function loadUrl(page){
-			var url = "${root}/restaurants/list";
-			url = url + "?currentPage=" + page;
-			location.href = url;
+			
+				var url = "${root}/restaurants/list";
+				url = url + "?currentPage=" + page;
+				location.href = url;	
+			
 		}
+		
+		
+		function fn_prev_category(page,category) {
+			loadUrl_category(page-1);
+		}
+
+	  	//페이지 번호 클릭
+		function fn_pagination_category(page,category) {
+			loadUrl_category(page,category);	
+		}
+
+		//다음 버튼 이벤트
+		function fn_next_category(page,category) {
+			loadUrl_category(page+1,category);
+		}
+		
+		function loadUrl_category(page,category){
+			
+				var url = "${root}/restaurants/select_res";
+				url = url + "?currentPage=" + page + "&category=" + category;
+				location.href = url;	
+			
+		}
+
 	</script>
 
     

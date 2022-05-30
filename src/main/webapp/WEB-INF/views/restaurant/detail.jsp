@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="resources" value="${pageContext.request.contextPath }/resources" />
-<c:set var="root" value="${pageContext.request.contextPath }" />
+
 <head>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
-    <title>Chinese Sausage Restaurant</title>
+    <title>${restaurants.name }</title>
+    <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
 </head>
 
 <body>
@@ -216,25 +214,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__sidebar">
-                        <div class="listing__sidebar__contact">
-                        
-                            <div>kakaomap</div>
-                            
-                            <div class="listing__sidebar__contact__text">
-                                <h4>Contacts</h4>
-                                <ul>
-                                    <li><span class="icon_pin_alt"></span> ${restaurant.address}</li>
-                                    <li><span class="icon_phone"></span> ${restaurant.tel}</li>
-                                </ul>
-                      
-                            </div>
-                        </div>
-                        <div class="listing__sidebar__working__hours">
-                            <h4>Working Hours</h4>
-                            
-                                <span>${restaurant.operationHour}</span>
-                            
-                        </div>
+                        <%@ include file="../map/map.jsp"%>
                     </div>
                 </div>
             </div>
@@ -247,7 +227,7 @@
 
      <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
- 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
+ 	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@ if(member.getEmail()!=null){
 
 if (result == 1){
 	out.print("사용가능한 이메일입니다");
-	//5. 아이디사용하기버튼추가 => 동기방식사용 but 요즘은 비동기방식을 더 많이사용한다
+	//5. Add email button => Use synchronous method
 	%>
 	 <input type="button" value="이메일 사용하기" onclick="result();">
 	<%
@@ -46,30 +46,44 @@ if (result == 1){
 	out.print("에러 발생!!!(-1)"); 
 }
 %>
-<!-- 4.팝업창구현  -->
+<!--4. Pop-up window implementation  -->
 <fieldset>
 	<!-- <form action="" method="post">
-	action속성에 값이 없으면 기본적으로 자기자신을 불러오지만 중복확인 버튼을 클릭했을때 변경되지않는다.-->	
+	If there is no value in the action property, it will basically load itself, 
+	but it will not change when you click the duplicate confirmation button.-->	
 	<form action="${root}/logins/joinemailCheck" method="post" name="newMember">
 		email : <input type="text" name="useremail" value="<%=email%>">
 		<input type="submit" value="중복 확인">	 
 	</form>
 </fieldset>
 
-<!-- 6. 선택된아이디는 중복확인창에서 회원가입 페이지로 정보전달  -->
+<!-- 6. Send information on the selected email from the duplicate confirmation window 
+to the membership registration page  -->
  <script type="text/javascript">
     function result(){
-    	//팝업창의 아이디정보를 회원가입창에 아이디정보로 전달
-    	//팝업창은 기존창과 종속관계를 가지고 있으므로 opener를 이용하면 된다.
-    	//alert("팝업창의 id값"+document.wfr.userid.value + ", 회원가입창의 id값 : " +opener.document.fr.id.value)
-    	//6-1. 회원가입페이지의 id값에 아이디중복으로 선택된 id값을 대입.
+    	/*
+    	The email information of the pop-up window is delivered 
+    	
+    	to the membership registration window as the email information
+    	
+    	The pop-up window has a dependent relationship with the existing window, 
+    	
+    	so you can use the opener.
+    	
+    	alert("Email value of pop-up window"+document.wfr.useremail.value+",email value of membership window:"+opener.document.fr.email.value)
+    	
+    	6-1. Insert the email value selected by duplicate email into the email value of the membership registration page.
+    	*/
     	opener.document.newMember.email.value = document.newMember.useremail.value;
     	
-    	//6-3. 회원가입창 제어
-    	//readonly 속성제어(커멜표기가 아닐때는 제어가 안됨 신기하네 ㅋㅋㅋ)
+    	/*
+    	6-3. Member registration window control
+    	
+    	read only attribute control
+    	*/
     	opener.document.newMember.email.readOnly=true;
     	
-    	//6-2. 창닫기
+    	//6-2. Close a window
     	window.close();
     }
     
