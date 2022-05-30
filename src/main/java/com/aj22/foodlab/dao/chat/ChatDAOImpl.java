@@ -48,8 +48,8 @@ public class ChatDAOImpl implements ChatDAO{
 		int cnt = 0;
 		
 		String sql = "INSERT INTO chat" + 
-				"(chatroom_id, member_id, content) " + 
-				"VALUES(?, ?, ?)";
+				"(chatroom_id, member_id, content, createdAt) " + 
+				"VALUES(?, ?, ?, now())";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, chat.getChatroomdId());
 		pstmt.setInt(2, chat.getMemberId());
@@ -62,12 +62,13 @@ public class ChatDAOImpl implements ChatDAO{
 	}
 	
 	//chatroomId 로 chatroomId 에 있는 전체 chat 데이터를 List
-	public List<Chat> selectByChatroomId(int id) throws SQLException{
-		List<Chat> chats = new ArrayList<>();
+	public ArrayList<Chat> getChatList(Timestamp createdAt) throws SQLException{
+		ArrayList<Chat> chats = new ArrayList<>();
 		
-		String sql = "select * from chat where chatroom_id = ? order by createdAt asc";
+		String sql = "select * from chat where createdAt > ? order by createdAt asc";
+		
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, id);
+		pstmt.setTimestamp(1, createdAt);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			chats.add(createFromResultSet(rs));
@@ -80,12 +81,12 @@ public class ChatDAOImpl implements ChatDAO{
 		
 		Chat chat = null;
 		
-		Integer chatroomdId = rs.getInt("chatroom_id");
+		Integer chatroomId = rs.getInt("chatroom_id");
 		Integer memberId = rs.getInt("member_id");
 		String content = rs.getString("content");
 		Timestamp createdAt = rs.getTimestamp("createdAt");
 		
-		chat = new Chat(chatroomdId, memberId, content, createdAt);
+		chat = new Chat(chatroomId, memberId, content, createdAt);
 			
 		return chat;
 	}

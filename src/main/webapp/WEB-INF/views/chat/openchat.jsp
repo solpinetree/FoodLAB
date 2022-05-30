@@ -127,6 +127,51 @@
 	-->
 
 						
+	<div class = "container">
+		<div class = "container bootstrap sinppet">
+			<div class = "row">
+				<div class = "col-lg-12">
+					<div class = "portlet portlet-default">
+						<div class = "portlet-heading">
+							<div class = "portlet-title">
+								<!-- Chatroom name from DB update -->
+								<h4><i class = "fa fa-circle text-green"></i>OpenChat</h4>
+							</div>
+							<div class = "clearfix"></div>
+						</div>
+						<div id = "chat" class = "panel-collapse collapse in">
+						
+							<div class = "porlet-body chat-widget" style = "overflow-y: auto; width:auto; height: 300px;">
+								<div class = "row">
+									<div class = "col-lg-12">
+									
+										<!-- date -->
+										<p class = "text-center text-muted small">2022 5 30</p>
+									</div>
+								</div>
+								
+								<div class = "row">
+									<div class = "col-lg-12">
+										<div class = "media">
+											<a class = "pull-left" href = "#">
+												<p>image</p>
+												
+											</a>
+											<div class = "media-body">
+												<h4 class = "media-heading">사용자이름</h4>
+												<span class = "small pull-right">시간</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 	
 	<section class="blog-section spad">
 		<section class="chatbox">
@@ -139,13 +184,23 @@
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" action = "${root}/chat/openchat/insert">
+			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" method = "post">
 				
 			<!--[${sessionScope.sessionMember.id}] -->
-				<input type = "text" name = "content" id = "sendmsg" placeholder = "메시지를 입력해주세요" autocomplete = "on">
-				<input type="hidden" name="member_id" value="${sessionScope.sessionMember.id}"/>
-				<input type="hidden" name="chatroom_id" value="1"/>
-				<button id = "sendbtn"  onclick = "sendmessage">
+				
+				<!-- 
+				var chatName
+				var chatContent
+				var chatroomdId;
+				var createdAt;
+				 -->
+				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
+				
+				<!-- 로그인했을 때 사용자 닉네임 -->
+				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>
+				<input type="hidden" id = "chatroomId" name="chatroom_id" value="1"/>
+				<!--  sendmessage javascript function execute -->
+				<button type = "button" id = "sendbtn"  onclick = "sendmessage()">
 					<svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
 					<path fill="rgba(0,0,0,.38)"
 						d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" /></svg>
@@ -160,7 +215,9 @@
 					
 				
 
+	
 	<!-- Newslatter Section Begin -->
+	<!--  
 	<section class="newslatter">
 		<div class="container">
 			<div class="row">
@@ -179,7 +236,10 @@
 			</div>
 		</div>
 	</section>
+-->
 	<!-- Newslatter Section End -->
+	
+	
 
 	<!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp" />

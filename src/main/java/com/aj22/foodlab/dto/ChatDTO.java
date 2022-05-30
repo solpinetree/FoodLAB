@@ -26,7 +26,11 @@ public class ChatDTO {
 		this.writer = null;
 		this.content = chat.getContent();
 		this.createdAt = null;
+	}
+	
+	public String TimestampToString(Timestamp createdAt) {
+		String createdAtStr = createdAt.toString();
 		
-		
+		return createdAtStr;
 	}
 }

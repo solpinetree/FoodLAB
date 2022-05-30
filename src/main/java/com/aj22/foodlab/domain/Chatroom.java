@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class Chatroom {
 	private int chatroomId;
 	private String title;
+	private String imgUrl;
 
 }
