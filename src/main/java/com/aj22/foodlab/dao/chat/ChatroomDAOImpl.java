@@ -55,6 +55,7 @@ public class ChatroomDAOImpl implements ChatroomDAO {
 		Chatroom chatroom = null;
 		
 		Integer chatroomId = rs.getInt("chatroom_id");
+		System.out.println(chatroomId);
 		String chatroomTitle= rs.getString("title");
 		String imgUrl = rs.getString("img_url");
 		chatroom = new Chatroom(chatroomId, chatroomTitle, imgUrl);

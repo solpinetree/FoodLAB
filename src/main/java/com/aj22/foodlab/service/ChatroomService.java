@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.aj22.foodlab.dao.chat.ChatroomDAO;
 import com.aj22.foodlab.dao.chat.ChatroomDAOImpl;
 
@@ -12,6 +14,7 @@ import com.aj22.foodlab.domain.Chatroom;
 import com.aj22.foodlab.dto.ChatroomDTO;
 
 
+@Service
 public class ChatroomService {
 
 	public List<ChatroomDTO> TotalList() throws SQLException{

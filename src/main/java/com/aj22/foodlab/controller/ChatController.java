@@ -47,7 +47,9 @@ public class ChatController {
 		logger.info("chat.jsp");
 		
 		List<ChatroomDTO> chatrooms = chatroomService.TotalList();
-		System.out.println(chatrooms);
+		
+		
+		
 		model.addAttribute("chatrooms", chatrooms);
 		
 		return "chat/chat";
