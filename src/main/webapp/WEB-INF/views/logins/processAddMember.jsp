@@ -12,6 +12,7 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 
+<%-- Save information to DB when you sign up correctly and move on to email authentication procedures --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 

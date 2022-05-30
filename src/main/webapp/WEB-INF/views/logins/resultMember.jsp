@@ -7,8 +7,8 @@
 <html>
 <head>
 <link rel="stylesheet" href="../css/loginbootstrap.min.css" />
-<title>회원 정보</title>
-
+<title>로그인/회원가입 결과창</title>
+<%-- Login, membership result page --%>
 </head>
 <body style="background-image: url('https://source.unsplash.com/Xaanw0s0pMk/1600x900')">
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
@@ -20,7 +20,7 @@
 	<jsp:include page="../includes/header.jsp"/>
     <!-- Header Section End -->
 
-	<!-- 헤더의 배경화면이 흰색일 경우 -->
+	<!-- If the header's wallpaper is white -->
     <script type="text/javascript">
     	var element = document.querySelector('header');
     	element. classList.add('header--normal');
@@ -30,19 +30,19 @@
 
 	<div align="center">
 	
-	<h1>${msg}</h1>
-	
-	
 	<c:if test="${msg != null}">
+		<%-- Modify member information --%>
 		<c:if test="${msg eq '0'}">
 		<h2 class='alert alert-danger resultmember'>회원정보가 수정되었습니다.</h2>
 		</c:if>
 		
 		<c:if test="${msg eq '1'}">
+		<%-- Member registration result page --%>
 		<h2 class='alert alert-danger resultmember'>회원가입을 축하드립니다.</h2>
 		</c:if>
 		
 		<c:if test="${msg eq '2'}">
+		<%-- Login Results page --%>
 		<div>
 		<div class="col-lg-9 col-md-9" >
 		<h2 class='alert alert-danger resultmember'><img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
@@ -66,7 +66,7 @@
 	</c:if>
 	
 	<c:if test="${msg == null}">
-	
+	<%-- Membership withdrawal page --%>
 	<h2 class='alert alert-danger resultmember'>회원정보가 삭제되었습니다.</h2>
 	
 	</c:if>
