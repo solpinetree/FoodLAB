@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.aj22.foodlab.domain.ReviewImages;
+import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 public class ReviewImagesDAOImpl implements ReviewImagesDAO {
@@ -48,5 +51,33 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		res = pstmt.executeUpdate();
 		
 		return res;
+	}
+	
+	public ReviewImages createFromResultSet(ResultSet rs) throws SQLException {
+		
+		ReviewImages reviewImages = null;
+		
+		int reviewId = rs.getInt("review_id");
+		String savedName = rs.getString("saved_name");
+		
+		reviewImages = new ReviewImages(reviewId, savedName);
+
+		return reviewImages;
+	}
+	
+	@Override
+	public List<ReviewImages> select(int id) throws SQLException {
+		
+		List<ReviewImages> images = new ArrayList<>();
+		
+		String sql = "select * from review_images where review_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			images.add(createFromResultSet(rs));
+		}
+		
+		return images;
 	}
 }

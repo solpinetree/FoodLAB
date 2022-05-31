@@ -53,6 +53,7 @@ p{
 	width: 35px;
 	height: 35px;
 	vertical-align: sub;
+	cursor: pointer;
 }
 
 .blog__hero__text ul li {

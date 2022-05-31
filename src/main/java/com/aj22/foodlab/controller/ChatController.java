@@ -56,6 +56,7 @@ public class ChatController {
 	}
 	
 	@GetMapping("/openchat")
+	//@GetMapping("/{chatType}")
 	public String chatDetail(@PathVariable String chatType) {
 		//chat-openchat
 		logger.info(chatType + ".jsp aaaa");

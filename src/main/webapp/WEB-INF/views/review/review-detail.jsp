@@ -6,6 +6,7 @@
 <head>
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
+<link rel="stylesheet" href="${resources}/css/review/review-detail-image.css">
 </head>
 
 <body>
@@ -56,15 +57,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
-                     <div style="position: relative; float:left;">${review.content }</div>
-                 </div>
+	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
+	                     <div style="position: relative; float:left;">${review.content }</div>
+	                 </div>
                   
-                  <hr>
+                  	<hr>
+                  	
+				   <!-- Slider main container -->
+			        <div class="swiper">
+			            <!-- Additional required wrapper -->
+			            <div class="swiper-wrapper">
+			
+							<c:forEach var="reviewImage" items="${ reviewImages}">
+				                <div class="swiper-slide">
+								   <img src="${resources }/upload/review/${reviewImage.savedName}" alt="리뷰 등록 이미지"/>
+				                </div>
+							</c:forEach>
+							
+			            </div>
+			            
+			            <!-- If we need pagination -->
+			            <div class="swiper-pagination"></div>
+			        
+			            <!-- If we need navigation buttons -->
+			            <div class="swiper-button-prev"></div>
+			            <div class="swiper-button-next"></div>
+			        
+	       			 </div>	
                  
-	  			<jsp:include page="review-detail-comment.jsp"/>
-                
-                
+	  				<jsp:include page="review-detail-comment.jsp"/>
+                	
                 </div>
                
                

@@ -48,8 +48,6 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	@Autowired
-	private RestaurantService restaurantService;
-	@Autowired
 	private LikesService likesService;
 	@Autowired
 	private ReviewImagesService reviewImagesService;
@@ -108,11 +106,8 @@ public class ReviewController {
 			model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 		}
 
-		if (review == null) {
-			// TODO 리뷰 가져오기 실패한 경우 로직
-		} else {
-			model.addAttribute("review", review);
-		}
+		model.addAttribute("review", review);
+		model.addAttribute("reviewImages", reviewImagesService.findByReviewId(reviewId));
 
 		return "review/review-detail";
 	}
