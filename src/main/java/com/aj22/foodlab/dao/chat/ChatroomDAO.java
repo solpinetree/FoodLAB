@@ -10,5 +10,6 @@ public interface ChatroomDAO {
 	
 	void close() throws SQLException;
 	List<Chatroom> TotalList() throws SQLException;
+	String selectByChatroomId(int chatroomid) throws SQLException;
 	Chatroom createFromResultSet(ResultSet rs) throws SQLException;
 }

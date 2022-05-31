@@ -27,6 +27,7 @@ public class ChatroomDAOImpl implements ChatroomDAO {
 		}
 	}
 	
+	@Override
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
 		if(stmt != null) stmt.close();
@@ -34,9 +35,9 @@ public class ChatroomDAOImpl implements ChatroomDAO {
 		if(conn != null) conn.close();
 	}
 	
-	
+	@Override
 	public List<Chatroom> TotalList() throws SQLException{
-		List<Chatroom> chatroomList = new ArrayList<>();
+		List<Chatroom> chatrooms = new ArrayList<>();
 		
 		String sql = "select * from chatroom";
 		
@@ -44,10 +45,27 @@ public class ChatroomDAOImpl implements ChatroomDAO {
 		
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
-			chatroomList.add(createFromResultSet(rs));
+			chatrooms.add(createFromResultSet(rs));
 		}
 		
-		return chatroomList;
+		return chatrooms;
+	}
+	
+	//chatroomid - return chatroomTitle
+	@Override
+	public String selectByChatroomId(int chatroomid) throws SQLException {
+		String chatroomTitle = null;
+		
+		String sql = "select title from chatroom where chatroom_id = ? ";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, chatroomid);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			chatroomTitle = rs.getString("title");
+		}
+		
+		return chatroomTitle;
 	}
 	
 	public Chatroom createFromResultSet(ResultSet rs) throws SQLException {

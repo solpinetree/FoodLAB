@@ -26,6 +26,16 @@ public class ChatroomService {
 		
 	}
 	
+	public String selectByChatroomId(int chatroomid) throws SQLException{
+		String chatroomTitle = null;
+		ChatroomDAO dao = new ChatroomDAOImpl();
+		chatroomTitle = dao.selectByChatroomId(chatroomid);
+		dao.close();
+		
+		return chatroomTitle;
+		
+	}
+	
 	public List<ChatroomDTO> findAllAsDTO(List<Chatroom> chatroomEntities) throws SQLException{
 		List<ChatroomDTO> chatrooms = new ArrayList<>();
 		
