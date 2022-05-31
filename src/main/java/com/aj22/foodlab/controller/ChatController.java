@@ -55,13 +55,17 @@ public class ChatController {
 		return "chat/chat";
 	}
 	
-	@GetMapping("/openchat")
-	//@GetMapping("/{chatType}")
-	public String chatDetail(@PathVariable String chatType) {
+	@GetMapping("/chatroom")
+	public String chatDetail(@RequestParam("chatroomId") Integer chatroomId, Model model) throws SQLException {
 		//chat-openchat
-		logger.info(chatType + ".jsp aaaa");
+		logger.info(chatroomId + ".jsp aaaa");
 		
-		return "chat/"+chatType;
+		String chatroomTitle = chatroomService.selectByChatroomId(chatroomId);
+		
+		model.addAttribute("chatroomTitle", chatroomTitle);
+		model.addAttribute("chatroomId", chatroomId);
+		
+		return "chat/chat-divide";
 	}
 	
 	

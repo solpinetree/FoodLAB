@@ -3,7 +3,7 @@
 
 <head>
 <title>오픈 채팅</title>
-<link rel="stylesheet" href="${resources}/css/chat/openchat.css">
+<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css">
 
 </head>
 

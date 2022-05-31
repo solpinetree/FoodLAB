@@ -37,6 +37,8 @@ public class ChatService {
 		
 	}
 	
+	
+	
 	public List<ChatDTO> findAllAsDTO(List<Chat> ChatEntities) throws SQLException{
 		List<ChatDTO> chats = new ArrayList<>();
 		

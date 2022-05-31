@@ -2,7 +2,7 @@
 <%@ include file="../includes/common.jsp" %>
 
 <head>
-    <title>오픈 채팅</title>
+    <title>채팅방 로비</title>
     <link rel="stylesheet" href="${resources}/css/chat/chat.css">
 </head>
 
@@ -30,7 +30,7 @@
                     <div class="row">
                     	<c:forEach var = "chr" items = "${chatrooms}">
                     		<div class="col-lg-6 col-md-6">
-	                            <div class="blog__item" onclick="location.href=${root}/chat/${chr.chatroomId}">
+	                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
 	                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
 	                    	            </div>
 	                                <div class="blog__item__text">
