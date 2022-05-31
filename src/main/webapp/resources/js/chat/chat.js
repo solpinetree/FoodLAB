@@ -20,12 +20,7 @@ websocket.onmessage = function(message)
 
 function sendmessage() {
 
-	//	메시지 박스에 있는 데이터를 전송한다.
-	 const data = {
-            "chatName"    : "blue",
-            "message"        : message
-        };
-출처: https://dororongju.tistory.com/151 [웹 개발 메모장:티스토리]
+	
 	var msg = chatName.value + ":" + chatContent.value;
 	websocket.send(msg);
 	

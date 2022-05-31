@@ -139,16 +139,7 @@
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;">
-				
-			<!--[${sessionScope.sessionMember.id}] -->
-				
-				<!-- 
-				var chatName
-				var chatContent
-				var chatroomdId;
-				var createdAt;
-				 -->
+			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" name = "chat-input-form">
 				
 				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
 				
