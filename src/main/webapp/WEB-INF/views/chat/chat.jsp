@@ -28,71 +28,17 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item" onclick="location.href='${root}/chat/openchat'">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/blog-large.jpg">
-                                </div>
-                                <div class="blog__item__text">
-                                    <h5 class="font_bold">일반 채팅</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-6.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>양식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/chinese-food.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>중식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/japanese-food.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>일식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/haejangguk.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>한식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/chicken.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">치킨</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/korean-food-street.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">분식</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bread.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">디저트, 카페</a></h5>
-                                </div>
-                            </div>
-                        </div>
+                    	<c:forEach var = "chr" items = "${chatrooms}">
+                    		<div class="col-lg-6 col-md-6">
+	                            <div class="blog__item" onclick="location.href=${root}/chat/${chr.chatroomId}">
+	                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
+	                    	            </div>
+	                                <div class="blog__item__text">
+	                                    <h5 class="font_bold">${chr.title}</h5>
+	                                </div>
+	                            </div>
+                        	</div>
+                    	</c:forEach>  
                     </div>
                 </div>
             </div>
