@@ -10,16 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aj22.foodlab.domain.Chat;
-import com.aj22.foodlab.domain.Comment;
-import com.aj22.foodlab.dto.ChatDTO;
 import com.aj22.foodlab.dto.ChatroomDTO;
 import com.aj22.foodlab.service.ChatService;
 import com.aj22.foodlab.service.ChatroomService;
@@ -58,13 +51,14 @@ public class ChatController {
 	@GetMapping("/chatroom")
 	public String chatDetail(@RequestParam("chatroomId") Integer chatroomId, Model model) throws SQLException {
 		//chat-openchat
-		logger.info(chatroomId + ".jsp aaaa");
+		
 		
 		String chatroomTitle = chatroomService.selectByChatroomId(chatroomId);
 		
 		model.addAttribute("chatroomTitle", chatroomTitle);
 		model.addAttribute("chatroomId", chatroomId);
 		
+		logger.info(chatroomTitle + ".jsp");
 		return "chat/chat-divide";
 	}
 	
