@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>오픈채팅</h2>
+                        <h2 class = "baemin-font">${chatroomTitle}</h2>
                     </div>
                 </div>
             </div>
@@ -126,52 +126,7 @@
 	</div> 
 	-->
 
-						
-	<div class = "container">
-		<div class = "container bootstrap sinppet">
-			<div class = "row">
-				<div class = "col-lg-12">
-					<div class = "portlet portlet-default">
-						<div class = "portlet-heading">
-							<div class = "portlet-title">
-								<!-- Chatroom name from DB update -->
-								<h4><i class = "fa fa-circle text-green"></i>OpenChat</h4>
-							</div>
-							<div class = "clearfix"></div>
-						</div>
-						<div id = "chat" class = "panel-collapse collapse in">
-						
-							<div class = "porlet-body chat-widget" style = "overflow-y: auto; width:auto; height: 300px;">
-								<div class = "row">
-									<div class = "col-lg-12">
-									
-										<!-- date -->
-										<p class = "text-center text-muted small">2022 5 30</p>
-									</div>
-								</div>
-								
-								<div class = "row">
-									<div class = "col-lg-12">
-										<div class = "media">
-											<a class = "pull-left" href = "#">
-												<p>image</p>
-												
-											</a>
-											<div class = "media-body">
-												<h4 class = "media-heading">사용자이름</h4>
-												<span class = "small pull-right">시간</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
+	
 	
 	<section class="blog-section spad">
 		<section class="chatbox">
@@ -184,7 +139,7 @@
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" method = "post">
+			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;">
 				
 			<!--[${sessionScope.sessionMember.id}] -->
 				
@@ -194,11 +149,13 @@
 				var chatroomdId;
 				var createdAt;
 				 -->
+				
 				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
 				
 				<!-- 로그인했을 때 사용자 닉네임 -->
 				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>
-				<input type="hidden" id = "chatroomId" name="chatroom_id" value="1"/>
+				<input type="hidden" id = "memberid" name = "member_id" value = "${sessionScope.sessionMember.id}">
+				<input type="hidden" id = "chatroomId" name="chatroom_id" value="${chatroomId}"/>
 				<!--  sendmessage javascript function execute -->
 				<button type = "button" id = "sendbtn"  onclick = "sendmessage()">
 					<svg style="width: 24px; height: 24px" viewBox="0 0 24 24">

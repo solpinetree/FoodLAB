@@ -83,7 +83,7 @@
 }
 .msg-box {
     display: block;
-/*     background: #5b5e6c; */
+	background: #5b5e6c;
     background: #707070;
     padding: 10px 10px 0 10px;
     border-radius: 0 6px 6px 0;
