@@ -59,7 +59,7 @@
         
       </div>
 		
-		
+		<div id="showcategorys"></div>
 		    <!-- pagination 시작 -->
 	
 			<div id="paginationBox">
