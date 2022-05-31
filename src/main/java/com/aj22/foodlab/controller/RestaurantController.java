@@ -71,8 +71,9 @@ public class RestaurantController {
 
 	private String html = "";
 	
-	@GetMapping("/select_res2")
-	public String getcategorys( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+	@RequestMapping(value="/select_res2", produces="application/text;charset=utf8")
+	@ResponseBody
+	public String getcategory_ajax( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
 		String numOfRecords2 = Integer.toString(numOfRecords);
 		logger.info(numOfRecords2);
@@ -83,6 +84,34 @@ public class RestaurantController {
 		List<RestaurantDTO> categorys =  res.selectList_category(pagination,category);
 		
 		for(RestaurantDTO dto:categorys) {
+			html += 
+	            "<h1>OK</h1>";
+		}
+		
+		return html;
+	}
+	
+	
+	@GetMapping("/search")
+	public String restaurant_search(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
+		model.addAttribute("search_text",search_text);
+		model.addAttribute("categories", restaurantService.getCategories());
+		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
+		return "restaurant/restaurants";
+	}
+	
+	
+	@GetMapping("/search2")
+	public String restaurant_search_ajax(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
+		model.addAttribute("search_text",search_text);
+		model.addAttribute("categories", restaurantService.getCategories());
+		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
+		
+		html="";
+		RestaurantService res = new RestaurantService();
+		List<RestaurantDTO> search =  res.selectByName(search_text);
+		
+		for(RestaurantDTO dto:search) {
 			html += 
 	                "<div class='listing__details__comment__item'>" 
 	              + 	"<div class='listing__details__comment__item__pic'>"
@@ -100,15 +129,6 @@ public class RestaurantController {
 		}
 		
 		return html;
-	}
-	
-	
-	@GetMapping("/search")
-	public String restaurant_search(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
-		model.addAttribute("search_text",search_text);
-		model.addAttribute("categories", restaurantService.getCategories());
-		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
-		return "restaurant/restaurants";
 	}
 	
 }

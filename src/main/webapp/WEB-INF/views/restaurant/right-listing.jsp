@@ -7,6 +7,7 @@
        <div class="listing__text__top">
            <div class="listing__text__top__left">
                <h5>필터 적용 결과</h5>
+               <div id="showcategorys"></div>
                <span>18 Results Found</span>
            </div>
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
@@ -59,7 +60,6 @@
         
       </div>
 		
-		<div id="showcategorys"></div>
 		    <!-- pagination 시작 -->
 	
 			<div id="paginationBox">
