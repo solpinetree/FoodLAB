@@ -136,17 +136,46 @@
 				<!-- login page 로 이동 -->
 			</c:if>
 			
+			<c:forEach var = "chat" items = "${chatHistory}">
+				<article class = "msg-container msg-self">
+					<div class="msg-box">
+						<div class = "flr">
+							<div class = "messages">
+								<p class = "msg" id = "chat">${chat.content}</p>
+							</div>
+								<span class = "timestamp">
+									<span class = "username">${sessionScope.sessionMember.username}</span>&bull;
+									
+									<!-- time split(hh:mm)-->
+									<c:set var = "chatTime" value = "${fn:split(chat.createdAt, ':')[0]}"/>
+									<c:choose>
+										<c:when test = "${chatTime>='12'}">
+											<span class = "posttime">오후 ${chat.createdAt}</span>
+										</c:when>
+										<c:otherwise>
+											<span class = "posttime">오전 ${chat.createdAt}</span>
+										</c:otherwise>
+									</c:choose>
+
+								
+								</span>
+						</div> 
+						<img class = "user-img" id = "user-0" src = "//gravatar.com/avatar/56234674574535734573000000000001?d=retro" />
+					 </div>
+				 </article>
+			</c:forEach>
+			
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" name = "chat-input-form">
+			<form class = "chat-input" id = "chat-input-form" action = "chatForm.getMap" onsubmit = "return false" method = "post" style= "margin-block-end: 0em;" >
 				
 				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
 				
 				<!-- 로그인했을 때 사용자 닉네임 -->
 				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>
-				<input type="hidden" id = "memberid" name = "member_id" value = "${sessionScope.sessionMember.id}">
-				<input type="hidden" id = "chatroomId" name="chatroom_id" value="${chatroomId}"/>
+				<input type="hidden" id = "memberId" name = "memberId" value = "${sessionScope.sessionMember.id}">
+				<input type="hidden" id = "chatroomId" name="chatroomId" value="${chatroomId}"/>
 				<!--  sendmessage javascript function execute -->
 				<button type = "button" id = "sendbtn"  onclick = "sendmessage()">
 					<svg style="width: 24px; height: 24px" viewBox="0 0 24 24">

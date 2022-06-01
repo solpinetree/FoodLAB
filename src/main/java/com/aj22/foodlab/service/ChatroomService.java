@@ -1,6 +1,9 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +36,27 @@ public class ChatroomService {
 		dao.close();
 		
 		return chatroomTitle;
+		
+	}
+	
+	public ChatroomDTO selectById(int chatroomid) throws SQLException{
+		Chatroom chatroom = null;
+		ChatroomDAO dao = new ChatroomDAOImpl();
+		chatroom = dao.selectById(chatroomid);
+		dao.close();
+		
+		return convertToDTO(chatroom);
+	}
+	
+	public String formatTimestampForChat(Timestamp timestamp) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		String chatTimeLog = null; // chat log time
+
+		if(timestamp!= null) {
+			chatTimeLog = dateFormat.format(timestamp);
+			
+		}
+		return chatTimeLog;
 		
 	}
 	

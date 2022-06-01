@@ -1,6 +1,7 @@
 
 var chatName = document.getElementById('chatName');
 var chatContent = document.getElementById('chatContent');
+var chatroomId = document.getElementById('chatroomId');
 var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
 var line = 0;
 
@@ -15,18 +16,16 @@ websocket.onerror = function(message){}
 
 websocket.onmessage = function(message)
 {
+	console.log("js.websocket.onmessage ON");
 	addChat(message.data);
 }
 
-function sendmessage() {
-
-	
+function sendmessage(){
 	var msg = chatName.value + ":" + chatContent.value;
 	websocket.send(msg);
-	
+	msgDB_insert();
 	//	메시지를 보내고, 메시지 입력 부분을 지워준다. 
 	chatContent.value = "";
-	
 }
 
 // websocket onmessage 에서 호출하는 함수
@@ -39,17 +38,10 @@ function addChat(message){
 	// msg_origin[0] : chatName
 	// msg_origin[1] : chatContent
 	 
-	
-	
-	
+
 	var rmsg = document.getElementById('chat-window');
-	console.log(message);
+	console.log("addchat(id, msg)->" + message);
 	var el = document.createElement('article'); // <div> element 생성
-	
-	
-     
-    
-	
 	
 	itemStr = '<div class="msg-box">'
 			+	'<div class = "flr">'
@@ -69,18 +61,24 @@ function addChat(message){
 	
 	console.log(el);
 	rmsg.appendChild(el);
-	
-	
 }
 
+
+//현재 시간
 function currentTime(){
     var date = new Date();
-    var hh = date.getHours();
-    var mm = date.getMinutes();
+    var hh = addZero(date.getHours());
+    var mm = addZero(date.getMinutes());
     var apm = hh > 12 ? "오후":"오전";
     var ct = apm + " "+hh+":"+mm+"";
     return ct;
 }
+
+function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+}
+
 //	엔터키가 눌리면, 메시지를 전송하는 함수
 function keypress()
 {
@@ -88,5 +86,26 @@ function keypress()
 	
 	if (keycode == 13)
 		sendmessage();
+}
+
+function msgDB_insert(){
+		var chatForm = $("#chat-input-form").serialize();
+		
+		console.log("chatform : " + chatForm);
+		
+		$.ajax({
+			type: "post",
+			url: "/foodlab/chat/chatroom/insert",
+			data: chatForm,
+			dataType: 'json',
+			success: function (data){
+				alert(data);
+				console.log("success : " + data);
+
+			},
+			error: function(){
+				console.log("Error");
+			}
+		});
 }
 

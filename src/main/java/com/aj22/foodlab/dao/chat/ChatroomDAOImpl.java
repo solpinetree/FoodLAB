@@ -10,6 +10,8 @@ import java.util.List;
 
 
 import com.aj22.foodlab.domain.Chatroom;
+import com.aj22.foodlab.dto.ChatroomDTO;
+import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 public class ChatroomDAOImpl implements ChatroomDAO {
@@ -66,6 +68,23 @@ public class ChatroomDAOImpl implements ChatroomDAO {
 		}
 		
 		return chatroomTitle;
+	}
+	
+	@Override
+	public Chatroom selectById(int chatroomid) throws SQLException {
+
+		Chatroom chr = null;
+
+		String sql = "select * from chatroom where chatroom_id = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, chatroomid);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			chr = createFromResultSet(rs);
+		}
+
+		return chr;
+
 	}
 	
 	public Chatroom createFromResultSet(ResultSet rs) throws SQLException {

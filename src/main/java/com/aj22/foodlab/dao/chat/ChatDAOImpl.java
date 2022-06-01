@@ -41,15 +41,15 @@ public class ChatDAOImpl implements ChatDAO{
 	}
 	
 
-	// ÇÑÁÙ ¾¿ Ã¤ÆÃ°ª db¿¡ ÀÔ·Â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¤ï¿½Ã°ï¿½ dbï¿½ï¿½ ï¿½Ô·ï¿½
 	@Override
 	public int insert(Chat chat) throws SQLException {
 		
 		int cnt = 0;
 		
 		String sql = "INSERT INTO chat" + 
-				"(chatroom_id, member_id, content, createdAt) " + 
-				"VALUES(?, ?, ?, now())";
+				"(chatroom_id, member_id, content) " + 
+				"VALUES(?, ?, ?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, chat.getChatroomdId());
 		pstmt.setInt(2, chat.getMemberId());
@@ -61,14 +61,15 @@ public class ChatDAOImpl implements ChatDAO{
 		return cnt;
 	}
 	
-	//chatroomId ·Î chatroomId ¿¡ ÀÖ´Â ÀüÃ¼ chat µ¥ÀÌÅÍ¸¦ List
-	public ArrayList<Chat> getChatList(Timestamp createdAt) throws SQLException{
-		ArrayList<Chat> chats = new ArrayList<>();
+	//chatroomId ï¿½ï¿½ chatroomId ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Ã¼ chat ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ List
+	@Override
+	public List<Chat> findbyChatroomId(int chatroomid) throws SQLException{
+		List<Chat> chats = new ArrayList<>();
 		
-		String sql = "select * from chat where createdAt > ? order by createdAt asc";
+		String sql = "select * from chat where chatroom_id = ? order by createdAt asc";
 		
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setTimestamp(1, createdAt);
+		pstmt.setInt(1, chatroomid);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			chats.add(createFromResultSet(rs));
