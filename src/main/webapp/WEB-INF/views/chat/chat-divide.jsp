@@ -170,7 +170,7 @@
 			</section>
 			<form class = "chat-input" id = "chat-input-form" action = "chatForm.getMap" onsubmit = "return false" method = "post" style= "margin-block-end: 0em;" >
 				
-				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
+				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100" onclick="activeButton()">
 				
 				<!-- 로그인했을 때 사용자 닉네임 -->
 				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>
