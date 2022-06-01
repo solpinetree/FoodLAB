@@ -1,9 +1,8 @@
 package com.aj22.foodlab.dto;
 
-import java.sql.Timestamp;
+
 
 import com.aj22.foodlab.domain.Chat;
-import com.aj22.foodlab.domain.Comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +16,7 @@ public class ChatDTO {
 	private ChatroomDTO chatroomId; // chatroom Id
 	private MemberDTO writer; // Member id
 	private String content; 
-	private Timestamp createdAt;
+	private String createdAt;
 	
 	
 	
@@ -28,9 +27,5 @@ public class ChatDTO {
 		this.createdAt = null;
 	}
 	
-	public String TimestampToString(Timestamp createdAt) {
-		String createdAtStr = createdAt.toString();
-		
-		return createdAtStr;
-	}
+	
 }
