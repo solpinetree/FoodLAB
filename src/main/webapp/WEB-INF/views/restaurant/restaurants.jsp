@@ -83,6 +83,7 @@
  	<%@ include file="../includes/plugins.jsp" %>
  	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
+	<script type="text/javascript" src="${resources}/js/restaurant/category.js"></script>
 </body>
 
 </html>

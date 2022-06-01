@@ -1,0 +1,19 @@
+.swiper {
+	width: 100%;
+	height: 50vh;
+	border: 1px solid #ccc;
+	border-radius: 30px;
+	margin-bottom: 10px;
+}
+
+.swiper .swiper-button-prev, .swiper .swiper-button-next {
+	color: #f9adbd;
+}
+
+.swiper .swiper-pagination-bullet-active {
+	background: #f03250;
+}
+
+.file-input {
+	border: none !important;
+}

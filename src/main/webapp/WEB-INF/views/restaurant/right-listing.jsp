@@ -11,7 +11,7 @@
            </div>
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
        </div>
-       <div class="listing__list">
+       <div class="listing__list" id= "showcategorys">
        
        	<c:forEach items="${restaurants}" var="restaurant">
        	
@@ -58,7 +58,6 @@
           </c:forEach>
         
       </div>
-		
 		
 		    <!-- pagination 시작 -->
 	

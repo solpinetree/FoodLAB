@@ -150,6 +150,14 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<!-- jstl -->
+		
+		<dependency>
+			<groupId>jstl</groupId> 
+			<artifactId>jstl</artifactId> 
+			<version>1.2</version> 
+		</dependency>
+		
 		<!-- to use @transactional -->
 		<dependency>
 		    <groupId>org.springframework</groupId>

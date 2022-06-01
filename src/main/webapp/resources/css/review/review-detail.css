@@ -53,6 +53,7 @@ p{
 	width: 35px;
 	height: 35px;
 	vertical-align: sub;
+	cursor: pointer;
 }
 
 .blog__hero__text ul li {
@@ -132,15 +133,15 @@ p{
 
 .blog__sidebar__categories {
     -webkit-box-shadow: 0px 5px 30px #f9adbd;
-    box-shadow: 0px 5px 30px #f9adbd;
+    box-shadow: 0px 0px 9px 1px #f9adbd;
 }
 
 .listing__sidebar__contact {
     -webkit-box-shadow: 0px 5px 30px #f9adbd;
-    box-shadow: 0px 5px 30px #f9adbd;
+    box-shadow: 0px 0px 9px 1px #f9adbd;
 }
 
 .blog__sidebar__recent {
     -webkit-box-shadow: 0px 5px 30px #f9adbd;
-    box-shadow: 0px 5px 30px #f9adbd;
+    box-shadow: 0px 0px 9px 1px #f9adbd;
 }

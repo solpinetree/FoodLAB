@@ -1,12 +1,19 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.aj22.foodlab.dao.comment.CommentDAO;
+import com.aj22.foodlab.dao.comment.CommentDAOImpl;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
+import com.aj22.foodlab.dao.review.ReviewDAO;
+import com.aj22.foodlab.dao.review.ReviewDAOImpl;
+import com.aj22.foodlab.domain.Comment;
+import com.aj22.foodlab.dto.CommentDTO;
 import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.Pagination;
 
@@ -31,6 +38,7 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
+
 	
 	public List<String> getCategories() throws SQLException{
 		List<String> categories = null;
@@ -92,6 +100,15 @@ public class RestaurantService {
 		return pagination;
 	}
 	
+	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
+		
+		int numOfRecords = getNumOfRecord_category(category);
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
 	public int getNumOfRecord_category(String category) throws SQLException {
 		int cnt = 0;
 		
@@ -102,13 +119,5 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
-		
-		int numOfRecords = getNumOfRecord_category(category);
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
-		
-		return pagination;
-	}
 	
 }

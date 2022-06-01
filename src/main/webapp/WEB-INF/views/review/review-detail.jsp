@@ -6,6 +6,8 @@
 <head>
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
+<link rel="stylesheet" href="${resources}/css/review/review-detail-image.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -56,15 +58,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
-                     <div style="position: relative; float:left;">${review.content }</div>
-                 </div>
+				   <!-- Slider main container -->
+			        <div class="swiper">
+			            <!-- Additional required wrapper -->
+			            <div class="swiper-wrapper">
+			
+							<c:forEach var="reviewImage" items="${ reviewImages}">
+				                <div class="swiper-slide">
+								   <img style="width:100%; height:100%; object-fit: contain" src="${resources }/upload/review/${reviewImage.savedName}" alt="리뷰 등록 이미지"/>
+				                </div>
+							</c:forEach>
+							
+			            </div>
+			            
+			            <c:if test="${fn:length(reviewImages) > 1 }">
+				            <!-- If we need pagination -->
+				            <div class="swiper-pagination"></div>
+				            
+				            <!-- If we need navigation buttons -->
+				            <div class="swiper-button-prev"></div>
+				            <div class="swiper-button-next"></div>
+			            </c:if>
+			        
+			        
+	       			 </div>	
+	       			 
+	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
+	                     <div style="position: relative; float:left;">${review.content }</div>
+	                 </div>
                   
-                  <hr>
+                  	<hr>
+                  	
                  
-	  			<jsp:include page="review-detail-comment.jsp"/>
-                
-                
+	  				<jsp:include page="review-detail-comment.jsp"/>
+                	
                 </div>
                
                
@@ -173,6 +200,9 @@
 		src="${resources}/js/review/likes.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/comment.js"></script>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/review-write-swiper.js"></script>
     <script type="text/javascript">
 	    function confirmDelete(){
 	    	var con = confirm("리뷰를 삭제하시겠습니까?");
