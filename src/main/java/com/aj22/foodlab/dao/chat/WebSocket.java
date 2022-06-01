@@ -1,5 +1,6 @@
 package com.aj22.foodlab.dao.chat;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aj22.foodlab.service.ChatService;
 import com.aj22.foodlab.domain.Chat;
+
 @ServerEndpoint("/wsocket")
 public class WebSocket {
 	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
@@ -23,20 +25,26 @@ public class WebSocket {
 	@Autowired
 	ChatService chatService;
 	
+	/*
+	 *  websocketÀ¸·Î ºê¶ó¿ìÀú°¡ Á¢¼ÓÇÏ¸é ¿äÃ»
+	 */
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.println("client connect...");
 		System.out.println("session id : " +session.getId());
 		
+		// WebSocket¼¼¼ÇÀ» ¸®½ºÆ®¿¡ ÀúÀå
 		sessions.add(session);
 	}
 	
 	
+	// websocket°ú ºê¶ó¿ìÀú°¡ Á¢¼ÓÀÌ ²÷±â¸é ¿äÃ»
 	@OnClose
 	public void onClose(Session session){
 		System.out.println("client is disconnected...");
-		System.out.println(session.getId() + "Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+		System.out.println(session.getId() + "Å¬¶óÀÌ¾ðÆ®°¡ ¿¬°áÀ» ÇØÁ¦Çß½À´Ï´Ù.");
 		
+		//	¼¼¼ÇÀ» ´Ý´Â´Ù.
 		sessions.remove(session);
 	}
 	
@@ -48,12 +56,12 @@ public class WebSocket {
 	
 
 	
+	//webSocket À¸·Î ¸Þ½ÃÁö°¡ ¿À¸é ¿äÃ»
 	@OnMessage
-	public void onMessage(String message, Session session)
+	public void onMessage(String message, Session session) throws IOException
 	{
-		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½.
-		System.out.println("Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ : ");
-		System.out.println(message);
+		//	¼­¹ö°¡ ¹Þ´Â´Ù.
+		System.out.println("Å¬¶óÀÌ¾ðÆ®°¡ º¸³»¿Â ¸Þ½ÃÁö : " + message);
 		
 		this.sendAll(session, message);
 		
@@ -67,11 +75,17 @@ public class WebSocket {
 		
 	}
 	
-	public void sendAll(Session session, String message)
+	public void sendAll(Session session, String message) throws IOException
 	{
-		System.out.println("sendAll : " + session.getId() + ":" +message);
-		try {
+		String[] messageSplit = message.split(":");
+		String msgId = messageSplit[0];
+		String msgContent = messageSplit[1];
+		System.out.println("msgId : " + msgId);
+		System.out.println("msgContent : " + msgContent);
+		
+		synchronized (sessions) {
 			int i = 0;
+			//	À¥ ¼ÒÄÏ¿¡ ¿¬°áµÇ¾î ÀÖ´Â ¸ðµç ¾ÆÀÌµð¸¦ Ã£´Â´Ù.	
 			for (Session s : WebSocket.sessions) 
 			{
 				System.out.println(++i);
@@ -80,7 +94,8 @@ public class WebSocket {
 					s.getBasicRemote().sendText(message);
 				}
 			}
-		}catch(Exception e) {e.printStackTrace();}
+		}
+		
 	}
-	
+
 }

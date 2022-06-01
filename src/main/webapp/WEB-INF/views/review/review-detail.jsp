@@ -6,8 +6,8 @@
 <head>
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
+<link rel="stylesheet" href="${resources}/css/review/review-detail-image.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -30,6 +30,10 @@
                         <ul>
                             <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
                             <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
+                            <c:if test="${sessionScope.sessionMember.id == review.writer.id }">
+	                      		 <li class="li-underline">수정하기</li>
+	                      		 <li class="li-underline" onclick="confirmDelete()"> 삭제하기</li>
+	                    	</c:if>
                             <li class="heart-icon-li">
 	                            <c:choose>
 				                    <c:when test="${empty sessionScope.sessionMember.username }"><%-- 비회원이라면 --%>
@@ -44,13 +48,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="listing__hero__btns">
-	                	<c:if test="${sessionScope.sessionMember.id == review.writer.id }">
-	                       <button onclick="confirmDelete()" class="primary-btn"> 삭제하기</button>
-	                    </c:if>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -61,98 +58,85 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
-                     <div style="position: relative; float:left;">${review.content }</div>
-                 </div>
+				   <!-- Slider main container -->
+			        <div class="swiper">
+			            <!-- Additional required wrapper -->
+			            <div class="swiper-wrapper">
+			
+							<c:forEach var="reviewImage" items="${ reviewImages}">
+				                <div class="swiper-slide">
+								   <img style="width:100%; height:100%; object-fit: contain" src="${resources }/upload/review/${reviewImage.savedName}" alt="리뷰 등록 이미지"/>
+				                </div>
+							</c:forEach>
+							
+			            </div>
+			            
+			            <c:if test="${fn:length(reviewImages) > 1 }">
+				            <!-- If we need pagination -->
+				            <div class="swiper-pagination"></div>
+				            
+				            <!-- If we need navigation buttons -->
+				            <div class="swiper-button-prev"></div>
+				            <div class="swiper-button-next"></div>
+			            </c:if>
+			        
+			        
+	       			 </div>	
+	       			 
+	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
+	                     <div style="position: relative; float:left;">${review.content }</div>
+	                 </div>
                   
-                  <hr>
+                  	<hr>
+                  	
                  
-	  			<jsp:include page="review-detail-comment.jsp"/>
-                
-                
+	  				<jsp:include page="review-detail-comment.jsp"/>
+                	
                 </div>
                
                
                 <div class="col-lg-4">
                     <div class="blog__sidebar">
-	                    <div class="rate-box">
-	                      	<div class="listing__hero__widget">
-	                    			<div class="star-category">가격 만족도</div>
-	                                <div class="listing__hero__widget__rating">
-	                                	<c:if test="${ review.priceSatisfaction ne null }">
-		                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
-		                                		<span class="star-rate-icon icon_star"></span>
-		                                	</c:forEach>
-		                                	<c:if test="${review.priceSatisfaction<5} ">
+	                    
+                       	<div class="blog__sidebar__categories star-rate">
+                                <ul>
+                                    <li class="star-rate-li"><span>
+                                    	<p class="star-rate-text">가격만족도</p>
+                                     	<c:if test="${ review.priceSatisfaction ne null }">
+                                     		<span class="star-rate-star">
+			                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
+			                                		<i class="star-rate-icon icon_star"></i>
+			                                	</c:forEach>
 		                                		<c:forEach var="i" begin="${review.priceSatisfaction + 1 }" end="5">
-		                                			<span class="star-rate-icon icon_star_alt"></span>
+		                                			<i class="star-rate-icon icon_star_alt"></i>
 		                                		</c:forEach>
-		                                	</c:if>
+		                                	</span>
 	                                	</c:if>
-	                                </div>
-	                         </div>	
-	                         
-	                    	<div class="listing__hero__widget">
-	                    		<div  class="star-category">평점</div>
-	                       		 <div class="listing__hero__widget__rating">
-                                	<c:if test="${ review.rate ne null }">
-	                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
-	                                		<span class="star-rate-icon icon_star"></span>
-	                                	</c:forEach>
-                                		<c:if test="${review.rate <5} ">
-	                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
-	                                			<span class="star-rate-icon icon_star_alt"></span>
-	                                		</c:forEach>
-	                                	</c:if>
-                                	</c:if>
-	                            </div>	
-	                         </div>
-	                    </div>
+	                                	</span>
+                                     </li>
+                                    <li class="star-rate-li"><span>
+                                    	<p class="star-rate-text">평점</p> 
+                                   		<c:if test="${ review.rate ne null }">
+                                   			<span class="star-rate-star">
+			                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+			                                		<i class="star-rate-icon icon_star"></i>
+			                                	</c:forEach>
+		                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+		                                			<i class="star-rate-icon icon_star_alt"></i>
+		                                		</c:forEach>
+			                                </span>
+                                		</c:if>
+                                		</span> 
+                                    </li>
+                                </ul>
+                        </div>
                   	
                     	
                     	 <c:if test="${ review.restaurant ne null }">
-	                    	<div class="listing__sidebar__contact">
-	                            <div class="listing__sidebar__contact__map" id="review-detail-map" style="border-radius: 40px 40px 0 0;">
-	                            </div>
-	                            <div class="listing__sidebar__contact__text">
-	                                <h4>${review.restaurant.name }</h4>
-	                                <ul>
-                                		<c:if test="${!empty review.restaurant.category}">
-	                                    	<li><span>${review.restaurant.category }</span></li><br><br>
-                                    	</c:if>
-	                                    <li><span class="icon_pin_alt"></span> ${review.restaurant.address }</li>
-	                                    <li><span class="icon_phone"></span>  ${review.restaurant.tel }</li>
-                                    	<c:if test="${review.restaurant.avgRate ne 0.0}">
-		                                    <li>
-	                                    	<span>평점 </span> 
-                                    		<c:forEach var="i" begin="1" end="5" >
-                                    			<c:if test="${review.restaurant.avgRate>i}">
-			                                		<span class="star-rate-icon icon_star"></span>
-			                                		<c:if test="${review.restaurant.avgRate < i+1}">
-			                                			<c:if test="${review.restaurant.avgRate > i+0.3 }">
-			                                				<c:if test="${review.restaurant.avgRate < i+0.7 }">
-			                                					<span class="star-rate-icon icon_star_half"></span>
-			                                				</c:if>
-			                                				<c:if test="${review.restaurant.avgRate > i+0.7 }">
-			                                					<span class="star-rate-icon icon_star"></span>
-			                                				</c:if>
-			                                			</c:if>
-			                                			<c:if  test="${reveiw.restaurant.avgRate < i+0.3}">
-			                                				<span class="star-rate-icon icon_star_alt"></span>
-			                                			</c:if>
-			                                		</c:if>
-                                    			</c:if>
-		                                	</c:forEach>
-		                                    </li>
-                                    	</c:if>
-                                    	<c:if test="${!empty restaurant.operationHour}">
-		                                    <li><span class="icon_clock"></span> ${restaurant.operationHour }</li>
-                                    	</c:if>
-	                                </ul>
-	                            </div>
-	             
-	                        </div>
+                    	 	<c:set var="restaurant" value="${review.restaurant }"/>
+                       		<%@ include file="../map/map.jsp"%>
                			 </c:if>
+               			 
                         <div class="blog__sidebar__recent">
                             <h5>최근 게시물</h5>
                             <a href="#" class="blog__sidebar__recent__item">
@@ -213,49 +197,12 @@
 	<!-- Js Plugins -->
 	<%@ include file="../includes/plugins.jsp"%>
 	<script type="text/javascript"
-		src="${resources}/js/review/review-detail-kakaomap.js"></script>
-	<script type="text/javascript"
 		src="${resources}/js/review/likes.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/comment.js"></script>
-    <script type="text/javascript">
-       var mapContainer = document.getElementById('review-detail-map'), // 지도를 표시할 div 
-       mapOption = {
-           center: new kakao.maps.LatLng(37.3216, 127.1268), // 지도의 중심좌표 - 단국대
-           level: 3 // 지도의 확대 레벨
-       };  
-
-      // 지도를 생성합니다    
-      var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-      // 주소-좌표 변환 객체를 생성합니다
-      var geocoder = new kakao.maps.services.Geocoder();
-
-      // 주소로 좌표를 검색합니다
-      geocoder.addressSearch('${review.restaurant.address}', function(result, status) {
-
-          // 정상적으로 검색이 완료됐으면 
-           if (status === kakao.maps.services.Status.OK) {
-
-              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-              // 결과값으로 받은 위치를 마커로 표시합니다
-              var marker = new kakao.maps.Marker({
-                  map: map,
-                  position: coords
-              });
-
-              // 인포윈도우로 장소에 대한 설명을 표시합니다
-              var infowindow = new kakao.maps.InfoWindow({
-                  content: '<div style="width:150px;text-align:center;padding:6px 0;">${review.restaurant.name}</div>'
-              });
-              infowindow.open(map, marker);
-
-              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-              map.setCenter(coords);
-          } 
-      });    
-    </script>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/review-write-swiper.js"></script>
     <script type="text/javascript">
 	    function confirmDelete(){
 	    	var con = confirm("리뷰를 삭제하시겠습니까?");

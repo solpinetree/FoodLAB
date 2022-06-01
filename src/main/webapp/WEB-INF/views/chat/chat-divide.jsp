@@ -3,7 +3,7 @@
 
 <head>
 <title>오픈 채팅</title>
-<link rel="stylesheet" href="${resources}/css/chat/openchat.css">
+<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css">
 
 </head>
 
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>오픈채팅</h2>
+                        <h2 class = "baemin-font">${chatroomTitle}</h2>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
 	</div> 
 	-->
 
-						
+	
 	
 	<section class="blog-section spad">
 		<section class="chatbox">
@@ -139,13 +139,16 @@
 			
 		
 			</section>
-			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" action = "${root}/chat/openchat/insert">
+			<form class = "chat-input" onsubmit = "return false" style= "margin-block-end: 0em;" name = "chat-input-form">
 				
-			<!--[${sessionScope.sessionMember.id}] -->
-				<input type = "text" name = "content" id = "sendmsg" placeholder = "메시지를 입력해주세요" autocomplete = "on">
-				<input type="hidden" name="member_id" value="${sessionScope.sessionMember.id}"/>
-				<input type="hidden" name="chatroom_id" value="1"/>
-				<button id = "sendbtn"  onclick = "sendmessage">
+				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
+				
+				<!-- 로그인했을 때 사용자 닉네임 -->
+				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>
+				<input type="hidden" id = "memberid" name = "member_id" value = "${sessionScope.sessionMember.id}">
+				<input type="hidden" id = "chatroomId" name="chatroom_id" value="${chatroomId}"/>
+				<!--  sendmessage javascript function execute -->
+				<button type = "button" id = "sendbtn"  onclick = "sendmessage()">
 					<svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
 					<path fill="rgba(0,0,0,.38)"
 						d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" /></svg>
@@ -160,7 +163,9 @@
 					
 				
 
+	
 	<!-- Newslatter Section Begin -->
+	<!--  
 	<section class="newslatter">
 		<div class="container">
 			<div class="row">
@@ -179,7 +184,10 @@
 			</div>
 		</div>
 	</section>
+-->
 	<!-- Newslatter Section End -->
+	
+	
 
 	<!-- Footer Section Begin -->
 	<jsp:include page="../includes/footer.jsp" />

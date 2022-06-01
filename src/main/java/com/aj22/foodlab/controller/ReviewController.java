@@ -2,6 +2,12 @@ package com.aj22.foodlab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,16 +22,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.domain.Likes;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
-import com.aj22.foodlab.service.CommentService;
 import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
+import com.aj22.foodlab.util.FileUpload;
 import com.aj22.foodlab.util.Pagination;
+
 
 /**
  * Handles requests for the application home page.
@@ -39,9 +48,10 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	@Autowired
-	private RestaurantService restaurantService;
-	@Autowired
 	private LikesService likesService;
+	@Autowired
+	private ReviewImagesService reviewImagesService;
+
 
 	// 푸드로그 게시판
 	@GetMapping("/list")
@@ -64,24 +74,23 @@ public class ReviewController {
 
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
-	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
+	public String writeReviewProcess(Review review, MultipartHttpServletRequest multipartRequest, String restaurantName,
 			HttpServletRequest request) throws SQLException, IOException {
-		// 사용자가 입력한 식당 이름으로
-		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
-		String returnUrl = null;
-		Integer reviewId = reviewService.insert(review);
 		
-		
+		String loadUrl = null;
+		Integer reviewId = reviewService.save(review, restaurantName);
+
+		reviewImagesService.saveReviewImages(multipartRequest, reviewId);
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
+			loadUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
 
-		return returnUrl;
+		return loadUrl;
 	}
-
+	
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
@@ -97,11 +106,8 @@ public class ReviewController {
 			model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 		}
 
-		if (review == null) {
-			// TODO 리뷰 가져오기 실패한 경우 로직
-		} else {
-			model.addAttribute("review", review);
-		}
+		model.addAttribute("review", review);
+		model.addAttribute("reviewImages", reviewImagesService.findByReviewId(reviewId));
 
 		return "review/review-detail";
 	}

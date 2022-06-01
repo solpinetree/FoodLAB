@@ -1,6 +1,7 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +28,16 @@ public class ChatService {
 		return res;
 	}
 	
-	public List<ChatDTO> findbyChatroomId(int chatroomId) throws SQLException{
+	public List<ChatDTO> findbyChatroomId(Timestamp createdAt) throws SQLException{
 		ChatDAO dao = new ChatDAOImpl();
-		List<Chat> chats = dao.selectByChatroomId(chatroomId);
+		List<Chat> chats = dao.getChatList(createdAt);
 		dao.close();
 		
 		return findAllAsDTO(chats);
 		
 	}
+	
+	
 	
 	public List<ChatDTO> findAllAsDTO(List<Chat> ChatEntities) throws SQLException{
 		List<ChatDTO> chats = new ArrayList<>();

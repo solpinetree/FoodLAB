@@ -25,7 +25,7 @@
 	<!-- Header Section End -->
 
 	<%
-	request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 	%>
 
 
@@ -45,7 +45,7 @@
 						<br>
 						<!-- fieldsets 태그로 form들을 나눈다. -->
 						<!--  식당이름으로 식당 주소 입력받는 fieldset 시작 -->
-						<fieldset>
+					 	<fieldset>
 							<div class="form-card">
 								<label class="fieldlabels"></label> 
 								<input type="text" name="address" id="address" style="width: 50%"
@@ -68,57 +68,13 @@
 							<button type="button" name="next" id="firstNextBtn"
 								class="next action-button" onclick="next(this)"
 								style="visibility: hidden">NEXT</button>
-						</fieldset> 
+						</fieldset>  
 						<!-- 식당이름으로 식당 주소 입력받는 fieldset 끝 -->
-						<fieldset>  
-							<div class="form-card">
-								<input type="text" name="title" id="title"
-									placeholder="이 장소를 한 문장으로 표현한다면 ..?"
-									style="background-color: white; font-weight: 500">
-									
-								   <!-- Slider main container -->
-							        <div class="swiper">
-							            <!-- Additional required wrapper -->
-							            <div class="swiper-wrapper">
-							
-							                <!-- Slides -->
-							                <div class="swiper-slide"> 
-											 	<input class="file-input" name="img1" id="img1" multiple="multiple" type="file" accept="image/*">
-											 	<a class="Neon-input-choose-btn">사진을 공유해주세요</a>
-       										</div>
-							                <div class="swiper-slide">
-												<input class="file-input" name="img2" id="img2" multiple="multiple" type="file" accept="image/*">
-											 	<a class="Neon-input-choose-btn">+</a>
-							                </div>
-							                <div class="swiper-slide">
-							                	<input class="file-input" name="img3" id="img3" multiple="multiple" type="file" accept="image/*">
-											 	<a class="Neon-input-choose-btn">+</a>
-											</div>
-							                <div class="swiper-slide">
-												<input class="file-input" name="img4" id="img4" multiple="multiple" type="file" accept="image/*">
-											 	<a class="Neon-input-choose-btn">+</a>
-							                </div>
-							
-							            </div>
-							            <!-- If we need pagination -->
-							            <div class="swiper-pagination"></div>
-							        
-							            <!-- If we need navigation buttons -->
-							            <div class="swiper-button-prev"></div>
-							            <div class="swiper-button-next"></div>
-							        
-							        </div>	
-								
-									
-								<textarea name="content" id="content" rows="0" cols="0" style="font-weight: 500; height: 141px" placeholder="간단한 리뷰"></textarea>
-							</div>
-
-							<input type="button" name="next" id="contentNextBtn"
-								class="next contentNextBtn action-button" value="NEXT"
-								style="display: none" /> <input type="button" name="previous"
-								class="previous action-button-previous" value="PREVIOUS" />
-						</fieldset>
+						
+						<!--       리뷰 작성하는 fieldset 시작 -->
+						<jsp:include page="review-write-image-upload.jsp"/>
 						<!--       리뷰 작성하는 fieldset 끝 -->
+						
 						<!--       가격, 인원, 별점을 등록하는 fieldset 시작  -->
 						<fieldset>
 
@@ -217,9 +173,10 @@
 		src="${resources}/js/review/image-upload.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write1.js"></script>
-	<script type="text/javascript" src="${resources}/js/review/kakaomap.js"></script>
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write-swiper.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/kakaomap.js"></script>
 </body>
 </html>

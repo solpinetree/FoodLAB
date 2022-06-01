@@ -51,14 +51,15 @@ public class RestaurantController {
 	@GetMapping("/select_res")
 	public String res2( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
-
 		
-		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
-		String numOfRecords2 = Integer.toString(numOfRecords);
-		logger.info(numOfRecords2);
+		Pagination pagination = restaurantService.getPaginationOfCategory(currentPage, category);
 		
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+//		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
+//		String numOfRecords2 = Integer.toString(numOfRecords);
+//		logger.info(numOfRecords2);
+//		
+//		Pagination pagination = new Pagination();
+//		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
@@ -74,6 +75,7 @@ public class RestaurantController {
 	@RequestMapping(value="/select_res2", produces="application/text;charset=utf8")
 	@ResponseBody
 	public String getcategory_ajax( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		logger.info("category: "+category);
 		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
 		String numOfRecords2 = Integer.toString(numOfRecords);
 		logger.info(numOfRecords2);
