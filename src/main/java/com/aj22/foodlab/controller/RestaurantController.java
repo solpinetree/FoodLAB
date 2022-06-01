@@ -92,7 +92,7 @@ public class RestaurantController {
 			html += 
 			           "<div class='listing__item'>"  
 		      
-		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer;' onclick=\"location.href='http://158.247.206.153:8085/foodlab/restaurants/detail?restaurantId="+dto.getRestaurantId()+"';\"data-setbg=\""+dto.getImgUrl()+"\"" + " style=\"border-radius: 40px 40px 0 0;\">"
+		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer; background-image:url(\""+dto.getImgUrl()+"\");' onclick=\"location.href='http://158.247.206.153:8085/foodlab/restaurants/detail?restaurantId="+dto.getRestaurantId()+"';\"data-setbg=\""+dto.getImgUrl()+"\"" + " style=\"border-radius: 40px 40px 0 0;\">"
 		           +       "<div class='listing__item__pic__tag' style='background: #f9adbd'>"+dto.getCategory()+"</div>"
 		           +       "<div class='listing__item__pic__btns'>"
 		           +           "<div class='listing__item__pic__btns'>"
