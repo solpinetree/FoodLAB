@@ -1,7 +1,30 @@
-.breadcrumb-area {
-    padding-top: 200px;
-    padding-bottom: 50px;
+
+/* chat-divide.jsp  Title css */
+.title-area {
+	padding-top: 200px;
+	padding-bottom: 10px;
+}	
+
+.title__text > .blackHansFont {
+	font-size: 70px;
+	color: #000000;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
+
+.title__text h2 .blackHansFont {
+	font-size: 40px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* chat-blog area */
+.cpad {
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
 
 
 ::-webkit-scrollbar {
@@ -73,6 +96,7 @@
 }
 .chat-input input[good] + button path {
     fill: white;
+    
 }
 .msg-container {
     position: relative;

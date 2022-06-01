@@ -2,7 +2,7 @@
 <%@ include file="../includes/common.jsp" %>
 
 <head>
-    <title>채팅방 로비</title>
+    <title>Chatrooms</title>
     <link rel="stylesheet" href="${resources}/css/chat/chat.css">
 </head>
 
@@ -26,10 +26,10 @@
     <section class="blog-section spad" style="padding-top: 10%">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="row">
                     	<c:forEach var = "chr" items = "${chatrooms}">
-                    		<div class="col-lg-6 col-md-6">
+                    		<div class="col-lg-4 col-md-4">
 	                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
 	                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
 	                    	            </div>
@@ -38,6 +38,8 @@
 	                                </div>
 	                            </div>
                         	</div>
+                        	
+                        	<br>
                     	</c:forEach>  
                     </div>
                 </div>
@@ -46,25 +48,7 @@
     </section>
     <!-- Blog Section End -->
 
-    <!-- Newslatter Section Begin -->
-    <section class="newslatter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="newslatter__text">
-                        <h3>Subscribe Newsletter</h3>
-                        <p>Subscribe to our newsletter and donât miss anything</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <form action="#" class="newslatter__form">
-                        <input type="text" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     <!-- Newslatter Section End -->
 
      <!-- Footer Section Begin -->
