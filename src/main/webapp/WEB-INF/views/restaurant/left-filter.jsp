@@ -7,10 +7,12 @@
         
 
         <div class="filter__location">
-        <form name="search_res" action="${root}/restaurants/search2">
-            <input type="text" name="seach_text" class="search-click" placeholder="식당 이름으로 검색">
+        
+            <input type="text" name="seach_text" id = "searchText" class="search-click" placeholder="식당 이름으로 검색" onkeypress="searchclick(event)">
+            <p id="word"></p>
+            <input type="hidden" id="searchTextHidden" value=""/>
             <i class="fa fa-magnifying-glass"></i>
-        </form>
+        
         </div>
         
         <div class="filter__tags">

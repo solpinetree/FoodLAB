@@ -1,20 +1,42 @@
-$(document).ready(function(){
 
+/*
 
-
-	var formValues = $("form[name=search_res]").serialize();
+function selectBySearch(searchValue){
 	
-	$.ajax({
-    	url: "/foodlab/restaurants/search2",
-        type: "Get",
-        data: formValues,
-        success: function(){
-        	$('.showsearch').html(response);
-        },
-        error: function(){
-        	alert("실패")
-        },
-    })
+	
+alert($('form[name="search_res"]').attr('action'));
 
+$.ajax({
+		url:"/foodlab/restaurants/select_res2?category="+categoryValue,
+		method:"GET",
+		async: true,
+		success:function(response) {
+			$('#showcategorys').html(response);
+		}
 
-});
+	})
+    }
+
+*/
+
+        function searchclick(e){
+	
+	var code = e.code;
+	var txt = document.getElementById("searchText").value;
+	
+	if(code == 'Enter'){
+	
+	
+	
+$.ajax({
+		url:"/foodlab/restaurants/select_res2?category="+txt,
+		method:"GET",
+		async: true,
+		success:function(response) {
+			$('#showSeachText').html(response);
+		}
+
+	})
+        }
+        
+}

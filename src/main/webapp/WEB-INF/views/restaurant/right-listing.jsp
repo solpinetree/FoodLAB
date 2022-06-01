@@ -11,7 +11,7 @@
            </div>
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
        </div>
-       <div class="listing__list showsearch" id= "showcategorys">
+       <div class="listing__list showSeachText" id= "showcategorys">
        
        	<c:forEach items="${restaurants}" var="restaurant">
        	
