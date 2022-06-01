@@ -7,8 +7,8 @@
         
 
         <div class="filter__location">
-        <form name="search_res" action="${root}/restaurants/search">
-            <input type="text" name="seach_text" placeholder="식당 이름으로 검색">
+        <form name="search_res" action="${root}/restaurants/search2">
+            <input type="text" name="seach_text" class="search-click" placeholder="식당 이름으로 검색">
             <i class="fa fa-magnifying-glass"></i>
         </form>
         </div>
