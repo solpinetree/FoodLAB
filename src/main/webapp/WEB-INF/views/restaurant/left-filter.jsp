@@ -18,12 +18,13 @@
             	<c:forEach items="${categories}" var="category">
             	       <label for="${category}"> ${category}
             	       
-            	       		<input type="hidden" id="categoryIdValue" value="${category}"/>
+            	       		
 			                <input type="button" id="${category}" class="category-click">
-			                
+			                <input type="hidden" id="categoryIdValue" value="${category}"/>
 			           
 			            </label>
             	</c:forEach>
+       
         </div>
         
         

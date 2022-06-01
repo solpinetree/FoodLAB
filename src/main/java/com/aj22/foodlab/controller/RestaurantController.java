@@ -79,13 +79,55 @@ public class RestaurantController {
 		logger.info(numOfRecords2);
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
+		model.addAttribute("categories", restaurantService.getCategories());
+		model.addAttribute("category", category);
+		
 		html="";
 		RestaurantService res = new RestaurantService();
 		List<RestaurantDTO> categorys =  res.selectList_category(pagination,category);
 		
 		for(RestaurantDTO dto:categorys) {
 			html += 
-	            "<h1>OK</h1>";
+			           "<div class='listing__item'>"  
+		      
+		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer;' onclick='location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}';' data-setbg='${restaurant.imgUrl}' style='border-radius: 40px 40px 0 0;'>"	
+		           +       "<div class='listing__item__pic__tag' style='background: #f9adbd'>"+dto.getCategory()+"</div>" 
+		           +       "<div class='listing__item__pic__btns'>"
+		           +           "<div class='listing__item__pic__btns'>"
+	               +            	"<a href='#'><span class='icon_heart_alt'></span></a>"
+	               +           "</div>"
+		           +       "</div>"
+		           +   "</div>"
+		          
+		      
+		           
+		           +   "<div class='listing__item__text'>"
+		           +       "<div class='listing__item__text__inside'>"
+		           +           "<h5>"+dto.getName()+"</h5>"
+		           +           "<div class='listing__item__text__rating'>"
+		           +               "<div class='listing__item__rating__star'>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star-half_alt'></span>"
+		           +               "</div>"
+		           +           "</div>"
+		           +           "<ul>"
+		           +               "<li><span class='icon_pin_alt'></span>"+ dto.getAddress() +"</li>"
+		           +               "<li><span class='icon_phone'></span>"+ dto.getTel() +"</li>"
+		           +               "<li><span class='icon_archive_alt'></span> 누적 리뷰수 : <text style='font-weight: bold;'>120</text></li>"                       
+		           +           "</ul>"
+		           +       "</div>"
+		           +       "<div class='listing__item__text__info'>"
+		                      
+		           +           "<div class='listing__item__text__info__right'>"+dto.getOperationHour() +"</div>"
+		           +       "</div>"
+		           +   "</div>"
+		          +"</div>";
 		}
 		
 		return html;
