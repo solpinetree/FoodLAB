@@ -1,5 +1,6 @@
 package com.aj22.foodlab.controller;
 
+import java.io.Console;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class RestaurantController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("restaurants", restaurantService.selectList(pagination));
 		model.addAttribute("categories", restaurantService.getCategories());
+		String list = "list";
+		model.addAttribute("pagevalue",list);
 		return "restaurant/restaurants";
 	}
 	
@@ -83,7 +86,7 @@ public class RestaurantController {
 		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("category", category);
-		
+		model.addAttribute("pagevalue","select");
 		html="";
 		RestaurantService res = new RestaurantService();
 		List<RestaurantDTO> categorys =  res.selectList_category(pagination,category);
@@ -91,7 +94,7 @@ public class RestaurantController {
 		for(RestaurantDTO dto:categorys) {
 			html += 
 			           "<div class='listing__item'>"  
-		      
+				   + "<c:set var=\"pagevalue\" value=\"카테고리\"/>"
 		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer; background-image:url(\""+dto.getImgUrl()+"\");' onclick=\"location.href='http://158.247.206.153:8085/foodlab/restaurants/detail?restaurantId="+dto.getRestaurantId()+"';\"data-setbg=\""+dto.getImgUrl()+"\"" + " style=\"border-radius: 40px 40px 0 0;\">"
 		           +       "<div class='listing__item__pic__tag' style='background: #f9adbd'>"+dto.getCategory()+"</div>"
 		           +       "<div class='listing__item__pic__btns'>"

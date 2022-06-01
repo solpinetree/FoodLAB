@@ -12,7 +12,7 @@
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
        </div>
        <div class="listing__list showSeachText" id= "showcategorys">
-       
+  		<c:set var="pagevalue" value="기본" />   
        	<c:forEach items="${restaurants}" var="restaurant">
        	
 	       	  <!--  식당 하나 div 시작 -->
@@ -31,7 +31,7 @@
 	           
 	              <div class="listing__item__text">
 	                  <div class="listing__item__text__inside">
-	                      <h5>${restaurant.name}</h5>
+	                      <h5>${restaurant.name}</h5>       
 	                      <div class="listing__item__text__rating">
 	                          <div class="listing__item__rating__star">
 	                              <span class="icon_star"></span>
@@ -58,18 +58,18 @@
           </c:forEach>
         
       </div>
-		
+	
 		    <!-- pagination 시작 -->
 	
 			<div id="paginationBox">
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
-							<c:if test="${category == null}">
+							<c:if test="${pagevalue == 'list'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
 							</c:if>
 							
-							<c:if test="${category != null}">
+							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev_category('${pagination.currentPage}','${category}')">Previous</a></li>
 							</c:if>
@@ -77,7 +77,7 @@
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-								<c:if test="${category==null}">
+								<c:if test="${pagevalue=='list'}">
 						<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
@@ -86,7 +86,7 @@
 								</c:if>
 								
 								
-								<c:if test="${category!=null}">
+								<c:if test="${pagevalue=='select'}">
 						<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
@@ -97,13 +97,13 @@
 					</c:forEach>
 		
 							
-					<c:if test="${category==null}">
+					<c:if test="${pagevalue=='list'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
 							</c:if>
 							
 							
-							<c:if test="${category!=null}">
+							<c:if test="${pagevalue=='select'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next_category('${pagination.currentPage}','${category}')">Next</a></li>
 							</c:if>
