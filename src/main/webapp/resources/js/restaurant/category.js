@@ -2,6 +2,7 @@ $(document).ready(function(){
 $(".category-click").click(function() {
 	
 	var category = document.getElementById("categoryIdValue").value;
+	console.log(category);
 	
 	$.ajax({
 		//Post comment html code

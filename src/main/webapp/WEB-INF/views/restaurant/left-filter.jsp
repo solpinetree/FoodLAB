@@ -17,12 +17,10 @@
             <h6>카테고리</h6>
             	<c:forEach items="${categories}" var="category">
             	       <label for="${category}"> ${category}
-            	       
-            	       		
-			                <input type="button" id="${category}" class="category-click">
-			                <input type="hidden" id="categoryIdValue" value="${category}"/>
-			           
-			            </label>
+            	       <input type="button" id="${category}" class="category-click">
+            	       <c:set var="categoryID" value="${category}"/>
+            	       <input type="hidden" id="categoryIdValue" value="${categoryID}"/>
+            	       </label>
             	</c:forEach>
        
         </div>
