@@ -155,19 +155,43 @@ public class RestaurantController {
 		
 		for(RestaurantDTO dto:search) {
 			html += 
-	                "<div class='listing__details__comment__item'>" 
-	              + 	"<div class='listing__details__comment__item__pic'>"
-	      	      + 		"<img src='/foodlab/resources/img/defaultProfile.jpeg'>"
-	              +		"</div>"
-	      	      +		"<div class='listing__details__comment__item__text'>"
-	              +			"<span>"+dto.getAddress()+"</span>"
-	              +			"<h5>"+dto.getCategory()+"</h5>"
-	              + 		"<p>"+dto.getName()+"</p>"
-	              + 		"<button type='button' class='reply-btn' id="+ dto.getTel() + ">"
-	              +				"<i class='fa fa-reply'></i> ����湲� �ш린"
-	              +			"</button>"
-	              +		"</div>"
-	              +	"</div>";
+			           "<div class='listing__item'>"  
+				      
+		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer;' onclick='location.href='/foodlab/restaurants/detail?restaurantId="+dto.getRestaurantId()+"';' data-setbg='"+dto.getImgUrl()+"' style='border-radius: 40px 40px 0 0;'>"	
+		           +       "<div class='listing__item__pic__tag' style='background: #f9adbd'>"+dto.getCategory()+"</div>"
+		           +       "<div class='listing__item__pic__btns'>"
+		           +           "<div class='listing__item__pic__btns'>"
+	               +            	"<a href='#'><span class='icon_heart_alt'></span></a>"
+	               +           "</div>"
+		           +       "</div>"
+		           +   "</div>"
+		          
+		      
+		           
+		           +   "<div class='listing__item__text'>"
+		           +       "<div class='listing__item__text__inside'>"
+		           +           "<h5>"+dto.getName()+"</h5>"
+		           +           "<div class='listing__item__text__rating'>"
+		           +               "<div class='listing__item__rating__star'>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star'></span>"
+		           +                   "<span class='icon_star-half_alt'></span>"
+		           +               "</div>"
+		           +           "</div>"
+		           +           "<ul>"
+		           +               "<li><span class='icon_pin_alt'></span>"+ dto.getAddress() +"</li>"
+		           +               "<li><span class='icon_phone'></span>"+ dto.getTel() +"</li>"
+		           +               "<li><span class='icon_archive_alt'></span> 누적 리뷰수 : <text style='font-weight: bold;'>120</text></li>"                       
+		           +           "</ul>"
+		           +       "</div>"
+		           +       "<div class='listing__item__text__info'>"
+		                      
+		           +           "<div class='listing__item__text__info__right'>"+dto.getOperationHour() +"</div>"
+		           +       "</div>"
+		           +   "</div>"
+		          +"</div>";
 		}
 		
 		return html;
