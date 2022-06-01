@@ -109,3 +109,13 @@ function msgDB_insert(){
 		});
 }
 
+
+
+//input type text 가 active or focus 상태가 되면 button 색이 바뀜
+function activeButton(){
+	document.getElementById('sendbtn').style.backgroundColor = "white";
+}
+
+
+
+
