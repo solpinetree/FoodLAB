@@ -141,13 +141,14 @@ public class RestaurantController {
 		return "restaurant/restaurants";
 	}
 	
-	
-	@GetMapping("/search2")
-	public String restaurant_search_ajax(Model model, @RequestParam("seach_text") String search_text) throws SQLException {
+
+	@RequestMapping(value="/search2", produces="application/text;charset=utf8")
+	@ResponseBody
+	public String restaurant_search_ajax(Model model, @RequestParam("search_text") String search_text)  throws SQLException {
 		model.addAttribute("search_text",search_text);
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("restaurants", restaurantService.selectByName(search_text));
-		
+		logger.info("seach_text: "+search_text);
 		html="";
 		RestaurantService res = new RestaurantService();
 		List<RestaurantDTO> search =  res.selectByName(search_text);

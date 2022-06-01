@@ -29,11 +29,11 @@ $.ajax({
 	
 	
 $.ajax({
-		url:"/foodlab/restaurants/select_res2?category="+txt,
+		url:"/foodlab/restaurants/search2?search_text="+txt,
 		method:"GET",
 		async: true,
 		success:function(response) {
-			$('#showSeachText').html(response);
+			$('.showSeachText').html(response);
 		}
 
 	})
