@@ -49,6 +49,7 @@ public class ReviewImagesService {
 		List<ReviewImages> images = dao.select(reviewId);
 		dao.close();
 		
+		
 		return images;
 	}
 }

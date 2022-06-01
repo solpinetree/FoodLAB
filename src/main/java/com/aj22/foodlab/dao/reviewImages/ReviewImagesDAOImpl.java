@@ -74,7 +74,7 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, id);
 		rs = pstmt.executeQuery();
-		if (rs.next()) {
+		while (rs.next()) {
 			images.add(createFromResultSet(rs));
 		}
 		

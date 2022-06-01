@@ -25,7 +25,6 @@
 						    <img class="file-upload-image1" src="#" alt="your image" />
 						</div>
 					</div>
-					
  										
 					<c:forEach var="i" begin="2" end="4">
 		                <div class="swiper-slide">
@@ -35,10 +34,11 @@
 							 	<a class="Neon-input-choose-btn">+</a>
 						 	</div>
 					 	  	<div class="file-upload-content${i }">
-							    <img class="file-upload-image${i }" src="#" alt="your image" />
+							    <img class="file-upload-image${i }" src="#" alt="리뷰 이미지 미리보기" />
 							</div>
 		                </div>
 					</c:forEach>
+					
 	            </div>
 	            <!-- If we need pagination -->
 	            <div class="swiper-pagination"></div>
