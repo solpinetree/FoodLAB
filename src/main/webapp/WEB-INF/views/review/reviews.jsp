@@ -5,9 +5,14 @@
 <head>
 <title>푸드로그</title>
 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet"
 	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
 	type="text/css">
+<!-- search panel 시작 -->
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+<link href="${resources }/css/review/search-panel.css" rel="stylesheet" />
+<!-- search panel 끝 -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href='${resources }/css/review/table.css'>
@@ -78,9 +83,7 @@
 				</div>
 			</section>
 			
-			<div class="container">
-			    <div class="row">    
-			    
+	
 	    			<!-- pagination 시작 -->
 					<div id="paginationBox" class="paginationBox">
 						<ul class="pagination">
@@ -105,32 +108,39 @@
 					</div>
 					<!-- pagination 끝 -->
 					
-			        <div class="col-xs-8 col-xs-offset-2">
-					    <div class="input-group">
-			                <div class="input-group-btn search-panel">
-			                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-			                    </button>
-			                    <ul class="dropdown-menu" role="menu">
-			                      <li><a href="#contains">Contains</a></li>
-			                      <li><a href="#its_equal">It's equal</a></li>
-			                      <li><a href="#greather_than">Greather than ></a></li>
-			                      <li><a href="#less_than">Less than < </a></li>
-			                      <li class="divider"></li>
-			                      <li><a href="#all">Anything</a></li>
-			                    </ul>
-			                </div>
-			                <input type="hidden" name="search_param" value="all" id="search_param">         
-			                <input type="text" class="form-control" name="x" placeholder="Search term...">
-			                <span class="input-group-btn">
-			                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-			                </span>
-			            </div>
-			        </div>
-				</div>
-			</div>
-
-
+					<!--  search panel 시작 -->
+					 <div class="s003">
+				      <form>
+				        <div class="inner-form">
+				          <div class="input-field first-wrap">
+				            <div class="input-select">
+				              <select data-trigger="" name="choices-single-defaul">
+				                <option placeholder="">Category</option>
+				                <option>New Arrivals</option>
+				                <option>Sale</option>
+				                <option>Ladies</option>
+				                <option>Men</option>
+				                <option>Clothing</option>
+				                <option>Footwear</option>
+				                <option>Accessories</option>
+				              </select>
+				            </div>
+				          </div>
+				          <div class="input-field second-wrap">
+				            <input id="search" type="text" placeholder="Enter Keywords?" />
+				          </div>
+				          <div class="input-field third-wrap">
+				            <button class="btn-search" type="button">
+				              <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+				                <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+				              </svg>
+				            </button>
+				          </div>
+				        </div>
+				      </form>
+				    </div>
+				    <!--  search panel 끝 -->
+					
 
 
 			<script type="text/javascript">
@@ -156,7 +166,6 @@
 				}
 			</script>
 
-
 		</div>
 	</section>
 	<!-- Blog Section End -->
@@ -167,9 +176,19 @@
 	<!-- Footer Section End -->
 
 	<!-- Js Plugins -->
+	<%@ include file="../includes/plugins.jsp"%>
 	<script type="text/javascript"
 		src="${resources}/js/nav-text-in-black.js"></script>
-	<%@ include file="../includes/plugins.jsp"%>
+	<script type="text/javascript"
+		src="${resources}/js/review/choices.js"></script>
+	<script type="text/javascript">
+	      const choices = new Choices('[data-trigger]',
+	      {
+	        searchEnabled: false,
+	        itemSelectText: '',
+	      });
+	</script>
+
 </body>
 
 </html>
