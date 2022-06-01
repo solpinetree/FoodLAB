@@ -100,6 +100,15 @@ public class RestaurantService {
 		return pagination;
 	}
 	
+	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
+		
+		int numOfRecords = getNumOfRecord_category(category);
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
 	public int getNumOfRecord_category(String category) throws SQLException {
 		int cnt = 0;
 		

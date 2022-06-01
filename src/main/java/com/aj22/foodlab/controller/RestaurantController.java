@@ -75,6 +75,7 @@ public class RestaurantController {
 	@RequestMapping(value="/select_res2", produces="application/text;charset=utf8")
 	@ResponseBody
 	public String getcategory_ajax( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		logger.info("category: "+category);
 		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
 		String numOfRecords2 = Integer.toString(numOfRecords);
 		logger.info(numOfRecords2);
