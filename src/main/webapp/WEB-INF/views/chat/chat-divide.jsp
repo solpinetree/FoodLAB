@@ -129,7 +129,7 @@
 	
 	
 	<section class="blog-section spad">
-		<section class="chatbox">
+		<section class="chatbox" id = "chatbox">
 			<section class="chat-window" id="chat-window">
 			
 			<c:if test="${empty sessionScope.sessionMember.id}">
