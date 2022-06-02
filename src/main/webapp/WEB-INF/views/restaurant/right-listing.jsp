@@ -7,12 +7,13 @@
        <div class="listing__text__top">
            <div class="listing__text__top__left">
                <h5>필터 적용 결과</h5>
+               <h5>${pagevalue}</h5>
                <span>18 Results Found</span>
            </div>
            <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
        </div>
        <div class="listing__list showSeachText" id= "showcategorys">
-  		<c:set var="pagevalue" value="기본" />   
+   
        	<c:forEach items="${restaurants}" var="restaurant">
        	
 	       	  <!--  식당 하나 div 시작 -->
@@ -69,7 +70,7 @@
 							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
 							</c:if>
 							
-							<c:if test="${pagevalue == 'select'}">
+						<c:if test="${pagevalue=='select'}">	
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev_category('${pagination.currentPage}','${category}')">Previous</a></li>
 							</c:if>
@@ -78,6 +79,7 @@
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
 								<c:if test="${pagevalue=='list'}">
+								
 						<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
@@ -92,7 +94,10 @@
 							class="page-link" href="#"
 							onClick="fn_pagination_category('${idx}','${category}')">
 								${idx} </a></li>
+								<h1>${pagevalue}</h1>
+								
 								</c:if>
+								
 								
 					</c:forEach>
 		
