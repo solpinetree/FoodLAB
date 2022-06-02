@@ -89,6 +89,11 @@
 							onClick="fn_prev_category('${pagination.currentPage}','${category}')">Previous</a></li>
 							</c:if>
 							
+								<c:if test="${pagevalue == 'search'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev_search('${pagination.currentPage}','${search}')">Previous</a></li>
+							</c:if>
+							
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
@@ -110,6 +115,14 @@
 								${idx} </a></li>
 								</c:if>
 								
+										<c:if test="${pagevalue=='search'}">
+						<li
+							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
+							class="page-link" href="#"
+							onClick="fn_pagination_search('${idx}','${search}')">
+								${idx} </a></li>
+								</c:if>
+								
 					</c:forEach>
 		
 							
@@ -122,6 +135,11 @@
 							<c:if test="${pagevalue=='select'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next_category('${pagination.currentPage}','${category}')">Next</a></li>
+							</c:if>
+							
+								<c:if test="${pagevalue=='search'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_next_search('${pagination.currentPage}','${search}')">Next</a></li>
 							</c:if>
 					
 				</ul>

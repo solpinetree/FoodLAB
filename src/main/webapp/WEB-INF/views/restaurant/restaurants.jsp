@@ -115,6 +115,49 @@
 			})
 		}
 		
+		
+		function fn_prev_search(page,search) {
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+(page-1)+"&search="+search,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
+		}
+
+	  	//페이지 번호 클릭
+		function fn_pagination_search(page,search) {
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+page+"&search="+search,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})	
+		}
+
+		//다음 버튼 이벤트
+		function fn_next_search(page,search) {
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+(page+1)+"&search="+search,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
+		}
+		
+		
 
 
 	</script>
