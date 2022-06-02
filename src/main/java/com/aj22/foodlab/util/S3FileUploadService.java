@@ -38,8 +38,8 @@ public class S3FileUploadService {
     @Value("${cloud.aws.credentials.secretKey}")
     private String secretKey;
     
-    BasicAWSCredentials creds = new BasicAWSCredentials(accessKey, secretKey);
-    AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+ //   BasicAWSCredentials creds = new BasicAWSCredentials(accessKey, secretKey);
+  //  AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
     
     
 //    private final AmazonS3Client amazonS3Client;

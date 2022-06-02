@@ -3,16 +3,19 @@
 <!--  resources 디렉토리 위치를 가리키는 변수 선언 -->
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <c:set var="root" value="${pageContext.request.contextPath }" />
-<section class="listing nice-scroll">
-       <div class="listing__text__top">
-           <div class="listing__text__top__left">
-               <h5>필터 적용 결과</h5>
-               <span>18 Results Found</span>
-           </div>
-           <div class="listing__text__top__right">Nearby <i class="fa fa-sort-amount-asc"></i></div>
-       </div>
+<section class="listing nice-scroll" id="restaurantList">
+		<div id="resultNumDiv">
+			<p>${category }</p>
+			<c:if test="${!empty category }">
+		       <div class="listing__text__top">
+		           <div class="listing__text__top__left">
+		               <h5>필터 적용 결과</h5>
+		               <span>${numOfRecords }</span>
+		           </div>
+		       </div>
+			</c:if>
+		</div>
        <div class="listing__list showSeachText" id= "showcategorys">
-  		<c:set var="pagevalue" value="기본" />   
        	<c:forEach items="${restaurants}" var="restaurant">
        	
 	       	  <!--  식당 하나 div 시작 -->

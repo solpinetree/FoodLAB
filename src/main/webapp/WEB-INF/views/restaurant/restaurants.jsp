@@ -22,7 +22,7 @@
     <jsp:include page="left-filter.jsp"/>
 
     <!-- Listing Section -->
-   	<jsp:include page="right-listing.jsp"/>
+   	<div id="restaurants-content"></div>
    	
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
