@@ -54,6 +54,7 @@ public class RestaurantController {
 			model.addAttribute("pagination", pagination);
 			model.addAttribute("restaurants", restaurantService.findByCategoryWithPagination(pagination,category));
 			model.addAttribute("pagevalue","select");
+			model.addAttribute("category",category);
 		}
 		
 		return "restaurant/right-listing";

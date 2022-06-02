@@ -68,10 +68,10 @@
 			<div id="paginationBox">
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
-						<c:if test="${pagevalue eq 'list'}">
+						
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
-						</c:if>
+						>
 							
 							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
@@ -81,13 +81,13 @@
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-						<c:if test="${pagevalue eq 'list'}">
+						
 							<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
 							onClick="fn_pagination('${idx}')">
 								${idx} </a></li>
-						</c:if>
+						
 								
 								
 								<c:if test="${pagevalue=='select'}">
@@ -101,10 +101,10 @@
 					</c:forEach>
 		
 							
-					<c:if test="${pagevalue eq 'list'}">
+					
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
-							</c:if>
+							
 							
 							
 							<c:if test="${pagevalue=='select'}">
