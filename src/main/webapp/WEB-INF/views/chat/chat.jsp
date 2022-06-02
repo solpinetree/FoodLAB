@@ -3,7 +3,7 @@
 
 <head>
     <title>Chatrooms</title>
-    <link rel="stylesheet" href="${resources}/css/chat/chat.css">
+
 </head>
 
 <body>
@@ -26,23 +26,34 @@
     <section class="blog-section spad" style="padding-top: 10%">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                    	<c:forEach var = "chr" items = "${chatrooms}">
-                    		<div class="col-lg-4 col-md-4">
-	                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
-	                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
-	                    	            </div>
-	                                <div class="blog__item__text">
-	                                    <h5 class="font_bold">${chr.title}</h5>
-	                                </div>
-	                            </div>
-                        	</div>
-                        	
-                        	<br>
-                    	</c:forEach>  
-                    </div>
-                </div>
+            	
+            		<div class = "col-lg-2">
+            		</div>
+            		
+	               	<div class="col-lg-4">
+	                   	<c:forEach var = "chr" items = "${chatrooms}" begin = "0" end = "3" step = "1">
+                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
+                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
+                    	        </div>
+                                <div class="blog__item__text">
+                                    <h5 class="font_bold">${chr.title}</h5>
+                                </div>
+                            </div>
+	                   	</c:forEach>  
+	               	</div>
+	               	<div class="col-lg-4">
+	                   	<c:forEach var = "chr" items = "${chatrooms}"  begin = "4" end = "8" step = "1">
+                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
+                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
+                    	        </div>
+                                <div class="blog__item__text">
+                                    <h5 class="font_bold">${chr.title}</h5>
+                                </div>
+                       		</div>
+	                   	</c:forEach>  
+	               	</div>
+	            	<div class = "col-lg-2">
+            		</div>
             </div>
         </div>
     </section>
