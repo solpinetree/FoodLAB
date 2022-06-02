@@ -78,9 +78,10 @@
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
 						
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
-						
+							<c:if test="${pagevalue=='main'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
+							</c:if>>
 							
 							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
@@ -91,12 +92,13 @@
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
 						
+						<c:if test="${pagevalue=='main'}">
 							<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
 							onclick="javascript:selectByCategory2('${idx}')">
 								${idx} </a></li>
-						
+						</c:if>
 								
 								
 								<c:if test="${pagevalue=='select'}">
@@ -110,10 +112,10 @@
 					</c:forEach>
 		
 							
-					
+							<c:if test="${pagevalue=='main'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
-							
+							</c:if>
 							
 							
 							<c:if test="${pagevalue=='select'}">

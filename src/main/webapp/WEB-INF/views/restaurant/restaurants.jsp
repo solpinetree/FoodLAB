@@ -31,7 +31,16 @@
 	<script type="text/javascript">
 		//이전 버튼 이벤트
 		function fn_prev(page) {
-			loadUrl(page-1);
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page-1),
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
 		}
 
 	  	//페이지 번호 클릭
@@ -41,7 +50,16 @@
 
 		//다음 버튼 이벤트
 		function fn_next(page) {
-			loadUrl(page+1);
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page+1),
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
 		}
 		
 		function loadUrl(page){
