@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.aj22.foodlab.domain.Chat;
 import com.aj22.foodlab.dto.ChatDTO;
@@ -50,8 +51,13 @@ public class ChatController {
 		
 		List<ChatroomDTO> chatrooms = chatroomService.TotalList();
 		
-		
-		
+	
+			/*
+		<c:if test="${empty sessionScope.sessionMember.id}">
+		<jsp:forward page="${root}/logins/login"/>
+
+	</c:if>
+*/		
 		model.addAttribute("chatrooms", chatrooms);
 		
 		return "chat/chat";

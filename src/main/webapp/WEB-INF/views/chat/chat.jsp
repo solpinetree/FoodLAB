@@ -7,6 +7,13 @@
 </head>
 
 <body>
+	<p>${sessionScope.sessionMember.id}
+	
+	<!-- 로그인 여부 체크해주는 부분 -->
+	<c:if test="${sessionScope.sessionMember.id eq 0}">
+		<jsp:forward page="/logins/login"/>
+	</c:if>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>

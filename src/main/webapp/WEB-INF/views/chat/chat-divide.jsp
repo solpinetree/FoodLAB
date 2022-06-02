@@ -138,9 +138,8 @@
 		<section class="chatbox" id = "chatbox">
 			<section class="chat-window" id="chat-window">
 			
-			<c:if test="${empty sessionScope.sessionMember.id}">
-				<!-- login page 로 이동 -->
-			</c:if>
+		
+			
 			
 			<c:forEach var = "chat" items = "${chatHistory}">
 				<article class = "msg-container msg-self">
