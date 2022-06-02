@@ -1633,14 +1633,14 @@ ol {
 
 .listing__hero__text h2 {
 	font-size: 40px;
-	color: #ffffff;
+	color: black;
 	font-weight: 600;
 	margin-bottom: 6px;
 }
 
 .listing__hero__text p {
 	font-size: 15px;
-	color: #E1DEDE;
+	color: black;
 }
 
 .listing__hero__text p span {
@@ -1688,7 +1688,7 @@ ol {
 }
 
 .listing__hero__btns .primary-btn.share-btn {
-	background: rgba(255, 255, 255, 0.2);
+	
 	margin-right: 6px;
 }
 
