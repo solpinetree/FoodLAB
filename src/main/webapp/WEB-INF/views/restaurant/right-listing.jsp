@@ -47,13 +47,22 @@
 	                      </div>
 	                      <ul>
 	                          <li><span class="icon_pin_alt"></span> ${ restaurant.address} </li>
+	                          <c:if test="${!empty restaurant.tel }">
 	                          <li><span class="icon_phone"></span> ${ restaurant.tel} </li>
+	                          </c:if>
+	                          <c:if test="${empty restaurant.tel}">
+	                          <li><span class="icon_phone"></span> 정보 없음 </li>
+	                          </c:if> 
 	                          <li><span class="icon_archive_alt"></span> 누적 리뷰수 : <text style="font-weight: bold;">120</text></li>                          
 	                      </ul>
 	                  </div>
 	                  <div class="listing__item__text__info">
-	                      
+	                      <c:if test="${!empty restaurant.tel }">
 	                      <div class="listing__item__text__info__right">${ restaurant.operationHour} </div>
+	                      </c:if>
+	                      <c:if test="${empty restaurant.tel }">
+	                      <div class="listing__item__text__info__right">정보없음 </div>
+	                      </c:if>
 	                  </div>
 	              </div>
 	          </div>
