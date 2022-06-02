@@ -18,4 +18,5 @@ public class MemberService {
 		dao.close();
 		return member;
 	}
+	
 }
