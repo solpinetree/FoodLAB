@@ -29,6 +29,7 @@
     
 
 	<script type="text/javascript">
+	
 		//이전 버튼 이벤트
 		function fn_prev(page) {
 			
@@ -44,8 +45,17 @@
 		}
 
 	  	//페이지 번호 클릭
-		function fn_pagination(page) {
-			loadUrl(page);	
+		function fn_next(page) {
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+page,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
 		}
 
 		//다음 버튼 이벤트
@@ -62,36 +72,51 @@
 			})
 		}
 		
-		function loadUrl(page){
-			
-				var url = "${root}/restaurants/list";
-				url = url + "?currentPage=" + page;
-				location.href = url;	
-			
-		}
+
 		
 		
 		function fn_prev_category(page,category) {
-			loadUrl_category(page-1);
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page-1)+"&category="+category,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
 		}
 
 	  	//페이지 번호 클릭
 		function fn_pagination_category(page,category) {
-			loadUrl_category(page,category);	
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+page+"&category="+category,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})	
 		}
 
 		//다음 버튼 이벤트
 		function fn_next_category(page,category) {
-			loadUrl_category(page+1,category);
+			
+			$.ajax({
+				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page+1)+"&category="+category,
+				method:"GET",
+				async: false,
+				success:function(response) {
+					$('#restaurants-content').html(response);
+				}
+
+			})
 		}
 		
-		function loadUrl_category(page,category){
-			
-				var url = "${root}/restaurants/select_res2";
-				url = url + "?currentPage=" + page + "&category=" + category;
-				location.href = url;	
-			
-		}
+
 
 	</script>
 

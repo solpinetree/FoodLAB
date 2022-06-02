@@ -81,7 +81,7 @@
 							<c:if test="${pagevalue=='main'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
-							</c:if>>
+							</c:if>
 							
 							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
