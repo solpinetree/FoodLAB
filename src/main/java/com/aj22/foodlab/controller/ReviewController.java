@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.domain.Likes;
@@ -25,6 +26,7 @@ import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
+import com.aj22.foodlab.util.S3FileUploadService;
 
 
 /**
@@ -42,7 +44,14 @@ public class ReviewController {
 	private LikesService likesService;
 	@Autowired
 	private ReviewImagesService reviewImagesService;
+	@Autowired
+	private S3FileUploadService s3Service;
 
+   @PostMapping("/images")
+    public String upload(@RequestParam("images") MultipartFile multipartFile) throws IOException {
+        s3Service.upload(multipartFile);
+        return "test";
+    }
 
 	// 푸드로그 게시판
 	@GetMapping("/list")

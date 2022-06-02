@@ -3,7 +3,6 @@
 
 <head>
 <title>오픈 채팅</title>
-<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css">
 
 </head>
 
@@ -17,13 +16,20 @@
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
 
+	<!-- 헤더의 배경화면이 흰색일 경우 -->
+    <script type="text/javascript">
+    	var element = document.querySelector('header');
+    	element. classList.add('header--normal');
+    	document.getElementById('header-logo-custom').src="${resources}/img/footer-logo.png";
+    </script>
+    
     <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-area set-bg" data-setbg="${resources}/img/blog/blog-large.jpg">
+    <div class="title-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2 class = "baemin-font">${chatroomTitle}</h2>
+                    <div class="title__text">
+                        <h1 class="blackHansFont">${chatroomTitle}</h1>
                     </div>
                 </div>
             </div>
@@ -128,13 +134,12 @@
 
 	
 	
-	<section class="blog-section spad">
-		<section class="chatbox">
+	<section class="blog-section cpad">
+		<section class="chatbox" id = "chatbox">
 			<section class="chat-window" id="chat-window">
 			
-			<c:if test="${empty sessionScope.sessionMember.id}">
-				<!-- login page 로 이동 -->
-			</c:if>
+		
+			
 			
 			<c:forEach var = "chat" items = "${chatHistory}">
 				<article class = "msg-container msg-self">
@@ -170,7 +175,7 @@
 			</section>
 			<form class = "chat-input" id = "chat-input-form" action = "chatForm.getMap" onsubmit = "return false" method = "post" style= "margin-block-end: 0em;" >
 				
-				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100">
+				<input type = "text" name = "chatContent" id = "chatContent" placeholder = "메시지를 입력해주세요" autocomplete = "on" maxlength = "100" onclick="activeButton()">
 				
 				<!-- 로그인했을 때 사용자 닉네임 -->
 				<input type="hidden" id = "chatName" name="chatName" value="${sessionScope.sessionMember.username}"/>

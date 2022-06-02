@@ -2,6 +2,8 @@
 var chatName = document.getElementById('chatName');
 var chatContent = document.getElementById('chatContent');
 var chatroomId = document.getElementById('chatroomId');
+
+var chatWindow = document.getElementById('chat-window');
 var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
 var line = 0;
 
@@ -9,6 +11,7 @@ var line = 0;
 //	아래는 웹 소켓에서 사용하는 4가지 이벤트들이다.
 websocket.onopen = function(message){
 	//document.getElementById("state").innerHTML = "소켓 시작"; 
+	gotoBottom(chatWindow); // 채팅창을 처음 열었을 때 스크롤 하단으로
 }
 websocket.onclose = function(message){}
 websocket.onerror = function(message){}
@@ -18,14 +21,15 @@ websocket.onmessage = function(message)
 {
 	console.log("js.websocket.onmessage ON");
 	addChat(message.data);
+	gotoBottom(chatWindow); // 입력했을 때 스크롤하단으로
 }
 
 function sendmessage(){
 	var msg = chatName.value + ":" + chatContent.value;
 	websocket.send(msg);
-	msgDB_insert();
-	//	메시지를 보내고, 메시지 입력 부분을 지워준다. 
-	chatContent.value = "";
+	msgDB_insert(); // DB 에 msg insert by ajax
+	
+	chatContent.value = ""; //	메시지를 보내고, 메시지 입력 부분을 지워준다. 
 }
 
 // websocket onmessage 에서 호출하는 함수
@@ -108,4 +112,17 @@ function msgDB_insert(){
 			}
 		});
 }
+
+
+
+//input type text 가 active or focus 상태가 되면 button 색이 바뀜
+function activeButton(){
+	document.getElementById('sendbtn').style.backgroundColor = "white";
+}
+
+function gotoBottom(chatWindow){
+   var element = chatWindow;
+   element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
 
