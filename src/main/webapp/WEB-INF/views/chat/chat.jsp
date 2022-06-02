@@ -3,7 +3,8 @@
 
 <head>
     <title>Chatrooms</title>
-
+	<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+	<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 </head>
 
 <body>

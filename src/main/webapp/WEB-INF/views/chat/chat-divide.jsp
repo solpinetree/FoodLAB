@@ -2,8 +2,9 @@
 <%@ include file="../includes/common.jsp"%>
 
 <head>
-<title>오픈 채팅</title>
-
+	<title>오픈 채팅</title>
+	<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+	<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 </head>
 
 <body onkeypress = "keypress()" >
