@@ -88,7 +88,7 @@ public class RestaurantController {
 			
 			Pagination pagination = restaurantService.getPagination(currentPage);
 			model.addAttribute("pagination", pagination);
-			model.addAttribute("restaurants", restaurantService.selectList(pagination));
+			model.addAttribute("restaurants", restaurantService.findByCategoryWithPagination(pagination,category));
 			model.addAttribute("category",category);
 			model.addAttribute("pagevalue","select");
 			logger.info(category);
