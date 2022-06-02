@@ -16,14 +16,25 @@ function selectByCategory(categoryValue){
 
 	})
 	
-		$.ajax({
-		url:"/foodlab/restaurants/select_res3?category="+categoryValue+"&currentpage=?"+currentPage,
+
+	
+}
+
+
+function selectByCategory2(currentPage){
+	
+	console.log(currentPage);
+	
+	$.ajax({
+		url:"/foodlab/restaurants/restaurantpagination?currentPage="+currentPage,
 		method:"GET",
-		async: true,
+		async: false,
 		success:function(response) {
-			$('#showcategorys').html(response);
+			$('#restaurants-content').html(response);
 		}
 
 	})
+	
+
 	
 }

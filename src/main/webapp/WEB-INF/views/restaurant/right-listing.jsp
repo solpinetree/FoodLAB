@@ -80,7 +80,7 @@
 						
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
-						>
+						
 							
 							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
@@ -94,7 +94,7 @@
 							<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
-							onClick="fn_pagination('${idx}')">
+							onclick="javascript:selectByCategory2('${idx}')">
 								${idx} </a></li>
 						
 								
