@@ -37,4 +37,8 @@
 	<!-- chat  -->
 	<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+	
+	<!-- Font CSS -->
+	<link rel="stylesheet" href="${resources}/css/fonts/font.css" type="text/css"> 
+	
 </head>
