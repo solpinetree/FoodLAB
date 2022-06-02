@@ -10,6 +10,7 @@
 		       <div class="listing__text__top">
 		           <div class="listing__text__top__left">
 		               <h5>필터 적용 결과</h5>
+		               <h5>${pagevalue}</h5>
 		               <span>${numOfRecords }</span>
 		           </div>
 		       </div>
@@ -21,7 +22,7 @@
 	       	  <!--  식당 하나 div 시작 -->
 	           <div class="listing__item">  
 	      
-	           <div class="listing__item__pic set-bg" style=" cursor: pointer;" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}';" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
+	           <div class="listing__item__pic set-bg" style=" cursor: pointer; background-image:url(${restaurant.imgUrl});  onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}';" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
 	                  <div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 	      
 	                      <div class="listing__item__pic__btns">
@@ -78,25 +79,32 @@
 				<ul class="pagination">
 					<c:if test="${pagination.previousPage}">
 						
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
-						
+							<c:if test="${pagevalue=='main'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
+							</c:if>
 							
 							<c:if test="${pagevalue == 'select'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_prev_category('${pagination.currentPage}','${category}')">Previous</a></li>
 							</c:if>
 							
+								<c:if test="${pagevalue == 'search'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_prev_search('${pagination.currentPage}','${search}')">Previous</a></li>
+							</c:if>
+							
 					</c:if>
 		
 					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
 						
+						<c:if test="${pagevalue=='main'}">
 							<li
 							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 							class="page-link" href="#"
 							onclick="javascript:selectByCategory2('${idx}')">
 								${idx} </a></li>
-						
+						</c:if>
 								
 								
 								<c:if test="${pagevalue=='select'}">
@@ -107,18 +115,31 @@
 								${idx} </a></li>
 								</c:if>
 								
+										<c:if test="${pagevalue=='search'}">
+						<li
+							class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
+							class="page-link" href="#"
+							onClick="fn_pagination_search('${idx}','${search}')">
+								${idx} </a></li>
+								</c:if>
+								
 					</c:forEach>
 		
 							
-					
+							<c:if test="${pagevalue=='main'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next('${pagination.currentPage}')">Next</a></li>
-							
+							</c:if>
 							
 							
 							<c:if test="${pagevalue=='select'}">
 						<li class="page-item"><a class="page-link" href="#"
 							onClick="fn_next_category('${pagination.currentPage}','${category}')">Next</a></li>
+							</c:if>
+							
+								<c:if test="${pagevalue=='search'}">
+						<li class="page-item"><a class="page-link" href="#"
+							onClick="fn_next_search('${pagination.currentPage}','${search}')">Next</a></li>
 							</c:if>
 					
 				</ul>

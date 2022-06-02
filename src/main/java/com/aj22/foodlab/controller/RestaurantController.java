@@ -72,7 +72,7 @@ public class RestaurantController {
 			Pagination pagination = restaurantService.getPagination(currentPage);
 			model.addAttribute("pagination", pagination);
 			model.addAttribute("restaurants", restaurantService.selectList(pagination));
-			
+			model.addAttribute("pagevalue","main");
 		
 			
 
@@ -80,6 +80,61 @@ public class RestaurantController {
 		return "restaurant/right-listing";
 	}
 	
+	
+	@RequestMapping(value="/restaurantpaginationCategory", produces="application/text;charset=utf8")
+	public String restaurantpaginationCategory( Model model,@RequestParam("currentPage") int currentPage,@RequestParam("category") String category) throws SQLException {
+		
+	
+			
+			Pagination pagination = restaurantService.getPagination(currentPage);
+			model.addAttribute("pagination", pagination);
+			model.addAttribute("restaurants", restaurantService.findByCategoryWithPagination(pagination,category));
+			model.addAttribute("category",category);
+			model.addAttribute("pagevalue","select");
+			logger.info(category);
+			
+
+		
+		return "restaurant/right-listing";
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/restaurantpaginationSearch", produces="application/text;charset=utf8")
+	public String restaurantpaginationSearch( Model model,@RequestParam(required = false, defaultValue = "1") int currentPage,@RequestParam("search") String search) throws SQLException {
+		
+	
+			
+			Pagination pagination = restaurantService.getPagination(currentPage);
+			model.addAttribute("pagination", pagination);
+			model.addAttribute("restaurants", restaurantService.findByNameWithPanination(pagination,search));
+			model.addAttribute("search",search);
+			model.addAttribute("pagevalue","search");
+			logger.info(search);
+			
+
+		
+		return "restaurant/right-listing";
+	}
+	
+	
+	@RequestMapping(value="/restaurantpaginationSearchPagination", produces="application/text;charset=utf8")
+	public String restaurantpaginationSearchPagination( Model model,@RequestParam("currentPage") int currentPage,@RequestParam("search") String search) throws SQLException {
+		
+	
+			
+			Pagination pagination = restaurantService.getPagination(currentPage);
+			model.addAttribute("pagination", pagination);
+			model.addAttribute("restaurants", restaurantService.findByNameWithPanination(pagination,search));
+			model.addAttribute("search",search);
+			model.addAttribute("pagevalue","search");
+			logger.info(search);
+			
+
+		
+		return "restaurant/right-listing";
+	}
 	
 	
 	@GetMapping("/detail")

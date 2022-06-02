@@ -22,21 +22,22 @@ $.ajax({
         function searchclick(e){
 	
 	var code = e.code;
-	var txt = document.getElementById("searchText").value;
+	var search = document.getElementById("searchText").value;
 	
 	if(code == 'Enter'){
 	
 	
 	
 $.ajax({
-		url:"/foodlab/restaurants/search2?search_text="+txt,
+		url:"/foodlab/restaurants/restaurantpaginationSearch?search="+search,
 		method:"GET",
-		async: true,
+		async: false,
 		success:function(response) {
-			$('.showSeachText').html(response);
+			$('#restaurants-content').html(response);
 		}
 
 	})
+	
         }
         
 }

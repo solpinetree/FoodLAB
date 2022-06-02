@@ -190,6 +190,27 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		
 		return restaurants;
 	}
+	
+	
+	@Override
+	public List<RestaurantDTO> findBySearchWithLimit(int startIdx, int listSize,String search) throws SQLException {
+		
+		List<RestaurantDTO> restaurants = new ArrayList<>();
+		
+		String sql = "select * from restaurant where name LIKE concat('%',?,'%') limit ?, ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, search);
+		pstmt.setInt(2, startIdx);
+		pstmt.setInt(3, listSize);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+	
+		
+		return restaurants;
+	}
 
 	@Override
 	public List<String> selectCategories() throws SQLException {

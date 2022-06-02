@@ -31,6 +31,14 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
+	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
+		dao.close();
+		return restaurants;
+	}
+	
 	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	selectByCategory('general');
+	selectByCategory2(1);
 });
 
 function selectByCategory(categoryValue){
@@ -34,6 +34,8 @@ function selectByCategory2(currentPage){
 		}
 
 	})
+	
+	
 	
 
 	
