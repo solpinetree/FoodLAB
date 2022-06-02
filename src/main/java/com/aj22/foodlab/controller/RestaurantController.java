@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.service.RestaurantService;
@@ -38,6 +39,7 @@ public class RestaurantController {
 		model.addAttribute("categories", restaurantService.getCategories());
 		String list = "list";
 		model.addAttribute("pagevalue",list);
+		
 		return "restaurant/restaurants";
 	}
 	
@@ -86,7 +88,8 @@ public class RestaurantController {
 		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("category", category);
-		model.addAttribute("pagevalue","select");
+		String list = "select";
+		model.addAttribute("pagevalue",list);
 		html="";
 		RestaurantService res = new RestaurantService();
 		List<RestaurantDTO> categorys =  res.selectList_category(pagination,category);
@@ -94,7 +97,6 @@ public class RestaurantController {
 		for(RestaurantDTO dto:categorys) {
 			html += 
 			           "<div class='listing__item'>"  
-				   + "<c:set var=\"pagevalue\" value=\"카테고리\"/>"
 		           +"<div class='listing__item__pic set-bg' style=' cursor: pointer; background-image:url(\""+dto.getImgUrl()+"\");' onclick=\"location.href='http://158.247.206.153:8085/foodlab/restaurants/detail?restaurantId="+dto.getRestaurantId()+"';\"data-setbg=\""+dto.getImgUrl()+"\"" + " style=\"border-radius: 40px 40px 0 0;\">"
 		           +       "<div class='listing__item__pic__tag' style='background: #f9adbd'>"+dto.getCategory()+"</div>"
 		           +       "<div class='listing__item__pic__btns'>"
@@ -109,6 +111,7 @@ public class RestaurantController {
 		           +   "<div class='listing__item__text'>"
 		           +       "<div class='listing__item__text__inside'>"
 		           +           "<h5>"+dto.getName()+"</h5>"
+		           +			"<h5>"+list+"</h5>"
 		           +           "<div class='listing__item__text__rating'>"
 		           +               "<div class='listing__item__rating__star'>"
 		           +                   "<span class='icon_star'></span>"
@@ -134,6 +137,9 @@ public class RestaurantController {
 		
 		return html;
 	}
+	
+	
+
 	
 	
 	@GetMapping("/search")
