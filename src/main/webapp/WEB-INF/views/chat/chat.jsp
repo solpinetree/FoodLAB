@@ -7,7 +7,6 @@
 </head>
 
 <body>
-	<p>${sessionScope.sessionMember.id}
 	
 	<!-- 로그인 여부 체크해주는 부분 -->
 	<c:if test="${sessionScope.sessionMember.id eq 0}">
