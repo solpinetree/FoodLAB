@@ -172,7 +172,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	
 	
 	@Override
-	public List<RestaurantDTO> selectList_category(int startIdx, int listSize,String category) throws SQLException {
+	public List<RestaurantDTO> findByCategoryWithLimit(int startIdx, int listSize,String category) throws SQLException {
 		
 		List<RestaurantDTO> restaurants = new ArrayList<>();
 		

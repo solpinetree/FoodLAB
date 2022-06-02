@@ -1,34 +1,17 @@
 $(document).ready(function(){
-/*$(".category-click").click(function() {
-	
-	var category = document.getElementById("categoryIdValue").value;
-	console.log(category);
-	
-	$.ajax({
-		url:"/foodlab/restaurants/select_res2?category="+category,
-		method:"GET",
-		async: true,
-		success:function(response) {
-			$('#showcategorys').html(response);
-		}
-
-	})
-});*/
-
-
+	selectByCategory('general');
 });
-function selectByCategory(categoryValue,currentPage){
+
+function selectByCategory(categoryValue){
 	
-	//var category = document.getElementById("categoryIdValue").value;
 	console.log(categoryValue);
 	
-	
 	$.ajax({
-		url:"/foodlab/restaurants/select_res2?category="+categoryValue+"&currentpage=?"+currentPage,
+		url:"/foodlab/restaurants/loadListDiv?category="+categoryValue,
 		method:"GET",
-		async: true,
+		async: false,
 		success:function(response) {
-			$('#showcategorys').html(response);
+			$('#restaurants-content').html(response);
 		}
 
 	})
