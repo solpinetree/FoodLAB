@@ -80,7 +80,7 @@ public class RestaurantController {
 		logger.info("category: "+category);
 		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
 		String numOfRecords2 = Integer.toString(numOfRecords);
-		logger.info(numOfRecords2);
+		logger.info("numOfRecords2="+numOfRecords2);
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
@@ -88,6 +88,8 @@ public class RestaurantController {
 		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
 		model.addAttribute("categories", restaurantService.getCategories());
 		model.addAttribute("category", category);
+		String currentPageee = Integer.toString(currentPage);
+		logger.info("currentPageee="+currentPageee);
 		String list = "select";
 		model.addAttribute("pagevalue",list);
 		html="";
@@ -138,6 +140,38 @@ public class RestaurantController {
 		return html;
 	}
 	
+	
+	
+	
+	@RequestMapping(value="/select_res3", produces="application/text;charset=utf8")
+	@ResponseBody
+	public String getcategory_ajaxmodel( Model model, @RequestParam("category") String category, @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+		
+		int numOfRecords = restaurantService.getNumOfRecord_category(category); 
+		String numOfRecords2 = Integer.toString(numOfRecords);
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("restaurants", restaurantService.selectList_category(pagination,category));
+		model.addAttribute("categories", restaurantService.getCategories());
+		model.addAttribute("category", category);
+		String list = "select";
+		model.addAttribute("pagevalue",list);
+		html="";
+		RestaurantService res = new RestaurantService();
+		List<RestaurantDTO> categorys =  res.selectList_category(pagination,category);
+		
+		for(RestaurantDTO dto:categorys) {
+			html += 
+
+		                      "<h5>"+dto.getName()+"</h5>";
+
+		}
+		
+		return html;
+	}
 	
 
 	

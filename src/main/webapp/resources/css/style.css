@@ -121,6 +121,10 @@ ol {
   Helper CSS
 -----------------------*/
 
+.welcomedeco{
+	text-decoration:underline 1px solid;
+}
+
 .section-title {
 	margin-bottom: 40px;
 	text-align: left;

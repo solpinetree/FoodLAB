@@ -33,4 +33,14 @@ function selectByCategory(categoryValue,currentPage){
 
 	})
 	
+		$.ajax({
+		url:"/foodlab/restaurants/select_res3?category="+categoryValue+"&currentpage=?"+currentPage,
+		method:"GET",
+		async: true,
+		success:function(response) {
+			$('#showcategorys').html(response);
+		}
+
+	})
+	
 }

@@ -23,6 +23,7 @@
 	                  <div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 	                  <div class="listing__item__pic__btns">
 	                      <div class="listing__item__pic__btns">
+	                      	<a href="#"><span class="icon_zoom-in_alt"></span></a>
                            	<a href="#"><span class="icon_heart_alt"></span></a>
                           </div>
 	                  </div>
