@@ -81,6 +81,26 @@ public class RestaurantController {
 	}
 	
 	
+	@RequestMapping(value="/restaurantpaginationCategory", produces="application/text;charset=utf8")
+	public String restaurantpaginationCategory( Model model,@RequestParam("currentPage") int currentPage,@RequestParam("category") String category) throws SQLException {
+		
+	
+			
+			Pagination pagination = restaurantService.getPagination(currentPage);
+			model.addAttribute("pagination", pagination);
+			model.addAttribute("restaurants", restaurantService.selectList(pagination));
+			model.addAttribute("category",category);
+			model.addAttribute("pagevalue","select");
+			logger.info(category);
+			
+
+		
+		return "restaurant/right-listing";
+	}
+	
+	
+	
+	
 	
 	@GetMapping("/detail")
 	public String restaurantDetail(@RequestParam(required = false) int restaurantId, Model model) throws SQLException {

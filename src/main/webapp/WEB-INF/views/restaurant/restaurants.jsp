@@ -29,7 +29,6 @@
     
 
 	<script type="text/javascript">
-	
 		//이전 버튼 이벤트
 		function fn_prev(page) {
 			
@@ -78,7 +77,7 @@
 		function fn_prev_category(page,category) {
 			
 			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page-1)+"&category="+category,
+				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+(page-1)+"&category="+category,
 				method:"GET",
 				async: false,
 				success:function(response) {
@@ -92,7 +91,7 @@
 		function fn_pagination_category(page,category) {
 			
 			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+page+"&category="+category,
+				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+page+"&category="+category,
 				method:"GET",
 				async: false,
 				success:function(response) {
@@ -106,7 +105,7 @@
 		function fn_next_category(page,category) {
 			
 			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page+1)+"&category="+category,
+				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+(page+1)+"&category="+category,
 				method:"GET",
 				async: false,
 				success:function(response) {

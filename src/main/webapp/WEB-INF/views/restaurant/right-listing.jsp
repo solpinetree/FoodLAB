@@ -10,6 +10,7 @@
 		       <div class="listing__text__top">
 		           <div class="listing__text__top__left">
 		               <h5>필터 적용 결과</h5>
+		               <h5>${pagevalue}</h5>
 		               <span>${numOfRecords }</span>
 		           </div>
 		       </div>
