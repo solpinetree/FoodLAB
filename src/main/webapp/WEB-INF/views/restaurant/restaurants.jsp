@@ -69,7 +69,7 @@
 		
 		function loadUrl_category(page,category){
 			
-				var url = "${root}/restaurants/select_res";
+				var url = "${root}/restaurants/select_res2";
 				url = url + "?currentPage=" + page + "&category=" + category;
 				location.href = url;	
 			
