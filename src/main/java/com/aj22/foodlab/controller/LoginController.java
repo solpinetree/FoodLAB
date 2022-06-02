@@ -47,7 +47,7 @@ public class LoginController {
 	}
 	
 	@GetMapping("/processAddMember")
-	public String processAddMember(@ModelAttribute("member") Model model, @RequestParam("email") String email
+	public String processAddMember(Model model, @RequestParam("email") String email
 			, @RequestParam("password") String password, @RequestParam("name") String name) throws SQLException {
 		logger.info("processAddMember.jsp 진입");
 		
