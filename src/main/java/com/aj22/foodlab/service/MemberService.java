@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.member.MemberDAO;
 import com.aj22.foodlab.dao.member.MemberDAOImpl;
+import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
+import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
 import com.aj22.foodlab.dto.MemberDTO;
 
 @Service
@@ -17,6 +19,14 @@ public class MemberService {
 		member = dao.selectById(id);
 		dao.close();
 		return member;
+	}
+	
+	public String getusernameFromId(int id) throws SQLException {
+		String name = null;
+		MemberDAO dao = new MemberDAOImpl();
+		name = dao.getMembernameById(id);
+		dao.close();
+		return name;
 	}
 	
 }
