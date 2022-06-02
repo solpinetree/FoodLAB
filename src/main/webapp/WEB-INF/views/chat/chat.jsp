@@ -42,7 +42,7 @@
                                 <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
                     	        </div>
                                 <div class="blog__item__text">
-                                    <h5 class="font_bold">${chr.title}</h5>
+                                    <h5 class="font_bold">${chr.title}</h5><span class = "userCount"></span>
                                 </div>
                             </div>
 	                   	</c:forEach>  

@@ -138,40 +138,67 @@
 		<section class="chatbox" id = "chatbox">
 			<section class="chat-window" id="chat-window">
 			
-		
-			
-			
 			<c:forEach var = "chat" items = "${chatHistory}">
-				<article class = "msg-container msg-self">
-					<div class="msg-box">
-						<div class = "flr">
-							<div class = "messages">
-								<p class = "msg" id = "chat">${chat.content}</p>
-							</div>
-								<span class = "timestamp">
-									<span class = "username">${chat.memberId}</span>&bull;
-									
-									<!-- time split(hh:mm)-->
-									<c:set var = "chatTime" value = "${fn:split(chat.createdAt, ':')[0]}"/>
-									<c:choose>
-										<c:when test = "${chatTime>='12'}">
-											<span class = "posttime">오후 ${chat.createdAt}</span>
-										</c:when>
-										<c:otherwise>
-											<span class = "posttime">오전 ${chat.createdAt}</span>
-										</c:otherwise>
-									</c:choose>
-
-								
-								</span>
-						</div> 
-						<img class = "user-img" id = "user-0" src = "//gravatar.com/avatar/56234674574535734573000000000001?d=retro" />
-					 </div>
-				 </article>
+				
+				<c:choose>
+					
+					<c:when test = "${sessionScope.sessionMember.username eq chat.writer}">
+						<article class = "msg-container msg-self">
+							<div class="msg-box">
+								<div class = "flr">
+									<div class = "messages">
+										<p class = "msg" id = "chat">${chat.content}</p>
+									</div>
+										<span class = "timestamp">
+											<span class = "username">${chat.writer}</span>&bull;
+											
+											<!-- time split(hh:mm)-->
+											<c:set var = "chatTime" value = "${fn:split(chat.createdAt, ':')[0]}"/>
+											<c:choose>
+												<c:when test = "${chatTime>='12'}">
+													<span class = "posttime">오후 ${chat.createdAt}</span>
+												</c:when>
+												<c:otherwise>
+													<span class = "posttime">오전 ${chat.createdAt}</span>
+												</c:otherwise>
+											</c:choose>
+										</span>
+								</div> 
+							<img class = "user-img" id = "user-0" src = "//gravatar.com/avatar/56234674574535734573000000000001?d=retro" />
+						 	</div>
+					 	</article>
+					</c:when>
+					
+		
+					<c:otherwise>
+						<article class = "msg-container msg-other">
+							<div class="msg-box">
+								<div class = "flr">
+									<div class = "messages">
+										<p class = "msg" id = "chat">${chat.content}</p>
+									</div>
+										<span class = "timestamp">
+											<span class = "username">${chat.writer}</span>&bull;
+											
+											<!-- time split(hh:mm)-->
+											<c:set var = "chatTime" value = "${fn:split(chat.createdAt, ':')[0]}"/>
+											<c:choose>
+												<c:when test = "${chatTime>='12'}">
+													<span class = "posttime">오후 ${chat.createdAt}</span>
+												</c:when>
+												<c:otherwise>
+													<span class = "posttime">오전 ${chat.createdAt}</span>
+												</c:otherwise>
+											</c:choose>
+										</span>
+								</div> 
+								<img class = "user-img" id = "user-0" src = "//gravatar.com/avatar/56234674574535734573000000000001?d=retro" />
+							 </div>
+					 	</article>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 			
-			
-		
 			</section>
 			<form class = "chat-input" id = "chat-input-form" action = "chatForm.getMap" onsubmit = "return false" method = "post" style= "margin-block-end: 0em;" >
 				

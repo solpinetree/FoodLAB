@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.annotation.SessionScope;
 
 import com.aj22.foodlab.domain.Chat;
 import com.aj22.foodlab.dto.ChatDTO;
 import com.aj22.foodlab.dto.ChatroomDTO;
-import com.aj22.foodlab.dto.MemberDTO;
+
 import com.aj22.foodlab.service.ChatService;
 import com.aj22.foodlab.service.ChatroomService;
 
