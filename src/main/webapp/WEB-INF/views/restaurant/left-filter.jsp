@@ -18,10 +18,6 @@
             <h6>카테고리</h6>
             	<c:forEach items="${categories}" var="category">
             	       <label for="${category}" onclick="javascript:selectByCategory('${category}')"> ${category}
-            	      <%--  <input type="button" onclick="selectByCategory('${category}')" value="${category }"/> --%>
-<%--             	       <input type="button" id="${category}" onclick="selectByCategory(${category})" class="category-click"> --%>
-<%--             	       <c:set var="categoryID" value="${category}"/>
-            	       <input type="hidden" id="categoryIdValue" value="${categoryID}"/> --%>
             	       </label>
             	</c:forEach>
        

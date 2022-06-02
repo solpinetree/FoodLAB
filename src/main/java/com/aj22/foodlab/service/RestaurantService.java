@@ -23,14 +23,21 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
-	public List<RestaurantDTO> selectList_category(Pagination pagination, String category) throws SQLException{
+	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.selectList_category(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
 		dao.close();
 		return restaurants;
 	}
 	
+	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.select(category);
+		dao.close();
+		return restaurants;
+	}
 
 	
 	public List<String> getCategories() throws SQLException{
@@ -41,13 +48,6 @@ public class RestaurantService {
 		return categories;
 	}
 	
-	public List<RestaurantDTO> selectByCategory(String category) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.select(category);
-		dao.close();
-		return restaurants;
-	}
 	
 	public Integer getRestaurantIdFromName(String name) throws SQLException {
 		Integer id = null;
@@ -84,6 +84,16 @@ public class RestaurantService {
 		return cnt;
 	}
 
+	public int getNumOfRecordOfCategory(String category) throws SQLException {
+		int cnt = 0;
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.countRecords_category(category);
+		dao.close();
+		
+		return cnt;
+	}
+	
 	public Pagination getPagination(int currentPage) throws SQLException {
 		
 		int numOfRecords = getNumOfRecord();
@@ -95,22 +105,13 @@ public class RestaurantService {
 	
 	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
 		
-		int numOfRecords = getNumOfRecord_category(category);
+		int numOfRecords = getNumOfRecordOfCategory(category);
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
 		return pagination;
 	}
 	
-	public int getNumOfRecord_category(String category) throws SQLException {
-		int cnt = 0;
-		
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		cnt = dao.countRecords_category(category);
-		dao.close();
-		
-		return cnt;
-	}
 	
 	
 }

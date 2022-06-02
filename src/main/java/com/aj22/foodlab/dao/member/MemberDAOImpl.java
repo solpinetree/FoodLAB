@@ -181,6 +181,23 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return password;
 	}
+	
+	@Override
+	public String getMembernameById(int id) throws SQLException {
+
+		String name = null;
+
+		String sql = "select username from member where member_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			name = rs.getString("username");
+		}
+
+		return name;
+	}
 
 	@Override
 	public MemberDTO selectById(int id) throws SQLException {
@@ -197,6 +214,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return member;
 
+		
+		
 	}
 
 }

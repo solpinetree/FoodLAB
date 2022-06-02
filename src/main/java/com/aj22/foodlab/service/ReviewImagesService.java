@@ -2,7 +2,6 @@ package com.aj22.foodlab.service;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,12 +15,15 @@ import com.aj22.foodlab.dao.reviewImages.ReviewImagesDAOImpl;
 import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.FileDTO;
 import com.aj22.foodlab.util.FileUpload;
+import com.aj22.foodlab.util.S3FileUploadService;
 
 @Service
 public class ReviewImagesService {
 	
 	@Autowired
 	FileUpload fileUpload;
+	@Autowired
+	S3FileUploadService s3Service;
 
 	public int save(ReviewImages reviewImage) throws SQLException{
 		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
@@ -30,18 +32,33 @@ public class ReviewImagesService {
 		return res;
 	}
 	
+//	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, int reviewId) throws IOException, SQLException {
+//		multipartRequest.setCharacterEncoding("utf-8");
+//		Iterator<String> fileNames = multipartRequest.getFileNames();	
+//		
+//        while(fileNames.hasNext()) {
+//            String fileName = fileNames.next();
+//        	MultipartFile mFile = multipartRequest.getFile(fileName);
+//        	FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
+//        	if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
+//        		save(new ReviewImages(reviewId, dto.getSavedName()));
+//        	}
+//        }
+//	}
+	
 	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, int reviewId) throws IOException, SQLException {
 		multipartRequest.setCharacterEncoding("utf-8");
 		Iterator<String> fileNames = multipartRequest.getFileNames();	
 		
-        while(fileNames.hasNext()) {
-            String fileName = fileNames.next();
-        	MultipartFile mFile = multipartRequest.getFile(fileName);
-        	FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
-        	if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
-        		save(new ReviewImages(reviewId, dto.getSavedName()));
-        	}
-        }
+		while(fileNames.hasNext()) {
+			String fileName = fileNames.next();
+			MultipartFile mFile = multipartRequest.getFile(fileName);
+			FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
+			if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
+				save(new ReviewImages(reviewId, s3Service.upload(mFile)));
+				//save(new ReviewImages(reviewId, dto.getSavedName()));
+			}
+		}
 	}
 	
 	public List<ReviewImages> findByReviewId(int reviewId) throws SQLException{

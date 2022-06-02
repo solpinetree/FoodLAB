@@ -14,7 +14,7 @@ public interface RestaurantDAO {
 	List<RestaurantDTO> select_name(String name) throws SQLException;
 	List<RestaurantDTO> select(String category) throws SQLException;
 	List<RestaurantDTO> selectList(int startIdx, int listSize) throws SQLException;
-	List<RestaurantDTO> selectList_category(int startIdx, int listSize, String category) throws SQLException;
+	List<RestaurantDTO> findByCategoryWithLimit(int startIdx, int listSize, String category) throws SQLException;
 	List<String> selectCategories() throws SQLException;
 	Integer getRestaurantIDByName(String name) throws SQLException;
 	int countRecords() throws SQLException;

@@ -16,4 +16,5 @@ public interface MemberDAO {
 	//List<ReviewDTO> selectListByCategory(String category) throws SQLException;
 	String getMemberpasswordByEmail(String email) throws SQLException;
 	MemberDTO selectById(int id) throws SQLException;
+	String getMembernameById(int id) throws SQLException;
 }
