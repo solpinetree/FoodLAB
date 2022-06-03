@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!--  resources 디렉토리 위치를 가리키는 변수 선언 -->
-<c:set var="resources"
-	value="${pageContext.request.contextPath }/resources" />
-<c:set var="root" value="${pageContext.request.contextPath }" />
+<%@ include file="../includes/path.jsp"%>
+
 <section class="listing nice-scroll" id="restaurantList">
 	<div id="resultNumDiv">
-		<p>${category }</p>
-		<c:if test="${!empty category }">
-			<div class="listing__text__top">
-				<div class="listing__text__top__left">
-					<h5>필터 적용 결과</h5>
-					<h5>${pagevalue}</h5>
-					<span>${numOfRecords }</span>
+		<c:if test="${!empty category}">
+			<c:if test="${category ne '전체'}">
+				<div class="listing__text__top">
+					<div class="listing__text__top__left">
+						<p>${numOfResults}개 식당 결과</p>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</c:if>
 	</div>
 	<div class="listing__list showSeachText" id="showcategorys">

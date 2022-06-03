@@ -23,6 +23,15 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService restaurantService;
 
+	@GetMapping("/list")
+	public String restaurantListPage(Model model, @RequestParam(required = false, defaultValue = "1") int currentPage)
+			throws SQLException {
+
+		model.addAttribute("categories", restaurantService.getCategories());
+		return "restaurant/restaurants";
+
+	}
+
 	@RequestMapping(value = "/loadListDiv", produces = "application/text;charset=utf8")
 	public String loadRestaurantListDivSelectedByCategory(Model model, @RequestParam("category") String category,
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
@@ -31,12 +40,13 @@ public class RestaurantController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("restaurants", restaurantService.findByCategoryWithPagination(pagination, category));
 		model.addAttribute("category", category);
+		model.addAttribute("numOfResults", restaurantService.countResult(category));
 
 		return "restaurant/right-listing";
 	}
 
 	@RequestMapping(value = "/loadListDivBySearchKeyword", produces = "application/text;charset=utf8")
-	public String loadRestaurantListDivSelectedBySearchKeyword(Model model,
+	public String loadRestaurantListDivSelectedBySearch(Model model,
 			@RequestParam(required = false, defaultValue = "1") int currentPage, @RequestParam("search") String search)
 			throws SQLException {
 
@@ -44,6 +54,7 @@ public class RestaurantController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("restaurants", restaurantService.findByNameWithPanination(pagination, search));
 		model.addAttribute("search", search);
+		model.addAttribute("numOfResults", restaurantService.getNumOfRecordByName(search));
 		
 		return "restaurant/right-listing";
 	}
