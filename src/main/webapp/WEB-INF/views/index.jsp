@@ -156,7 +156,9 @@
                     </div>
                 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                    
+                    <c:forEach items="${categories}" var="category">
+                        <div class="tab-pane active" id="${category}" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                     <div class="FoodLog__Item">
@@ -227,176 +229,17 @@
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
                                                     <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>양식</span>
+                                                    <span>${category}</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">영업종료</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>내대지238</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>25000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 수지구 죽전로238번길 78-2</li>
-                                                    <li><span class="icon_phone"></span>010-2351-2380</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>목구멍 용인점</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>30000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 기흥구 죽전로15번길 3-14</li>
-                                                    <li><span class="icon_phone"></span>031-262-0292</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
-
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>일호식 신세계 경기점</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>50000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 수지구 포은대로 536 지하2층</li>
-                                                    <li><span class="icon_phone"></span>0507-1429-1498</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>생선집</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>25000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>횟집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                               </div>
+                               </div>
+                   
+                       </c:forEach>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
