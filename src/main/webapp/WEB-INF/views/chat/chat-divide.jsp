@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp"%>
+<!-- chat  -->
+<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 
 <head>
 <title>오픈 채팅</title>

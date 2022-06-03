@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aj22.foodlab.domain.ReviewImages;
-import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 public class ReviewImagesDAOImpl implements ReviewImagesDAO {

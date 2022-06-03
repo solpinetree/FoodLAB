@@ -21,7 +21,7 @@
 	<!-- Header Section End -->
 
     <!-- Blog Hero Begin -->
-    <div class="blog-details-hero set-bg" style="background-color:black;">
+    <div class="blog-details-hero set-bg" style="background-color:white;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -83,12 +83,10 @@
 			        
 	       			 </div>	
 	       			 
-	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 300px; overflow: visible;">
+	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 15vh; overflow: visible;">
 	                     <div style="position: relative; float:left;">${review.content }</div>
 	                 </div>
                   
-                  	<hr>
-                  	
                  
 	  				<jsp:include page="review-detail-comment.jsp"/>
                 	
@@ -203,6 +201,8 @@
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write-swiper.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/nav-text-in-black.js"></script>
     <script type="text/javascript">
 	    function confirmDelete(){
 	    	var con = confirm("리뷰를 삭제하시겠습니까?");
