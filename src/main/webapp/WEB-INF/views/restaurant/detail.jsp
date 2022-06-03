@@ -40,8 +40,15 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__hero__btns">
+                    <c:choose>
+                    <c:when test="${empty sessionMember.username}">
                         <a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
+                    </c:when>
+                    <c:otherwise>
+                   		<a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
                         <a href="#" class="primary-btn"><i class="fa fa-thumbs-up"></i> 좋아요</a>
+                   </c:otherwise>
+                   </c:choose>
                     </div>
                 </div>
             </div>
