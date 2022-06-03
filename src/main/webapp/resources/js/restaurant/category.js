@@ -1,41 +1,21 @@
-$(document).ready(function(){
-	selectByCategory2(1);
+$(document).ready(function() {
+	loadRestaurantsPage(1, '전체');
 });
 
-function selectByCategory(categoryValue){
-	
-	console.log(categoryValue);
-	
+function loadRestaurantsPage(page, category) {
+
 	$.ajax({
-		url:"/foodlab/restaurants/loadListDiv?category="+categoryValue,
-		method:"GET",
+		url: "/foodlab/restaurants/loadListDiv?currentPage="+page+"&category="+category,
+		method: "GET",
 		async: false,
-		success:function(response) {
+		success: function(response) {
 			$('#restaurants-content').html(response);
 		}
 	})
-	
 
-	
 }
 
 
-function selectByCategory2(currentPage){
-	
-	console.log(currentPage);
-	
-	$.ajax({
-		url:"/foodlab/restaurants/restaurantpagination?currentPage="+currentPage,
-		method:"GET",
-		async: false,
-		success:function(response) {
-			$('#restaurants-content').html(response);
-		}
 
-	})
-	
-	
-	
 
-	
-}
+

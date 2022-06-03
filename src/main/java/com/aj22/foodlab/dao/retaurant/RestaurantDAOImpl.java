@@ -211,6 +211,22 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		
 		return restaurants;
 	}
+	
+	@Override
+	public int countRecordsByName(String name) throws SQLException{
+		int cnt = 0;
+		
+		String sql = "select count(*) from restaurant where name LIKE concat('%',?,'%')";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
+	}
 
 	@Override
 	public List<String> selectCategories() throws SQLException {

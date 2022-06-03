@@ -23,22 +23,6 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
-	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
-		dao.close();
-		return restaurants;
-	}
-	
-	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
-		dao.close();
-		return restaurants;
-	}
-	
 	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
@@ -81,7 +65,51 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
-
+	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		
+		if(category.equals("전체")) {
+			restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		}else {
+			restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		}
+		dao.close();
+		return restaurants;
+	}
+	
+	public Pagination getPaginationBySearchKeyword(int currentPage, String keyword) throws SQLException{
+		
+		int numOfRecords = getNumOfRecordByName(keyword);
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
+	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
+		dao.close();
+		return restaurants;
+	}
+	
+	public Pagination getPaginationByCategory(int currentPage, String category) throws SQLException{
+		
+		int numOfRecords = 0;
+		
+		if(category.equals("전체")) {
+			numOfRecords = getNumOfRecord();
+		}else {
+			numOfRecords = getNumOfRecordOfCategory(category);
+		}
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
 	public int getNumOfRecord() throws SQLException {
 		int cnt = 0;
 		
@@ -102,24 +130,14 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public Pagination getPagination(int currentPage) throws SQLException {
+	public int getNumOfRecordByName(String name) throws SQLException {
+		int cnt = 0;
 		
-		int numOfRecords = getNumOfRecord();
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.countRecordsByName(name);
+		dao.close();
 		
-		return pagination;
+		return cnt;
 	}
-	
-	public Pagination getPaginationOfCategory(int currentPage, String category) throws SQLException{
-		
-		int numOfRecords = getNumOfRecordOfCategory(category);
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
-		
-		return pagination;
-	}
-	
-	
 	
 }

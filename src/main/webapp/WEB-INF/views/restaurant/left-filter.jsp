@@ -16,8 +16,10 @@
         
         <div class="filter__tags">
             <h6>카테고리</h6>
+       	       <label for="전체" onclick="javascript:loadRestaurantsPage(1,'전체')"> 전체
+       	       </label>
             	<c:forEach items="${categories}" var="category">
-            	       <label for="${category}" onclick="javascript:selectByCategory('${category}')"> ${category}
+            	       <label for="${category}" onclick="javascript:loadRestaurantsPage(1,'${category}')"> ${category}
             	       </label>
             	</c:forEach>
        
