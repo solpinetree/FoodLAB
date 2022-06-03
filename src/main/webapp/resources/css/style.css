@@ -578,6 +578,10 @@ ol {
 	margin-bottom: 50px;
 }
 
+.most__search__tab_category {
+	width: 1200px;
+}
+
 .most__search__tab .nav {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
@@ -586,12 +590,14 @@ ol {
 
 .most__search__tab .nav-tabs {
 	border-bottom: none;
+	height:110px;
 }
 
 .most__search__tab .nav-tabs .nav-item {
 	margin-bottom: 0;
 	margin-right: 40px;
 }
+
 
 .most__search__tab .nav-tabs .nav-item:last-child {
 	margin-right: 0;
@@ -628,6 +634,10 @@ ol {
 
 .most__search__tab .nav-tabs .nav-link span {
 	margin-right: 3px;
+}
+
+.nav-item-category {
+	height:1px;
 }
 
 /*---------------------
