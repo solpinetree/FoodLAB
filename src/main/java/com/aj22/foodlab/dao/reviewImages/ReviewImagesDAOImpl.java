@@ -43,11 +43,11 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		int res = 0;
 
 		String sql = "INSERT INTO review_images" + 
-				"(review_id, saved_name) " + 
+				"(review_id, img_url) " + 
 				"VALUES(?, ?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, reviewImage.getReviewId());
-		pstmt.setString(2, reviewImage.getSavedName());
+		pstmt.setString(2, reviewImage.getImgUrl());
 		res = pstmt.executeUpdate();
 		
 		return res;
@@ -58,9 +58,9 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		ReviewImages reviewImages = null;
 		
 		int reviewId = rs.getInt("review_id");
-		String savedName = rs.getString("saved_name");
+		String imgUrl = rs.getString("img_url");
 		
-		reviewImages = new ReviewImages(reviewId, savedName);
+		reviewImages = new ReviewImages(reviewId, imgUrl);
 
 		return reviewImages;
 	}

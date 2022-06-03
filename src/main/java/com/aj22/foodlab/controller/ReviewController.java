@@ -49,7 +49,7 @@ public class ReviewController {
 
    @PostMapping("/images")
     public String upload(@RequestParam("images") MultipartFile multipartFile) throws IOException {
-        s3Service.upload(multipartFile);
+        s3Service.upload(multipartFile, "review");
         return "test";
     }
 

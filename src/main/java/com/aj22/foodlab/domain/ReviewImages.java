@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewImages {
 	private int reviewId;
-	private String savedName;
+	private String imgUrl;
 }
