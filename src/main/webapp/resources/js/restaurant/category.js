@@ -13,7 +13,6 @@ function selectByCategory(categoryValue){
 		success:function(response) {
 			$('#restaurants-content').html(response);
 		}
-
 	})
 	
 

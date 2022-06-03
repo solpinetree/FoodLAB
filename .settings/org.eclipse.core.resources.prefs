@@ -12,6 +12,7 @@ encoding//src/main/java/com/aj22/foodlab/dao/retaurant/RestaurantDAOImpl.java=UT
 encoding//src/main/java/com/aj22/foodlab/service/ReviewService.java=UTF-8
 encoding//src/main/java/com/aj22/foodlab/util/Pagination.java=UTF-8
 encoding//src/main/resources/application.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/includes/common.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/includes/footer.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/includes/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/includes/path.jsp=UTF-8

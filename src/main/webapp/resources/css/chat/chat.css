@@ -19,10 +19,9 @@
 }
 
 .blog__item__text{
-
     border-radius: 20px;
 	cursor: pointer;
-	
+	text-align: right;
  }
 
  
@@ -31,5 +30,6 @@
     color: #323232;
     font-weight: 700;
     line-height: 30px;
+    
 }
 

@@ -1,27 +1,27 @@
 package com.aj22.foodlab.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.transfer.TransferManager;
-import com.amazonaws.services.s3.transfer.Upload;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
+@PropertySource("classpath:application.properties")
 public class S3FileUploadService {
 
     // 버킷 이름 동적 할당
@@ -32,65 +32,37 @@ public class S3FileUploadService {
     @Value("${cloud.aws.s3.bucket.url}")
     private String defaultUrl;
     
-    @Value("${cloud.aws.credentials.accessKey}")
-    private String accessKey;
-    
-    @Value("${cloud.aws.credentials.secretKey}")
-    private String secretKey;
-    
- //   BasicAWSCredentials creds = new BasicAWSCredentials(accessKey, secretKey);
-  //  AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
-    
-    
-//    private final AmazonS3Client amazonS3Client;
-//
-//    public S3FileUploadService(AmazonS3Client amazonS3Client) {
-//        this.amazonS3Client = amazonS3Client;
-//    }
+    private final AmazonS3Client amazonS3Client;
 
-    public String upload(MultipartFile uploadFile) throws IOException {
-        String origName = uploadFile.getOriginalFilename();
-        String url;
-        try {
-            // 확장자를 찾기 위한 코드
-            final String ext = origName.substring(origName.lastIndexOf('.'));
-            // 파일이름 암호화
-            final String saveFileName = getUuid() + ext;
-            // 파일 객체 생성
-            // System.getProperty => 시스템 환경에 관한 정보를 얻을 수 있다. (user.dir = 현재 작업 디렉토리를 의미함)
-            File file = new File(System.getProperty("user.dir") + saveFileName);
-            // 파일 변환
-            uploadFile.transferTo(file);
-            // S3 파일 업로드
-            uploadOnS3(saveFileName, file);
-            // 주소 할당
-            url = defaultUrl + saveFileName;
-            // 파일 삭제
-            file.delete();
-        } catch (StringIndexOutOfBoundsException e) {
-            url = null;
-        }
-        return url;
+    public String upload(MultipartFile multipartFile, String dirName) throws IOException {
+    	// 로컬에 파일 저장
+        File convertFile = new File(System.getProperty("user.dir") + "/" + multipartFile.getOriginalFilename());
+        multipartFile.transferTo(convertFile);
+
+        return upload(convertFile, dirName);
     }
 
-    private static String getUuid() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
+    // S3로 파일 업로드하기
+    private String upload(File uploadFile, String dirName) {
+        String fileName = dirName + "/" + UUID.randomUUID() + uploadFile.getName();   // S3에 저장된 파일 이름 
+        String uploadImageUrl = putS3(uploadFile, fileName); // s3로 업로드
+        System.out.println("imgUrl: "+uploadImageUrl);
+        removeNewFile(uploadFile);
+        return uploadImageUrl;
     }
 
-    private void uploadOnS3(final String findName, final File file) {
-        // AWS S3 전송 객체 생성
-        final TransferManager transferManager = new TransferManager(this.s3Client);
-        // 요청 객체 생성
-        final PutObjectRequest request = new PutObjectRequest(bucket, findName, file);
-        // 업로드 시도
-        final Upload upload =  transferManager.upload(request);
+    // S3로 업로드
+    private String putS3(File uploadFile, String fileName) {
+        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
+        return amazonS3Client.getUrl(bucket, fileName).toString();
+    }
 
-        try {
-            upload.waitForCompletion();
-        } catch (AmazonClientException amazonClientException) {
-            log.error(amazonClientException.getMessage());
-        } catch (InterruptedException e) {
-            log.error(e.getMessage());
+    // 로컬에 저장된 이미지 지우기
+    private void removeNewFile(File targetFile) {
+        if (targetFile.delete()) {
+            log.info("File delete success");
+            return;
         }
+        log.info("File delete fail");
     }
 }

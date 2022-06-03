@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
+<!-- chat  -->
+<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 
 <head>
     <title>Chatrooms</title>
@@ -7,7 +11,6 @@
 </head>
 
 <body>
-	<p>${sessionScope.sessionMember.id}
 	
 	<!-- 로그인 여부 체크해주는 부분 -->
 	<c:if test="${sessionScope.sessionMember.id eq 0}">
@@ -43,7 +46,7 @@
                                 <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
                     	        </div>
                                 <div class="blog__item__text">
-                                    <h5 class="font_bold">${chr.title}</h5>
+                                    <h5 class="font_bold">${chr.title}</h5><span class = "userCount"></span>
                                 </div>
                             </div>
 	                   	</c:forEach>  
