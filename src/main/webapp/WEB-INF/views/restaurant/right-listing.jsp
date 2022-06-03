@@ -22,7 +22,7 @@
 	       	  <!--  식당 하나 div 시작 -->
 	           <div class="listing__item">  
 	      
-	           <div class="listing__item__pic set-bg" style=" cursor: pointer; background-image:url(${restaurant.imgUrl});  onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}';" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
+	           <div class="listing__item__pic set-bg" style=" cursor: pointer; background-image:url(${restaurant.imgUrl});"  onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'" data-setbg="${restaurant.imgUrl}" style="border-radius: 40px 40px 0 0;">
 	                  <div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 	      
 	                      <div class="listing__item__pic__btns">
