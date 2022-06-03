@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	loadRestaurantsPage(1, 'all');
+	loadRestaurantsPage(1, '전체');
 });
 
 function loadRestaurantsPage(page, category) {
