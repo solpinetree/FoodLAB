@@ -140,59 +140,21 @@
             
             <!-- 메인페이지 리뷰게시판 카테고리 -->
             <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="most__search__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                <div class="col-lg-12 col-md-12">           
+                    <div class="most__search__tab most__search__tab_category">             
+                        <ul class="nav nav-tabs nav-tabs-category" role="tablist">
+                <c:forEach items="${categories}" var="category">
+                            <li class="nav-item nav-item-category">
+                                <a class="nav-link" data-toggle="tab" href="#${category}" role="tab">
                                     <span class="flaticon-039-fork"></span>
-                                    한식
+                                    ${category}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <span class="flaticon-030-kebab"></span>
-                                    중식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <span class="flaticon-032-food-truck"></span>
-                                    패스트푸드
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <span class="flaticon-017-croissant"></span>
-                                    피자
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    <span class="flaticon-038-take-away"></span>
-                                    카페-디저트
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    분식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    야식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-8" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    도시락
-                                </a>
-                            </li>
+                </c:forEach>
                         </ul>
+                
                     </div>
+                
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row">
