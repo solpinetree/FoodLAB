@@ -18,6 +18,24 @@
 	line-height: 2.5;
 }
 
-.listing__item{
-	cursor: pointer;
+
+.listing__item__pic__btns a {
+    color: #f9adbd;
+    background: whitesmoke;
+}
+
+.listing__item__pic__btns{
+	cursor:pointer;
+}
+
+.listing__item__text__inside ul li span {
+    top: 0px; 
+}
+
+.listing__item__pic__tag {
+    border-radius: 40px;
+}
+
+.listing__item__pic {
+    border-radius: 40px 40px 0 0;
 }

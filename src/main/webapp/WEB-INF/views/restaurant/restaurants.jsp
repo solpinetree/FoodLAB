@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
 
-
 <head>
     <title>맛집 정보</title>
     <link rel="stylesheet" href="${resources}/css/restaurant/restaurant.css">
@@ -10,6 +9,7 @@
 </head>
 
 <body class="ov-hid">
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -26,143 +26,6 @@
    	
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
-    
-
-	<script type="text/javascript">
-		//이전 버튼 이벤트
-		function fn_prev(page) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page-1),
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-
-	  	//페이지 번호 클릭
-		function fn_next(page) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+page,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-
-		//다음 버튼 이벤트
-		function fn_next(page) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpagination?currentPage="+(page+1),
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-		
-
-		
-		
-		function fn_prev_category(page,category) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+(page-1)+"&category="+category,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-
-	  	//페이지 번호 클릭
-		function fn_pagination_category(page,category) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+page+"&category="+category,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})	
-		}
-
-		//다음 버튼 이벤트
-		function fn_next_category(page,category) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationCategory?currentPage="+(page+1)+"&category="+category,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-		
-		
-		function fn_prev_search(page,search) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+(page-1)+"&search="+search,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-
-	  	//페이지 번호 클릭
-		function fn_pagination_search(page,search) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+page+"&search="+search,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})	
-		}
-
-		//다음 버튼 이벤트
-		function fn_next_search(page,search) {
-			
-			$.ajax({
-				url:"/foodlab/restaurants/restaurantpaginationSearchPagination?currentPage="+(page+1)+"&search="+search,
-				method:"GET",
-				async: false,
-				success:function(response) {
-					$('#restaurants-content').html(response);
-				}
-
-			})
-		}
-		
-		
-
-
-	</script>
-
-    
 
     <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
