@@ -21,3 +21,8 @@
 .listing__item{
 	cursor: pointer;
 }
+
+.listing__item__pic__btns a {
+    color: #f9adbd;
+    background: whitesmoke;
+}

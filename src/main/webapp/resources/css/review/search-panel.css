@@ -739,7 +739,8 @@ legend {
 
 .s003 form .inner-form .input-field.first-wrap .choices__list--dropdown .choices__item--selectable.is-highlighted {
   background: #fff;
-  color: #63c76a;
+  color:  #f9adbd;
+  font-size: 16px;
 }
 
 .s003 form .inner-form .input-field.first-wrap .choices__list--dropdown .choices__item {
