@@ -157,8 +157,8 @@
                 
                     <div class="tab-content">
                     
-                    <c:forEach items="${categories}" var="category">
-                        <div class="tab-pane active" id="${category}" role="tabpanel">
+                    
+                        <div class="tab-pane active" id="도시락" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                     <div class="FoodLog__Item">
@@ -239,13 +239,13 @@
                                </div>
                                </div>
                    
-                       </c:forEach>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                      <c:forEach items="${categories}" var="category">
+                        <div class="tab-pane" id="${category}" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                 <div class = "FoodLog__Title">
                                     		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    			<h5>${category}</h5> <!-- 게시물 이름 -->
                                     		</div>
                                     	</div>
                                     <div class="listing__item">
@@ -257,7 +257,7 @@
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
-                                                <h5>중국집</h5>
+                                                <h5>${category}</h5>
                                                 <div class="listing__item__text__rating">
                                                     <div class="listing__item__rating__star">
                                                         <span class="icon_star"></span>
@@ -448,6 +448,7 @@
                                 </div>
                             </div>
                         </div>
+                       </c:forEach>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
