@@ -69,7 +69,7 @@ public class RestaurantService {
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		
-		if(category.equals("��泥�")) {
+		if(category.equals("전체")) {
 			restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
 		}else {
 			restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
@@ -99,7 +99,7 @@ public class RestaurantService {
 		
 		int numOfRecords = 0;
 		
-		if(category.equals("all")) {
+		if(category.equals("전체")) {
 			numOfRecords = getNumOfRecord();
 		}else {
 			numOfRecords = getNumOfRecordOfCategory(category);
