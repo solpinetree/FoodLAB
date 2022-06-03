@@ -7,21 +7,24 @@
         
 
         <div class="filter__location">
-        <form name="search_res" action="${root}/restaurants/search">
-            <input type="text" name="seach_text" placeholder="식당 이름으로 검색">
+        
+            <input type="text" name="seach_text" id = "searchText" class="search-click" placeholder="식당 이름으로 검색" onkeypress="searchclick(event)">
+            <p id="word"></p>
             <i class="fa fa-magnifying-glass"></i>
-        </form>
+        
         </div>
         
         <div class="filter__tags">
             <h6>카테고리</h6>
+       	       <label for="전체" onclick="javascript:loadRestaurantsPage(1,'전체')"> 전체
+       	       </label>
             	<c:forEach items="${categories}" var="category">
-            	       <label for="${category}"> ${category}
-            	       <a href="${root}/restaurants/select_res?category=${category}">
-			                <input type="button" id="${category}">
-			           </a>
-			            </label>
+            	       <label for="${category}" onclick="javascript:loadRestaurantsPage(1,'${category}')"> ${category}
+            	       </label>
             	</c:forEach>
+       
         </div>
+        
+        
         
     </div>

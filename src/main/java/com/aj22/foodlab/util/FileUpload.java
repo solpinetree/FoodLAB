@@ -7,17 +7,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aj22.foodlab.controller.UploadController;
 import com.aj22.foodlab.dto.FileDTO;
 
-
+@Component
 public class FileUpload {
 	
-	
-	// 고유 식별값
-	private UUID uid = UUID.randomUUID();
 	
 	/**
 	 * 단일 파일 업로드 처리하는 메소드
@@ -64,7 +62,7 @@ public class FileUpload {
 	
 	// 같은 이름의 파일이 서버에도 같은 이름의 파일로 저장되면 안되므로 uid와 결합해서 저장
 	private String getSavedName(String originFileName) {
-		return uid + "_" + originFileName;
+		return UUID.randomUUID() + "_" + originFileName;
 	}
 
 }

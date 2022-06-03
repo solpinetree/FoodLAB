@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
+<!-- chat  -->
+<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
+<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 
 <head>
-    <title>오픈 채팅</title>
-    <link rel="stylesheet" href="${resources}/css/chat/chat.css">
+    <title>Chatrooms</title>
+
 </head>
 
 <body>
+	
+	<!-- 로그인 여부 체크해주는 부분 -->
+	<c:if test="${sessionScope.sessionMember.id eq 0}">
+		<jsp:forward page="/logins/login"/>
+	</c:if>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -26,99 +36,40 @@
     <section class="blog-section spad" style="padding-top: 10%">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog__item" onclick="location.href='${root}/chat/openchat'">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/blog-large.jpg">
-                                </div>
+            	
+            		<div class = "col-lg-2">
+            		</div>
+            		
+	               	<div class="col-lg-4">
+	                   	<c:forEach var = "chr" items = "${chatrooms}" begin = "0" end = "3" step = "1">
+                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
+                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
+                    	        </div>
                                 <div class="blog__item__text">
-                                    <h5 class="font_bold">일반 채팅</h5>
+                                    <h5 class="font_bold">${chr.title}</h5><span class = "userCount"></span>
                                 </div>
                             </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bp-6.jpg"></div>
+	                   	</c:forEach>  
+	               	</div>
+	               	<div class="col-lg-4">
+	                   	<c:forEach var = "chr" items = "${chatrooms}"  begin = "4" end = "8" step = "1">
+                            <div class="blog__item" onclick="location.href='${root}/chat/chatroom?chatroomId=${chr.chatroomId }'">
+                                <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
+                    	        </div>
                                 <div class="blog__item__text">
-                                    <h5>양식</h5>
+                                    <h5 class="font_bold">${chr.title}</h5>
                                 </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/chinese-food.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>중식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/japanese-food.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>일식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/haejangguk.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5>한식</h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/chicken.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">치킨</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/korean-food-street.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">분식</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="${resources}/img/blog/bread.jpg"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="#">디저트, 카페</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                       		</div>
+	                   	</c:forEach>  
+	               	</div>
+	            	<div class = "col-lg-2">
+            		</div>
             </div>
         </div>
     </section>
     <!-- Blog Section End -->
 
-    <!-- Newslatter Section Begin -->
-    <section class="newslatter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="newslatter__text">
-                        <h3>Subscribe Newsletter</h3>
-                        <p>Subscribe to our newsletter and donât miss anything</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <form action="#" class="newslatter__form">
-                        <input type="text" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     <!-- Newslatter Section End -->
 
      <!-- Footer Section Begin -->

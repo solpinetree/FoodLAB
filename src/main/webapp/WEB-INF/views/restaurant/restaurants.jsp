@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
 
-
 <head>
     <title>맛집 정보</title>
     <link rel="stylesheet" href="${resources}/css/restaurant/restaurant.css">
@@ -10,6 +9,7 @@
 </head>
 
 <body class="ov-hid">
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -22,67 +22,18 @@
     <jsp:include page="left-filter.jsp"/>
 
     <!-- Listing Section -->
-   	<jsp:include page="right-listing.jsp"/>
+   	<div id="restaurants-content"></div>
    	
     <!-- Map  -->
     <div class="listing__map" id="map"></div>
-    
-
-	<script type="text/javascript">
-		//이전 버튼 이벤트
-		function fn_prev(page) {
-			loadUrl(page-1);
-		}
-
-	  	//페이지 번호 클릭
-		function fn_pagination(page) {
-			loadUrl(page);	
-		}
-
-		//다음 버튼 이벤트
-		function fn_next(page) {
-			loadUrl(page+1);
-		}
-		
-		function loadUrl(page){
-			
-				var url = "${root}/restaurants/list";
-				url = url + "?currentPage=" + page;
-				location.href = url;	
-			
-		}
-		
-		
-		function fn_prev_category(page,category) {
-			loadUrl_category(page-1);
-		}
-
-	  	//페이지 번호 클릭
-		function fn_pagination_category(page,category) {
-			loadUrl_category(page,category);	
-		}
-
-		//다음 버튼 이벤트
-		function fn_next_category(page,category) {
-			loadUrl_category(page+1,category);
-		}
-		
-		function loadUrl_category(page,category){
-			
-				var url = "${root}/restaurants/select_res";
-				url = url + "?currentPage=" + page + "&category=" + category;
-				location.href = url;	
-			
-		}
-
-	</script>
-
-    
 
     <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
  	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
+	<script type="text/javascript" src="${resources}/js/restaurant/category.js"></script>
+	<script type="text/javascript" src="${resources}/js/restaurant/search-click.js"></script>
+	
 </body>
 
 </html>

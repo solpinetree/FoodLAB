@@ -1,6 +1,5 @@
 package com.aj22.foodlab.service;
 
-import java.io.Console;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -8,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
-import com.aj22.foodlab.dao.review.ReviewDAO;
-import com.aj22.foodlab.dao.review.ReviewDAOImpl;
 import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class RestaurantService {
+	
+	static final int NumOfRecordsPerPage = 12;
 
 	public List<RestaurantDTO> selectList(Pagination pagination) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
@@ -24,16 +23,14 @@ public class RestaurantService {
 		return restaurants;
 	}
 	
-	
-	public List<RestaurantDTO> selectList_category(Pagination pagination, String category) throws SQLException{
+	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.selectList_category(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		restaurants = dao.select(category);
 		dao.close();
 		return restaurants;
 	}
-	
-	
+
 	
 	public List<String> getCategories() throws SQLException{
 		List<String> categories = null;
@@ -42,6 +39,7 @@ public class RestaurantService {
 		dao.close();
 		return categories;
 	}
+	
 	
 	public Integer getRestaurantIdFromName(String name) throws SQLException {
 		Integer id = null;
@@ -59,21 +57,57 @@ public class RestaurantService {
 		return restaurant;
 	}
 	
-	public List<RestaurantDTO> selectByCategory(String category) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.select(category);
-		dao.close();
-		return restaurants;
-	}
-
-	
 	public List<RestaurantDTO> selectByName(String name) throws SQLException{
 		List<RestaurantDTO> restaurants = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurants = dao.select_name(name);
 		dao.close();
 		return restaurants;
+	}
+	
+	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		
+		if(category.equals("전체")) {
+			restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		}else {
+			restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		}
+		dao.close();
+		return restaurants;
+	}
+	
+	public Pagination getPaginationBySearchKeyword(int currentPage, String keyword) throws SQLException{
+		
+		int numOfRecords = getNumOfRecordByName(keyword);
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
+	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
+		List<RestaurantDTO> restaurants = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
+		dao.close();
+		return restaurants;
+	}
+	
+	public Pagination getPaginationByCategory(int currentPage, String category) throws SQLException{
+		
+		int numOfRecords = 0;
+		
+		if(category.equals("전체")) {
+			numOfRecords = getNumOfRecord();
+		}else {
+			numOfRecords = getNumOfRecordOfCategory(category);
+		}
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+		return pagination;
 	}
 	
 	public int getNumOfRecord() throws SQLException {
@@ -86,7 +120,15 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public int getNumOfRecord_category(String category) throws SQLException {
+	public int countResult(String category) throws SQLException {
+		if(category.equals("전체")) {
+			return getNumOfRecord();
+		}else {
+			return getNumOfRecordOfCategory(category);
+		}
+	}
+
+	public int getNumOfRecordOfCategory(String category) throws SQLException {
 		int cnt = 0;
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
@@ -96,5 +138,14 @@ public class RestaurantService {
 		return cnt;
 	}
 	
+	public int getNumOfRecordByName(String name) throws SQLException {
+		int cnt = 0;
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.countRecordsByName(name);
+		dao.close();
+		
+		return cnt;
+	}
 	
 }

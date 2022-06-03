@@ -2,7 +2,9 @@ package com.aj22.foodlab.util;
 
 import java.security.MessageDigest;
 
+
 public class SHA256 {
+	// Receive user email and encrypt it
 	public static String getSHA256(String input) {
 		StringBuffer result = new StringBuffer();
 		try {

@@ -39,9 +39,9 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public int insert(Comment comment) throws SQLException {
+	public Integer insert(Comment comment) throws SQLException {
 		
-		int cnt = 0;
+		Integer autoIncrement = null;
 		String sql = null;
 		
 		if(comment.getParentCommentId()!=null) {
@@ -53,7 +53,7 @@ public class CommentDAOImpl implements CommentDAO {
 					"(review_id, member_id, content) " + 
 					"VALUES(?, ?, ?)";
 		}
-		pstmt = conn.prepareStatement(sql);
+		pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		pstmt.setInt(1, comment.getReviewId());
 		pstmt.setInt(2, comment.getMemberId());
 		pstmt.setString(3, comment.getContent());
@@ -61,10 +61,14 @@ public class CommentDAOImpl implements CommentDAO {
 			pstmt.setInt(4, comment.getParentCommentId());
 		}
 	
-		cnt = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 	
+		rs = pstmt.getGeneratedKeys(); 	// 쿼리 실행 후 생성된 AI 값 반환
+		if(rs.next()) {
+			autoIncrement = rs.getInt(1);
+		}
 		
-		return cnt;
+		return autoIncrement;
 	}
 
 	@Override

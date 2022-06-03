@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="resources" value="${pageContext.request.contextPath }/resources" />
-<c:set var="root" value="${pageContext.request.contextPath }" />
+
 <head>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
-    <title>Chinese Sausage Restaurant</title>
+    <title>${restaurants.name }</title>
+    <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
 </head>
 
 <body>
@@ -19,14 +17,12 @@
 	<jsp:include page="../includes/header.jsp"/>
 	<c:set var="restaurant" value="${restaurants}"/>
     <!-- Listing Section Begin -->
-    <section class="listing-hero set-bg" data-setbg="${restaurant.imgUrl}">
+    <section style="margin-top:160px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="listing__hero__option">
-                        <div class="listing__hero__icon">
-                            <img src="${resources}/img/listing/details/ld-icon.png" alt="">
-                        </div>
+
                         <div class="listing__hero__text">
                             <h2>${restaurant.name}</h2>
                             <div class="listing__hero__widget">
@@ -39,15 +35,20 @@
                                 </div>
                                 <div>120 Review</div>
                             </div>
-                            <p><span class="icon_pin_alt"></span> ${restaurant.address}</p>
-                            <p><span class="icon_pin_alt"></span> ${restaurant.category}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__hero__btns">
+                    <c:choose>
+                    <c:when test="${empty sessionMember.username}">
                         <a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
-                        <a href="#" class="primary-btn"><i class="fa fa-bookmark"></i> 좋아요</a>
+                    </c:when>
+                    <c:otherwise>
+                   		<a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
+                        <a href="#" class="primary-btn"><i class="fa fa-thumbs-up"></i> 좋아요</a>
+                   </c:otherwise>
+                   </c:choose>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
     <!-- Listing Section End -->
 
     <!-- Listing Details Section Begin -->
-    <section class="listing-details spad">
+    <section class="listing-details spad" style = "padding-top:50px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -216,25 +217,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__sidebar">
-                        <div class="listing__sidebar__contact">
-                        
-                            <div>kakaomap</div>
-                            
-                            <div class="listing__sidebar__contact__text">
-                                <h4>Contacts</h4>
-                                <ul>
-                                    <li><span class="icon_pin_alt"></span> ${restaurant.address}</li>
-                                    <li><span class="icon_phone"></span> ${restaurant.tel}</li>
-                                </ul>
-                      
-                            </div>
-                        </div>
-                        <div class="listing__sidebar__working__hours">
-                            <h4>Working Hours</h4>
-                            
-                                <span>${restaurant.operationHour}</span>
-                            
-                        </div>
+                        <%@ include file="../map/map.jsp"%>
                     </div>
                 </div>
             </div>
@@ -246,9 +229,6 @@
 	<jsp:include page="../includes/footer.jsp" />
 
      <!-- Js Plugins -->
- 	<%@ include file="../includes/plugins.jsp" %>
- 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
- 	    <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
  	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
 </body>

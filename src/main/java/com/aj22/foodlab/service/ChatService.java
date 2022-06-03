@@ -1,6 +1,8 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class ChatService {
 	
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	ChatroomService chatroomService;
 	
 	public int insert(Chat chat) throws SQLException{
 		ChatDAO dao = new ChatDAOImpl();
@@ -27,16 +31,16 @@ public class ChatService {
 		return res;
 	}
 	
-	public List<ChatDTO> findbyChatroomId(int chatroomId) throws SQLException{
+	public List<ChatDTO> findbyChatroomId(int chatroomid) throws SQLException, ParseException{
 		ChatDAO dao = new ChatDAOImpl();
-		List<Chat> chats = dao.selectByChatroomId(chatroomId);
+		List<Chat> chats = dao.findbyChatroomId(chatroomid);
 		dao.close();
 		
 		return findAllAsDTO(chats);
-		
 	}
 	
-	public List<ChatDTO> findAllAsDTO(List<Chat> ChatEntities) throws SQLException{
+	
+	public List<ChatDTO> findAllAsDTO(List<Chat> ChatEntities) throws SQLException, ParseException{
 		List<ChatDTO> chats = new ArrayList<>();
 		
 		for(Chat chat : ChatEntities) {
@@ -46,11 +50,12 @@ public class ChatService {
 		return chats;
 	}
 	
-	public ChatDTO convertToDTO(Chat chat) throws SQLException {
+	public ChatDTO convertToDTO(Chat chat) throws SQLException, ParseException {
 		ChatDTO dto = new ChatDTO(chat);
 		
-		dto.setWriter(memberService.selectById(chat.getMemberId()));
-		
+		dto.setWriter(memberService.getusernameFromId(chat.getMemberId()));
+		dto.setChatroomId(chatroomService.selectById(chat.getChatroomdId()));
+		dto.setCreatedAt(chatroomService.formatTimestampForChat(chat.getCreatedAt()));
 		return dto;
 	}
 }

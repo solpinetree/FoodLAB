@@ -1,18 +1,24 @@
 package com.aj22.foodlab.service;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.dao.review.ReviewDAO;
 import com.aj22.foodlab.dao.review.ReviewDAOImpl;
 import com.aj22.foodlab.domain.Review;
+import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.ReviewDTO;
+import com.aj22.foodlab.util.FileUpload;
 import com.aj22.foodlab.util.Pagination;
 
 @Service
@@ -24,6 +30,9 @@ public class ReviewService {
 	private MemberService memberService;
 	@Autowired
 	private LikesService likesService;
+
+	
+	static final int NumOfRecordsPerPage = 8;
 	
 	public int getNumOfRecord() throws SQLException{
 		int cnt = 0;
@@ -52,7 +61,8 @@ public class ReviewService {
 		return reviewDTOs;
 	}
 	
-	public Integer insert(Review review) throws SQLException {
+	public Integer save(Review review, String restaurantName) throws SQLException {
+		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		ReviewDAO dao = new ReviewDAOImpl();
 		Integer reviewId = dao.insert(review);
 		dao.close();
@@ -73,14 +83,12 @@ public class ReviewService {
 		return dto;
 	}
 	
-	// 由щ럭 ���깆���� ����, 醫�������, ��媛�(���깆��媛�, ������媛�)��  梨���二쇰�� �⑥��
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
 		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {
-		// review list ���댁��� ���명���댁�媛� 蹂댁�ъ＜�� ���깆��媛�怨� ������媛��� �щ㎎�� �ㅻⅤ湲� ��臾몄�� �곕� 泥�由ы�댁���.
 		case "listPage":
 			dto.setCreatedAt(formatTimestampForList(review.getCreatedAt()));
 			break;
@@ -103,6 +111,14 @@ public class ReviewService {
 		
 		return res;
 	}
+	
+	public Pagination getPagination(int currentPage) throws SQLException {
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(currentPage, getNumOfRecord(), NumOfRecordsPerPage);
+		
+		return pagination;
+	}
+	
 	
 	static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
@@ -133,5 +149,5 @@ public class ReviewService {
 		}
 		return false;
 	}
-
+	
 }

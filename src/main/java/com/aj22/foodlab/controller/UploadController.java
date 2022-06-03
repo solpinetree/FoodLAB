@@ -30,6 +30,9 @@ public class UploadController implements ServletContextAware {
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 	public static ServletContext servletContext;
 	
+	@Autowired
+	FileUpload fileUpload;
+	
 	/**
 	 * quilleditor 안에서 삽입된 이미지를 서버에 저장하는 메소드(ajax 처리) 
 	 * @return 서버에서 저장된 이미지의 이름 (savedName)
@@ -38,7 +41,7 @@ public class UploadController implements ServletContextAware {
 	@ResponseBody
 	public String uploadImageOfQuillInServer(@RequestParam("image") MultipartFile image, HttpServletRequest request) throws IOException {
 		
-		FileDTO filedto= (new FileUpload()).uploadFileToDirectoryUnderUploadPath(image, "quilleditor");
+		FileDTO filedto= fileUpload.uploadFileToDirectoryUnderUploadPath(image, "quilleditor");
 		addThisImageToSession(filedto.getSavedName(), request);
 		
 		return filedto.getSavedName();

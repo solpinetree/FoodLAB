@@ -9,14 +9,9 @@
 <link rel="stylesheet" href="${resources}/css/review/image-upload.css">
 <link rel="stylesheet" href="${resources}/css/review/review-write.css">
 <link rel="stylesheet" href="${resources}/css/review/uploading.css">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
-<!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<!-- Quill Image Resize Module -->
-<script src="${resources}/js/review/quilleditor/image-resize.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +25,7 @@
 	<!-- Header Section End -->
 
 	<%
-	request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 	%>
 
 
@@ -50,7 +45,7 @@
 						<br>
 						<!-- fieldsets 태그로 form들을 나눈다. -->
 						<!--  식당이름으로 식당 주소 입력받는 fieldset 시작 -->
-						<fieldset>
+					 	<fieldset>
 							<div class="form-card">
 								<label class="fieldlabels"></label> 
 								<input type="text" name="address" id="address" style="width: 50%"
@@ -73,50 +68,13 @@
 							<button type="button" name="next" id="firstNextBtn"
 								class="next action-button" onclick="next(this)"
 								style="visibility: hidden">NEXT</button>
-						</fieldset>
+						</fieldset>  
 						<!-- 식당이름으로 식당 주소 입력받는 fieldset 끝 -->
-						<fieldset>
-							<div class="form-card">
-								<input type="text" name="title" id="title"
-									placeholder="이 리뷰의 제목을 입력해주세요"
-									style="background-color: white; font-weight: 500">
-								<input type="text" name="content" id="content" style="display:none">
-								<%-- Quill Editor 시작--%>
-								<div id="standalone-container"
-									style="width: 100%; height: 100%; position: relative; overflow: hidden;">
-									<div id="toolbar-container" style="border-radius: 30px 30px 0 0">
-										<span class="ql-formats">
-											<button class="ql-bold"></button>
-											<button class="ql-italic"></button>
-											<button class="ql-underline"></button>
-											<button class="ql-strike"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-header" value="1"></button>
-											<button class="ql-header" value="2"></button>
-											<button class="ql-blockquote"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-list" value="ordered"></button>
-											<button class="ql-list" value="bullet"></button>
-											<button class="ql-indent" value="-1"></button>
-											<button class="ql-indent" value="+1"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-image"></button>
-										</span> <span class="ql-formats">
-											<button class="ql-clean"></button>
-										</span>
-									</div>
-									<div id="editor-container" style="overflow:auto; height: 500px; border-radius: 0 0 10px 10px"></div>
-								</div>
-								<!-- 	    Quill Editor 끝 -->
-
-							</div>
-
-							<input type="button" name="next" id="quillNextBtn"
-								class="next quillNextBtn action-button" value="NEXT"
-								style="display: none" /> <input type="button" name="previous"
-								class="previous action-button-previous" value="PREVIOUS" />
-						</fieldset>
+						
+						<!--       리뷰 작성하는 fieldset 시작 -->
+						<jsp:include page="review-write-image-upload.jsp"/>
 						<!--       리뷰 작성하는 fieldset 끝 -->
+						
 						<!--       가격, 인원, 별점을 등록하는 fieldset 시작  -->
 						<fieldset>
 
@@ -215,8 +173,10 @@
 		src="${resources}/js/review/image-upload.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/review-write1.js"></script>
-	<script type="text/javascript" src="${resources}/js/review/kakaomap.js"></script>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript"
-		src="${resources}/js/review/quilleditor/quill-config.js"></script>
+		src="${resources}/js/review/review-write-swiper.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/kakaomap.js"></script>
 </body>
 </html>

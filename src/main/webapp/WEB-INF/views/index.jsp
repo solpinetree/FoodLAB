@@ -1,30 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="includes/common.jsp" %>
-<%@ page import="java.sql.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
-String DB_SCHEMAS = "foodlab";
-String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
-String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
-String USER = "labadmin";
-String PASS = "1234";
 
-Class.forName(JDBC_DRIVER);
-Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-%>
-<sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost/foodlab?&useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=UTC&useSSL=false"
-	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234"/>
-
-<sql:update dataSource="${dataSource}" var="resultSet">
-   DELETE FROM member WHERE userEmailChecked = 0
-</sql:update>
 <head>
     <title>Food LAB</title>
-    <link rel="stylesheet" href="${resources}/css/main/main.css?after">
+    
+    <link rel="stylesheet" href='${resources }/css/main/main.css'>
 </head>
 
 
@@ -46,7 +26,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                 <div class="col-lg-12">
                     <div class="hero__text">
                         <div class="section-title-main">
-                            <h2>Food LAB</h2>
+                            <h2 class="welcome-main-text">맛집 연구소</h2>
                         </div>
                     </div>
                 </div>
@@ -160,59 +140,21 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             
             <!-- 메인페이지 리뷰게시판 카테고리 -->
             <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="most__search__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                <div class="col-lg-12 col-md-12">           
+                    <div class="most__search__tab most__search__tab_category">             
+                        <ul class="nav nav-tabs nav-tabs-category" role="tablist">
+                <c:forEach items="${categories}" var="category">
+                            <li class="nav-item nav-item-category">
+                                <a class="nav-link" data-toggle="tab" href="#${category}" role="tab">
                                     <span class="flaticon-039-fork"></span>
-                                    한식
+                                    ${category}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <span class="flaticon-030-kebab"></span>
-                                    중식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <span class="flaticon-032-food-truck"></span>
-                                    패스트푸드
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <span class="flaticon-017-croissant"></span>
-                                    피자
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    <span class="flaticon-038-take-away"></span>
-                                    카페-디저트
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    분식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    야식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-8" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    도시락
-                                </a>
-                            </li>
+                </c:forEach>
                         </ul>
+                
                     </div>
+                
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row">

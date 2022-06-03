@@ -15,22 +15,22 @@
 <%@ include file="../includes/common.jsp" %>
 <%@ include file="../includes/login/NewFile1.jsp" %>
 <%
-//사용자에게 보낼 메시지를 기입합니다.
+//Type the message you want to send to the user.
 
 	String host = "http://localhost:8085/foodlab/";
-	String from = "foodLAB1357@gmail.com";
+	String from = "ksi020506@naver.com";
 	String to = (String)session.getAttribute("useremail");
 	String subject = "FoodLAB 회원가입을 위한 이메일 확인 메일입니다.";
-	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
+	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." + // Send code to emailCheckAction
 		"<a href='" + host + "logins/emailCheckAction?code=" + new SHA256().getSHA256(to) + "'>이메일 인증하기</a>";
 		
 		
-		// SMTP에 접속하기 위한 정보를 기입합니다.
+		// Fill in the information for accessing SMTP.
 
 		   Properties p = new Properties();
 	   p.put("mail.smtp.user", from);
-	   p.put("mail.smtp.host", "smtp.googlemail.com");
-	   p.put("mail.smtp.port", "456");
+	   p.put("mail.smtp.host", "smtp.naver.com");
+	   p.put("mail.smtp.port", "465");
 	   p.put("mail.smtp.starttls.enable", "true");
 	   p.put("mail.smtp.auth", "true");
 	   p.put("mail.smtp.ssl.protocols", "TLSv1.2"); 	
@@ -39,7 +39,7 @@
 	   p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 	   p.put("mail.smtp.socketFactory.fallback", "false");
 	 
-
+		// Send confirmation link to user email
 		try {
 		   Authenticator auth = new Gmail();
 		   Session ses = Session.getInstance(p, auth);

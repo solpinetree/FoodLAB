@@ -2,7 +2,6 @@ package com.aj22.foodlab.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,16 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.domain.Likes;
-import com.aj22.foodlab.domain.RestaurantPhoto;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
 import com.aj22.foodlab.service.LikesService;
-import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
+import com.aj22.foodlab.util.S3FileUploadService;
+
 
 /**
  * Handles requests for the application home page.
@@ -40,21 +41,24 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	@Autowired
-	private RestaurantService restaurantService;
-	@Autowired
 	private LikesService likesService;
-	static final int NumOfRecordsPerPage = 8;
+	@Autowired
+	private ReviewImagesService reviewImagesService;
+	@Autowired
+	private S3FileUploadService s3Service;
+
+   @PostMapping("/images")
+    public String upload(@RequestParam("images") MultipartFile multipartFile) throws IOException {
+        s3Service.upload(multipartFile, "review");
+        return "test";
+    }
 
 	// 푸드로그 게시판
 	@GetMapping("/list")
 	public String loadReviewListPage(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		
-		// 전체 게시글 개수
-		int totalRecord = reviewService.getNumOfRecord();
-		
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, totalRecord, NumOfRecordsPerPage);
+		Pagination pagination = reviewService.getPagination(currentPage);
 		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("reviews", reviewService.selectList(pagination));
@@ -70,33 +74,23 @@ public class ReviewController {
 
 	// 리뷰 작성 처리
 	@PostMapping("/writeProcess")
-	public String writeReviewProcess(Review review, MultipartFile thumbImage, String restaurantName,
+	public String writeReviewProcess(Review review, MultipartHttpServletRequest multipartRequest, String restaurantName,
 			HttpServletRequest request) throws SQLException, IOException {
-		// 사용자가 입력한 식당 이름으로
-		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
-		String returnUrl = null;
-		Integer reviewId = reviewService.insert(review);
 		
-		
+		String loadUrl = null;
+		Integer reviewId = reviewService.save(review, restaurantName);
+
+		reviewImagesService.saveReviewImages(multipartRequest, reviewId);
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			HttpSession session = request.getSession();
-			List<String> restaurantImgs = (List<String>)session.getAttribute("quilleditorImgList");
-			
-			for(String imgName : restaurantImgs) {
-				if(!review.getContent().contains(imgName)) {
-					restaurantImgs.remove(imgName);
-				}
-			}
-			
-			returnUrl = "redirect:/reviews/review?reviewId=" + reviewId;
+			loadUrl = "redirect:/reviews/review?reviewId=" + reviewId;
 		}
 
-		return returnUrl;
+		return loadUrl;
 	}
-
+	
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
 		ReviewDTO review = reviewService.select(reviewId);
@@ -112,11 +106,8 @@ public class ReviewController {
 			model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
 		}
 
-		if (review == null) {
-			// TODO 리뷰 가져오기 실패한 경우 로직
-		} else {
-			model.addAttribute("review", review);
-		}
+		model.addAttribute("review", review);
+		model.addAttribute("reviewImages", reviewImagesService.findByReviewId(reviewId));
 
 		return "review/review-detail";
 	}
@@ -128,6 +119,7 @@ public class ReviewController {
 		
 		if(reviewService.deleteReviewById(reviewId)==1) { // 삭제 성공한 경우 
 			redirectUrl = (String) request.getSession().getAttribute("urlHistory");
+			request.getSession().removeAttribute("urlHistory");
 		}else {	//TODO: 삭제 실패한 경우 로직 구현
 			
 		}
