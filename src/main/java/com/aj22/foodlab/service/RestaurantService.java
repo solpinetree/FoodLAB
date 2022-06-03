@@ -119,6 +119,14 @@ public class RestaurantService {
 		
 		return cnt;
 	}
+	
+	public int countResult(String category) throws SQLException {
+		if(category.equals("전체")) {
+			return getNumOfRecord();
+		}else {
+			return getNumOfRecordOfCategory(category);
+		}
+	}
 
 	public int getNumOfRecordOfCategory(String category) throws SQLException {
 		int cnt = 0;
