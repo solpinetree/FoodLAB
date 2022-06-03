@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	selectByCategory('general');
+	selectByCategory2(1);
 });
 
 function selectByCategory(categoryValue){
@@ -14,5 +14,28 @@ function selectByCategory(categoryValue){
 			$('#restaurants-content').html(response);
 		}
 	})
+	
+
+	
+}
+
+
+function selectByCategory2(currentPage){
+	
+	console.log(currentPage);
+	
+	$.ajax({
+		url:"/foodlab/restaurants/restaurantpagination?currentPage="+currentPage,
+		method:"GET",
+		async: false,
+		success:function(response) {
+			$('#restaurants-content').html(response);
+		}
+
+	})
+	
+	
+	
+
 	
 }

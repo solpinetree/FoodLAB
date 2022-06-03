@@ -53,7 +53,7 @@ public class ChatService {
 	public ChatDTO convertToDTO(Chat chat) throws SQLException, ParseException {
 		ChatDTO dto = new ChatDTO(chat);
 		
-		dto.setWriter(memberService.selectById(chat.getMemberId()));
+		dto.setWriter(memberService.getusernameFromId(chat.getMemberId()));
 		dto.setChatroomId(chatroomService.selectById(chat.getChatroomdId()));
 		dto.setCreatedAt(chatroomService.formatTimestampForChat(chat.getCreatedAt()));
 		return dto;

@@ -121,6 +121,10 @@ ol {
   Helper CSS
 -----------------------*/
 
+.welcomedeco{
+	text-decoration:underline 1px solid;
+}
+
 .section-title {
 	margin-bottom: 40px;
 	text-align: left;
@@ -1508,6 +1512,11 @@ ol {
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 40px;
+	height:330px;
+}
+
+.listing__item__text__inside{
+	height:200px;
 }
 
 .listing__item__text__inside h5 {
@@ -1518,6 +1527,7 @@ ol {
 }
 
 .listing__item__text__inside ul {
+	
 	margin-bottom: 20px;
 }
 
@@ -1569,6 +1579,7 @@ ol {
 	overflow: hidden;
 	margin-left: -30px;
 	margin-right: -30px;
+	height: 61px;
 }
 
 .listing__item__text__info__left {
@@ -1590,11 +1601,11 @@ ol {
 }
 
 .listing__item__text__info__right {
-	float: right;
+	float:left;
 	font-size: 14px;
 	color: #50D437;
 	font-weight: 700;
-	padding-top: 4px;
+	padding-top: 0px;
 }
 
 .listing__item__text__info__right.closed {
@@ -1633,14 +1644,14 @@ ol {
 
 .listing__hero__text h2 {
 	font-size: 40px;
-	color: #ffffff;
+	color: black;
 	font-weight: 600;
 	margin-bottom: 6px;
 }
 
 .listing__hero__text p {
 	font-size: 15px;
-	color: #E1DEDE;
+	color: black;
 }
 
 .listing__hero__text p span {
@@ -1688,7 +1699,7 @@ ol {
 }
 
 .listing__hero__btns .primary-btn.share-btn {
-	background: rgba(255, 255, 255, 0.2);
+	
 	margin-right: 6px;
 }
 

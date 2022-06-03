@@ -17,14 +17,12 @@
 	<jsp:include page="../includes/header.jsp"/>
 	<c:set var="restaurant" value="${restaurants}"/>
     <!-- Listing Section Begin -->
-    <section class="listing-hero set-bg" data-setbg="${restaurant.imgUrl}">
+    <section style="margin-top:160px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="listing__hero__option">
-                        <div class="listing__hero__icon">
-                            <img src="${resources}/img/listing/details/ld-icon.png" alt="">
-                        </div>
+
                         <div class="listing__hero__text">
                             <h2>${restaurant.name}</h2>
                             <div class="listing__hero__widget">
@@ -37,15 +35,13 @@
                                 </div>
                                 <div>120 Review</div>
                             </div>
-                            <p><span class="icon_pin_alt"></span> ${restaurant.address}</p>
-                            <p><span class="icon_pin_alt"></span> ${restaurant.category}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__hero__btns">
                         <a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
-                        <a href="#" class="primary-btn"><i class="fa fa-bookmark"></i> 좋아요</a>
+                        <a href="#" class="primary-btn"><i class="fa fa-thumbs-up"></i> 좋아요</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +50,7 @@
     <!-- Listing Section End -->
 
     <!-- Listing Details Section Begin -->
-    <section class="listing-details spad">
+    <section class="listing-details spad" style = "padding-top:50px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">

@@ -7,6 +7,12 @@
 </head>
 
 <body>
+	
+	<!-- 로그인 여부 체크해주는 부분 -->
+	<c:if test="${sessionScope.sessionMember.id eq 0}">
+		<jsp:forward page="/logins/login"/>
+	</c:if>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -36,7 +42,7 @@
                                 <div class="blog__item__pic set-bg" data-setbg="${chr.imgUrl}">
                     	        </div>
                                 <div class="blog__item__text">
-                                    <h5 class="font_bold">${chr.title}</h5>
+                                    <h5 class="font_bold">${chr.title}</h5><span class = "userCount"></span>
                                 </div>
                             </div>
 	                   	</c:forEach>  
