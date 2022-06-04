@@ -60,7 +60,7 @@ public class RestaurantController {
 	}
 
 	@GetMapping("/detail")
-	public String restaurantDetail(@RequestParam(required = false) int restaurantId, Model model) throws SQLException {
+	public String restaurantDetail(@RequestParam int restaurantId, Model model) throws SQLException {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
 		return "restaurant/detail";
 	}

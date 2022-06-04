@@ -45,7 +45,7 @@
 							<div class="listing__item__rating__star">
 								<span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star"></span> <span class="icon_star"></span>
-								<span class="icon_star-half_alt"></span>
+								<span class="icon_star-half_alt"></span> (${restaurant.avgRate })
 							</div>
 						</div>
 						<ul>

@@ -161,13 +161,9 @@
 		src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/choices.js"></script>
-	<script type="text/javascript">
-	      const choices = new Choices('[data-trigger]',
-	      {
-	        searchEnabled: false,
-	        itemSelectText: '',
-	      });
-	</script>
+	<script type="text/javascript"
+		src="${resources}/js/review/search-panel.js"></script>
+	
 
 </body>
 
