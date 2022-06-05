@@ -43,7 +43,16 @@ public class ReviewService {
 		
 		return cnt;
 	}
-
+	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecordsByRestaurantId(restaurantId);
+		dao.close();
+		
+		return cnt;
+	}
+	
 	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
 		List<Review> reviews = null;
 		List<ReviewDTO> reviewDTOs = new ArrayList<>();
