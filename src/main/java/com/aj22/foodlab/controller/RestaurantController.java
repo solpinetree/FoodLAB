@@ -62,6 +62,7 @@ public class RestaurantController {
 	@GetMapping("/detail")
 	public String restaurantDetail(@RequestParam int restaurantId, Model model) throws SQLException {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
+		model.addAttribute("menus", restaurantService.selectMenus(restaurantId));
 		return "restaurant/detail";
 	}
 
