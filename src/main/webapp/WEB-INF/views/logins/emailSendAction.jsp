@@ -18,7 +18,7 @@
 //Type the message you want to send to the user.
 
 	String host = "http://localhost:8085/foodlab/";
-	String from = "foodLAB1357@gmail.com";
+	String from = "ksi020506@naver.com";
 	String to = (String)session.getAttribute("useremail");
 	String subject = "FoodLAB 회원가입을 위한 이메일 확인 메일입니다.";
 	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." + // Send code to emailCheckAction
@@ -29,8 +29,8 @@
 
 		   Properties p = new Properties();
 	   p.put("mail.smtp.user", from);
-	   p.put("mail.smtp.host", "smtp.googlemail.com");
-	   p.put("mail.smtp.port", "456");
+	   p.put("mail.smtp.host", "smtp.naver.com");
+	   p.put("mail.smtp.port", "465");
 	   p.put("mail.smtp.starttls.enable", "true");
 	   p.put("mail.smtp.auth", "true");
 	   p.put("mail.smtp.ssl.protocols", "TLSv1.2"); 	

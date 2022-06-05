@@ -1,30 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="includes/common.jsp" %>
-<%@ page import="java.sql.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
-String DB_SCHEMAS = "foodlab";
-String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
-String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES; 
-String USER = "labadmin";
-String PASS = "1234";
 
-Class.forName(JDBC_DRIVER);
-Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-%>
-<sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost/foodlab?&useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=UTC&useSSL=false"
-	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234"/>
-
-<sql:update dataSource="${dataSource}" var="resultSet">
-   DELETE FROM member WHERE userEmailChecked = 0
-</sql:update>
 <head>
     <title>Food LAB</title>
-    <link rel="stylesheet" href="${resources}/css/main/main.css?after">
+    
+    <link rel="stylesheet" href='${resources }/css/main/main.css'>
 </head>
 
 
@@ -46,7 +26,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                 <div class="col-lg-12">
                     <div class="hero__text">
                         <div class="section-title-main">
-                            <h2>Food LAB</h2>
+                            <h2 class="welcome-main-text">맛집 연구소</h2>
                         </div>
                     </div>
                 </div>
@@ -160,61 +140,25 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             
             <!-- 메인페이지 리뷰게시판 카테고리 -->
             <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="most__search__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                <div class="col-lg-12 col-md-12">           
+                    <div class="most__search__tab most__search__tab_category">             
+                        <ul class="nav nav-tabs nav-tabs-category" role="tablist">
+                <c:forEach items="${categories}" var="category">
+                            <li class="nav-item nav-item-category">
+                                <a class="nav-link" data-toggle="tab" href="#${category}" role="tab">
                                     <span class="flaticon-039-fork"></span>
-                                    한식
+                                    ${category}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <span class="flaticon-030-kebab"></span>
-                                    중식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <span class="flaticon-032-food-truck"></span>
-                                    패스트푸드
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <span class="flaticon-017-croissant"></span>
-                                    피자
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    <span class="flaticon-038-take-away"></span>
-                                    카페-디저트
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    분식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    야식
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-8" role="tab">
-                                    <span class="flaticon-031-delivery"></span>
-                                    도시락
-                                </a>
-                            </li>
+                </c:forEach>
                         </ul>
+                
                     </div>
+                
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                    
+                    
+                        <div class="tab-pane active" id="도시락" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                     <div class="FoodLog__Item">
@@ -285,182 +229,23 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
                                                     <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>양식</span>
+                                                    <span>${category}</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">영업종료</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>내대지238</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>25000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 수지구 죽전로238번길 78-2</li>
-                                                    <li><span class="icon_phone"></span>010-2351-2380</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>목구멍 용인점</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>30000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 기흥구 죽전로15번길 3-14</li>
-                                                    <li><span class="icon_phone"></span>031-262-0292</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
-
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>일호식 신세계 경기점</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>50000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 수지구 포은대로 536 지하2층</li>
-                                                    <li><span class="icon_phone"></span>0507-1429-1498</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>양식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>생선집</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>25000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>횟집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                               </div>
+                               </div>
+                   
+                      <c:forEach items="${categories}" var="category">
+                        <div class="tab-pane" id="${category}" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                 <div class = "FoodLog__Title">
                                     		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
+                                    			<h5>${category}</h5> <!-- 게시물 이름 -->
                                     		</div>
                                     	</div>
                                     <div class="listing__item">
@@ -472,7 +257,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
-                                                <h5>중국집</h5>
+                                                <h5>${category}</h5>
                                                 <div class="listing__item__text__rating">
                                                     <div class="listing__item__rating__star">
                                                         <span class="icon_star"></span>
@@ -663,6 +448,7 @@ Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
                                 </div>
                             </div>
                         </div>
+                       </c:forEach>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">

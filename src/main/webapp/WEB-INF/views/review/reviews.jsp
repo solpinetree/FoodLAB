@@ -55,7 +55,8 @@
 													class="btn btn-category">${ review.restaurant.category }</a></td>
 												<td class="restaurant-name">${ review.restaurant.name }</td>
 												<td class="title">${ review.title}</td>
-												<td class="rate"><c:if test="${ review.rate ne null }">
+												<td class="rate">
+													<c:if test="${ review.rate ne null }">
 														<c:forEach var="i" begin="1" end="${review.rate }">
 															<span class="star-rate-icon icon_star"></span>
 														</c:forEach>
@@ -112,20 +113,20 @@
 					<ul class="pagination">
 						<c:if test="${pagination.previousPage}">
 							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_prev('${pagination.currentPage}')">Previous</a></li>
+								onClick="loadUrl('${pagination.currentPage-1}')">Previous</a></li>
 						</c:if>
 	
 						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
 							<li
 								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 								class="page-link" href="#"
-								onClick="fn_pagination('${idx}')">
+								onClick="loadUrl('${idx}')">
 									${idx} </a></li>
 						</c:forEach>
 	
 						<c:if test="${pagination.nextPage}">
 							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_next('${pagination.currentPage}')">Next</a></li>
+								onClick="loadUrl('${pagination.currentPage+1}')">Next</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -138,21 +139,6 @@
 
 
 			<script type="text/javascript">
-				//이전 버튼 이벤트
-				function fn_prev(page) {
-					loadUrl(page-1);
-				}
-	
-			  	//페이지 번호 클릭
-				function fn_pagination(page) {
-					loadUrl(page);	
-				}
-
-				//다음 버튼 이벤트
-				function fn_next(page) {
-					loadUrl(page+1);
-				}
-				
 				function loadUrl(page){
 					var url = "${root}/reviews/list";
 					url = url + "?currentPage=" + page;
@@ -175,13 +161,9 @@
 		src="${resources}/js/nav-text-in-black.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/choices.js"></script>
-	<script type="text/javascript">
-	      const choices = new Choices('[data-trigger]',
-	      {
-	        searchEnabled: false,
-	        itemSelectText: '',
-	      });
-	</script>
+	<script type="text/javascript"
+		src="${resources}/js/review/search-panel.js"></script>
+	
 
 </body>
 

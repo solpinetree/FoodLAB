@@ -598,10 +598,6 @@ legend {
   padding-left: 0;
 }
 
-.choices__placeholder {
-  opacity: .5;
-}
-
 /*=====  End of Choices  ======*/
 * {
   box-sizing: border-box;
@@ -706,7 +702,7 @@ legend {
       align-items: center;
   height: 100%;
   opacity: 1;
-  color: #888;
+  color: #555;
   font-size: 16px;
 }
 
@@ -717,6 +713,7 @@ legend {
       align-items: center;
   height: 100%;
   color: #555;
+  font-size:16px;
 }
 
 .s003 form .inner-form .input-field.first-wrap .choices[data-type*="select-one"]:after {
@@ -739,7 +736,8 @@ legend {
 
 .s003 form .inner-form .input-field.first-wrap .choices__list--dropdown .choices__item--selectable.is-highlighted {
   background: #fff;
-  color: #63c76a;
+  color:  #f9adbd;
+  font-size: 16px;
 }
 
 .s003 form .inner-form .input-field.first-wrap .choices__list--dropdown .choices__item {

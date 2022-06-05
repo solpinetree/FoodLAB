@@ -5,6 +5,7 @@
 <head>
     <title>${restaurants.name }</title>
     <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
+    <link rel="stylesheet" href="${resources}/css/restaurant/restaurant-detail.css">
 </head>
 
 <body>
@@ -22,29 +23,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="listing__hero__option">
-
                         <div class="listing__hero__text">
                             <h2>${restaurant.name}</h2>
-                            <div class="listing__hero__widget">
-                                <div class="listing__hero__widget__rating">
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star-half_alt"></span>
-                                </div>
-                                <div>120 Review</div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="listing__hero__btns">
-                        <a href="#" class="primary-btn share-btn"><i class="fa fa-mail-reply"></i> 리뷰보기</a>
-                        <a href="#" class="primary-btn"><i class="fa fa-thumbs-up"></i> 좋아요</a>
-                    </div>
-                </div>
-            </div>
+             </div>
         </div>
     </section>
     <!-- Listing Section End -->
@@ -52,12 +36,23 @@
     <!-- Listing Details Section Begin -->
     <section class="listing-details spad" style = "padding-top:50px;">
         <div class="container">
-            <div class="row">
+            <div class="row row-menu">
                 <div class="col-lg-8">
                     <div class="listing__details__text">
+                    	<c:if test="${fn:length(menus) ne 0 }">
+	                    	<div class="listing__details__gallery">
+		                    	<h4>메뉴</h4>
+		                    	<c:forEach var="menu" items="${menus}">
+		                    		<div class="row row-menu">
+			                    		<p class="menu-name">${ menu.menuName}</p>
+			                    		<p class="menu-price">${ menu.price}</p>
+		                    		</div>
+		                    	</c:forEach>
+	                    	</div>
+                    	</c:if>
 
                         <div class="listing__details__gallery">
-                            <h4>Gallery</h4>
+                            <h4>식당 사진</h4>
                             <div class="listing__details__gallery__pic">
                                 <div class="listing__details__gallery__item">
                                     <img class="listing__details__gallery__item__large"
@@ -77,139 +72,65 @@
                             </div>
                         </div>
                        
-                        <div class="listing__details__rating">
-                            <h4>Rate</h4>
-                            <div class="listing__details__rating__overall">
-                                <h2>4.7</h2>
-                                <div class="listing__details__rating__star">
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                </div>
-                                <span>(120 Rating)</span>
-                            </div>
-                            <div class="listing__details__rating__bar">
-                                <div class="listing__details__rating__bar__item">
-                                    <span>4.4</span>
-                                    <div id="bar1" class="barfiller">
-                                        <span class="fill" data-percentage="100"></span>
-                                    </div>
-                                    <span class="right">Quality</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>3.9</span>
-                                    <div id="bar2" class="barfiller">
-                                        <span class="fill" data-percentage="75"></span>
-                                    </div>
-                                    <span class="right">Price</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>4.2</span>
-                                    <div id="bar3" class="barfiller">
-                                        <span class="fill" data-percentage="80"></span>
-                                    </div>
-                                    <span class="right">Space</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>4.8</span>
-                                    <div id="bar4" class="barfiller">
-                                        <span class="fill" data-percentage="80"></span>
-                                    </div>
-                                    <span class="right">Service</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>4.0</span>
-                                    <div id="bar5" class="barfiller">
-                                        <span class="fill" data-percentage="85"></span>
-                                    </div>
-                                    <span class="right">Location</span>
-                                </div>
-                            </div>
-                        </div>
+                       <%-- 리뷰 div 시작 --%>
                         <div class="listing__details__comment">
-                            <h4>ë¦¬ë·°</h4>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <h4>리뷰</h4>
+                            
+                            <%-- 하나의 리뷰 --%>
+                            <c:forEach var="review" items="${ reviews}">
+	                            <div class="listing__details__comment__item">
+	                                <div class="listing__details__comment__item__pic">
+	                                    <img src="${resources}/img/defaultProfile.jpeg" alt="">
+	                                </div>
+	                                <div class="listing__details__comment__item__text">
+	                                    <div class="listing__details__comment__item__rating">
+	                                 		<c:if test="${ review.rate ne null }">
+	                                   			<span class="star-rate-star">
+				                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+				                                		<i class="star-rate-icon icon_star"></i>
+				                                	</c:forEach>
+			                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+			                                			<i class="star-rate-icon icon_star_alt"></i>
+			                                		</c:forEach>
+				                                </span>
+                                			</c:if>
+	                                    </div>
+	                                    <span>${review.createdAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
+	                                    <h5>${review.writer.username }</h5>
+	                                    <p>${review.content }</p>
+	                                </div>
+	                            </div>
+                            </c:forEach>
+                            <%-- 하나의 리뷰 --%>
                         </div>
-                        <div class="listing__details__review">
-                            <h4>Add Review</h4>
-                            <form action="#">
-                                <input type="text" placeholder="Name">
-                                <input type="text" placeholder="Email">
-                                <textarea placeholder="Review"></textarea>
-                                <button type="submit" class="site-btn">Submit Now</button>
-                            </form>
-                        </div>
+                        <%-- 리뷰 div 시작 --%>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__sidebar">
+        	           <div class="blog__sidebar__categories star-rate">
+                             <ul>
+                                 <li class="star-rate-li">
+                                 	<span>
+                                 		<p class="star-rate-text">평점</p> 
+                                		<c:if test="${ restaurant.avgRate ne 0 }">
+                                			<span class="star-rate-star">
+                                				<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
+                                					<i class="star-rate-icon icon_star"></i>
+                                				</c:forEach>
+                               					<c:forEach var="i" begin="${restaurant.avgRate+ 1 }" end="5">
+                               						<i class="star-rate-icon icon_star_alt"></i>
+                               					</c:forEach>
+                                			</span>
+                             			</c:if>
+                             			<c:if test="${ restaurant.avgRate eq 0 }">
+                             				<span class="star-rate-star">데이터를 수집 중 입니다.</span>
+                             			</c:if>
+                             		</span> 
+                                 </li>
+                             </ul>
+                        </div>
                         <%@ include file="../map/map.jsp"%>
                     </div>
                 </div>

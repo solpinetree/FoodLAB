@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.aj22.foodlab.dao.reviewImages.ReviewImagesDAO;
-import com.aj22.foodlab.dao.reviewImages.ReviewImagesDAOImpl;
+import com.aj22.foodlab.dao.review.image.ReviewImagesDAO;
+import com.aj22.foodlab.dao.review.image.ReviewImagesDAOImpl;
 import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.FileDTO;
 import com.aj22.foodlab.util.FileUpload;
@@ -32,20 +32,6 @@ public class ReviewImagesService {
 		return res;
 	}
 	
-//	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, int reviewId) throws IOException, SQLException {
-//		multipartRequest.setCharacterEncoding("utf-8");
-//		Iterator<String> fileNames = multipartRequest.getFileNames();	
-//		
-//        while(fileNames.hasNext()) {
-//            String fileName = fileNames.next();
-//        	MultipartFile mFile = multipartRequest.getFile(fileName);
-//        	FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
-//        	if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
-//        		save(new ReviewImages(reviewId, dto.getSavedName()));
-//        	}
-//        }
-//	}
-	
 	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, int reviewId) throws IOException, SQLException {
 		multipartRequest.setCharacterEncoding("utf-8");
 		Iterator<String> fileNames = multipartRequest.getFileNames();	
@@ -55,8 +41,7 @@ public class ReviewImagesService {
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
 			if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
-				save(new ReviewImages(reviewId, s3Service.upload(mFile)));
-				//save(new ReviewImages(reviewId, dto.getSavedName()));
+				save(new ReviewImages(reviewId, s3Service.upload(mFile, "review")));
 			}
 		}
 	}

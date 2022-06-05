@@ -22,7 +22,7 @@
 						 	<a class="Neon-input-choose-btn">사진을 공유해주세요</a>
 					 	</div>
 				 	  	<div class="file-upload-content1">
-						    <img class="file-upload-image1" src="#" alt="your image" />
+						    <img class="file-upload-image1" style="object-fit:contain; max-height:50vh" alt="your image" />
 						</div>
 					</div>
  										
@@ -34,7 +34,7 @@
 							 	<a class="Neon-input-choose-btn">+</a>
 						 	</div>
 					 	  	<div class="file-upload-content${i }">
-							    <img class="file-upload-image${i }" src="#" alt="리뷰 이미지 미리보기" />
+							    <img class="file-upload-image${i }" style="object-fit:contain; max-height:50vh" alt="리뷰 이미지 미리보기" />
 							</div>
 		                </div>
 					</c:forEach>
@@ -52,7 +52,7 @@
 		    <c:forEach var="i" begin="1" end="4">
 			    <div style="float:left" class="file-upload-content${i }">
 				    <div class="image-title-wrap">
-				      <button type="button" onclick="removeUpload(i)" class="remove-image">Remove <span class="image-title${i }">Uploaded Image</span></button>
+				      <button type="button" onclick="removeUpload('${i}')" class="remove-image">Remove <span class="image-title${i }">Uploaded Image</span></button>
 				    </div>
 				</div>
 		    </c:forEach>

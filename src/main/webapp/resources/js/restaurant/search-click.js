@@ -1,42 +1,22 @@
 
-/*
+function searchclick(e) {
 
-function selectBySearch(searchValue){
-	
-	
-alert($('form[name="search_res"]').attr('action'));
-
-$.ajax({
-		url:"/foodlab/restaurants/select_res2?category="+categoryValue,
-		method:"GET",
-		async: true,
-		success:function(response) {
-			$('#showcategorys').html(response);
-		}
-
-	})
-    }
-
-*/
-
-        function searchclick(e){
-	
 	var code = e.code;
-	var txt = document.getElementById("searchText").value;
-	
-	if(code == 'Enter'){
-	
-	
-	
-$.ajax({
-		url:"/foodlab/restaurants/search2?search_text="+txt,
-		method:"GET",
-		async: true,
-		success:function(response) {
-			$('.showSeachText').html(response);
+	var search = document.getElementById("searchText").value;
+
+	if (code == 'Enter') {
+		loadListDivBySearchKeyword(1, search);
+	}
+}
+
+function loadListDivBySearchKeyword(page, search){
+		$.ajax({
+		url: "/foodlab/restaurants/loadListDivBySearchKeyword?search=" + search +"&currentPage="+page,
+		method: "GET",
+		async: false,
+		success: function(response) {
+			$('#restaurants-content').html(response);
 		}
 
 	})
-        }
-        
 }
