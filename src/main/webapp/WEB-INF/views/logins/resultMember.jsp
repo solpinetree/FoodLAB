@@ -42,7 +42,7 @@
 		<div class="col-lg-6 col-md-6 alert alert-danger" style="margin-top:200px;" >
 		<h2 class="alert-danger">
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/>
-		님 회원가입을 축하드립니다!
+		회원가입을 축하드립니다!
 		<img src="${resources}/img/icon/firecracker.svg" alt="폭죽아이콘" class="firecracker-icon"/></h2><br>
 		
 		
