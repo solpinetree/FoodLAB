@@ -39,15 +39,17 @@
             <div class="row row-menu">
                 <div class="col-lg-8">
                     <div class="listing__details__text">
-                    	<div class="listing__details__gallery">
-	                    	<h4>메뉴</h4>
-	                    	<c:forEach var="menu" items="${menus}">
-	                    		<div class="row row-menu">
-		                    		<p class="menu-name">${ menu.menuName}</p>
-		                    		<p class="menu-price">${ menu.price}</p>
-	                    		</div>
-	                    	</c:forEach>
-                    	</div>
+                    	<c:if test="${fn:length(menus) ne 0 }">
+	                    	<div class="listing__details__gallery">
+		                    	<h4>메뉴</h4>
+		                    	<c:forEach var="menu" items="${menus}">
+		                    		<div class="row row-menu">
+			                    		<p class="menu-name">${ menu.menuName}</p>
+			                    		<p class="menu-price">${ menu.price}</p>
+		                    		</div>
+		                    	</c:forEach>
+	                    	</div>
+                    	</c:if>
 
                         <div class="listing__details__gallery">
                             <h4>식당 사진</h4>
@@ -70,75 +72,39 @@
                             </div>
                         </div>
                        
+                       <%-- 리뷰 div 시작 --%>
                         <div class="listing__details__comment">
                             <h4>리뷰</h4>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${resources}/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                    <ul>
-                                        <li><i class="fa fa-hand-o-right"></i> Like</li>
-                                        <li><i class="fa fa-share-square-o"></i> Reply</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
+                            <%-- 하나의 리뷰 --%>
+                            <c:forEach var="review" items="${ reviews}">
+	                            <div class="listing__details__comment__item">
+	                                <div class="listing__details__comment__item__pic">
+	                                    <img src="${resources}/img/defaultProfile.jpeg" alt="">
+	                                </div>
+	                                <div class="listing__details__comment__item__text">
+	                                    <div class="listing__details__comment__item__rating">
+	                                 		<c:if test="${ review.rate ne null }">
+	                                   			<span class="star-rate-star">
+				                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+				                                		<i class="star-rate-icon icon_star"></i>
+				                                	</c:forEach>
+			                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+			                                			<i class="star-rate-icon icon_star_alt"></i>
+			                                		</c:forEach>
+				                                </span>
+                                			</c:if>
+	                                    </div>
+	                                    <span>${review.createdAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
+	                                    <h5>${review.writer.username }</h5>
+	                                    <p>${review.content }</p>
+	                                </div>
+	                            </div>
+                            </c:forEach>
+                            <%-- 하나의 리뷰 --%>
                         </div>
+                        <%-- 리뷰 div 시작 --%>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
 
 @Controller
@@ -22,6 +23,8 @@ public class RestaurantController {
 
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private ReviewService reviewService;
 
 	@GetMapping("/list")
 	public String restaurantListPage(Model model, @RequestParam(required = false, defaultValue = "1") int currentPage)
@@ -63,6 +66,7 @@ public class RestaurantController {
 	public String restaurantDetail(@RequestParam int restaurantId, Model model) throws SQLException {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
 		model.addAttribute("menus", restaurantService.selectMenus(restaurantId));
+		model.addAttribute("reviews", reviewService.findByRestaurantId(restaurantId));
 		return "restaurant/detail";
 	}
 

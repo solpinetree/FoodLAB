@@ -43,6 +43,16 @@ public class ReviewService {
 		
 		return cnt;
 	}
+	
+	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecordsByRestaurantId(restaurantId);
+		dao.close();
+		
+		return cnt;
+	}
 
 	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
 		List<Review> reviews = null;
@@ -61,18 +71,27 @@ public class ReviewService {
 		return reviewDTOs;
 	}
 	
-	public Integer save(Review review, String restaurantName) throws SQLException {
-		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
+	public List<ReviewDTO> findByRestaurantId(int restaurantId) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> reviewDTOs = new ArrayList<>();
+		
 		ReviewDAO dao = new ReviewDAOImpl();
-		Integer reviewId = dao.insert(review);
+		reviews = dao.selectByRestaurantId(restaurantId);
 		dao.close();
-		return reviewId;
+		
+		for(Review review : reviews) {
+			ReviewDTO dto = new ReviewDTO(review);
+			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "detailPage");
+			reviewDTOs.add(dto);
+		}
+		
+		return reviewDTOs;
 	}
 	
 	public ReviewDTO select(int reviewId) throws SQLException{
 		Review review = null;
 		ReviewDTO dto = null;
-
+		
 		ReviewDAO dao = new ReviewDAOImpl();
 		review = dao.select(reviewId);
 		dao.close();
@@ -82,6 +101,15 @@ public class ReviewService {
 		
 		return dto;
 	}
+	
+	public Integer save(Review review, String restaurantName) throws SQLException {
+		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
+		ReviewDAO dao = new ReviewDAOImpl();
+		Integer reviewId = dao.insert(review);
+		dao.close();
+		return reviewId;
+	}
+	
 	
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
@@ -111,6 +139,7 @@ public class ReviewService {
 		
 		return res;
 	}
+	
 	
 	public Pagination getPagination(int currentPage) throws SQLException {
 		Pagination pagination = new Pagination();
