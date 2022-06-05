@@ -59,12 +59,13 @@ public class MemberDAOImpl implements MemberDAO {
 
 		int cnt = 0;
 
-		String sql = "INSERT INTO member" + "(Username,email,password,userEmailChecked) " + "VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO member" + "(Username,email,password,userEmailChecked,profile_img) " + "VALUES(?, ?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, member.getUsername());
 		pstmt.setString(2, member.getEmail());
 		pstmt.setString(3, member.getPassword());
 		pstmt.setLong(4, member.getUserEmailChecked());
+		pstmt.setString(5, member.getProfile_img());
 
 		cnt = pstmt.executeUpdate();
 
@@ -141,9 +142,10 @@ public class MemberDAOImpl implements MemberDAO {
 		String profile_img_origin_name = rs.getString("profile_img_origin_name");
 		String profile_img_saved_name = rs.getString("profile_img_saved_name");
 		String profile_img_saved_path = rs.getString("profile_img_saved_path");
+		String profile_img = rs.getString("profile_img");
 		int userEmailChecked = rs.getInt("userEmailChecked");
 
-		member = new MemberDTO(memberId, username, email, password, profile_img_origin_name, profile_img_saved_name,
+		member = new MemberDTO(memberId, username, email, password, profile_img, profile_img_origin_name, profile_img_saved_name,
 				profile_img_saved_path, userEmailChecked);
 
 		return member;

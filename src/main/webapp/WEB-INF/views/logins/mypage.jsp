@@ -18,6 +18,7 @@
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
     <body>
     <% String username = sessionMember.getUsername(); %>
+    <% String profile_img = sessionMember.getProfile_img(); %>
         <!-- Responsive navbar-->
         <jsp:include page="../includes/header.jsp" />
         <c:choose>
@@ -54,8 +55,8 @@
 
         <header class="py-5 bg-image-full">
             <div class="text-center my-5">
-                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
-                <h2 class="text-black fs-3 fw-bolder"><%= username %></h1>
+                <img class="img-fluid rounded-circle mb-4" src="<%= profile_img %>" alt="..." />
+                <h2 class="text-black fs-3 fw-bolder"><%= username %></h2>
                 <p class="text-black-50 mb-0">user-email</p>
             </div>
         </header>

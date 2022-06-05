@@ -40,6 +40,7 @@
 	<jsp:setProperty name="sessionMember" property="id" value="${row.member_id}"/>
 	<jsp:setProperty name="sessionMember" property="email" value="${row.email}"/>
 	<jsp:setProperty name="sessionMember" property="username" value="${row.username}"/>
+	<jsp:setProperty name="sessionMember" property="profile_img" value="${row.profile_img}"/>
 	<jsp:setProperty name="sessionMember" property="userEmailChecked" value="${row.userEmailChecked}"/>
 	<%-- Go to the login results page when you log in correctly --%>
 	<c:redirect url="resultMember?msg=2"/>

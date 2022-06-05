@@ -20,11 +20,14 @@
 	String password = request.getParameter("password");
 	String name = request.getParameter("name");
 	String email = request.getParameter("email");
+	int random = (int)((Math.random()*6))+1;
+	
 
 	MemberDTO member = new MemberDTO();
 		member.setUsername(name);
 		member.setPassword(password);
 		member.setEmail(email);
+		member.setProfile_img("http://localhost:8085/foodlab/resources/img/profile/profile_image"+random+".png");
 		MemberDAOImpl MemberDAO = new MemberDAOImpl();
 		int result = MemberDAO.insert(member);
 		session.setAttribute("useremail", email);
