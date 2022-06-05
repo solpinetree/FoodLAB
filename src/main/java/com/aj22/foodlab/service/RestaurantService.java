@@ -1,34 +1,114 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
+import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAO;
+import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAOImpl;
+import com.aj22.foodlab.domain.Restaurant;
+import com.aj22.foodlab.domain.RestaurantMenu;
 import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class RestaurantService {
 	
+	@Autowired
+	private ReviewService reviewService;
+	
 	static final int NumOfRecordsPerPage = 12;
+	
+	public List<RestaurantMenu> selectMenus(int id) throws SQLException{
+		List<RestaurantMenu> menus = null;
+		RestaurantMenuDAO dao = new RestaurantMenuDAOImpl();
+		menus = dao.select(id);
+		dao.close();
+		return menus;
+	}
+	
+	public RestaurantDTO convertToDto(Restaurant restaurant) throws SQLException{
+		RestaurantDTO dto = new RestaurantDTO(restaurant);
+		dto.setNumOfReviews(reviewService.countRecordsByRestaurantId(restaurant.getRestaurantId()));
+		return dto;
+	}
 
 	public List<RestaurantDTO> selectList(Pagination pagination) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
+		List<Restaurant> restaurants = null;
+		List<RestaurantDTO> dto = new ArrayList<>();
+		
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		
+		for(Restaurant restaurant : restaurants) {
+			dto.add(convertToDto(restaurant));
+		}
+		
 		dao.close();
-		return restaurants;
+		return dto;
 	}
 	
 	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
+		List<Restaurant> restaurants = null;
+		List<RestaurantDTO> dto = new ArrayList<>();
+		
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurants = dao.select(category);
+		
+		for(Restaurant restaurant : restaurants) {
+			dto.add(convertToDto(restaurant));
+		}
+		
 		dao.close();
-		return restaurants;
+		return dto;
+	}
+	
+	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
+		List<Restaurant> restaurants = null;
+		List<RestaurantDTO> dto = new ArrayList<>();
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		
+		if(category.equals("전체")) {
+			restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		}else {
+			restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
+		}
+		
+		for(Restaurant restaurant : restaurants) {
+			dto.add(convertToDto(restaurant));
+		}
+		
+		dao.close();
+		return dto;
+	}
+	
+	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
+		List<Restaurant> restaurants = null;
+		List<RestaurantDTO> dto = new ArrayList<>();
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
+		dao.close();
+		
+		for(Restaurant restaurant : restaurants) {
+			dto.add(convertToDto(restaurant));
+		}
+		
+		return dto;
+	}
+	
+	public RestaurantDTO selectById(int id) throws SQLException{
+		Restaurant restaurant = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurant = dao.select(id);
+		dao.close();
+		return convertToDto(restaurant);
 	}
 
 	
@@ -49,34 +129,6 @@ public class RestaurantService {
 		return id;
 	}
 	
-	public RestaurantDTO selectById(int id) throws SQLException{
-		RestaurantDTO restaurant = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurant = dao.select(id);
-		dao.close();
-		return restaurant;
-	}
-	
-	public List<RestaurantDTO> selectByName(String name) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.select_name(name);
-		dao.close();
-		return restaurants;
-	}
-	
-	public List<RestaurantDTO> findByCategoryWithPagination(Pagination pagination, String category) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		
-		if(category.equals("전체")) {
-			restaurants = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
-		}else {
-			restaurants = dao.findByCategoryWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), category);
-		}
-		dao.close();
-		return restaurants;
-	}
 	
 	public Pagination getPaginationBySearchKeyword(int currentPage, String keyword) throws SQLException{
 		
@@ -87,13 +139,6 @@ public class RestaurantService {
 		return pagination;
 	}
 	
-	public List<RestaurantDTO> findByNameWithPanination(Pagination pagination, String name) throws SQLException{
-		List<RestaurantDTO> restaurants = null;
-		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.findBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
-		dao.close();
-		return restaurants;
-	}
 	
 	public Pagination getPaginationByCategory(int currentPage, String category) throws SQLException{
 		

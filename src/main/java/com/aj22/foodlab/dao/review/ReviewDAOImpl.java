@@ -19,7 +19,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	// FoodDAOImpl 객체가 생성될때 Connection도 생성된다.
+	// FoodDAOImpl 媛앹껜媛� �깮�꽦�맆�븣 Connection�룄 �깮�꽦�맂�떎.
 	public ReviewDAOImpl() {
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -28,7 +28,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		}
 	}
 	
-	// DB 자원 반납
+	// DB �옄�썝 諛섎궔
 	@Override
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
@@ -55,7 +55,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setInt(7, review.getRestaurantId());
 		pstmt.executeUpdate();
 		
-		rs = pstmt.getGeneratedKeys(); 	// 쿼리 실행 후 생성된 AI 값 반환
+		rs = pstmt.getGeneratedKeys(); 	// 荑쇰━ �떎�뻾 �썑 �깮�꽦�맂 AI 媛� 諛섑솚
 		if(rs.next()) {
 			autoIncrement = rs.getInt(1);
 		}
@@ -168,6 +168,26 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return cnt;
 	}
 
+	@Override
+	public float reviewAvgRateSelectByRestaurantId(int id) throws SQLException{
+		String sql = "select rate from review where restaurant_id = ? ";
+		float avg_rate = 0;
+		int count = 0;
+		int sum = 0;
+		
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			count++;
+			sum += rs.getInt("rate");
+			
+		}
+		avg_rate = (float) (Math.round(sum/count*100)/100.0);
+		
+		return avg_rate;
+	}
 //	@Override
 //	public List<ReviewDTO> selectListByCategory(String category) throws SQLException {
 //		List<ReviewDTO> foodList = new ArrayList<>();

@@ -61,7 +61,7 @@
 							<li>
 								<span class="icon_archive_alt"></span> 
 								누적 리뷰수 : 
-								<text style="font-weight: bold;">120</text>
+								<text style="font-weight: bold;">${restaurant.numOfReviews }</text>
 							</li>
 						</ul>
 					</div>

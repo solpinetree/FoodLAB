@@ -1,0 +1,14 @@
+.listing__details__gallery {
+    border-top: 0;
+}
+
+.row-menu {
+    margin-right: 0px; 
+   	margin-left: 0px; 
+   	margin-bottom: 10px;
+}
+
+.menu-price{
+    margin-left: 300px;
+    position: absolute;	
+}

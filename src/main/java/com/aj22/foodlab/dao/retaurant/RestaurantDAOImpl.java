@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.aj22.foodlab.dto.RestaurantDTO;
+import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 public class RestaurantDAOImpl implements RestaurantDAO {
@@ -37,7 +37,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 
 	@Override
-	public int insert(RestaurantDTO restaurant) throws SQLException {
+	public int insert(Restaurant restaurant) throws SQLException {
 		
 		int cnt = 0;
 		
@@ -71,7 +71,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 
 	@Override
-	public int edit(RestaurantDTO restaurant) throws SQLException {
+	public int edit(Restaurant restaurant) throws SQLException {
 		
 		int cnt = 0;
 		
@@ -90,9 +90,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 
 	@Override
-	public RestaurantDTO select(int id) throws SQLException {
+	public Restaurant select(int id) throws SQLException {
 		
-		RestaurantDTO restaurant = new RestaurantDTO();
+		Restaurant restaurant = new Restaurant();
 		
 		String sql = "select * from restaurant where restaurant_id=?";
 		pstmt = conn.prepareStatement(sql);
@@ -106,8 +106,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 	
 	@Override
-	public List<RestaurantDTO> select(String category) throws SQLException {
-		List<RestaurantDTO> restaurants = new ArrayList<>();
+	public List<Restaurant> select(String category) throws SQLException {
+		List<Restaurant> restaurants = new ArrayList<>();
 		String sql = "select * from restaurant where category=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, category);
@@ -120,8 +120,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	}
 	
 	@Override
-	public List<RestaurantDTO> select_name(String name) throws SQLException {
-		List<RestaurantDTO> restaurants = new ArrayList<>();
+	public List<Restaurant> select_name(String name) throws SQLException {
+		List<Restaurant> restaurants = new ArrayList<>();
 		String sql = "select * from restaurant where name LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
@@ -133,9 +133,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		return restaurants;
 	}
 	
-	public RestaurantDTO createFromResultSet(ResultSet rs) throws SQLException {
+	public Restaurant createFromResultSet(ResultSet rs) throws SQLException {
 		
-		RestaurantDTO restaurant = null;
+		Restaurant restaurant = null;
 		
 		int restaurantId = rs.getInt("restaurant_id");
 		String name = rs.getString("name");
@@ -146,15 +146,15 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		String imgUrl = rs.getString("img_url");
 		String operationHour = rs.getString("operation_hour");
 		
-		restaurant = new RestaurantDTO(restaurantId, name, address, avgRate, tel, category, imgUrl, operationHour);
+		restaurant = new Restaurant(restaurantId, name, address, avgRate, tel, category, imgUrl, operationHour);
 
 		return restaurant;
 	}
 
 	@Override
-	public List<RestaurantDTO> selectList(int startIdx, int listSize) throws SQLException {
+	public List<Restaurant> selectList(int startIdx, int listSize) throws SQLException {
 		
-		List<RestaurantDTO> restaurants = new ArrayList<>();
+		List<Restaurant> restaurants = new ArrayList<>();
 		
 		String sql = "select * from restaurant limit ?, ?";
 		pstmt = conn.prepareStatement(sql);
@@ -172,9 +172,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	
 	
 	@Override
-	public List<RestaurantDTO> findByCategoryWithLimit(int startIdx, int listSize,String category) throws SQLException {
+	public List<Restaurant> findByCategoryWithLimit(int startIdx, int listSize,String category) throws SQLException {
 		
-		List<RestaurantDTO> restaurants = new ArrayList<>();
+		List<Restaurant> restaurants = new ArrayList<>();
 		
 		String sql = "select * from restaurant where category=? limit ?, ?";
 		pstmt = conn.prepareStatement(sql);
@@ -193,9 +193,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	
 	
 	@Override
-	public List<RestaurantDTO> findBySearchWithLimit(int startIdx, int listSize,String search) throws SQLException {
+	public List<Restaurant> findBySearchWithLimit(int startIdx, int listSize,String search) throws SQLException {
 		
-		List<RestaurantDTO> restaurants = new ArrayList<>();
+		List<Restaurant> restaurants = new ArrayList<>();
 		
 		String sql = "select * from restaurant where name LIKE concat('%',?,'%') limit ?, ?";
 		pstmt = conn.prepareStatement(sql);

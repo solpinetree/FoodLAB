@@ -3,10 +3,10 @@
 
 <c:set var="root" value="${pageContext.request.contextPath }" />
 
-<!--  resources ëë í ë¦¬ ìì¹ë¥¼ ê°ë¦¬í¤ë ë³ì ì ì¸ -->
+<!--  resources 디렉토리 위치를 가리키는 변수 선언 -->
 <c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 
-<!--  views ëë í ë¦¬ ìì¹ë¥¼ ê°ë¦¬í¤ë ë³ì ì ì¸ -->
+<!--  views 디렉토리 위치를 가리키는 변수 선언 -->
 <c:set var="views" value="${pageContext.request.contextPath }/WEB-INF/views" />
 
 
@@ -34,11 +34,9 @@
 	<link rel="stylesheet" href="${resources}/css/slicknav.min.css" type="text/css">
 	<link rel="stylesheet" href="${resources}/css/style.css?after"> 
 	
-	<!-- black han sans font css 시작 -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">	
-	<!-- black han sans font css 끝-->
+	<!-- chat  -->
+	<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 	
 	<!-- Font CSS -->
 	<link rel="stylesheet" href="${resources}/css/fonts/font.css" type="text/css"> 

@@ -1,4 +1,4 @@
-package com.aj22.foodlab.dao.reviewImages;
+package com.aj22.foodlab.dao.review.image;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

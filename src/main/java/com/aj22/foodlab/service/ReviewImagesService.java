@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.aj22.foodlab.dao.reviewImages.ReviewImagesDAO;
-import com.aj22.foodlab.dao.reviewImages.ReviewImagesDAOImpl;
+import com.aj22.foodlab.dao.review.image.ReviewImagesDAO;
+import com.aj22.foodlab.dao.review.image.ReviewImagesDAOImpl;
 import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.FileDTO;
 import com.aj22.foodlab.util.FileUpload;
