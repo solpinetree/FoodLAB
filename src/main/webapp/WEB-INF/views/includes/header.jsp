@@ -14,7 +14,7 @@
 <%
 
 	String username = sessionMember.getUsername();
-
+	String profile_img = sessionMember.getProfile_img();
 %>
 
 
@@ -49,7 +49,7 @@
                   <c:otherwise>
                    <div class="header__menu__right">
                         <a href="${root}/logins/logoutMember" class="primary-btn">로그아웃</a>
-                        <a href="${root}/logins/mypage" class="login-btn"><i class="fa fa-user" style="line-height: inherit"></i></a>
+                        <a href="${root}/logins/mypage" class="login-btn"><img class="img-fluid rounded-circle mb-2" src="<%= profile_img %>" alt="..." /></a>
                     </div>
                   </c:otherwise>
                   </c:choose>
