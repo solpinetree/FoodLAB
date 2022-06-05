@@ -144,8 +144,14 @@
                     <div class="most__search__tab most__search__tab_category">             
                         <ul class="nav nav-tabs nav-tabs-category" role="tablist">
                 <c:forEach items="${categories}" var="category">
+                <c:if test="${category eq '피자/양식'}">
+                <c:set var="category_id" value="${fn:replace(category, '/', '')}" />
+                </c:if>
+                <c:if test="${category != '피자/양식'}">
+                <c:set var="category_id" value="${fn:replace(category, '.', '')}" />
+                </c:if>
                             <li class="nav-item nav-item-category">
-                                <a class="nav-link" data-toggle="tab" href="#${category}" role="tab">
+                                <a class="nav-link" data-toggle="tab" href="#${category_id}" role="tab">
                                     <span class="flaticon-039-fork"></span>
                                     ${category}
                                 </a>
@@ -238,9 +244,23 @@
                                 </div>
                                </div>
                                </div>
+                               
                    
                       <c:forEach items="${categories}" var="category">
-                        <div class="tab-pane" id="${category}" role="tabpanel">
+                      
+                      
+     				  <c:if test="${category eq '피자/양식'}">
+                	  <c:set var="category_id" value="${fn:replace(category, '/', '')}" />
+                	  </c:if>
+                	  <c:if test="${category != '피자/양식'}">
+                	  <c:set var="category_id" value="${fn:replace(category, '.', '')}" />
+                	  </c:if>
+                	  
+                      <div class="tab-pane" id="${category_id}" role="tabpanel">
+                        
+      
+                       
+                       
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
                                 <div class = "FoodLog__Title">
