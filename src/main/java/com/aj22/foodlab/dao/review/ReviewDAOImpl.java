@@ -113,6 +113,23 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return review;
 	}
 	
+	@Override
+	public List<Review> selectByRestaurantId(int id) throws SQLException {
+		
+		List<Review> reviews = new ArrayList<>();
+		
+		String sql = "select * from review where restaurant_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			reviews.add(createFromResultSet(rs));
+		}
+	
+		
+		return reviews;
+	}
+	
 	public Review createFromResultSet(ResultSet rs) throws SQLException {
 		
 		Review review = null;
@@ -167,6 +184,22 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return cnt;
 	}
+	
+	@Override
+	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
+		int cnt = 0;
+		
+		String sql = "select count(*) from review where restaurant_id = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, restaurantId);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
+	}
 
 	@Override
 	public float reviewAvgRateSelectByRestaurantId(int id) throws SQLException{
@@ -188,23 +221,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return avg_rate;
 	}
-//	@Override
-//	public List<ReviewDTO> selectListByCategory(String category) throws SQLException {
-//		List<ReviewDTO> foodList = new ArrayList<>();
-//		
-//		try {
-//			String sql = "select * from mfdsfood order by category=?";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, category);
-//			rs = pstmt.executeQuery();
-//			
-//			while (rs.next()) {
-//				foodList.add(createFromResultSet(rs));
-//			}
-//		} finally {
-//			close();
-//		}
-//		return foodList;
-//	}
 
 }

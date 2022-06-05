@@ -70,6 +70,23 @@ public class ReviewService {
 		return reviewDTOs;
 	}
 	
+	public List<ReviewDTO> findByRestaurantId(int restaurantId) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> reviewDTOs = new ArrayList<>();
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		reviews = dao.selectByRestaurantId(restaurantId);
+		dao.close();
+		
+		for(Review review : reviews) {
+			ReviewDTO dto = new ReviewDTO(review);
+			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "detailPage");
+			reviewDTOs.add(dto);
+		}
+		
+		return reviewDTOs;
+	}
+	
 	public Integer save(Review review, String restaurantName) throws SQLException {
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		
