@@ -27,7 +27,7 @@
 		member.setUsername(name);
 		member.setPassword(password);
 		member.setEmail(email);
-		member.setProfile_img("http://localhost:8085/foodlab/resources/img/profile/profile_image"+random+".png");
+		member.setProfile_img("http://158.247.206.153:8085/foodlab/resources/img/profile/profile_image"+random+".png");
 		MemberDAOImpl MemberDAO = new MemberDAOImpl();
 		int result = MemberDAO.insert(member);
 		session.setAttribute("useremail", email);

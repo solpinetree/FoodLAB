@@ -14,7 +14,7 @@ public interface ReviewDAO {
 	Review select(int id) throws SQLException;
 	List<Review> selectList(int startIdx, int listSize) throws SQLException;
 	int countRecords() throws SQLException;
-	
 	float reviewAvgRateSelectByRestaurantId(int id) throws SQLException;
-	//List<ReviewDTO> selectListByCategory(String category) throws SQLException;
+	int countRecordsByRestaurantId(int restaurantId) throws SQLException;
+	List<Review> selectByRestaurantId(int id) throws SQLException;
 }

@@ -43,7 +43,16 @@ public class ReviewService {
 		
 		return cnt;
 	}
-
+	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecordsByRestaurantId(restaurantId);
+		dao.close();
+		
+		return cnt;
+	}
+	
 	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
 		List<Review> reviews = null;
 		List<ReviewDTO> reviewDTOs = new ArrayList<>();
@@ -58,6 +67,23 @@ public class ReviewService {
 			reviewDTOs.add(dto);
 		}
 			
+		return reviewDTOs;
+	}
+	
+	public List<ReviewDTO> findByRestaurantId(int restaurantId) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> reviewDTOs = new ArrayList<>();
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		reviews = dao.selectByRestaurantId(restaurantId);
+		dao.close();
+		
+		for(Review review : reviews) {
+			ReviewDTO dto = new ReviewDTO(review);
+			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "detailPage");
+			reviewDTOs.add(dto);
+		}
+		
 		return reviewDTOs;
 	}
 	
