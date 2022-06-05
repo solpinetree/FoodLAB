@@ -79,8 +79,10 @@ public class ReviewController {
 		
 		String loadUrl = null;
 		Integer reviewId = reviewService.save(review, restaurantName);
+		
+		review.setReviewId(reviewId);
 
-		reviewImagesService.saveReviewImages(multipartRequest, reviewId);
+		reviewImagesService.saveReviewImages(multipartRequest, review);
 
 		if (reviewId == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직

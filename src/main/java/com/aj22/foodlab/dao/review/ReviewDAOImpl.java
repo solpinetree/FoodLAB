@@ -144,9 +144,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 		Timestamp updatedAt = rs.getTimestamp("updatedAt");
 		int writerId = rs.getInt("member_id");
 		int restaurantId = rs.getInt("restaurant_id");
+		int isDummy = rs.getInt("is_dummy");
+		String dummyUsername = rs.getString("dummy_username");
+		String dummyImg = rs.getString("dummy_img");
+		String dummyCreatedAt = rs.getString("dummy_createdAt");
 		
 		review = new Review(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
-				 writerId, restaurantId);
+				 writerId, restaurantId, isDummy, dummyUsername, dummyImg, dummyCreatedAt);
 	
 		return review;
 	}

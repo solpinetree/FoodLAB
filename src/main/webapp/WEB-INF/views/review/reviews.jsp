@@ -61,8 +61,16 @@
 															<span class="star-rate-icon icon_star"></span>
 														</c:forEach>
 													</c:if></td>
-												<td class="writer">${ review.writer.username }</td>
-												<td class="createdAt">${ review.createdAt }</td>
+												<c:choose>
+													<c:when test="${review.isDummy eq 0 }">
+														<td class="writer">${ review.writer.username }</td>
+														<td class="createdAt">${ review.createdAt }</td>
+													</c:when>
+													<c:otherwise>
+														<td class="writer">${ review.dummyUsername }</td>
+														<td class="createdAt">${ review.dummyCreatedAt }</td>
+													</c:otherwise>
+												</c:choose>
 												<td class="likes"><span>${ fn:length(review.membersIdsWhoLike) }</span>
 												</td>
 											</tr>
