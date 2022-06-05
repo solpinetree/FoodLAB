@@ -63,6 +63,7 @@ public class ReviewService {
 	
 	public Integer save(Review review, String restaurantName) throws SQLException {
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
+		
 		ReviewDAO dao = new ReviewDAOImpl();
 		Integer reviewId = dao.insert(review);
 		dao.close();
@@ -110,6 +111,16 @@ public class ReviewService {
 		dao.close();
 		
 		return res;
+	}
+	
+	public float reviewAvgRateSelectByRestaurantId(int id) throws SQLException{
+		float avg_rate = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		avg_rate = dao.reviewAvgRateSelectByRestaurantId(id);
+		dao.close();
+		
+		return avg_rate;
 	}
 	
 	public Pagination getPagination(int currentPage) throws SQLException {
