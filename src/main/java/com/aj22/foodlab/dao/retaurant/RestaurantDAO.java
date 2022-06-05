@@ -20,6 +20,7 @@ public interface RestaurantDAO {
 	int countRecords() throws SQLException;
 	int countRecords_category(String category) throws SQLException;
 	List<Restaurant> findBySearchWithLimit(int firstReviewId, int numOfRecordsPerPage, String name) throws SQLException;
-	int countRecordsByName(String name) throws SQLException;;
+	int countRecordsByName(String name) throws SQLException;
+	int countRecordsByRestaurantId(int restaurantId) throws SQLException;
 	
 }
