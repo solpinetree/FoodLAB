@@ -135,6 +135,7 @@
                                					</c:forEach>
                                 			</span>
                              			</c:if>
+                             			
                              			<c:if test="${ restaurant.avgRate eq 0 }">
                              				<span class="star-rate-star">데이터를 수집 중 입니다.</span>
                              			</c:if>

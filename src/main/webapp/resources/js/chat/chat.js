@@ -86,7 +86,7 @@ function addZero(i) {
 //	엔터키가 눌리면, 메시지를 전송하는 함수
 function keypress()
 {
-	var keycode = event.keyCode;
+	var keycode = window.event.keyCode;
 	
 	if (keycode == 13)
 		sendmessage();
