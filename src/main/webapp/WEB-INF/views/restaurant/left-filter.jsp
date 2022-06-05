@@ -10,8 +10,12 @@
         
             <input type="text" name="seach_text" id = "searchText" class="search-click" placeholder="식당 이름으로 검색" onkeypress="searchclick(event)">
             <p id="word"></p>
+            
+          	<span onclick="searchclickIcon()">
             <i class="fa fa-magnifying-glass"></i>
-        
+			</span>
+ 
+
         </div>
         
         <div class="filter__tags">
