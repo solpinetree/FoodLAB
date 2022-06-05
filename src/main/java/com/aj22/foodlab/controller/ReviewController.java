@@ -24,6 +24,7 @@ import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
 import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.ReviewImagesService;
+import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
 import com.aj22.foodlab.util.S3FileUploadService;
@@ -43,6 +44,7 @@ public class ReviewController {
 	@Autowired
 	private LikesService likesService;
 	@Autowired
+	private RestaurantService restaurantService;
 	private ReviewImagesService reviewImagesService;
 	@Autowired
 	private S3FileUploadService s3Service;
@@ -63,6 +65,22 @@ public class ReviewController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("reviews", reviewService.selectList(pagination));
 
+		return "review/reviews";
+	}
+	
+	//search
+	
+	@RequestMapping(value = "/loadListBySearchKeyword", produces = "application/text;charset=utf8")
+	public String loadRestaurantListDivSelectedBySearch(Model model,
+			@RequestParam(required = false, defaultValue = "1") int currentPage, @RequestParam("search") String search, @RequestParam("option") String option)
+			throws SQLException {
+		
+			Pagination pagination = reviewService.getPaginationBySearchKeywordContent(currentPage, search, option);
+			model.addAttribute("pagination", pagination);
+			model.addAttribute("reviews", reviewService.selectList(pagination, search, option));
+			model.addAttribute("search", search);
+			model.addAttribute("numOfResults", reviewService.getNumOfRecordByName(search, option));
+		
 		return "review/reviews";
 	}
 

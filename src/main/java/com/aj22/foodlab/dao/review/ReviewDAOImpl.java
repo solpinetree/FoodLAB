@@ -9,7 +9,18 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.aj22.foodlab.dao.member.MemberDAO;
+import com.aj22.foodlab.dao.member.MemberDAOImpl;
+import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
+import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
+import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAO;
+import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAOImpl;
+import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.Review;
+import com.aj22.foodlab.service.MemberService;
+import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 
@@ -18,6 +29,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	private PreparedStatement pstmt;
 	private Statement stmt;
 	private ResultSet rs;
+	
+	@Autowired
+	private RestaurantService restaurantService;
+	@Autowired
+	private MemberService memberService;
 	
 	// FoodDAOImpl 媛앹껜媛� �깮�꽦�맆�븣 Connection�룄 �깮�꽦�맂�떎.
 	public ReviewDAOImpl() {
@@ -171,6 +187,92 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 	@Override
+	public List<Review> selectList(int startIdx, int listSize, String keyword, String option) throws SQLException {
+		
+		List<Review> reviews = new ArrayList<>();
+		
+		if(option == "all") {
+		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, keyword);
+		pstmt.setString(2, keyword);
+		pstmt.setInt(3, startIdx);
+		pstmt.setInt(4, listSize);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			reviews.add(createFromResultSet(rs));
+		}
+
+		
+		return reviews;
+		}
+		
+		if(option == "res") {
+			
+			
+			int res_id = restaurantService.getRestaurantIdFromName(keyword);
+	
+			String sql = "select * from restaurant where restaurant_id=? order by createdAt desc limit ?, ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, res_id);
+			pstmt.setInt(2, startIdx);
+			pstmt.setInt(3, listSize);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				reviews.add(createFromResultSet(rs));
+			}
+
+			
+			return reviews;
+		}
+		
+		if(option == "writer") {
+			
+			int member_id = memberService.getMemberIdFromName(keyword);			
+	
+			String sql = "select * from member where member_id=? order by createdAt desc limit ?, ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_id);
+			pstmt.setInt(2, startIdx);
+			pstmt.setInt(3, listSize);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				reviews.add(createFromResultSet(rs));
+			}
+		
+			return reviews;
+		}
+		
+		return reviews;
+	}
+	
+	@Override
+	public List<Review> findContentBySearchWithLimit(int startIdx, int listSize,String search) throws SQLException {
+		
+		List<Review> reviews = new ArrayList<>();
+		
+		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') limit ?, ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, search);
+		pstmt.setString(2, search);
+		pstmt.setInt(3, startIdx);
+		pstmt.setInt(4, listSize);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			reviews.add(createFromResultSet(rs));
+		}
+	
+		
+		return reviews;
+	}
+	
+	@Override
 	public int countRecords() throws SQLException{
 		int cnt = 0;
 		
@@ -220,6 +322,48 @@ public class ReviewDAOImpl implements ReviewDAO {
 		avg_rate = (float) (Math.round(sum/count*100)/100.0);
 		
 		return avg_rate;
+	}
+	
+	
+	@Override
+	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{
+		int cnt = 0;
+		
+		if(option=="all") {
+		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, name);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
+		
+		}
+		
+		if(option=="res") {
+			RestaurantDAO dao = new RestaurantDAOImpl();
+			cnt = dao.countRecordsByName(name);
+			return cnt;
+	
+		}
+		
+		if(option=="writer") {
+			MemberDAO dao = new MemberDAOImpl();
+			cnt = dao.countRecordsByName(name);
+			return cnt;
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public int countRecordsByName(String name, String option, int member_id, int restaurant_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

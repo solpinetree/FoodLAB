@@ -23,7 +23,7 @@
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
 
-
+<div id="review-content">
 	<!-- Blog Section Begin -->
 	<section class="blog-section spad" style="padding-top: 80px">
 		<div class="container">
@@ -77,6 +77,7 @@
 					</div>
 				</div>
 			</section>
+			</div>
 			
 			<div class="row">
 			
@@ -86,15 +87,15 @@
 			        <div class="inner-form">
 			          <div class="input-field first-wrap">
 			            <div class="input-select">
-			              <select data-trigger="" name="choices-single-defaul">
-			                <option placeholder="">제목+내용</option>
-			                <option>식당 이름</option>
-			                <option>작성자</option>
+			              <select id="selectbox" data-trigger="" name="choices-single-defaul" onchange="selectOption()">
+			                <option value="searchAll" placeholder="">제목+내용</option>
+			                <option value="res">식당 이름</option>
+			                <option value="writer">작성자</option>
 			              </select>
 			            </div>
 			          </div>
-			          <div class="input-field second-wrap">
-			            <input id="search" type="text"/>
+			          <div class="input-field second-wrap">			          
+			            <input type="text" name="search_text" id="search"  onkeypress="searchclick(event)"> 
 			          </div>
 			          <div class="input-field third-wrap">
 			            <button class="btn-search" type="button">
@@ -163,6 +164,8 @@
 		src="${resources}/js/review/choices.js"></script>
 	<script type="text/javascript"
 		src="${resources}/js/review/search-panel.js"></script>
+	<script type="text/javascript"
+		src="${resources}/js/review/search.js"></script>
 	
 
 </body>

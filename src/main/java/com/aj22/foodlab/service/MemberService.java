@@ -29,4 +29,13 @@ public class MemberService {
 		return name;
 	}
 	
+	
+	
+	public Integer getMemberIdFromName(String name) throws SQLException {
+		Integer id = null;
+		MemberDAO dao = new MemberDAOImpl();
+		id = dao.getMemberIdByname(name);
+		dao.close();
+		return id;
+	}
 }

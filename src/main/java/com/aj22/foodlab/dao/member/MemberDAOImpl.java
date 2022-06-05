@@ -220,4 +220,39 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
+	@Override
+	public Integer getMemberIdByname(String name) throws SQLException {
+		
+		Integer id = null;
+		
+		String sql = "select member_id from member where name=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			id = rs.getInt("member_id");
+		}
+		
+		return id;
+	}
+	
+	
+	
+	@Override
+	public int countRecordsByName(String name) throws SQLException{
+		int cnt = 0;
+		
+		String sql = "select count(*) from member where username LIKE concat('%',?,'%')";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		return cnt;
+	}
+
 }

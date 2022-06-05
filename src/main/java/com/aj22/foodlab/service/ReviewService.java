@@ -13,10 +13,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
+import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
 import com.aj22.foodlab.dao.review.ReviewDAO;
 import com.aj22.foodlab.dao.review.ReviewDAOImpl;
+import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.domain.ReviewImages;
+import com.aj22.foodlab.dto.RestaurantDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
 import com.aj22.foodlab.util.FileUpload;
 import com.aj22.foodlab.util.Pagination;
@@ -43,6 +47,39 @@ public class ReviewService {
 		
 		return cnt;
 	}
+	
+	public Pagination getPaginationBySearchKeywordContent(int currentPage, String keyword, String option) throws SQLException{
+		
+			int res_id = restaurantService.getRestaurantIdFromName(keyword);
+			int member_id = memberService.getMemberIdFromName(keyword);			
+			ReviewDAO dao = new ReviewDAOImpl();			
+		
+			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+		
+			return pagination;
+		
+		
+	}
+	
+	public int getNumOfRecordByName(String keyword, String option) throws SQLException{
+		
+		int res_id = restaurantService.getRestaurantIdFromName(keyword);
+		int member_id = memberService.getMemberIdFromName(keyword);	
+		int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
+		
+		return numOfRecords;
+	}
+	
+
+	
+	public ReviewDTO convertToDto(Review review) throws SQLException{
+		ReviewDTO dto = new ReviewDTO(review);
+		return dto;
+	}
+	
+	
 	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
 		int cnt = 0;
 		
@@ -59,6 +96,24 @@ public class ReviewService {
 		
 		ReviewDAO dao = new ReviewDAOImpl();
 		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		dao.close();
+		
+		for(Review review : reviews) {
+			ReviewDTO dto = new ReviewDTO(review);
+			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
+			reviewDTOs.add(dto);
+		}
+			
+		return reviewDTOs;
+	}
+	
+	
+	public List<ReviewDTO> selectList(Pagination pagination,String search,String option) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> reviewDTOs = new ArrayList<>();
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), search, option);
 		dao.close();
 		
 		for(Review review : reviews) {
@@ -87,9 +142,23 @@ public class ReviewService {
 		return reviewDTOs;
 	}
 	
+	public List<ReviewDTO> findContentBySearchWithLimit(Pagination pagination, String name) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> dto = new ArrayList<>();
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		reviews = dao.findContentBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
+		dao.close();
+		
+		for(Review review : reviews) {
+			dto.add(convertToDto(review));
+		}
+		
+		return dto;
+	}
+	
 	public Integer save(Review review, String restaurantName) throws SQLException {
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
-		
 		ReviewDAO dao = new ReviewDAOImpl();
 		Integer reviewId = dao.insert(review);
 		dao.close();
@@ -185,6 +254,21 @@ public class ReviewService {
 			return true;
 		}
 		return false;
+	}
+	
+	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
+		
+
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecordsByName(name, option,member_id,restaruant_id);
+		dao.close();
+		
+		return cnt;
+
+		
+
 	}
 	
 }

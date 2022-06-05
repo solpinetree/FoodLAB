@@ -17,4 +17,6 @@ public interface MemberDAO {
 	String getMemberpasswordByEmail(String email) throws SQLException;
 	MemberDTO selectById(int id) throws SQLException;
 	String getMembernameById(int id) throws SQLException;
+	Integer getMemberIdByname(String name) throws SQLException;
+	int countRecordsByName(String name) throws SQLException;
 }
