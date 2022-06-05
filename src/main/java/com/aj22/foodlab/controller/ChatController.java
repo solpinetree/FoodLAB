@@ -74,6 +74,7 @@ public class ChatController {
 	}
 	
 	@PostMapping("/chatroom/insert")
+	
 	public String chatInsertforDB(@RequestParam Map<String, Object> map) throws SQLException, ParseException {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		System.out.println(timeStamp);
