@@ -69,10 +69,8 @@ $(document).ready(function(){
 		
 		$('#comment'+commentId).after(
 			"<div class='listing__details__review' style='margin-left:"+ parentElement.style.marginLeft+"'>" 
-	 //     +		"<form>"
 	      +    		"<textarea id='content" + commentId+"' name='content'></textarea>"
 	      +	   		"<button type='submit' onClick='load(this,"+ commentId +"); return false;' class='site-btn'>댓글 달기</button>"
-	   //   +		"</form>"
 	  	  +	"</div>"
 		);
 
