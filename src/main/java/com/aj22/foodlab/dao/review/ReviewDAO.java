@@ -18,5 +18,9 @@ public interface ReviewDAO {
 	List<Review> selectByRestaurantId(int id) throws SQLException;
 	
 	float reviewAvgRateSelectByRestaurantId(int id) throws SQLException;
+	
+	//Restaurent category를 참조하기 위해서 review(restaurantid)와 restaurant(restaurantid)를 비교하는 함수
+	List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException;
 
+	
 }

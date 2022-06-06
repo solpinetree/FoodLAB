@@ -143,131 +143,98 @@
                 <div class="col-lg-12 col-md-12">           
                     <div class="most__search__tab most__search__tab_category">             
                         <ul class="nav nav-tabs nav-tabs-category" role="tablist">
-                <c:forEach items="${categories}" var="category">
-                <c:if test="${category eq '피자/양식'}">
-                <c:set var="category_id" value="${fn:replace(category, '/', '')}" />
-                </c:if>
-                <c:if test="${category != '피자/양식'}">
-                <c:set var="category_id" value="${fn:replace(category, '.', '')}" />
-                </c:if>
-                            <li class="nav-item nav-item-category">
-                                <a class="nav-link" data-toggle="tab" href="#${category_id}" role="tab">
-                                    <span class="flaticon-039-fork"></span>
-                                    ${category}
-                                </a>
-                            </li>
-                </c:forEach>
+			                <c:forEach items="${categories}" var="category">
+				                <c:if test="${category eq '피자/양식'}">
+				                	<c:set var="category_id" value="${fn:replace(category, '/', '')}" />
+			                	</c:if>
+			                	
+			                	<c:if test="${category != '피자/양식'}">
+			                		<c:set var="category_id" value="${fn:replace(category, '.', '')}" />
+			                	</c:if>
+			                            <li class="nav-item nav-item-category">
+			                                <a class="nav-link" data-toggle="tab" href="#" id = "reviewCategoryTab" role="tab">
+			                                    <span class="flaticon-039-fork"></span>
+			                                    ${category}
+			                                </a>
+			                            </li>
+			                </c:forEach>
                         </ul>
-                
                     </div>
                 
-                    <div class="tab-content">
-                    
-                    
-                        <div class="tab-pane active" id="도시락" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="FoodLog__Item">
-                                    	<div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    	<!-- 리뷰 썸네일 -->
-                                        <div class="FoodLog__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                           
-                                        </div>
-                                        
-                                        <div class="FoodLog__item__text">
-                                            <div class="FoodLog__item__text__inside">
-                                                <h5>식당 이름</h5> <!-- 식당이름  -->
-                                     
-                                            </div>
-                                            <div class = "listing__item__text__inside">
-                                                <h6>게시물 (2줄)</h6>
-                                                <hr>
-                                            </div>
-                                            <div class="FoodLog__item__text__rating">
-                                                <div class="FoodLog__item__rating__star">
-                                                    <span class="icon_star"></span>
-                                                    <span class="icon_star"></span>
-                                                    <span class="icon_star"></span>
-                                                    <span class="icon_star"></span>
-                                                    <span class="icon_star-half_alt"></span><span class = "FoodLog__item__rating__people__price">(평점)</span>
-                                        			<span class = "FoodLog__item__rating__people__price"><br>명 가격</span>
-                                        			<!-- 평점, 인원수, 가격 데이터를 불러와야함 -->            
-                                            	</div>  	
-                                        	</div>
-                                      	</div>     
-                                   	  </div>
-                                    </div>
-                             
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">      
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>옵서예</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>55000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>경기 용인시 기흥구 죽전로15번길 8-20 1층 옵서에</li>
-                                                    <li><span class="icon_phone"></span>031-889-8876</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>${category}</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                               </div>
-                               </div>
-                               
+                	<c:forEach var = "review" items = "${reviewByRestaurantIdList}" begin = "0" end = "5" step = "1">
+                		 <div class="tab-content">
+                		 	<div class="tab-pane active" id="도시락" role="tabpanel">
+                            	<div class="row">
+                                	<div class="col-lg-4 col-md-4">
+										<div class="FoodLog__Item">
+											<div class = "FoodLog__Title">
+												<div class = "FoodLog__item__text__inside">
+													<!-- 리뷰제목 -->
+													<h5>${review.title}</h5> <!-- 게시물 이름 -->
+												</div>
+											</div>
+											<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
+											<div class="FoodLog__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
+									   
+											</div>
+									
+											<div class="FoodLog__item__text">
+									    		<div class="FoodLog__item__text__inside">
+									        		<h5>${review.restaurant_name }</h5> <!-- 식당이름  -->
+									
+									 			</div>
+												<div class = "listing__item__text__inside">
+									     			<!-- 2줄 정도만 나타내야함 textarea로 하면될듯? -->
+									     			<h6>${review.content}</h6>
+									     			<hr>
+												</div>
+												
+												
+												<div class="FoodLog__item__text__rating">
+												     <div class="FoodLog__item__rating__star">
+												     
+												  
+												     
+												         <span class="icon_star"></span>
+												         <span class="icon_star"></span>
+												         <span class="icon_star"></span>
+												         <span class="icon_star"></span>
+												         <span class="icon_star-half_alt"></span>
+												         <span class = "FoodLog__item__rating__people__price">(평점)</span>
+														 <span class = "FoodLog__item__rating__people__price"><br>명 가격</span>
+												<!-- 평점, 인원수, 가격 데이터를 불러와야함 -->            
+												     </div>  	
+												</div>
+											</div>     
+										</div>
+									</div>
+								</div>
+                   			</div>  
+                   		</div>       
+                	</c:forEach>
+                   
                    
                       <c:forEach items="${categories}" var="category">
-                      
-                      
-     				  <c:if test="${category eq '피자/양식'}">
-                	  <c:set var="category_id" value="${fn:replace(category, '/', '')}" />
-                	  </c:if>
-                	  <c:if test="${category != '피자/양식'}">
-                	  <c:set var="category_id" value="${fn:replace(category, '.', '')}" />
-                	  </c:if>
-                	  
-                      <div class="tab-pane" id="${category_id}" role="tabpanel">
-                        
-      
-                       
-                       
-                            <div class="row">
+	     				  <c:if test="${category eq '피자/양식'}">
+	                	  		<c:set var="category_id" value="${fn:replace(category, '/', '')}" />
+	                	  </c:if>
+	                	  
+	                	  
+	                	  <c:if test="${category != '피자/양식'}">
+	                	  		<c:set var="category_id" value="${fn:replace(category, '.', '')}" />
+	                	  </c:if>
+	                	</c:forEach>
+	                      <div class="tab-pane" id="${category_id}" role="tabpanel">
+                        	`<div class="row">
                                 <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>${category}</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
+                                	<!-- 카테고리 -->
+                                	<div class = "FoodLog__Title">
+                                    	<div class = "FoodLog__item__text__inside">
+                                   			<h5>${category}</h5> <!-- 게시물 이름 -->
+                                		</div>
+                                    </div>
+                                    
+                                    <!-- 이미지리소스 링크연결 -->
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
                                    
@@ -275,9 +242,14 @@
                                                 <a href="#"><span class="icon_heart_alt"></span></a>
                                             </div>
                                         </div>
+                                        
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
+                                            
+                                            	<!-- 카테고리 -->
                                                 <h5>${category}</h5>
+                                                
+                                                <!-- 별점 -->
                                                 <div class="listing__item__text__rating">
                                                     <div class="listing__item__rating__star">
                                                         <span class="icon_star"></span>
@@ -286,819 +258,32 @@
                                                         <span class="icon_star"></span>
                                                         <span class="icon_star-half_alt"></span>
                                                     </div>
+                                                    
+                                                    <!-- 가격 평점 -->
                                                     <h6>7000원</h6>
                                                 </div>
+                                                
+                                                <!-- 주소 및 전화번호 -->
                                                 <ul>
                                                     <li><span class="icon_pin_alt"></span>주소</li>
                                                     <li><span class="icon_phone"></span>전화번호</li>
                                                 </ul>
                                             </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>중국집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
-                         
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>짜왕</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>8000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>중국집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
                                             
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>자강성</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>9000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
+                                            
+                                            <!-- 카테고리 -->
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
                                                     <img src="resources/img/listing/list_small_icon-1.png" alt="">
                                                     <span>중국집</span>
                                                 </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>은빛바람</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>12000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>중국집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
-                                   
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>홍춘</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>14000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>중국집</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       </c:forEach>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
-                                          
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>맥도날드</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>12000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>패스트푸드</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                <div class = "FoodLog__Title">
-                                    		<div class = "FoodLog__item__text__inside">
-                                    			<h5>게시물 제목</h5> <!-- 게시물 이름 -->
-                                    		</div>
-                                    	</div>
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>롯데리아</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>9000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>패스트푸드</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
                                          
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>맘스터치</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>12000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>패스트푸드</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
-                                 
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>버거킹</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>14000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>패스트푸드</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-4" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>피자스쿨</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>15000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>피자</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>피자헛</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>21000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>피자</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
-                                    
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>청년피자</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>13000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>피자</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
-                                           
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>피자빵</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>14000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>피자</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-5" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                            
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>메가커피</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>14000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>커피</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>스타벅스</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>12000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>커피</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-3.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>2nd Story</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>11000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>커피</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>와플나라</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>10000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>와플</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-6.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>CAFE</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>10000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>커피</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-6" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>분식이맛있다</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>9000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>떡볶이</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-2.jpg">
-                                           
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>죠스떡볶이</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>16000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>분식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-4.jpg">
-                                            
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>엄마네분식</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>9000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>분식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right closed">영업종료</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-5.jpg">
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                                <h5>배달의떡볶이</h5>
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    <h6>10000원</h6>
-                                                </div>
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>분식</span>
-                                                </div>
-                                                <div class="listing__item__text__info__right">영업중</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                             </div>
+                             </div>   
                     </div>
                 </div>
             </div>
@@ -1117,39 +302,18 @@
 	               </div>
                </div>
                
-               <div class = "col-lg-4 col-md-4">
-               	<h4>푸드로거 여러분들을 위한 공간입니다.</h4>
-               </div>
+				<div class = "col-lg-4 col-md-4">
+					<h5>푸드로거들을 위한 수다공간입니다</h5>
+					<h5>다양한 푸드로거분들과 맛집에 대한 정보를 공유하세요!</h5>
+				</div>
                
                <div class = "col-lg-8 col-md-8">
-               	<a href = "${root}/chat/openchat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
+               		<a href = "${root}/chat/chat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
                </div>
             </div>
         </div>
     </section>
-    <!-- Most Search Section End -->
-
-    <!-- Work Section Begin -->
-    <section class="work spad">
-        <div class="container">
-            <div class="row">
  
-            </div>
-        </div>
-    </section>
-    <!-- Work Section End -->
-
-    <!-- Feature Location Section Begin -->
-    <section class="feature-location spad">
-        <div class="container">
-            <div class="row">
-               
-           
-            </div>
-        </div>
-    </section>
-    <!-- Feature Location Section End -->
-
     
     <!-- Footer Section Begin -->
 	<jsp:include page="includes/footer.jsp"/>

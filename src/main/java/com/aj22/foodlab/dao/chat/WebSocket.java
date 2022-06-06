@@ -88,9 +88,10 @@ public class WebSocket {
 			//	웹 소켓에 연결되어 있는 모든 아이디를 찾는다.	
 			for (Session s : WebSocket.sessions) 
 			{
-				System.out.println(++i);
+			
 				if (!s.getId().equals(session.getId()))
 				{
+					System.out.println("심은기:" + message);
 					s.getBasicRemote().sendText(message);
 				}
 			}
