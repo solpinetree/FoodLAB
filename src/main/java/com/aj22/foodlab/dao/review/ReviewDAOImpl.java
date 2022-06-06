@@ -333,7 +333,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	
 	@Override
-	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{
+	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{	
 		int cnt = 0;
 		logger.info("option="+option);
 		
