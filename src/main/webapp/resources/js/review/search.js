@@ -8,14 +8,14 @@ function searchclick(e) {
 
 	if (code == 'Enter') {
 			window.alert(selectValue);
-			loadListDivBySearchKeyword(1, search,selectValue);
+			loadListBySearchKeyword(1, search,selectValue);
 	}
 }
 
 
-function loadListDivBySearchKeyword(page, search, selectValue){
+function loadListBySearchKeyword(page, search, selectValue){
 		$.ajax({
-		url: "/foodlab/restaurants/loadListBySearchKeyword?search=" + search +"&currentPage="+page +"&option="+selectValue,
+		url: "/foodlab/reviews/loadListBySearchKeyword?search=" + search +"&currentPage="+page +"&option="+selectValue,
 		method: "GET",
 		async: false,
 		success: function(response) {

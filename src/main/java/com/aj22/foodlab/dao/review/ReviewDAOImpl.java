@@ -9,8 +9,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.aj22.foodlab.controller.ReviewController;
 import com.aj22.foodlab.dao.member.MemberDAO;
 import com.aj22.foodlab.dao.member.MemberDAOImpl;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
@@ -29,6 +32,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 	private PreparedStatement pstmt;
 	private Statement stmt;
 	private ResultSet rs;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@Autowired
 	private RestaurantService restaurantService;
@@ -191,6 +196,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		List<Review> reviews = new ArrayList<>();
 		
+		
+		
 		if(option == "all") {
 		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
@@ -328,9 +335,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{
 		int cnt = 0;
-		
-		if(option=="all") {
-		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
+		logger.info("option="+option);
+		if(option == "searchAll") {
+		String sql = "select count(*) from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
 		pstmt.setString(2, name);
@@ -357,7 +364,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 			return cnt;
 		}
 		
-		return 0;
+		else
+			return 5;
 	}
 
 	@Override
@@ -365,5 +373,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 }

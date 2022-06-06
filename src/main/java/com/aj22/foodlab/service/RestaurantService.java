@@ -126,7 +126,12 @@ public class RestaurantService {
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		id = dao.getRestaurantIDByName(name);
 		dao.close();
+		
+		if(id != null) {
 		return id;
+		}
+		else
+			return 1;
 	}
 	
 	

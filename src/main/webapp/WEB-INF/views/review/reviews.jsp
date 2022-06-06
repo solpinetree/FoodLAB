@@ -14,16 +14,13 @@
 </head>
 
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
 
+<div id="review-content">
 	<!-- Header Section Begin -->
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
 
-<div id="review-content">
+
 	<!-- Blog Section Begin -->
 	<section class="blog-section spad" style="padding-top: 80px">
 		<div class="container">
@@ -87,7 +84,7 @@
 			        <div class="inner-form">
 			          <div class="input-field first-wrap">
 			            <div class="input-select">
-			              <select id="selectbox" data-trigger="" name="choices-single-defaul" onchange="selectOption()">
+			              <select id="selectbox" data-trigger="" name="choices-single-defaul">
 			                <option value="searchAll" placeholder="">제목+내용</option>
 			                <option value="res">식당 이름</option>
 			                <option value="writer">작성자</option>
