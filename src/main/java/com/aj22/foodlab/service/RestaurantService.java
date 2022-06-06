@@ -129,6 +129,15 @@ public class RestaurantService {
 		return id;
 	}
 	
+	public String getRestaurantNameById(int id) throws SQLException {
+		String restaurantName = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurantName = dao.getRestaurantNameById(id);
+		dao.close();
+		return restaurantName;
+		
+	}
+	
 	
 	public Pagination getPaginationBySearchKeyword(int currentPage, String keyword) throws SQLException{
 		

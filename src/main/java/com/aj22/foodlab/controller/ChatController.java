@@ -82,14 +82,12 @@ public class ChatController {
 		
 		Integer chatroomId = Integer.parseInt((String) map.get("chatroomId"));
 		Integer memberId = Integer.parseInt((String) map.get("memberId"));
-		System.out.println("MemberId : " +  memberId);
 		String content = (String) map.get("chatContent");
 		
 		Chat chat = new Chat(chatroomId , memberId, content, null);
 		
 		int insertchk = chatService.insert(chat);
 		
-		System.out.println("insert check : " + insertchk);
 		
 		return null;
 		

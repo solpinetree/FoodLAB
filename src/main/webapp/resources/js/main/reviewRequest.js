@@ -1,17 +1,42 @@
+/*
 function reviewByCategory(category) {
 	
-	console.log("reviewByCategory:"+category);
+	console.log("reviewByCategory:"+ category);
 	$.ajax({
 		//Get comment html code
-		url:"/foodlab/index?category="+category,
-		method:"GET",
+		url:"/foodlab/index/category",
+		method:"POST",
 		async: true,
 		success:function(response) {
 			
 		}
 	})
 }
+*/
+$("#reviewCategoryTab").on("click", function(e){
+	e.preventDefault();
+	
+	
+	console.log("buttonclick:");
+	const sendingData = new FormData();
+	
+	var category = document.getElementById('category');
+	
+	sendingData.append('category', category);
+	
+	$.ajax({
+		url: "/foodlab/index/reviewcategory",
+		method: "post",
+		aysnc: true,
+		data: sendingData,
+		success:function(data) {
+		
+			console.log("reviewByCategory:"+ data);
+		}
+	})
+})
 
+/*
 function load(){
 	
 	const sendingData = new FormData();
@@ -56,4 +81,5 @@ $(document).ready(function(){
 			}
 		})
 	});
+	*/
 	

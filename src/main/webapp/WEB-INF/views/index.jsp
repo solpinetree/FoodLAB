@@ -151,17 +151,18 @@
 			                	<c:if test="${category != '피자/양식'}">
 			                		<c:set var="category_id" value="${fn:replace(category, '.', '')}" />
 			                	</c:if>
-			                            <li class="nav-item nav-item-category">
-			                                <a class="nav-link" data-toggle="tab" href="#" id = "reviewCategoryTab" role="tab">
-			                                    <span class="flaticon-039-fork"></span>
-			                                    ${category}
-			                                </a>
-			                            </li>
+			                	
+	                            <li class="nav-item nav-item-category">
+	                                <a class="nav-link" data-toggle="tab" href="#?category='${category}'" id = "reviewCategoryTab" role="tab">
+	                                    <span class="flaticon-039-fork"></span>
+	                                    ${category}
+	                                </a>
+	                            </li>
 			                </c:forEach>
                         </ul>
                     </div>
                 
-                	<c:forEach var = "review" items = "${reviewByRestaurantIdList}" begin = "0" end = "5" step = "1">
+                	<c:forEach var = "review" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1">
                 		 <div class="tab-content">
                 		 	<div class="tab-pane active" id="도시락" role="tabpanel">
                             	<div class="row">
@@ -212,82 +213,9 @@
                    			</div>  
                    		</div>       
                 	</c:forEach>
-                   
-                   
-                      <c:forEach items="${categories}" var="category">
-	     				  <c:if test="${category eq '피자/양식'}">
-	                	  		<c:set var="category_id" value="${fn:replace(category, '/', '')}" />
-	                	  </c:if>
-	                	  
-	                	  
-	                	  <c:if test="${category != '피자/양식'}">
-	                	  		<c:set var="category_id" value="${fn:replace(category, '.', '')}" />
-	                	  </c:if>
-	                	</c:forEach>
-	                      <div class="tab-pane" id="${category_id}" role="tabpanel">
-                        	`<div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                	<!-- 카테고리 -->
-                                	<div class = "FoodLog__Title">
-                                    	<div class = "FoodLog__item__text__inside">
-                                   			<h5>${category}</h5> <!-- 게시물 이름 -->
-                                		</div>
-                                    </div>
-                                    
-                                    <!-- 이미지리소스 링크연결 -->
-                                    <div class="listing__item">
-                                        <div class="listing__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-                                   
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="listing__item__text">
-                                            <div class="listing__item__text__inside">
-                                            
-                                            	<!-- 카테고리 -->
-                                                <h5>${category}</h5>
-                                                
-                                                <!-- 별점 -->
-                                                <div class="listing__item__text__rating">
-                                                    <div class="listing__item__rating__star">
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star"></span>
-                                                        <span class="icon_star-half_alt"></span>
-                                                    </div>
-                                                    
-                                                    <!-- 가격 평점 -->
-                                                    <h6>7000원</h6>
-                                                </div>
-                                                
-                                                <!-- 주소 및 전화번호 -->
-                                                <ul>
-                                                    <li><span class="icon_pin_alt"></span>주소</li>
-                                                    <li><span class="icon_phone"></span>전화번호</li>
-                                                </ul>
-                                            </div>
-                                            
-                                            
-                                            <!-- 카테고리 -->
-                                            <div class="listing__item__text__info">
-                                                <div class="listing__item__text__info__left">
-                                                    <img src="resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>중국집</span>
-                                                </div>
-                                         
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                             </div>   
-                    </div>
                 </div>
-            </div>
-        </div>
+             </div>
+          </div>
     </section>
     	
     
@@ -322,5 +250,6 @@
     <!-- Js Plugins -->
 	<%@ include file="includes/plugins.jsp" %>
 </body>
+<script type = "text/javascript" src = "${resources}/js/main/reviewRequest.js"></script>
 <script type = "text/javascript" src = "${resources}/js/main/slideshow.js"></script>
 </html>
