@@ -17,8 +17,12 @@ public interface RestaurantDAO {
 	List<Restaurant> findByCategoryWithLimit(int startIdx, int listSize, String category) throws SQLException;
 	List<String> selectCategories() throws SQLException;
 	Integer getRestaurantIDByName(String name) throws SQLException;
+	String getRestaurantNameById(int id) throws SQLException;
 	int countRecords() throws SQLException;
 	int countRecords_category(String category) throws SQLException;
 	List<Restaurant> findBySearchWithLimit(int firstReviewId, int numOfRecordsPerPage, String name) throws SQLException;
 	int countRecordsByName(String name) throws SQLException;
+	
+	int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException;
+	
 }

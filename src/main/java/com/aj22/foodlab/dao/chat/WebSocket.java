@@ -82,16 +82,20 @@ public class WebSocket {
 		String msgContent = messageSplit[1];
 		System.out.println("msgId : " + msgId);
 		System.out.println("msgContent : " + msgContent);
-		
+		String recieverMessage = "server:" + message; 
 		synchronized (sessions) {
 			int i = 0;
 			//	웹 소켓에 연결되어 있는 모든 아이디를 찾는다.	
 			for (Session s : WebSocket.sessions) 
 			{
-				System.out.println(++i);
+			
+				System.out.println("s.getId " + s.getId());
+
+				System.out.println("session.getId " + session.getId());
 				if (!s.getId().equals(session.getId()))
 				{
-					s.getBasicRemote().sendText(message);
+					
+					s.getBasicRemote().sendText(recieverMessage);
 				}
 			}
 		}

@@ -28,8 +28,17 @@
                     <div class="blog__hero__text">
                         <h2>${review.title}</h2>
                         <ul>
-                            <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
-                            <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
+                            <c:choose>
+								<c:when test="${review.isDummy eq 0 }">
+									 <li><i class="fa fa-clock-o"></i>${review.createdAt}</li>
+                           			 <li><i class="fa fa-user"></i> ${ review.writer.username} </li>
+								</c:when>
+								<c:otherwise>
+									 <li><i class="fa fa-clock-o"></i>${review.dummyCreatedAt}</li>
+                           			 <li><i class="fa fa-user"></i> ${ review.dummyUsername} </li>
+								</c:otherwise>
+							</c:choose>
+                          
                             <c:if test="${sessionScope.sessionMember.id == review.writer.id }">
 	                      		 <li class="li-underline">수정하기</li>
 	                      		 <li class="li-underline" onclick="confirmDelete()"> 삭제하기</li>
@@ -59,29 +68,30 @@
             <div class="row">
                 <div class="col-lg-8">
 				   <!-- Slider main container -->
-			        <div class="swiper">
-			            <!-- Additional required wrapper -->
-			            <div class="swiper-wrapper">
-			
-							<c:forEach var="reviewImage" items="${ reviewImages}">
-				                <div class="swiper-slide">
-								   <img style="width:100%; height:100%; object-fit: contain" src="${reviewImage.imgUrl}" alt="리뷰 등록 이미지"/>
-				                </div>
-							</c:forEach>
-							
-			            </div>
-			            
-			            <c:if test="${fn:length(reviewImages) > 1 }">
-				            <!-- If we need pagination -->
-				            <div class="swiper-pagination"></div>
+				   <c:if test="${ !empty reviewImages }">
+				        <div class="swiper">
+				            <!-- Additional required wrapper -->
+				            <div class="swiper-wrapper">
+				
+								<c:forEach var="reviewImage" items="${ reviewImages}">
+					                <div class="swiper-slide">
+									   <img style="width:100%; height:100%; object-fit: contain" src="${reviewImage.imgUrl}" alt="리뷰 등록 이미지"/>
+					                </div>
+								</c:forEach>
+								
+				            </div>
 				            
-				            <!-- If we need navigation buttons -->
-				            <div class="swiper-button-prev"></div>
-				            <div class="swiper-button-next"></div>
-			            </c:if>
-			        
-			        
-	       			 </div>	
+				            <c:if test="${fn:length(reviewImages) > 1 }">
+					            <!-- If we need pagination -->
+					            <div class="swiper-pagination"></div>
+					            
+					            <!-- If we need navigation buttons -->
+					            <div class="swiper-button-prev"></div>
+					            <div class="swiper-button-next"></div>
+				            </c:if>
+				        
+		       			 </div>	
+	       			 </c:if>
 	       			 
 	                 <div class="blog__details__text" style="margin-bottom: 50px; height: 15vh; overflow: visible;">
 	                     <div style="position: relative; float:left;">${review.content }</div>

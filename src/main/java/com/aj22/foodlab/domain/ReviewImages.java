@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class ReviewImages {
 	private int reviewId;
 	private String imgUrl;
+	private int restaurantId;
 }
