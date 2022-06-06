@@ -4,8 +4,11 @@ var chatContent = document.getElementById('chatContent');
 var chatroomId = document.getElementById('chatroomId');
 
 var chatWindow = document.getElementById('chat-window');
-var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
-var line = 0;
+var wUrl = "ws://" + window.location.host + "/foodlab/wsocket";
+//var websocket = new WebSocket("ws://localhost:8085/foodlab/wsocket");
+console.log(wUrl);
+var websocket = new WebSocket(wUrl);
+
 
 	
 //	아래는 웹 소켓에서 사용하는 4가지 이벤트들이다.
@@ -98,7 +101,7 @@ function msgDB_insert(){
 		console.log("chatform : " + chatForm);
 		
 		$.ajax({
-			type: "post",
+			method: "post",
 			url: "/foodlab/chat/chatroom/insert",
 			data: chatForm,
 			dataType: 'json',

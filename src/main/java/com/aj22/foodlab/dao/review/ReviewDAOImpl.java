@@ -222,5 +222,25 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return avg_rate;
 	}
+	
+	@Override
+	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
+		List<Review> reviewsByCategory = new ArrayList<>();
+		
+		String sql = "select * from review rev"
+				+ "left Join restaurant res ON"
+				+ "rev.restaurant_id = res.restaurant_id"
+				+ "where res.category = ? order by createdAt asc";
+		
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, category);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			reviewsByCategory.add(createFromResultSet(rs));
+		}
+		return reviewsByCategory;
+		
+	}
 
 }
