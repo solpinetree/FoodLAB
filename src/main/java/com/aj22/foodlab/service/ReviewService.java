@@ -50,6 +50,8 @@ public class ReviewService {
 	
 	public Pagination getPaginationBySearchKeywordContent(int currentPage, String keyword, String option) throws SQLException{
 		
+		
+		
 			int res_id = restaurantService.getRestaurantIdFromName(keyword);
 			int member_id = memberService.getMemberIdFromName(keyword);			
 			ReviewDAO dao = new ReviewDAOImpl();			
