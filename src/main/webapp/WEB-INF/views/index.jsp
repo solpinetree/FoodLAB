@@ -153,68 +153,22 @@
 			                	</c:if>
 			                	
 	                            <li class="nav-item nav-item-category">
-	                                <a class="nav-link" data-toggle="tab" href="#?category='${category}'" id = "reviewCategoryTab" role="tab">
+	                                <span class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab">
 	                                    <span class="flaticon-039-fork"></span>
 	                                    ${category}
-	                                </a>
+	                                </span>
 	                            </li>
 			                </c:forEach>
+			                
+			                <div class = "reviews-content">
+			                
+			                </div>
                         </ul>
                     </div>
                 
-                	<c:forEach var = "review" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1">
-                		 <div class="tab-content">
-                		 	<div class="tab-pane active" id="도시락" role="tabpanel">
-                            	<div class="row">
-                                	<div class="col-lg-4 col-md-4">
-										<div class="FoodLog__Item">
-											<div class = "FoodLog__Title">
-												<div class = "FoodLog__item__text__inside">
-													<!-- 리뷰제목 -->
-													<h5>${review.title}</h5> <!-- 게시물 이름 -->
-												</div>
-											</div>
-											<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
-											<div class="FoodLog__item__pic set-bg" data-setbg="resources/img/listing/list-1.jpg">
-									   
-											</div>
-									
-											<div class="FoodLog__item__text">
-									    		<div class="FoodLog__item__text__inside">
-									        		<h5>${review.restaurant_name }</h5> <!-- 식당이름  -->
-									
-									 			</div>
-												<div class = "listing__item__text__inside">
-									     			<!-- 2줄 정도만 나타내야함 textarea로 하면될듯? -->
-									     			<h6>${review.content}</h6>
-									     			<hr>
-												</div>
-												
-												
-												<div class="FoodLog__item__text__rating">
-												     <div class="FoodLog__item__rating__star">
-												     
-												  
-												     
-												         <span class="icon_star"></span>
-												         <span class="icon_star"></span>
-												         <span class="icon_star"></span>
-												         <span class="icon_star"></span>
-												         <span class="icon_star-half_alt"></span>
-												         <span class = "FoodLog__item__rating__people__price">(평점)</span>
-														 <span class = "FoodLog__item__rating__people__price"><br>명 가격</span>
-												<!-- 평점, 인원수, 가격 데이터를 불러와야함 -->            
-												     </div>  	
-												</div>
-											</div>     
-										</div>
-									</div>
-								</div>
-                   			</div>  
-                   		</div>       
-                	</c:forEach>
+                	
                 </div>
-             </div>
+          	</div>
           </div>
     </section>
     	
@@ -225,19 +179,19 @@
             <div class="row">
                <div class="col-lg-12">
 	               <div class="section-title">
-	                  <h2>오픈채팅</h2>
+	                  <h2>푸드로거 오픈채팅방</h2>
 	                 
 	               </div>
                </div>
+
+               <div class = "col-lg-8 col-md-8">
+               		<a href = "${root}/chat/chat"><img src="resources/img/logos/FoodlabOpenChatLogo.PNG" alt="Foodlab OpenChat Logo"></a>
+               </div>
                
-				<div class = "col-lg-4 col-md-4">
+               <div class = "col-lg-4 col-md-4">
 					<h5>푸드로거들을 위한 수다공간입니다</h5>
 					<h5>다양한 푸드로거분들과 맛집에 대한 정보를 공유하세요!</h5>
 				</div>
-               
-               <div class = "col-lg-8 col-md-8">
-               		<a href = "${root}/chat/chat"><img src="resources/img/blog/chatimageDemo.PNG" alt=""></a>
-               </div>
             </div>
         </div>
     </section>

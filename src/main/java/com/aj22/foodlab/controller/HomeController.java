@@ -25,9 +25,7 @@ import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.domain.ReviewImages;
-import com.aj22.foodlab.dto.CommentDTO;
-import com.aj22.foodlab.dto.MemberDTO;
-import com.aj22.foodlab.dto.RestaurantDTO;
+
 /**
  * Handles requests for the application home page.
  */
@@ -69,10 +67,10 @@ public class HomeController {
 	
 	
 	//index.jsp 메인화면에서 category에 따른 탭 나누는 부분
-	@PostMapping("/index/reviewcategory")
-	@ResponseBody
-	public void getReviewByCategory(@RequestParam String category, Model model) throws SQLException {
+	@RequestMapping(value = "/loadReviewList", produces = "application/text;charset=utf8")
+	public String getReviewByCategory(@RequestParam("category") String category, Model model) throws SQLException {
 		
+		System.out.println("loadReviewController");
 		List<Review> reviewByRestaurantCategoryList  = reviewService.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
 		List<String> restaurantName = new ArrayList<>();
 		List<ReviewImages> reviewImageByReviewId = new ArrayList<>();
@@ -86,6 +84,8 @@ public class HomeController {
 		model.addAttribute("reviewImageByReviewId", reviewImageByReviewId); // imageURL
 		model.addAttribute("restaurantName", restaurantName); // restaurant Name
 		model.addAttribute("reviewByRestaurantCategoryList", reviewByRestaurantCategoryList); // Review
+		
+		return "main/review-current-6-listing";
 	}
 	
 }
