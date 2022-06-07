@@ -34,7 +34,7 @@ public class ArchivedRestaurantService {
 		dao.close();
 		
 		for(int id : restaurantIds) {
-			restaurants.add(restaurantService.selectById(memberId));
+			restaurants.add(restaurantService.selectById(id));
 		}
 		
 		return restaurants;

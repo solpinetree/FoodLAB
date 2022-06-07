@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/common.jsp" %>
 
+<script type="text/javascript" src="${resources}/js/restaurant/archive-process.js"></script>
+
 <body>
 
 <section class="listing nice-scroll" id="restaurantList">
@@ -17,7 +19,9 @@
 
 			<!--  식당 하나 div 시작 -->
 			<div class="listing__item">
-				<div class="listing__item__pic set-bg" style="background-image:url(${restaurant.imgUrl});" style="border-radius: 40px 40px 0 0;"> 
+					<div class="listing__item__pic set-bg"
+						style="background-image:url(${restaurant.imgUrl});"
+						style="border-radius: 40px 40px 0 0;">
 					<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 
 					<div class="listing__item__pic__btns">
@@ -91,4 +95,6 @@
 	
 
 </body>
+
+
 
