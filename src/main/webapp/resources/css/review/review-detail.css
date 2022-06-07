@@ -119,11 +119,11 @@ p{
 }
 
 .star-rate-text{
-	width: 30%;
+	width: 35%;
 }
 
 .star-rate-star{
-	width: 70%;
+	width: 65%;
 	color: var(--yellow) !important;
 }
 

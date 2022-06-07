@@ -40,7 +40,7 @@
 			                                	</c:forEach>
 		                                		<c:forEach var="i" begin="${restaurantContent.avgRate + 1 }" end="5">
 		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach> <span style = "color: black;">(${ restaurantContent.avgRate })</span>
+		                                		</c:forEach> <span style = "color: black; font-weight: bold">(${ restaurantContent.avgRate })</span>
 		                                		
 			                                </span>
                                 		</c:when>
@@ -63,7 +63,7 @@
 			                                	
 			                               		<c:forEach var="i" begin="${restaurantContent.avgPriceSatisRate + 1 }" end="5">
 			                               			<i class="star-rate-icon icon_star_alt"></i>
-			                               		</c:forEach> <span style = "color: black;">(${ restaurantContent.avgPriceSatisRate })</span>
+			                               		</c:forEach> <span style = "color: black; font-weight: bold">(${ restaurantContent.avgPriceSatisRate })</span>
 		                               			</span>
 	                               			</c:when>
 	                               			<c:otherwise>
