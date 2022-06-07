@@ -42,10 +42,9 @@
 				<div class = "col-lg-12">
 					<div class = "section-title">
 						<h2>오늘의 서비스왕</h2> <!-- 오늘의 서비스왕 탭하고 링크해야함 -->
-						<p>오늘의 서비스왕에 대한 설명입니다 블라블라블라<p>
+						<p>푸드로거 분들에게 인기가 가장많은 TOP 3 맛집을 소개합니다.<p>
 					</div>
-				</div>
-			</div>
+				
 			
 			<!--  
 			<div class = "row">
@@ -69,9 +68,9 @@
 				</div>
 			</div> -->
 			
-			<div class = "row">
+			
 				<!-- 각 이미지마다 리뷰 3개씩 -->
-				<div class="col-lg-12 col-md-12">
+				
                     <!-- 추후에 db에서 받아올것임 리뷰 2줄로 제한해서 -->
                     
                     <!-- 식당정보 -->
@@ -97,12 +96,10 @@
                         <h2>푸드 로그</h2>
                         <p>푸드로거분들의 식당 리뷰를 할 수 있는 공간입니다</p>
                     </div>
-                </div>
-            </div>
+                
             
             <!-- 메인페이지 리뷰게시판 카테고리 -->
-            <div class="row">
-                <div class="col-lg-12 col-md-12">           
+                    
                     <div class="most__search__tab most__search__tab_category">             
                         <ul class="nav nav-tabs nav-tabs-category" role="tablist">
 			                <c:forEach items="${categories}" var="category">
@@ -123,14 +120,12 @@
 			                </c:forEach>
                         </ul>
                      </div>
-                 </div>
-            </div>
+                
             
-            <div class="row">
-            	<div class="col-lg-12 col-md-12">
-                       <div id = "reviews-content">
-						               
-						</div>
+            
+					<div id = "reviews-content">
+					               
+					</div>
 				</div> 
             </div>
            </div>
