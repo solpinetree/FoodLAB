@@ -83,6 +83,22 @@ public class LikesDAOImpl implements LikesDAO {
 	}
 	
 	@Override
+	public List<Integer> selectByMemberId(int memberId) throws SQLException {
+		List<Integer> reviewIds = new ArrayList<>();
+		
+		String sql = "select review_id from likes where member_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, memberId);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			reviewIds.add(rs.getInt("review_id"));
+		}
+
+		return reviewIds;
+	}
+	
+	@Override
 	public Likes selectByReviewIdAndMemberId(Likes likes) throws SQLException {
 		Likes res = null;
 		

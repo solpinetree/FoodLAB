@@ -44,7 +44,7 @@ p {
 }
 
 #msform input, #msform textarea {
-	padding: 8px 50px 8px 50px;
+	padding: 8px 50px 8px 15px;
 	border: 1px solid #ccc;
 	border-radius: 30px;
 	margin-bottom: 10px;

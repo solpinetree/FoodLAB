@@ -13,11 +13,14 @@ function showComments(reviewId) {
 
 function load(btn, commentId){
 	
+	console.log('commentId :'+ commentId);
+	
 	const sendingData = new FormData();
 	var memberId = document.getElementById("memberId").value;
 	var content = document.getElementById("content"+commentId).value;
+	console.log('content: '+content);
 	var reviewId = document.getElementById("reviewIdValue").value;
-	sendingData.append('reveiwId', reviewId);
+	sendingData.append('reviewId', reviewId);
 	sendingData.append('parentCommentId', commentId);
 	sendingData.append('memberId', memberId);
 	sendingData.append('content', content);
@@ -27,14 +30,18 @@ function load(btn, commentId){
 	$.ajax({
 		url: "/foodlab/comments/insert",
 		method: "post",
+	   	processData: false,
+	    contentType: false,
+	    cache: false,
 		aysnc: true,
 		data: sendingData,
+		enctype: 'multipart/form-data',
 		success:function(data) {
 			document.getElementById("content").value="";
 			document.getElementById("parentCommentId").value="";
 			showComments(reviewId);
 		}
-	})
+	});
 }
 
 $(document).ready(function(){
@@ -67,10 +74,17 @@ $(document).ready(function(){
 		var parentElement = document.getElementById("comment"+commentId);
 		$('#parentCommentId').val(commentId);
 		
+		var parentMarginVal = parentElement.style.marginLeft.replace(/[^-\d\.]/g, '');
+
+		
+		var marginValue = (parentMarginVal==0)? 48 : Number(parentMarginVal)+48;
+		
+		
+		
 		$('#comment'+commentId).after(
-			"<div class='listing__details__review' style='margin-left:"+ parentElement.style.marginLeft+"'>" 
+			"<div class='listing__details__review' style='margin-left:"+ marginValue +"px'>" 
 	      +    		"<textarea id='content" + commentId+"' name='content'></textarea>"
-	      +	   		"<button type='submit' onClick='load(this,"+ commentId +"); return false;' class='site-btn'>댓글 달기</button>"
+	      +	   		"<button style='margin-bottom:24px; float: right' type='submit' onClick='load(this,"+ commentId +"); return false;' class='site-btn'>댓글 달기</button>"
 	  	  +	"</div>"
 		);
 

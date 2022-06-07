@@ -1,25 +1,23 @@
 package com.aj22.foodlab.controller;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.aj22.foodlab.dao.member.MemberDAOImpl;
 import com.aj22.foodlab.dto.MemberDTO;
+import com.aj22.foodlab.service.ArchivedRestaurantService;
+import com.aj22.foodlab.service.LikesService;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +29,11 @@ public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+	@Autowired
+	ArchivedRestaurantService archivedRestaurantService;
+	@Autowired
+	LikesService likesService;
+	
 	
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login( Model model) {
@@ -40,8 +43,15 @@ public class LoginController {
 	}
 		
 	@RequestMapping(value = "/mypage", method = {RequestMethod.GET,RequestMethod.POST})
-	public String mypage( Model model) {
+	public String mypage(Model model, HttpServletRequest request) throws SQLException {
 		logger.info("mypage.jsp 진입");
+		
+		MemberDTO sessionMember = (MemberDTO) request.getSession().getAttribute("sessionMember");
+		
+		if(sessionMember!=null) {
+			model.addAttribute("archivedRestaurants", archivedRestaurantService.getRestaurantsByMemberId(sessionMember.getId()));
+			model.addAttribute("archivedReviews", likesService.getReviewsByMemberId(sessionMember.getId()));
+		}
 		
 		return "/logins/mypage";
 	}

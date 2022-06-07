@@ -38,12 +38,4 @@ public class ArchiveProcessController {
 		archivedRestaurantService.insert(new ArchivedRestaurant(memberId, restaurantId));
 	}
 	
-	@PostMapping("/check")
-	@ResponseBody
-	public void checkArchive(@RequestParam Map<String, String> map) throws SQLException {
-		int restaurantId = Integer.parseInt(map.get("restaurantId"));
-		int memberId =  Integer.parseInt(map.get("memberId"));
-		
-		archivedRestaurantService.insert(new ArchivedRestaurant(memberId, restaurantId));
-	}
 }
