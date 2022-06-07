@@ -84,7 +84,7 @@
                               </li>
 			      			  
 			      			  <li class = "home-review-last-child">
-			      			  		<p class = "home-review-text-title">리뷰내용</p>
+			      			  		<p class = "home-review-text-title">리뷰요약</p>
 			      			  		<c:choose>
 			      			  			<c:when test = "${reviewContent.content ne null}">
 			      			  				<p class = "home-review-text">${reviewContent.content}</p>

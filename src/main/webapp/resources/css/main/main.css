@@ -78,12 +78,13 @@ ul{
 }
 
 .home-review-last-child .review-text-title{
-	margin-top: 0px;
-	margin-bottom: 20px;
+	margin-top: 10px;
 }
 .home-star-rate-text{
 	width: 30%;
 	font-weight: bold;
+	display:inline;
+	margin-right: 25px;
 }
 
 .home-star-rate-star{
