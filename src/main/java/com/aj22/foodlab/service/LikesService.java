@@ -1,16 +1,22 @@
 package com.aj22.foodlab.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.dao.likes.LikesDAO;
 import com.aj22.foodlab.dao.likes.LikesDAOImpl;
 import com.aj22.foodlab.domain.Likes;
+import com.aj22.foodlab.dto.ReviewDTO;
 
 @Service
 public class LikesService {
+	
+	@Autowired
+	ReviewService reviewService;
 	
 	public List<Likes> selectByReviewId(int reviewId) throws SQLException {
 		List<Likes> likes = null;
@@ -25,6 +31,20 @@ public class LikesService {
 		List<Integer> membersIdsWhoLike = dao.selectMemberIdByReviewId(reviewId);
 		dao.close();
 		return membersIdsWhoLike;
+	}
+	
+	public List<ReviewDTO> getReviewsByMemberId(int memberId) throws SQLException{
+		List<ReviewDTO> reviews = new ArrayList<>();
+		
+		LikesDAO dao = new LikesDAOImpl();
+		List<Integer> reviewIds= dao.selectByMemberId(memberId);
+		dao.close();
+		
+		for(int id : reviewIds) {
+			reviews.add(reviewService.select(id));
+		}
+		
+		return reviews;
 	}
 	
 	public int getLikesCount(int reviewId) throws SQLException {

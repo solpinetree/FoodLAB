@@ -1,0 +1,12 @@
+.listing__details__review textarea {
+    width: 100%;
+    height: 100px;
+    padding-left: 20px;
+    padding-top: 12px;
+    border: 1px solid #e1e1e1;
+    background: transparent;
+    font-size: 15px;
+    color: #a8a8a8;
+    border-radius: 2px;
+    resize: none;
+}

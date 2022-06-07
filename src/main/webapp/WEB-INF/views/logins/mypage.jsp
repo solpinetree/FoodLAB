@@ -1,24 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/includes/login/NewFile.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../includes/common.jsp" %>
-<c:set var="root" value="${pageContext.request.contextPath }" />
-<c:set var="resources" value="${pageContext.request.contextPath }/resources" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>mypage</title>
-        <%-- My Page, a collection of user's writing and user information --%>
+      <title>마이페이지</title>
+      <link rel="stylesheet" href="${resources}/css/login/mypage-archived.css">
+ 	  <link rel="stylesheet" href="${resources}/css/login/restaurant-archived.css">
+ 	   <link rel="stylesheet" href="${resources}/css/review/table.css">
 </head>
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
     <body>
-    <% String username = sessionMember.getUsername(); %>
-    <% String profile_img = sessionMember.getProfile_img(); %>
         <!-- Responsive navbar-->
         <jsp:include page="../includes/header.jsp" />
         <c:choose>
@@ -55,9 +47,9 @@
 
         <header class="py-5 bg-image-full">
             <div class="text-center my-5">
-                <img class="img-fluid rounded-circle mb-4" src="<%= profile_img %>" alt="..." />
-                <h2 class="text-black fs-3 fw-bolder"><%= username %></h2>
-                <p class="text-black-50 mb-0">user-email</p>
+                <img class="img-fluid rounded-circle mb-4" src="${sessionMember.profile_img}" alt="..." />
+                <h2 class="text-black fs-3 fw-bolder">${sessionMember.username }</h2>
+                <p class="text-black-50 mb-0">${sessionMember.email }</p>
             </div>
         </header>
         
@@ -77,15 +69,15 @@
         </c:otherwise>
         </c:choose>
         
+        <jsp:include page="mypage-archived.jsp"/>
         
-        <!-- Footer-->
 
+	    <!-- Js Plugins -->
+	 	<%@ include file="../includes/plugins.jsp" %>
+	 	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
+        <script type="text/javascript" src="${resources}/js/mypagescripts.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-            <!-- Js Plugins -->
- 	<%@ include file="../includes/plugins.jsp" %>
- 	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
-        <script type="text/javascript" src="${resources}/js/mypagescripts.js"></script>
     </body>
 </html>
