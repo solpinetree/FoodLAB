@@ -50,7 +50,7 @@
 						<h5>${restaurant.name}</h5>
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
-								<p>평점 </p><span class="icon_star"></span> <span class="icon_star"></span>
+								<p class="listing_information_margin">평점 </p><span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star-half_alt"></span> (${restaurant.avgRate })
 							</div>
@@ -63,17 +63,17 @@
 								<span class="icon_star-half_alt"></span> (${restaurant.avgPriceSatisRate})
 							</div>
 						</div>
-						<ul>
-							<li>
+						<ul class="listing_information">
+							<li class="listing_information_margin">
 								<span class="icon_pin_alt"></span> ${ restaurant.address}
 							</li>
 							<c:if test="${!empty restaurant.tel }">
-								<li><span class="icon_phone"></span> ${ restaurant.tel}</li>
+								<li class="listing_information_margin"><span class="icon_phone"></span> ${ restaurant.tel}</li>
 							</c:if>
 							<c:if test="${empty restaurant.tel}">
-								<li><span class="icon_phone"></span> 정보 없음</li>
+								<li class="listing_information_margin"><span class="icon_phone"></span> 정보 없음</li>
 							</c:if>
-							<li>
+							<li class="listing_information_margin">
 								<span class="icon_archive_alt"></span> 
 								누적 리뷰수 : 
 								<text style="font-weight: bold;">${restaurant.numOfReviews }</text>
@@ -81,11 +81,11 @@
 						</ul>
 					</div>
 					<div class="listing__item__text__info">
-						<c:if test="${!empty restaurant.tel }">
+						<c:if test="${!empty restaurant.operationHour }">
 							<div class="listing__item__text__info__right">${ restaurant.operationHour}
 							</div>
 						</c:if>
-						<c:if test="${empty restaurant.tel }">
+						<c:if test="${empty restaurant.operationHour }">
 							<div class="listing__item__text__info__right">정보없음</div>
 						</c:if>
 					</div>
