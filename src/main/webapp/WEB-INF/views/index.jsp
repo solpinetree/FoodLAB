@@ -112,7 +112,7 @@
 			                	</c:if>
 			                	
 	                            <li class="nav-item nav-item-category">
-	                                <p class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab" >
+	                                <p class="nav-link ${category}" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab" >
 	                                    <span class="flaticon-039-fork"></span>
 	                                    ${category}
 	                                </p>
