@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
-
+<link rel="stylesheet" href='${resources }/css/main/main.css?after'>
 <section class="listing nice-scroll" id="restaurantList">
 	<div id="resultNumDiv">
 		<c:if test="${!empty category}">
@@ -20,82 +20,90 @@
 			<!--  식당 하나 div 시작 -->
 			<div class="listing__item">
 
-				<div class="listing__item__pic set-bg"
-					style="background-image:url(${restaurant.imgUrl});"
-					style="border-radius: 40px 40px 0 0;">
-					<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
+				
+				<c:choose>
+					<c:when test = "${restaurant.imgUrl ne null}">
+						<div class="listing__item__pic set-bg"
+							style="background-image:url(${restaurant.imgUrl});"
+							style="border-radius: 40px 40px 0 0;">
+					</c:when>
+					<c:otherwise>
+						<div class="listing__item__pic set-bg"
+							style="background-image:url('${resources}/img/no-image/noimageavailable.png');"
+							style="border-radius: 40px 40px 0 0;">
+					</c:otherwise>
+				</c:choose>
+					
+							<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
+		
+								<div class="listing__item__pic__btns">
+									<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
+										<span class="icon_zoom-in_alt"></span>
+									</a> 
+									<c:if test="${!empty sessionScope.sessionMember.username}">
+										<script type="text/javascript">
+											if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
+												drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
+											}else{
+												removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
+											}			
+										</script>
+									<span class="heartDiv${restaurant.restaurantId }"></span>
+									</c:if>
+						   		</div>
 
-					<div class="listing__item__pic__btns">
-						<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
-							<span class="icon_zoom-in_alt"></span>
-						</a> 
-						<c:if test="${!empty sessionScope.sessionMember.username}">
-							<script type="text/javascript">
-								if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
-									drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
-								}else{
-									removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
-								}			
-							</script>
-							<span class="heartDiv${restaurant.restaurantId }"></span>
-						</c:if>
-					</div>
-
-				</div>
+						</div>
 
 
 
 				<div class="listing__item__text" style="cursor:pointer" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'">
-					<div class="listing__item__text__inside">
-						<h5>${restaurant.name}</h5>
+					<div class="">
+						<h5 style="margin-bottom:10px">${restaurant.name}</h5>
 						
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
 								<ul>
                                     <li class="star-rate-li">
-                                    	<p class="star-rate-text">평점</p>
-                                    	<c:choose>
-	                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
-	                                     		<span class="star-rate-star">
-				                                	<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
-				                                		<span class="icon_star"></span>
-				                                	</c:forEach>
-			                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
-			                                			<span class="icon_star"></span>
-			                                		</c:forEach>
-			                                	</span>
-		                                	</c:when>
-		                                	<c:otherwise>
-		                                		<span class="star-rate-star">정보 없음</span>
-		                                	</c:otherwise>
-	                                	</c:choose>
+                                    	<p class="star-rate-text star-rate-styling">평점</p>
+	                                    	<c:choose>
+		                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
+		                                     		<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
+					                                		<span class="icon_star"></span>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
+				                                			<span class="icon_star"></span>
+				                                		</c:forEach>
+				                                		<span style="color:black; font-weight:bold;">(${restaurant.avgRate})</span>
+				                                	</span>
+			                                	</c:when>
+			                                	<c:otherwise>
+			                                	<span class="star-rate-star" style="font-weight:bold">정보 없음</span>
+			                                	</c:otherwise>
+		                                	</c:choose>
+	                              
                                      </li>
                                     <li class="star-rate-li">
-                                    	<p class="star-rate-text">가격만족도</p> 
-                                    	<c:choose>
-	                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
-	                                   			<span class="star-rate-star">
-				                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
-				                                		<span class="icon_star"></span>
-				                                	</c:forEach>
-			                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
-			                                			<span class="icon_star"></span>
-			                                		</c:forEach>
-				                                </span>
-	                                		</c:when>
-	                                		<c:otherwise>
-	                                			<span class="star-rate-star">정보 없음</span>
-	                                		</c:otherwise>
-                                		</c:choose>
+                                    	<p class="star-rate-text star-rate-styling">가격만족도</p> 
+	                                    	<c:choose>
+		                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
+		                                   			<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
+					                                		<span class="icon_star"></span>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
+				                                			<span class="icon_star"></span>
+				                                		</c:forEach>
+				                                		<span style="color:black; font-weight:bold;">(${restaurant.avgRate})</span>
+					                                </span>
+		                                		</c:when>
+		                                		<c:otherwise>
+		                                			<span class="star-rate-star" style="font-weight:bold">정보 없음</span>
+		                                		</c:otherwise>
+	                                		</c:choose>
+                                		
                                     </li>
                                 </ul>
-						
-						
-						
-						
-						
-						
-						
 							</div>
 						</div>
 									

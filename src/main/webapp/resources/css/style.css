@@ -1524,7 +1524,13 @@ ol {
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 40px;
-	height:430px;
+}
+
+.star-rate-styling {
+	display:inline;
+	margin-right:7px;
+	font-weight:bold; 
+	color:black;
 }
 
 .listing__item__text__inside{
