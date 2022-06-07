@@ -108,32 +108,43 @@
 	                    
                        	<div class="blog__sidebar__categories star-rate">
                                 <ul>
-                                    <li class="star-rate-li"><span>
-                                    	<p class="star-rate-text">가격만족도</p>
-                                     	<c:if test="${ review.priceSatisfaction ne null }">
-                                     		<span class="star-rate-star">
-			                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
-			                                		<i class="star-rate-icon icon_star"></i>
-			                                	</c:forEach>
-		                                		<c:forEach var="i" begin="${review.priceSatisfaction + 1 }" end="5">
-		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach>
-		                                	</span>
-	                                	</c:if>
+                                    <li class="star-rate-li">
+                                    	<span>
+	                                    	<p class="star-rate-text">가격만족도</p>
+	                                    	<c:choose>
+		                                     	<c:when test="${ review.priceSatisfaction ne null and review.priceSatisfaction ne 0}">
+		                                     		<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
+					                                		<i class="star-rate-icon icon_star"></i>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${review.priceSatisfaction + 1 }" end="5">
+				                                			<i class="star-rate-icon icon_star_alt"></i>
+				                                		</c:forEach>
+				                                	</span>
+			                                	</c:when>
+			                                	<c:otherwise>
+			                                		<span class="star-rate-star">정보 없음</span>
+			                                	</c:otherwise>
+		                                	</c:choose>
 	                                	</span>
                                      </li>
                                     <li class="star-rate-li"><span>
                                     	<p class="star-rate-text">평점</p> 
-                                   		<c:if test="${ review.rate ne null }">
-                                   			<span class="star-rate-star">
-			                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
-			                                		<i class="star-rate-icon icon_star"></i>
-			                                	</c:forEach>
-		                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
-		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach>
-			                                </span>
-                                		</c:if>
+                                    	<c:choose>
+	                                   		<c:when test="${ review.rate ne null and review.rate ne 0}">
+	                                   			<span class="star-rate-star">
+				                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+				                                		<i class="star-rate-icon icon_star"></i>
+				                                	</c:forEach>
+			                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+			                                			<i class="star-rate-icon icon_star_alt"></i>
+			                                		</c:forEach>
+				                                </span>
+	                                		</c:when>
+	                                		<c:otherwise>
+	                                			<span class="star-rate-star">정보 없음</span>
+	                                		</c:otherwise>
+                                		</c:choose>
                                 		</span> 
                                     </li>
                                 </ul>
