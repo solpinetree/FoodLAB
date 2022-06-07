@@ -94,7 +94,7 @@ public class HomeController {
 		//ReviewId 에 따른 image url 과 restaurant name 을 찾는 for문
 		for(Review r : reviewByRestaurantCategoryList) {
 			restaurantList.add(restaurantService.selectById(r.getRestaurantId()));
-			reviewImageByReviewId = reviewImageService.findByReviewId(r.getReviewId());
+			reviewImageByReviewId=(reviewImageService.findByReviewId(r.getReviewId()));
 		}
 		
 		

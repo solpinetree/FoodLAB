@@ -61,10 +61,10 @@
 						</div>
 						<ul>
 							<li>
-								<span class="icon_pin_alt"></span> ${ restaurant.address}
+								<span class="icon_pin_alt"></span> ${restaurant.address}
 							</li>
 							<c:if test="${!empty restaurant.tel }">
-								<li><span class="icon_phone"></span> ${ restaurant.tel}</li>
+								<li><span class="icon_phone"></span> ${restaurant.tel}</li>
 							</c:if>
 							<c:if test="${empty restaurant.tel}">
 								<li><span class="icon_phone"></span> 정보 없음</li>
@@ -93,7 +93,7 @@
 
 	</div>
 	
-
+</section>
 </body>
 
 
