@@ -9,7 +9,7 @@
 	
          	
           <div class="col-lg-4 col-md-4 item_margin">
-			<div class="FoodLog__Item">
+			<div class="FoodLog__Item" onclick="location.href='${root}/reviews/review?reviewId=${reviewContent.reviewId }'">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
 						<!-- 리뷰제목 -->
@@ -29,7 +29,7 @@
 				 
 				
 
-				<div class="FoodLog__item__text">
+				<div class="FoodLog__item__text" >
 			  		<div class="FoodLog__item__text__inside">
 			      		<ul>
 			      			<li>

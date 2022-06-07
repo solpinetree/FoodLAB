@@ -5,7 +5,7 @@
 <div class = "current-review-6">
 	<c:forEach var = "restaurantContent" items = "${restaurantByAvgRate}" begin = "0" end = "5" step = "1" varStatus="status">
 		<div class="col-lg-4 col-md-4 item_margin">
-			<div class="FoodLog__Item">
+			<div class="FoodLog__Item" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurantContent.restaurantId}'">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
 						<!-- 식당이름 -->
