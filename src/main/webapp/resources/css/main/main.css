@@ -17,7 +17,7 @@ ul{
 	text-overflow: ellipsis;
 	text-align: left;
 }
-.review-text-title{
+.home-review-text-title{
 	display: inline-block;
 	width: 100%;
 	white-space: nowrap;
@@ -27,7 +27,7 @@ ul{
 	font-weight: bold;
 }
 
-.review-text{
+.home-review-text{
 	display: inline-block;
 	width: 100%;
 	white-space: nowrap;
@@ -38,7 +38,7 @@ ul{
 	margin-bottom : 10px;
 }
 
-.review-last-child .review-text-title{
+.home-review-last-child .review-text-title{
 	margin-top: 0px;
 	margin-bottom: 20px;
 }

@@ -15,7 +15,7 @@ function searchclick(e) {
 
 function loadListDivBySearchKeyword(page, search, selectValue){
 		$.ajax({
-		url: "/foodlab/restaurants/loadListBySearchKeyword?search=" + search +"&currentPage="+page +"&option="+selectValue,
+		url: "/foodlab/reviews/loadListBySearchKeyword?search=" + search +"&currentPage="+page +"&option="+selectValue,
 		method: "GET",
 		async: false,
 		success: function(response) {

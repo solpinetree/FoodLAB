@@ -36,6 +36,10 @@ public class MemberService {
 		MemberDAO dao = new MemberDAOImpl();
 		id = dao.getMemberIdByname(name);
 		dao.close();
+		if(id!=null) {
 		return id;
+		}
+		else
+		return 1;
 	}
 }

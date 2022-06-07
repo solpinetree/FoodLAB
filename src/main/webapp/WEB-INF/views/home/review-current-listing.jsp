@@ -34,7 +34,7 @@
 			  		<div class="FoodLog__item__text__inside">
 			      		<ul>
 			      			<li>
-			      				<h5 class = "review-text">${restaurant[status.index].name}</h5> <!-- 식당이름  -->
+			      				<h5 class = "home-review-text-title">${restaurant[status.index].name}</h5> <!-- 식당이름  -->
 			      				<hr>
 			      			</li>
 			      		
@@ -84,15 +84,15 @@
                          		
                               </li>
 			      			  
-			      			  <li class = "review-last-child">
+			      			  <li class = "home-review-last-child">
 			      			  		<p class = "review-text-title">리뷰내용</p>
 			      			  		<c:choose>
 			      			  			<c:when test = "${reviewContent.content ne null}">
-			      			  				<p class = "review-text">${reviewContent.content}</p>
+			      			  				<p class = "home-review-text">${reviewContent.content}</p>
 			      			  			</c:when>
 			      			  			
 			      			  			<c:otherwise>
-			      			  				<p class = "review-text">리뷰 내용 없음</p>
+			      			  				<p class = "home-review-text">리뷰 내용 없음</p>
 			      			  			</c:otherwise>
 			      					</c:choose>
 			      			  </li>
