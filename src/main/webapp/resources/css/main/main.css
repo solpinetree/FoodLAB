@@ -10,14 +10,15 @@ ul{
 	flex-wrap : wrap;
 	
 	flex-direction: row;
-  	height: 100%;
-  	
+
   	
 }
 .FoodLog__Item{
+	height: 100%;
 	border-radius: 20px;
+
 	border: 1px solid #f9adbd;
-	
+	cursor: pointer;
 	
 	max-width: calc(100% - 0px);
     width: 100%;
@@ -29,13 +30,18 @@ ul{
 
 .FoodLog__item__pic {
 	height: 260px;
+	position: relative;
 	cursor: pointer;
+	border-top: 1px solid #f9adbd;
+	border-bottom: 1px solid #f9adbd;
 	padding-left: 5px;
     padding-right: 5px;
     width: 100%;
-    
-   
 }
+.item_margin{
+	margin: 10px 0px;
+}
+
 
 .home-star-rate-li .home-star-rate-box{
 	float: left;
@@ -74,12 +80,13 @@ ul{
 }
 
 .home-review-last-child .review-text-title{
-	margin-top: 0px;
-	margin-bottom: 20px;
+	margin-top: 10px;
 }
 .home-star-rate-text{
 	width: 30%;
 	font-weight: bold;
+	display:inline;
+	margin-right: 25px;
 }
 
 .home-star-rate-star{
@@ -221,11 +228,7 @@ button:focus {
 	
 	
 }
-.FoodLog__item__pic {
-	height: 260px;
-	position: relative;
-	cursor: pointer;
-}
+
 /* 占식댐옙占싱몌옙 */
 .FoodLog__item__text__inside h5 {
 	font-size: 20px;

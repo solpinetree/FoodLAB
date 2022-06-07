@@ -103,6 +103,7 @@ public class ReviewController {
 	
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
+		System.out.println("들어오냐?");
 		ReviewDTO review = reviewService.select(reviewId);
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("sessionMember");

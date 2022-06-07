@@ -48,22 +48,7 @@
 				<div class="listing__item__text" style="cursor:pointer" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'">
 					<div class="listing__item__text__inside">
 						<h5>${restaurant.name}</h5>
-						<!--
-						<div class="listing__item__text__rating">
-							<div class="listing__item__rating__star">
-								<p class="listing_information_margin">평점 </p><span class="icon_star"></span> <span class="icon_star"></span>
-								<span class="icon_star"></span> <span class="icon_star"></span>
-								<span class="icon_star-half_alt"></span> (${restaurant.avgRate })
-							</div>
-						</div>
 						
-						<div class="listing__item__text__rating">
-							<div class="listing__item__rating__star">
-								<p>가격만족도 </p><span class="icon_star"></span> <span class="icon_star"></span>
-								<span class="icon_star"></span> <span class="icon_star"></span>
-								<span class="icon_star-half_alt"></span> (${restaurant.avgPriceSatisRate})
-							</div>
-						</div>  -->
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
 								<ul>

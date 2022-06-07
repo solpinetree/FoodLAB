@@ -143,13 +143,16 @@
 	               </div>
                </div>
 
-               <div class = "col-lg-8 col-md-8">
+               <div class = "col-lg-6 col-md-6">
                		<a href = "${root}/chat/chat"><img src="${resources}/img/logos/FoodlabOpenChatLogo.png" alt="Foodlab OpenChat Logo"></a>
                </div>
                
-               <div class = "col-lg-4 col-md-4">
-					<h5>푸드로거들을 위한 수다공간입니다</h5>
-					<h5>다양한 푸드로거분들과 맛집에 대한 정보를 공유하세요!</h5>
+               <div class = "col-lg-6 col-md-6">
+					<br><br>
+					<h4>최고의 맛집은 바로 이곳!!</h4><br><br>
+					<h4>푸드로거들을 위한 수다공간입니다</h4><br><br>
+					<h4>다양한 푸드로거들과 맛집에 대한 정보를 공유하세요!</h4>
+					
 				</div>
             </div>
         </div>
