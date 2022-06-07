@@ -1,34 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../includes/path.jsp"%>
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../includes/common.jsp" %>
+
+<body>
 
 <section class="listing nice-scroll" id="restaurantList">
 	<div id="resultNumDiv">
-		<c:if test="${!empty category}">
-			<c:if test="${category ne '전체'}">
-				<div class="listing__text__top">
-					<div class="listing__text__top__left">
-						<p>${numOfResults}개 식당 결과</p>
-					</div>
-				</div>
-			</c:if>
-		</c:if>
+		<div class="listing__text__top">
+			<div class="listing__text__top__left">
+				<p>${fn:length(archivedRestaurants)}개의 찜한 식당</p>
+			</div>
+		</div>
 	</div>
 	<div class="listing__list showSeachText" id="showcategorys">
-		<c:forEach items="${restaurants}" var="restaurant">
+		<c:forEach items="${archivedRestaurants}" var="restaurant">
 
 			<!--  식당 하나 div 시작 -->
 			<div class="listing__item">
-
-				<div class="listing__item__pic set-bg"
-					style="background-image:url(${restaurant.imgUrl});"
-					style="border-radius: 40px 40px 0 0;">
+				<div class="listing__item__pic set-bg" style="background-image:url(${restaurant.imgUrl});" style="border-radius: 40px 40px 0 0;"> 
 					<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 
 					<div class="listing__item__pic__btns">
-						<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
-							<span class="icon_zoom-in_alt"></span>
-						</a> 
 						<c:if test="${!empty sessionScope.sessionMember.username}">
 							<script type="text/javascript">
 								if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
@@ -96,54 +88,7 @@
 		</c:forEach>
 
 	</div>
+	
 
-	<!-- pagination 시작 -->
+</body>
 
-	<div id="paginationBox" style="margin-top:50px; margin-bottom:100px;">
-		<ul class="pagination" style="margin-left:35%">
-			<c:if test="${pagination.previousPage}">
-				<li class="page-item">
-					<c:choose> 
-						<c:when test="${!empty category }">
-							<a class="page-link" onClick="loadRestaurantsPage('${pagination.currentPage-1}','${category}')">
-						</c:when>
-						<c:otherwise>
-							<a class="page-link" onClick="loadListDivBySearchKeyword('${pagination.currentPage-1}','${search}')">
-						</c:otherwise>
-					</c:choose>
-					Previous</a>
-				</li>
-			</c:if>
-
-			<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-				<li class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> ">
-					<c:choose>
-						<c:when test="${!empty category}">
-							<a class="page-link" onclick="loadRestaurantsPage('${idx}','${category}')"> ${idx} </a>
-						</c:when>
-						<c:otherwise>
-							<a class="page-link" onClick="loadListDivBySearchKeyword('${idx}','${search}')"> ${idx} </a>
-						</c:otherwise>
-					</c:choose>
-				</li>
-			</c:forEach>
-
-
-			<li class="page-item">
-				<c:choose>
-					<c:when test="${!empty category }">
-						<a class="page-link" onClick="loadRestaurantsPage('${pagination.currentPage+1}','${category}')">
-					</c:when>
-					<c:otherwise>
-						<a class="page-link" onClick="loadListDivBySearchKeyword('${pagination.currentPage+1}','${search}')">
-					</c:otherwise>
-				</c:choose>
-				Next</a>
-			</li>
-
-		</ul>
-	</div>
-
-
-	<!-- pagination 끝 -->
-</section>

@@ -12,4 +12,5 @@ public interface LikesDAO {
 	List<Integer> selectMemberIdByReviewId(int reviewId) throws SQLException;
 	int delete(Likes likes) throws SQLException;
 	Likes selectByReviewIdAndMemberId(Likes likes) throws SQLException;
+	List<Integer> selectByMemberId(int memberId) throws SQLException;
 }

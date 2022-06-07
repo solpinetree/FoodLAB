@@ -7,6 +7,7 @@
 <title>${review.title}</title>
 <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
 <link rel="stylesheet" href="${resources}/css/review/review-detail-image.css">
+<link rel="stylesheet" href="${resources}/css/review/comment.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 </head>
 

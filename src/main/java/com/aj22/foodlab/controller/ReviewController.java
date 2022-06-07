@@ -24,7 +24,6 @@ import com.aj22.foodlab.dto.MemberDTO;
 import com.aj22.foodlab.dto.ReviewDTO;
 import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.ReviewImagesService;
-import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
 import com.aj22.foodlab.util.S3FileUploadService;
@@ -44,7 +43,6 @@ public class ReviewController {
 	@Autowired
 	private LikesService likesService;
 	@Autowired
-	private RestaurantService restaurantService;
 	private ReviewImagesService reviewImagesService;
 	@Autowired
 	private S3FileUploadService s3Service;
