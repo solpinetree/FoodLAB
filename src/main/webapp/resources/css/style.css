@@ -568,6 +568,8 @@ ol {
   Most Search Tab
 -----------------------*/
 
+
+
 .most-search {
 	padding-bottom: 70px;
 }
@@ -1522,11 +1524,11 @@ ol {
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 40px;
-	height:330px;
+	height:430px;
 }
 
 .listing__item__text__inside{
-	height:200px;
+	margin-bottom:10px;
 }
 
 .listing__item__text__inside h5 {
@@ -1589,7 +1591,13 @@ ol {
 	overflow: hidden;
 	margin-left: -30px;
 	margin-right: -30px;
+	margin-top:10px;
 	height: 61px;
+}
+
+.listing_information_margin {
+	margin-top:5px;
+	margin-bottom:5px;
 }
 
 .listing__item__text__info__left {
@@ -1616,6 +1624,7 @@ ol {
 	color: #50D437;
 	font-weight: 700;
 	padding-top: 0px;
+	margin-bottom:20px;
 }
 
 .listing__item__text__info__right.closed {
