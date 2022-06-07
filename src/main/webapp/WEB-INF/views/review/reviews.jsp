@@ -16,12 +16,12 @@
 <body>
 	<!-- Page Preloder -->
 
-
+<div id="review-content">
 	<!-- Header Section Begin -->
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
 
-<div id="review-content">
+
 	<!-- Blog Section Begin -->
 	<section class="blog-section spad" style="padding-top: 80px">
 		<div class="container">
@@ -119,21 +119,48 @@
 				<div id="paginationBox" class="paginationBox">
 					<ul class="pagination">
 						<c:if test="${pagination.previousPage}">
+						
+						<c:if test="${!search}">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage-1}')">Previous</a></li>
 						</c:if>
+						
+						<c:if test="${search}">
+							<li class="page-item"><a class="page-link" href="#"
+								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
+						</c:if>
+						
+						
+						</c:if>
 	
 						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+						<c:if test="${!search}">
 							<li
 								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 								class="page-link" href="#"
 								onClick="loadUrl('${idx}')">
 									${idx} </a></li>
+						</c:if>
+						
+						<c:if test="${search}">
+							<li class="page-item"><a class="page-link" href="#"
+								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
+						</c:if>
+						
 						</c:forEach>
 	
 						<c:if test="${pagination.nextPage}">
+						
+						<c:if test="${!search}">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage+1}')">Next</a></li>
+						</c:if>
+						
+						<c:if test="${search}">
+							<li class="page-item"><a class="page-link" href="#"
+								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
+						</c:if>
+						
 						</c:if>
 					</ul>
 				</div>
@@ -151,9 +178,15 @@
 					url = url + "?currentPage=" + page;
 					location.href = url;
 				}
+				
+				function loadUrl_search(page,search,option) {
+					var url = "${root}/reviews/list";
+					url = url + "?currentPage=" + page + "&search=" + search + "&option=" + option;
+					location.href = url;
+				}
 			</script>
 
-		</div>
+		
 	</section>
 	<!-- Blog Section End -->
 
@@ -173,7 +206,7 @@
 	<script type="text/javascript"
 		src="${resources}/js/review/search.js"></script>
 	
-
+</div>
 </body>
 
 </html>

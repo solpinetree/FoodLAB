@@ -207,7 +207,14 @@ public class ReviewService {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		
 		logger.info("in setReviewWriterAndRestaurantAndLikesAndTimes review.getREstaurantId() = ? " + review.getRestaurantId());;
+		
+		
+		
 		dto.setRestaurant(review.getRestaurantId() == 0? null : restaurantService.selectById(review.getRestaurantId()));
+		
+		
+		
+		
 		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {

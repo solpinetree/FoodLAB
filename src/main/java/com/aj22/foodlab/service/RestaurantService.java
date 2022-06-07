@@ -128,11 +128,22 @@ public class RestaurantService {
 	}
 	
 	public RestaurantDTO selectById(int id) throws SQLException{
+		if(id == 0) {
+			Restaurant restaurant = null;
+			RestaurantDAO dao = new RestaurantDAOImpl();
+			restaurant = dao.select(1);
+			dao.close();
+			return convertToDto(restaurant); 
+		}
+		
+		else {
 		Restaurant restaurant = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurant = dao.select(id);
 		dao.close();
 		return convertToDto(restaurant);
+		}
+		
 	}
 
 	
