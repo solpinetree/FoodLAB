@@ -153,17 +153,25 @@
 			                	</c:if>
 			                	
 	                            <li class="nav-item nav-item-category">
-	                                <span class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab">
+	                                <p class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab">
 	                                    <span class="flaticon-039-fork"></span>
 	                                    ${category}
-	                                </span>
+	                                </p>
 	                            </li>
 			                </c:forEach>
 			                
-			                <div class = "reviews-content">
-			                
-			                </div>
+			               
                         </ul>
+                        <div class="tab-content">
+                        	<div class="tab-pane active" id="${category}" role="tabpanel">
+                        		<div class="row">
+                        		
+			                        <div id = "reviews-content col-lg-12">
+						               
+						            </div>
+						        </div>
+					        </div>
+				        </div>
                     </div>
                 
                 	

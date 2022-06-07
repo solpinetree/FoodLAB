@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
+/* main review 6 */
+
+
+.tab-content>.tab-pane {
+    display: none
+}
+
+.tab-content>.active {
+    display: flex;
+    
+}
+
+#reviews-content{
+	display: flex;
+}
 
 .welcome-main-text{
     color: beige;
@@ -17,7 +32,7 @@
 /* 	font-family: 'Nanum Pen Script', cursive; */
 }
 
-/* ������ ���񽺿� CSS */
+/* 占쏙옙占쏙옙占쏙옙 占쏙옙占쏟스울옙 CSS */
 
 .slide__link{
 	border-radius: 5px;
@@ -30,8 +45,8 @@
 
 
 #slide {   
-  width:100%;    /* �ʺ� */ 
-  overflow:hidden;   /* ���� ��ġ�� ���� */ 
+  width:100%;    /* 占십븝옙 */ 
+  overflow:hidden;   /* 占쏙옙占쏙옙 占쏙옙치占쏙옙 占쏙옙占쏙옙 */ 
   position: relative;
 }
 
@@ -59,34 +74,34 @@
 }
 button{
   position: absolute;
-  height:100%;  /* ���Ʒ� ���� ���� */ 
+  height:100%;  /* 占쏙옙占싣뤄옙 占쏙옙占쏙옙 占쏙옙占쏙옙 */ 
   top:0;
-  border:none;  /* �׵θ� ���� */  
+  border:none;  /* 占쌓두몌옙 占쏙옙占쏙옙 */  
   padding:20px;
-  background-color: transparent;  /* ���� ��� */ 
-  color:#000;  /* ȭ��ǥ ���� ���� */  
-  font-weight:800;  /* ���� */ 
-  font-size: 24px;  /* ȭ��ǥ ũ�� */ 
-  opacity: 0.5;  /* ������ */ 
+  background-color: transparent;  /* 占쏙옙占쏙옙 占쏙옙占� */ 
+  color:#000;  /* 화占쏙옙표 占쏙옙占쏙옙 占쏙옙占쏙옙 */  
+  font-weight:800;  /* 占쏙옙占쏙옙 */ 
+  font-size: 24px;  /* 화占쏙옙표 크占쏙옙 */ 
+  opacity: 0.5;  /* 占쏙옙占쏙옙占쏙옙 */ 
 }
 #prev {
-  left:0;  /* �������� �ٿ��� */ 
+  left:0;  /* 占쏙옙占쏙옙占쏙옙占쏙옙 占쌕울옙占쏙옙 */ 
 }
 #next {
-  right:0;  /* ���������� �ٿ��� */ 
+  right:0;  /* 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쌕울옙占쏙옙 */ 
 }
 button:hover {
-  background-color:#222;  /* £�� ȸ�� ��� */
-  color:#fff;   /* ��� ȭ��ǥ */ 
-  opacity:0.6;   /* �������� ���� ���� */ 
-  cursor:pointer;  /* Ŀ�� ����� �����ͷ� */ 
+  background-color:#222;  /* 짙占쏙옙 회占쏙옙 占쏙옙占� */
+  color:#fff;   /* 占쏙옙占� 화占쏙옙표 */ 
+  opacity:0.6;   /* 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 */ 
+  cursor:pointer;  /* 커占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙占싶뤄옙 */ 
 }
 button:focus {
-  outline:0;  /* �ƿ�Ʈ���� ���� */
+  outline:0;  /* 占싣울옙트占쏙옙占쏙옙 占쏙옙占쏙옙 */
 }
 
 
-/* ����Խ��� ( Ǫ��α� ) */
+/* 占쏙옙占쏙옙督占쏙옙占� ( 푸占쏙옙慣占� ) */
 
 .FoodLog__Item {
 	-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
@@ -118,7 +133,7 @@ button:focus {
 	position: relative;
 	cursor: pointer;
 }
-/* �Ĵ��̸� */
+/* 占식댐옙占싱몌옙 */
 .FoodLog__item__text__inside h5 {
 	font-size: 20px;
 	color: #323232;
@@ -129,7 +144,7 @@ button:focus {
 
 .FoodLog__item__text__inside h6 {
 	font-size: 14px;
-	color: #6a6a6a; /* ����ȸ�� */
+	color: #6a6a6a; /* 占쏙옙占쏙옙회占쏙옙 */
 	font-weight: 600;
 	margin-bottom: 6px;
 	overflow: hidden;
@@ -148,7 +163,7 @@ button:focus {
 .FoodLog__item__text__rating .FoodLog__item__rating__star span,
 .slide__item__text__rating .slide__item__rating__star span {
 	font-size: 14px;
-	color: #F09D17; /* ��Ȳ�� */
+	color: #F09D17; /* 占쏙옙황占쏙옙 */
 	margin-right: -3px;
 }
 
@@ -159,6 +174,6 @@ button:focus {
 
 .FoodLog__item__text__rating .FoodLog__item__rating__star .FoodLog__item__rating__people__price {
 	font-size: 14px;
-	color: #6a6a6a; /* ����ȸ�� */
+	color: #6a6a6a; /* 占쏙옙占쏙옙회占쏙옙 */
 	margin-right: 5px;
 }

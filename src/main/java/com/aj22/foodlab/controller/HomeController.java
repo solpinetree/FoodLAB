@@ -85,7 +85,7 @@ public class HomeController {
 		model.addAttribute("restaurantName", restaurantName); // restaurant Name
 		model.addAttribute("reviewByRestaurantCategoryList", reviewByRestaurantCategoryList); // Review
 		
-		return "main/review-current-6-listing";
+		return "home/review-current-listing";
 	}
 	
 }
