@@ -67,7 +67,7 @@ public class HomeController {
 		
 		System.out.println("RestaurantList");
 		//오늘의 서비스왕 관련 메서드
-		List<RestaurantDTO> restaurantByAvgRate = restaurantService.selectListWithLimit(0, 3); // 3개만 가져옴
+		List<RestaurantDTO> restaurantByAvgRate = restaurantService.selectListWithLimit(0, 6); // 6개만 가져옴
 		
 
 		//오늘의 서비스왕 관련 model
@@ -84,10 +84,7 @@ public class HomeController {
 	@RequestMapping(value = "/loadReviewList", produces = "application/text;charset=utf8")
 	public String getReviewByCategory(@RequestParam("category") String category, Model model) throws SQLException {
 		
-		//오늘의 서비스왕 관련 메서드
-		List<RestaurantDTO> restaurantByAvgRate = restaurantService.selectListWithLimit(0, 3); // 3개만 가져옴
-		
-		
+	
 		
 		// 푸드로그 관련 메서드
 		List<Review> reviewByRestaurantCategoryList  = reviewService.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
@@ -101,8 +98,7 @@ public class HomeController {
 		}
 		
 		
-		//오늘의 서비스왕 관련 model
-		model.addAttribute("restaurantByAvgRate", restaurantByAvgRate);
+		
 		
 		//푸드로그 관련 model
 		model.addAttribute("reviewImageByReviewId", reviewImageByReviewId); // imageURL

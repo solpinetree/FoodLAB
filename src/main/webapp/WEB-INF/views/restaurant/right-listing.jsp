@@ -48,6 +48,7 @@
 				<div class="listing__item__text" style="cursor:pointer" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'">
 					<div class="listing__item__text__inside">
 						<h5>${restaurant.name}</h5>
+						<!--
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
 								<p class="listing_information_margin">평점 </p><span class="icon_star"></span> <span class="icon_star"></span>
@@ -62,7 +63,64 @@
 								<span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star-half_alt"></span> (${restaurant.avgPriceSatisRate})
 							</div>
+						</div>  -->
+						<div class="listing__item__text__rating">
+							<div class="listing__item__rating__star">
+								<ul>
+                                    <li class="star-rate-li">
+                                    	<p class="star-rate-text">평점</p>
+	                                    	<c:choose>
+		                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
+		                                     		<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
+					                                		<span class="icon_star"></span>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
+				                                			<span class="icon_star"></span>
+				                                		</c:forEach>
+				                                	</span>
+			                                	</c:when>
+			                                	<c:otherwise>
+			                                		<span class="star-rate-star">정보 없음</span>
+			                                	</c:otherwise>
+		                                	</c:choose>
+	                              
+                                     </li>
+                                    <li class="star-rate-li">
+                                    	<p class="star-rate-text">가격만족도</p> 
+	                                    	<c:choose>
+		                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
+		                                   			<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
+					                                		<span class="icon_star"></span>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
+				                                			<span class="icon_star"></span>
+				                                		</c:forEach>
+					                                </span>
+		                                		</c:when>
+		                                		<c:otherwise>
+		                                			<span class="star-rate-star">정보 없음</span>
+		                                		</c:otherwise>
+	                                		</c:choose>
+                                		
+                                    </li>
+                                </ul>
+						
+						
+						
+						
+						
+						
+						
+							</div>
 						</div>
+									
+						
+						
+						
+						
+						
 						<ul class="listing_information">
 							<li class="listing_information_margin">
 								<span class="icon_pin_alt"></span> ${ restaurant.address}
