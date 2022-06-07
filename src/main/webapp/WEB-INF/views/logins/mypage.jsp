@@ -28,7 +28,6 @@
             <div class="text-center my-5">
                 <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
                 <h1 class="text-black fs-3 fw-bolder">Hello</h1>
-                <p class="text-black-50 mb-0">user email</p>
             </div>
         </header>
         
@@ -57,20 +56,11 @@
             <div class="text-center my-5">
                 <img class="img-fluid rounded-circle mb-4" src="<%= profile_img %>" alt="..." />
                 <h2 class="text-black fs-3 fw-bolder"><%= username %></h2>
-                <p class="text-black-50 mb-0">user-email</p>
             </div>
         </header>
         
         <!-- Content section-->
 
-            <div class="container my-5">
-                <div class="row justify-content-center" align="center">
-                    <div class="col-lg-6">
-                        <button>닉네임수정</button>
-                  
-                    </div>
-                </div>
-            </div>
             
            </div>
 

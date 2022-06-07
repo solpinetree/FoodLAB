@@ -39,7 +39,8 @@ public class MemberService {
 		if(id!=null) {
 		return id;
 		}
-		else
+		else {
 		return 1;
+		}
 	}
 }

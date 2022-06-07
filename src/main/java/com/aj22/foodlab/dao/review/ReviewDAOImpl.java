@@ -202,12 +202,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 		List<Review> reviews = new ArrayList<>();
 		
 		if(option.equals("searchAll")) {
-		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
+		String param="%"+keyword+"%";
+		String sql = "select * from review where content LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, keyword);
-		pstmt.setString(2, keyword);
-		pstmt.setInt(3, startIdx);
-		pstmt.setInt(4, listSize);
+		pstmt.setString(1,keyword);
+		pstmt.setInt(2, startIdx);
+		pstmt.setInt(3, listSize);
+		
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
 			reviews.add(createFromResultSet(rs));
@@ -217,15 +218,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return reviews;
 		}
 		
-		if(option == "res") {
-			
-			
-			int res_id = restaurantService.getRestaurantIdFromName(keyword);
+		if(option.equals("res")) {			
 	
-			String sql = "select * from restaurant where restaurant_id=? order by createdAt desc limit ?, ? ";
+			String sql = "select * from review where dummy_restaurant_name LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, res_id);
+			pstmt.setString(1, keyword);
 			pstmt.setInt(2, startIdx);
 			pstmt.setInt(3, listSize);
 			rs = pstmt.executeQuery();
@@ -238,14 +236,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 			return reviews;
 		}
 		
-		if(option == "writer") {
+		if(option.equals("writer")) {
 			
-			int member_id = memberService.getMemberIdFromName(keyword);			
-	
-			String sql = "select * from member where member_id=? order by createdAt desc limit ?, ? ";
+			String sql = "select * from review where dummy_username LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, member_id);
+			pstmt.setString(1, keyword);
 			pstmt.setInt(2, startIdx);
 			pstmt.setInt(3, listSize);
 			rs = pstmt.executeQuery();
@@ -373,7 +369,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		if(option.equals("searchAll")) {
 		logger.info("option="+option);
-		String sql = "select count(*) from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
+		String sql = "select count(*) from review where content=? OR title LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
 		pstmt.setString(2, name);
@@ -387,20 +383,43 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		}
 		
-		if(option=="res") {
-			RestaurantDAO dao = new RestaurantDAOImpl();
-			cnt = dao.countRecordsByName(name);
+		if(option.equals("res")) {
+			logger.info("option="+option);
+			String sql = "select count(*) from review where dummy_restaurant_name=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+			
 			return cnt;
+			
+			}
 	
-		}
 		
-		if(option=="writer") {
-			MemberDAO dao = new MemberDAOImpl();
-			cnt = dao.countRecordsByName(name);
+		
+		if(option.equals("writer")) {
+			logger.info("option="+option);
+			String sql = "select count(*) from review where dummy_username=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+			
 			return cnt;
-		}
+			
+			}
+		
+		
+		else {
 		
 		return 5;
+		}
 	}
 
 
