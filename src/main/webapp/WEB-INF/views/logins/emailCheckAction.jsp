@@ -5,7 +5,7 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page import="java.sql.*" %>
-<%@ include file="dbconn.jsp" %>
+
 <%@ include file="../includes/common.jsp" %>
 <%@ page import = "com.aj22.foodlab.dao.member.*" %>
 <%@ page import = "com.aj22.foodlab.dto.MemberDTO" %>
@@ -15,6 +15,18 @@
 <%-- Check email authentication as the final procedure for membership registration --%>
 
 <%
+
+
+String DB_PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
+String DB_SCHEMAS = "foodlab";
+String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
+String DB_URL = "jdbc:mysql://158.247.206.153/" + DB_SCHEMAS + DB_PROPERTIES; 
+String USER = "labadmin";
+String PASS = "1234";
+
+Class.forName(JDBC_DRIVER);
+Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
    request.setCharacterEncoding("UTF-8");
    String code = null;
    if(request.getParameter("code") != null) { // The code is an encrypted string that has hashed user email

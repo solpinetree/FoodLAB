@@ -201,7 +201,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		List<Review> reviews = new ArrayList<>();
 		
-		if(option == "searchAll") {
+		if(option.equals("searchAll")) {
 		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, keyword);
@@ -209,7 +209,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setInt(3, startIdx);
 		pstmt.setInt(4, listSize);
 		rs = pstmt.executeQuery();
-		logger.info("ReviewDAOIM="+option);
 		while (rs.next()) {
 			reviews.add(createFromResultSet(rs));
 		}
@@ -258,7 +257,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 			return reviews;
 		}
 		
+		else {
+		
 		return reviews;
+		
+		}
 	}
 	
 	@Override
@@ -368,9 +371,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		logger.info("option in countRecords="+option);
 		
-		if(option=="searchAll") {
+		if(option.equals("searchAll")) {
 		logger.info("option="+option);
-		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
+		String sql = "select count(*) from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
 		pstmt.setString(2, name);

@@ -23,8 +23,11 @@
 
 
 
-<sql:setDataSource var="dataSource"
+<%-- <sql:setDataSource var="dataSource"
 	url="jdbc:mysql://158.247.206.153/foodlab?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
+	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234" /> --%>
+<sql:setDataSource var="dataSource"
+	url="jdbc:mysql://localhost/foodlab?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
 	driver="com.mysql.cj.jdbc.Driver" user="labadmin" password="1234" />
 <%-- Checked DB for presence of user information --%>
 

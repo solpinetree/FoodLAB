@@ -26,6 +26,8 @@ public class RestaurantService {
 	
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private ArchivedRestaurantService archivedRestaurantService;
 	
 	static final int NumOfRecordsPerPage = 12;
 	
@@ -40,6 +42,7 @@ public class RestaurantService {
 	public RestaurantDTO convertToDto(Restaurant restaurant) throws SQLException{
 		RestaurantDTO dto = new RestaurantDTO(restaurant);
 		dto.setNumOfReviews(reviewService.countRecordsByRestaurantId(restaurant.getRestaurantId()));
+		dto.setMemberIdsArchivingThis(archivedRestaurantService.findMemberIdByRestaurantId(restaurant.getRestaurantId()));
 		return dto;
 	}
 

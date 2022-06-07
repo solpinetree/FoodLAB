@@ -10,6 +10,7 @@ public class ConnectionProvider {
 	private static final String DB_SCHEMAS = "foodlab";
 	public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  // try "com.mysql.cj.jdbc.Driver"
 	public static final String DB_URL = "jdbc:mysql://158.247.206.153/" + DB_SCHEMAS + DB_PROPERTIES;
+//	public static final String DB_URL = "jdbc:mysql://localhost/" + DB_SCHEMAS + DB_PROPERTIES;
 	
 	//  Database credentials
 	public static final String USER = "labadmin";
