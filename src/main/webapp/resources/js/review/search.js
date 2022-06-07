@@ -15,7 +15,7 @@ function searchclickIcon() {
 
 	var langSelect = document.getElementById("selectbox");
 	var selectValue = langSelect.options[langSelect.selectedIndex].value;
-		loadListDivBySearchKeyword(1, search,selectValue);
+		loadListDivBySearchKeyword(1, langSelect,selectValue);
 }
 
 
