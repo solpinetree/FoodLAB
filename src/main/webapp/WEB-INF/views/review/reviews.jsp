@@ -15,7 +15,7 @@
 
 <body>
 
-
+<div id="review-content">
 	<!-- Header Section Begin -->
 	<jsp:include page="../includes/header.jsp" />
 	<!-- Header Section End -->
@@ -23,7 +23,6 @@
 
 	<!-- Blog Section Begin -->
 	<section class="blog-section spad" style="padding-top: 80px">
-	<div id="review-content">
 		<div class="container">
 			<section class="ftco-section">
 				<div class="container">
@@ -76,7 +75,6 @@
 				</div>
 			</section>
 			</div>
-		</div>
 			
 			<div class="row">
 			
@@ -106,58 +104,33 @@
 			        </div>
 			      </form>
 			    </div>
-			   
 			    <!--  search panel 끝 -->
 			
 				<!-- pagination 시작 -->
 				<div id="paginationBox" class="paginationBox">
 					<ul class="pagination">
-						<c:if test="${pagination.previousPage}">	
-						<%-- none search, none select option pagination --%>					
-						<c:when test="${empty search }">
+						<c:if test="${pagination.previousPage}">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage-1}')">Previous</a></li>
-						</c:when>
-						<%-- select option search pagination --%>
-						<c:otherwise>
-						<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrlToSearch('${pagination.currentPage-1}','${search}', '${option}')">Previous</a></li>
-						</c:otherwise>
 						</c:if>
 	
 						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-						<c:when test="${empty search }">
 							<li
 								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 								class="page-link" href="#"
 								onClick="loadUrl('${idx}')">
 									${idx} </a></li>
-						</c:when>
-						<c:otherwise>
-						<li
-								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
-								class="page-link" href="#"
-								onClick="loadUrlToSearch('${idx}','${search}', '${option}')">
-									${idx} </a></li>
-						</c:otherwise>
-						
 						</c:forEach>
-						
+	
 						<c:if test="${pagination.nextPage}">
-						<c:when test="${empty search }">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage+1}')">Next</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrlToSearch('${pagination.currentPage+1}','${search}', '${option}')">Next</a></li>
-						</c:otherwise>
 						</c:if>
 					</ul>
 				</div>
 				<!-- pagination 끝 -->
 				
-			
+			</div>
 					
 			
 					
@@ -169,13 +142,6 @@
 					url = url + "?currentPage=" + page;
 					location.href = url;
 				}
-				
-				function loadUrlToSearch(page, search, option){
-					var url = "${root}/reviews/loadListBySearchKeyword";
-					url = url + "?currentPage=" + page + "&search="+ search + "&option=" + option;
-					location.href = url;
-				}
-				
 			</script>
 
 		</div>
