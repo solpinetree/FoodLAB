@@ -4,9 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aj22.foodlab.controller.ReviewController;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
 import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAO;
@@ -18,6 +21,8 @@ import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class RestaurantService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@Autowired
 	private ReviewService reviewService;
@@ -129,7 +134,14 @@ public class RestaurantService {
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		id = dao.getRestaurantIDByName(name);
 		dao.close();
+		if(id!=null) {
 		return id;
+		}
+		else {
+		return 1;
+		}
+		
+		
 	}
 	
 	public String getRestaurantNameById(int id) throws SQLException {
@@ -205,11 +217,11 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
+	public int RestaurantAvgRateUpdate(int id, float avg_rate, float avgPriceSatisRate) throws SQLException{
 		int cnt = 0;
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate);
+		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate, avgPriceSatisRate);
 		dao.close();
 		
 		return cnt;

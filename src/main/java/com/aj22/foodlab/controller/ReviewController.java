@@ -73,13 +73,13 @@ public class ReviewController {
 	@RequestMapping(value = "/loadListBySearchKeyword", produces = "application/text;charset=utf8")
 	public String loadRestaurantListDivSelectedBySearch(Model model,
 			@RequestParam(required = false, defaultValue = "1") int currentPage, @RequestParam("search") String search, @RequestParam("option") String option)
-			throws SQLException {
-		
+			throws SQLException {		
 			Pagination pagination = reviewService.getPaginationBySearchKeywordContent(currentPage, search, option);
 			model.addAttribute("pagination", pagination);
 			model.addAttribute("reviews", reviewService.selectList(pagination, search, option));
 			model.addAttribute("search", search);
 			model.addAttribute("numOfResults", reviewService.getNumOfRecordByName(search, option));
+			logger.info("controlleroption="+option);
 		
 		return "review/reviews";
 	}

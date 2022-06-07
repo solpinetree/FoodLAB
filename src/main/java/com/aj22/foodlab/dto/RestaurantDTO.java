@@ -16,6 +16,7 @@ public class RestaurantDTO {
 	private String name;
 	private String address;
 	private Float avgRate;
+	private Float avgPriceSatisRate;
 	private String tel;
 	private String category;
 	private String imgUrl;
@@ -28,6 +29,7 @@ public class RestaurantDTO {
 		name = restaurant.getName();
 		address = restaurant.getAddress();
 		avgRate = restaurant.getAvgRate();
+		avgPriceSatisRate = restaurant.getAvgPriceSatisRate();
 		tel = restaurant.getTel();
 		category = restaurant.getCategory();
 		imgUrl = restaurant.getImgUrl();

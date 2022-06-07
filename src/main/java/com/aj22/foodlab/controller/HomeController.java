@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aj22.foodlab.service.RestaurantService;
 import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
+import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.domain.ReviewImages;
+import com.aj22.foodlab.dto.RestaurantDTO;
 
 /**
  * Handles requests for the application home page.
@@ -64,19 +66,21 @@ public class HomeController {
 	@RequestMapping(value = "/loadReviewList", produces = "application/text;charset=utf8")
 	public String getReviewByCategory(@RequestParam("category") String category, Model model) throws SQLException {
 		
+		
+		System.out.println("loadReviewList");
 		System.out.println("loadReviewController");
 		List<Review> reviewByRestaurantCategoryList  = reviewService.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
-		List<String> restaurantName = new ArrayList<>();
+		List<RestaurantDTO> restaurantList = new ArrayList<>();
 		List<ReviewImages> reviewImageByReviewId = new ArrayList<>();
 		
 		//ReviewId 에 따른 image url 과 restaurant name 을 찾는 for문
 		for(Review r : reviewByRestaurantCategoryList) {
-			restaurantName.add(restaurantService.getRestaurantNameById(r.getRestaurantId()));
+			restaurantList.add(restaurantService.selectById(r.getRestaurantId()));
 			reviewImageByReviewId = reviewImageService.findByReviewId(r.getReviewId());
 		}
 		
 		model.addAttribute("reviewImageByReviewId", reviewImageByReviewId); // imageURL
-		model.addAttribute("restaurantName", restaurantName); // restaurant Name
+		model.addAttribute("restaurantList", restaurantList); // restaurant Name
 		model.addAttribute("reviewByRestaurantCategoryList", reviewByRestaurantCategoryList); // Review
 		
 

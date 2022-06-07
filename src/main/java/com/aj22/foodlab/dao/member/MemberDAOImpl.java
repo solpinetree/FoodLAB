@@ -225,7 +225,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		Integer id = null;
 		
-		String sql = "select member_id from member where name=?";
+		String sql = "select member_id from member where username=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
 		rs = pstmt.executeQuery();
