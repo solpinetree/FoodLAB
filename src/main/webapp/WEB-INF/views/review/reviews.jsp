@@ -120,47 +120,50 @@
 					<ul class="pagination">
 						<c:if test="${pagination.previousPage}">
 						
-						<c:if test="${!search}">
+						<c:choose>
+						<c:when test="${empty search}">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage-1}')">Previous</a></li>
-						</c:if>
+						</c:when>
 						
-						<c:if test="${search}">
+						<c:otherwise>
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
-						</c:if>
-						
+						</c:otherwise>
+						</c:choose>
 						
 						</c:if>
 	
 						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-						<c:if test="${!search}">
+						<c:choose>
+						<c:when test="${empty search}">
 							<li
 								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
 								class="page-link" href="#"
 								onClick="loadUrl('${idx}')">
 									${idx} </a></li>
-						</c:if>
-						
-						<c:if test="${search}">
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
-						</c:if>
-						
+						</c:when>
+						<c:otherwise>
+							<li
+								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
+								class="page-link" href="#"
+								onClick="loadUrl_search('${idx}','${search}','${option}')">
+									${idx} </a></li>
+						</c:otherwise>
+						</c:choose>
 						</c:forEach>
 	
 						<c:if test="${pagination.nextPage}">
-						
-						<c:if test="${!search}">
+						<c:choose>
+						<c:when test="${empty search}">
 							<li class="page-item"><a class="page-link" href="#"
 								onClick="loadUrl('${pagination.currentPage+1}')">Next</a></li>
-						</c:if>
-						
-						<c:if test="${search}">
+						</c:when>
+						<c:otherwise>
 							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
-						</c:if>
-						
+								onClick="loadUrl_search()'${pagination.currentPage+1}','${search}','${option}')">Next</a></li>
+						</c:otherwise>
+						</c:choose>
 						</c:if>
 					</ul>
 				</div>
@@ -180,7 +183,7 @@
 				}
 				
 				function loadUrl_search(page,search,option) {
-					var url = "${root}/reviews/list";
+					var url = "${root}/reviews/loadListBySearchKeyword";
 					url = url + "?currentPage=" + page + "&search=" + search + "&option=" + option;
 					location.href = url;
 				}

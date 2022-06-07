@@ -47,7 +47,7 @@
 
 				<div class="listing__item__text" style="cursor:pointer" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'">
 					<div class="">
-						<h5>${restaurant.name}</h5>
+						<h5 style="margin-bottom:10px">${restaurant.name}</h5>
 						<!--
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
@@ -68,7 +68,7 @@
 							<div class="listing__item__rating__star">
 								<ul>
                                     <li class="star-rate-li">
-                                    	<p class="star-rate-text">평점</p>
+                                    	<p class="star-rate-text star-rate-styling">평점</p>
 	                                    	<c:choose>
 		                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
 		                                     		<span class="star-rate-star">
@@ -78,16 +78,17 @@
 				                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
 				                                			<span class="icon_star"></span>
 				                                		</c:forEach>
+				                                		<span style="color:black; font-weight:bold;">(${restaurant.avgRate})</span>
 				                                	</span>
 			                                	</c:when>
 			                                	<c:otherwise>
-			                                		<span class="star-rate-star">정보 없음</span>
+			                                	<span class="star-rate-star" style="font-weight:bold">정보 없음</span>
 			                                	</c:otherwise>
 		                                	</c:choose>
 	                              
                                      </li>
                                     <li class="star-rate-li">
-                                    	<p class="star-rate-text">가격만족도</p> 
+                                    	<p class="star-rate-text star-rate-styling">가격만족도</p> 
 	                                    	<c:choose>
 		                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
 		                                   			<span class="star-rate-star">
@@ -97,10 +98,11 @@
 				                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
 				                                			<span class="icon_star"></span>
 				                                		</c:forEach>
+				                                		<span style="color:black; font-weight:bold;">(${restaurant.avgRate})</span>
 					                                </span>
 		                                		</c:when>
 		                                		<c:otherwise>
-		                                			<span class="star-rate-star">정보 없음</span>
+		                                			<span class="star-rate-star" style="font-weight:bold">정보 없음</span>
 		                                		</c:otherwise>
 	                                		</c:choose>
                                 		
