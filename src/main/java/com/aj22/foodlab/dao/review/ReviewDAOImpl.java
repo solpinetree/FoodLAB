@@ -257,7 +257,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 			return reviews;
 		}
 		
+		else {
+		
 		return reviews;
+		
+		}
 	}
 	
 	@Override
