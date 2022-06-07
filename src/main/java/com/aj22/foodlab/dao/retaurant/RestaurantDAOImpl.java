@@ -173,6 +173,25 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	
 	
 	@Override
+	public List<Restaurant> selectListWithLimit(int startIdx, int listSize) throws SQLException {
+		
+		List<Restaurant> restaurants = new ArrayList<>();
+		
+		String sql = "select * from restaurant order by avg_rate desc limit ?, ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, startIdx);
+		pstmt.setInt(2, listSize);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			restaurants.add(createFromResultSet(rs));
+		}
+	
+		
+		return restaurants;
+	}
+	
+	@Override
 	public List<Restaurant> findByCategoryWithLimit(int startIdx, int listSize,String category) throws SQLException {
 		
 		List<Restaurant> restaurants = new ArrayList<>();
