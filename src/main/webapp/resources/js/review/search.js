@@ -7,7 +7,6 @@ function searchclick(e) {
 	var search = document.getElementById("search").value;
 
 	if (code == 'Enter') {
-			window.alert(selectValue);
 			loadListDivBySearchKeyword(1, search,selectValue);
 	}
 }
