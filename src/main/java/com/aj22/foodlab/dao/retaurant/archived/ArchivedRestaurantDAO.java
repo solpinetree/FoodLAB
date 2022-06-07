@@ -10,6 +10,6 @@ public interface ArchivedRestaurantDAO {
 	void close() throws SQLException;
 	int insert(ArchivedRestaurant archivedRestaurant) throws SQLException;
 	int delete(ArchivedRestaurant archivedRestaurant) throws SQLException;
-	List<ArchivedRestaurant> selectByMemberId(int memberId) throws SQLException;
-	List<ArchivedRestaurant> selectByRestaurantId(int restaurantId) throws SQLException;
+	List<Integer> selectByMemberId(int memberId) throws SQLException;
+	List<Integer> selectByRestaurantId(int restaurantId) throws SQLException;
 }

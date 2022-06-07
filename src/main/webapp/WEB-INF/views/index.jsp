@@ -166,7 +166,7 @@
                         	<div class="tab-pane active" id="${category}" role="tabpanel">
                         		<div class="row">
                         		
-			                        <div id = "reviews-content col-lg-12">
+			                        <div id = "reviews-content">
 						               
 						            </div>
 						        </div>

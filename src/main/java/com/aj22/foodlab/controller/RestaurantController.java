@@ -65,7 +65,7 @@ public class RestaurantController {
 	@GetMapping("/detail")
 	public String restaurantDetail(@RequestParam int restaurantId, Model model) throws SQLException {
 		
-		restaurantService.RestaurantAvgRateUpdate(restaurantId, reviewService.reviewAvgRateSelectByRestaurantId(restaurantId));
+		restaurantService.RestaurantAvgRateUpdate(restaurantId, reviewService.reviewAvgRateSelectByRestaurantId(restaurantId), reviewService.reviewPriceSatisAvgRateSelectByRestaurantId(restaurantId));
 		
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
 		model.addAttribute("menus", restaurantService.selectMenus(restaurantId));

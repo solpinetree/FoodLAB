@@ -26,6 +26,8 @@ public class RestaurantService {
 	
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private ArchivedRestaurantService archivedRestaurantService;
 	
 	static final int NumOfRecordsPerPage = 12;
 	
@@ -40,6 +42,7 @@ public class RestaurantService {
 	public RestaurantDTO convertToDto(Restaurant restaurant) throws SQLException{
 		RestaurantDTO dto = new RestaurantDTO(restaurant);
 		dto.setNumOfReviews(reviewService.countRecordsByRestaurantId(restaurant.getRestaurantId()));
+		dto.setMemberIdsArchivingThis(archivedRestaurantService.findMemberIdByRestaurantId(restaurant.getRestaurantId()));
 		return dto;
 	}
 
@@ -214,11 +217,11 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
+	public int RestaurantAvgRateUpdate(int id, float avg_rate, float avgPriceSatisRate) throws SQLException{
 		int cnt = 0;
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate);
+		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate, avgPriceSatisRate);
 		dao.close();
 		
 		return cnt;

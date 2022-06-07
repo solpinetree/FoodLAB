@@ -1,6 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
 /* main review 6 */
+ul{
+	list-style: none;
+}
+.FoodLog__Item{
+	border-radius: 20px;
+	border: 1px solid #f9adbd;
+}
+.home-star-rate-li .home-star-rate-box{
+	display: flex;
+	float: left;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+.home-review-text-title{
+	display: inline-block;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+	font-weight: bold;
+}
+
+.home-review-text{
+	display: inline-block;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+	margin-top : 10px;
+	margin-bottom : 10px;
+}
+
+.home-review-last-child .review-text-title{
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+.home-star-rate-text{
+	width: 30%;
+	font-weight: bold;
+}
+
+.home-star-rate-star{
+	margin : 0px;
+	width: 70%;
+	color: var(--yellow) !important;
+}
+
 
 
 .tab-content>.tab-pane {
@@ -14,7 +66,20 @@
 
 #reviews-content{
 	display: flex;
+
 }
+
+.current-review-6{
+	display: flex;
+	float: left;
+	flex-wrap : wrap;
+	
+}
+
+.nav-link{
+	cursor: pointer;
+}
+
 
 .welcome-main-text{
     color: beige;
@@ -108,17 +173,16 @@ button:focus {
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 	margin-bottom: 30px;
 	background-color : white;
-	border: 1px solid #fff;
-	border-radius:10px;
+	
 }
 .FoodLog__Title {
-	border-radius: 5px;
+	
 	cursor: pointer;
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 40px;
 	padding-bottom: 10px;
-	border: 1px solid #e3e3e3;
+	
 	
 }
 .FoodLog__item__text {

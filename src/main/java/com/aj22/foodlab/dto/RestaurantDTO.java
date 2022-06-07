@@ -1,5 +1,7 @@
 package com.aj22.foodlab.dto;
 
+import java.util.List;
+
 import com.aj22.foodlab.domain.Restaurant;
 
 import lombok.AllArgsConstructor;
@@ -14,21 +16,25 @@ public class RestaurantDTO {
 	private String name;
 	private String address;
 	private Float avgRate;
+	private Float avgPriceSatisRate;
 	private String tel;
 	private String category;
 	private String imgUrl;
 	private String operationHour;
 	private Integer numOfReviews;
+	private List<Integer> memberIdsArchivingThis;
 	
 	public RestaurantDTO(Restaurant restaurant) {
 		restaurantId = restaurant.getRestaurantId();
 		name = restaurant.getName();
 		address = restaurant.getAddress();
 		avgRate = restaurant.getAvgRate();
+		avgPriceSatisRate = restaurant.getAvgPriceSatisRate();
 		tel = restaurant.getTel();
 		category = restaurant.getCategory();
 		imgUrl = restaurant.getImgUrl();
 		operationHour = restaurant.getOperationHour();
 		numOfReviews = null;
+		memberIdsArchivingThis = null;
 	}
 }

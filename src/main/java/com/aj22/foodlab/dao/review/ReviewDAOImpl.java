@@ -340,6 +340,29 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return avg_rate;
 	}
 	
+	@Override
+	public float reviewPriceSatisAvgRateSelectByRestaurantId(int id) throws SQLException{
+		String sql = "select priceSatisfaction from review where restaurant_id = ? ";
+		float avgPriceSatisRate = 0;
+		int count = 0;
+		int sum = 0;
+		
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			count++;
+			sum += rs.getInt("priceSatisfaction");
+			
+		}
+		
+		if(count!=0) {
+			avgPriceSatisRate = (float) (Math.round(sum/count*100)/100.0);
+		}
+		
+		return avgPriceSatisRate;
+	}
 	
 	@Override
 	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{

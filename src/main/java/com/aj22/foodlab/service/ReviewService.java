@@ -229,6 +229,17 @@ public class ReviewService {
 		return avg_rate;
 	}
 	
+	
+	public float reviewPriceSatisAvgRateSelectByRestaurantId(int id) throws SQLException{
+		float avgPriceSatisRate = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		avgPriceSatisRate = dao.reviewPriceSatisAvgRateSelectByRestaurantId(id);
+		dao.close();
+		
+		return avgPriceSatisRate;
+	}
+	
 	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
 		List<Review> reviewsByCategory = new ArrayList<>();
 		

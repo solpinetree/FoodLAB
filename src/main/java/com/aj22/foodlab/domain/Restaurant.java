@@ -12,6 +12,7 @@ public class Restaurant {
 	private String name;
 	private String address;
 	private Float avgRate;
+	private Float avgPriceSatisRate;
 	private String tel;
 	private String category;
 	private String imgUrl;

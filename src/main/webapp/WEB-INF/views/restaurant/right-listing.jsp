@@ -30,9 +30,14 @@
 							<span class="icon_zoom-in_alt"></span>
 						</a> 
 						<c:if test="${!empty sessionScope.sessionMember.username}">
-							<a href="#">
-								<span class="icon_heart_alt"></span>
-							</a>
+							<script type="text/javascript">
+								if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
+									drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
+								}else{
+									removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
+								}			
+							</script>
+							<span class="heartDiv${restaurant.restaurantId }"></span>
 						</c:if>
 					</div>
 
@@ -45,9 +50,17 @@
 						<h5>${restaurant.name}</h5>
 						<div class="listing__item__text__rating">
 							<div class="listing__item__rating__star">
-								<span class="icon_star"></span> <span class="icon_star"></span>
+								<p>평점 </p><span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star"></span> <span class="icon_star"></span>
 								<span class="icon_star-half_alt"></span> (${restaurant.avgRate })
+							</div>
+						</div>
+						
+						<div class="listing__item__text__rating">
+							<div class="listing__item__rating__star">
+								<p>가격만족도 </p><span class="icon_star"></span> <span class="icon_star"></span>
+								<span class="icon_star"></span> <span class="icon_star"></span>
+								<span class="icon_star-half_alt"></span> (${restaurant.avgPriceSatisRate})
 							</div>
 						</div>
 						<ul>
