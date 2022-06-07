@@ -1,8 +1,7 @@
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #f9adbd;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -32,4 +31,17 @@
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+.first-tab1{
+	margin-left: 42%;
+}
+
+.listing {
+    padding-top: 50px;
+   	overflow-y: scroll;
+}
+
+.listing__item__text__inside ul li span {
+    top: 0px !important; 
 }
