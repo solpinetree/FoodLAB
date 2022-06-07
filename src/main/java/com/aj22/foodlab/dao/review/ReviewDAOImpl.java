@@ -9,8 +9,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.aj22.foodlab.controller.ReviewController;
 import com.aj22.foodlab.dao.member.MemberDAO;
 import com.aj22.foodlab.dao.member.MemberDAOImpl;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
@@ -25,6 +28,8 @@ import com.aj22.foodlab.util.ConnectionProvider;
 
 
 public class ReviewDAOImpl implements ReviewDAO {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private Statement stmt;
@@ -196,7 +201,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		List<Review> reviews = new ArrayList<>();
 		
-		if(option == "all") {
+		if(option == "searchAll") {
 		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, keyword);
@@ -204,7 +209,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setInt(3, startIdx);
 		pstmt.setInt(4, listSize);
 		rs = pstmt.executeQuery();
-		
+		logger.info("ReviewDAOIM="+option);
 		while (rs.next()) {
 			reviews.add(createFromResultSet(rs));
 		}
@@ -337,7 +342,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{
 		int cnt = 0;
 		
-		if(option=="all") {
+		
+		logger.info("option in countRecords="+option);
+		
+		if(option=="searchAll") {
+		logger.info("option="+option);
 		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);
@@ -365,14 +374,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 			return cnt;
 		}
 		
-		return 0;
+		return 5;
 	}
 
-	@Override
-	public int countRecordsByName(String name, String option, int member_id, int restaurant_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 
 	@Override
@@ -393,6 +398,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		}
 		return reviewsByCategory;
 		
+	}
+
+	@Override
+	public int countRecordsByName(String name, String option, int member_id, int restaurant_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.aj22.foodlab.controller.ReviewController;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
 import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
 import com.aj22.foodlab.dao.review.ReviewDAO;
@@ -27,6 +30,8 @@ import com.aj22.foodlab.util.Pagination;
 
 @Service
 public class ReviewService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@Autowired
 	private RestaurantService restaurantService;
@@ -50,11 +55,17 @@ public class ReviewService {
 	
 	public Pagination getPaginationBySearchKeywordContent(int currentPage, String keyword, String option) throws SQLException{
 		
+			logger.info(keyword);
+			logger.info(option);
 			int res_id = restaurantService.getRestaurantIdFromName(keyword);
-			int member_id = memberService.getMemberIdFromName(keyword);			
-			ReviewDAO dao = new ReviewDAOImpl();			
+			int member_id = memberService.getMemberIdFromName(keyword);
+			logger.info(Integer.toString(res_id));
+			logger.info(Integer.toString(member_id));
 		
 			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
+			
+			logger.info(Integer.toString(numOfRecords));
+			
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
@@ -67,7 +78,7 @@ public class ReviewService {
 		
 		int res_id = restaurantService.getRestaurantIdFromName(keyword);
 		int member_id = memberService.getMemberIdFromName(keyword);	
-		int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
+		int numOfRecords = getNumOfRecordByNameContent(keyword, option,member_id,res_id);
 		
 		return numOfRecords;
 	}
@@ -270,7 +281,7 @@ public class ReviewService {
 		int cnt = 0;
 		
 		ReviewDAO dao = new ReviewDAOImpl();
-		cnt = dao.countRecordsByName(name, option,member_id,restaruant_id);
+		cnt = dao.countRecords(name,member_id,restaruant_id,option);
 		dao.close();
 		
 		return cnt;
