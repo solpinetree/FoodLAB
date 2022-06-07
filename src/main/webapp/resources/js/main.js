@@ -35,6 +35,11 @@
         allowParentLinks: true
     });
     
+
+     $(document).ready(function() {
+$('.중화요리').addClass('active');
+});
+
     $(document).ready(function() {
 $('.header__nav').find('a[href="' + document.location.pathname + '"]').parents('li').addClass('active');
 });
