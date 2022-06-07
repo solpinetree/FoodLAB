@@ -10,8 +10,11 @@
 
 	<!-- Tab links -->
 	<div class="tab">
-	  <button class="tablinks first-tabl" style="	margin-left: 42%;" onclick="openCity(event, 'London')">내가 찜한 식당</button>
-	  <button class="tablinks" onclick="openCity(event, 'Paris')">좋아요 누른 리뷰</button>
+	  <button class="tablinks first-tabl" style="margin-left: 45.5%; font-size: 26px" onclick="openCity(event, 'London')"><span class="icon_archive_alt"></span></button>
+	  
+	  <button class="tablinks" onclick="openCity(event, 'Paris')"style="font-size: 26px">
+	  	<span class='icon_heart'></span>
+	  </button>
 	</div>
 	
 	<!-- Tab content -->

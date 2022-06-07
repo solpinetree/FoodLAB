@@ -8,6 +8,7 @@
       <link rel="stylesheet" href="${resources}/css/login/mypage-archived.css">
  	  <link rel="stylesheet" href="${resources}/css/login/restaurant-archived.css">
  	   <link rel="stylesheet" href="${resources}/css/review/table.css">
+ 	   <link rel="stylesheet" href="${resources}/css/restaurant/restaurant.css">
 </head>
 <jsp:useBean id="sessionMember" scope="session" class="com.aj22.foodlab.dto.MemberDTO" type="com.aj22.foodlab.dto.MemberDTO"/>
     <body>
