@@ -30,9 +30,14 @@
 							<span class="icon_zoom-in_alt"></span>
 						</a> 
 						<c:if test="${!empty sessionScope.sessionMember.username}">
-							<a href="#">
-								<span class="icon_heart_alt"></span>
-							</a>
+							<script type="text/javascript">
+								if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
+									drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
+								}else{
+									removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
+								}			
+							</script>
+							<span class="heartDiv${restaurant.restaurantId }"></span>
 						</c:if>
 					</div>
 

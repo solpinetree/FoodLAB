@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="${resources}/js/restaurant/kakaomap.js"></script>
 	<script type="text/javascript" src="${resources}/js/restaurant/category.js"></script>
 	<script type="text/javascript" src="${resources}/js/restaurant/search-click.js"></script>
+	<script type="text/javascript" src="${resources}/js/restaurant/archive-process.js"></script>
 	
 </body>
 

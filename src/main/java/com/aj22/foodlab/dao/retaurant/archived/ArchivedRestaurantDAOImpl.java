@@ -67,31 +67,31 @@ public class ArchivedRestaurantDAOImpl implements ArchivedRestaurantDAO{
 	}
 	
 	@Override
-	public List<ArchivedRestaurant> selectByMemberId(int memberId) throws SQLException {
-		List<ArchivedRestaurant> archivedRestaurants = new ArrayList<>();
-		String sql = "select * from archived_restaurant where member_id=?";
+	public List<Integer> selectByMemberId(int memberId) throws SQLException {
+		List<Integer> restaurantIdsArchived = new ArrayList<>();
+		String sql = "select restaurant_id from archived_restaurant where member_id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, memberId);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
-			archivedRestaurants.add(createFromResultSet(rs));
+			restaurantIdsArchived.add(rs.getInt("restaurant_id"));
 		}
 		
-		return archivedRestaurants;
+		return restaurantIdsArchived;
 	}
 	
 	@Override
-	public List<ArchivedRestaurant> selectByRestaurantId(int restaurantId) throws SQLException {
-		List<ArchivedRestaurant> archivedRestaurants = new ArrayList<>();
-		String sql = "select * from archived_restaurant where restaurant_id=?";
+	public List<Integer> selectByRestaurantId(int restaurantId) throws SQLException {
+		List<Integer> memberIdsArchivingThis = new ArrayList<>();
+		String sql = "select member_id from archived_restaurant where restaurant_id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, restaurantId);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
-			archivedRestaurants.add(createFromResultSet(rs));
+			memberIdsArchivingThis.add(rs.getInt("member_id"));
 		}
 		
-		return archivedRestaurants;
+		return memberIdsArchivingThis;
 	}
 	
 	public ArchivedRestaurant createFromResultSet(ResultSet rs) throws SQLException {
