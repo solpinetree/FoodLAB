@@ -319,7 +319,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 			sum += rs.getInt("rate");
 			
 		}
-		avg_rate = (float) (Math.round(sum/count*100)/100.0);
+		
+		if(count!=0) {
+			avg_rate = (float) (Math.round(sum/count*100)/100.0);
+		}
 		
 		return avg_rate;
 	}

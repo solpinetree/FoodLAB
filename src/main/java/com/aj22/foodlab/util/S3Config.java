@@ -12,7 +12,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Component
 @PropertySource("classpath:application.properties")
-public class AwsS3Config {
+public class S3Config {
     @Value("${cloud.aws.credentials.accessKey}")
     private String accessKey;
 

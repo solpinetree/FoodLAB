@@ -29,9 +29,11 @@
 						<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
 							<span class="icon_zoom-in_alt"></span>
 						</a> 
-						<a href="#">
-							<span class="icon_heart_alt"></span>
-						</a>
+						<c:if test="${!empty sessionScope.sessionMember.username}">
+							<a href="#">
+								<span class="icon_heart_alt"></span>
+							</a>
+						</c:if>
 					</div>
 
 				</div>
