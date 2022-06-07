@@ -9,7 +9,7 @@
 <section class="listing nice-scroll" id="restaurantList">
 	<div id="resultNumDiv">
 		<div class="listing__text__top">
-			<div class="listing__text__top__left">
+			<div class="listing__text__top__left">	
 				<p>${fn:length(archivedRestaurants)}개의 찜한 식당</p>
 			</div>
 		</div>
@@ -93,7 +93,7 @@
 
 	</div>
 	
-
+</section>
 </body>
 
 
