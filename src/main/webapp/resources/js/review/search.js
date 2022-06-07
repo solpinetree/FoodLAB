@@ -7,9 +7,15 @@ function searchclick(e) {
 	var search = document.getElementById("search").value;
 
 	if (code == 'Enter') {
-			window.alert(selectValue);
 			loadListDivBySearchKeyword(1, search,selectValue);
 	}
+}
+
+function searchclickIcon() {
+
+	var langSelect = document.getElementById("selectbox");
+	var selectValue = langSelect.options[langSelect.selectedIndex].value;
+		loadListDivBySearchKeyword(1, langSelect,selectValue);
 }
 
 
