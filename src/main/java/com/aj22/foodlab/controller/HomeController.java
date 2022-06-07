@@ -55,6 +55,7 @@ public class HomeController {
 		model.addAttribute("categories", restaurantService.getCategories());
 		
 		
+		
 //		Date date = new Date();
 //		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 //		
