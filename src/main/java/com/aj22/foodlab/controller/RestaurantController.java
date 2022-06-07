@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
 
@@ -25,6 +26,8 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private ReviewImagesService reviewImagesService;
 
 	@GetMapping("/list")
 	public String restaurantListPage(Model model, @RequestParam(required = false, defaultValue = "1") int currentPage)
@@ -70,6 +73,7 @@ public class RestaurantController {
 		model.addAttribute("restaurants", restaurantService.selectById(restaurantId));
 		model.addAttribute("menus", restaurantService.selectMenus(restaurantId));
 		model.addAttribute("reviews", reviewService.findByRestaurantId(restaurantId));
+		model.addAttribute("reviewImgs", reviewImagesService.findByRestaurantId(restaurantId));
 		
 		return "restaurant/detail";
 	}
