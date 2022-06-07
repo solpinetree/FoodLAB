@@ -43,6 +43,7 @@ $('.header__nav').find('a[href="' + document.location.pathname + '"]').parents('
     $(document).ready(function() {
 $('.nav-tabs').find('a[href="' + document.location.pathname + '"]').parents('li').addClass('active');
 });
+
     
     /*--------------------------
     Testimonial Slider

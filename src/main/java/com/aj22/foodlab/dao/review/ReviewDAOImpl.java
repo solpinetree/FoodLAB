@@ -339,7 +339,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	@Override
 	public float reviewPriceSatisAvgRateSelectByRestaurantId(int id) throws SQLException{
-		String sql = "select priceSatisfaction from review where restaurant_id = ? ";
+		String sql = "select price_satisfaction from review where restaurant_id = ? ";
 		float avgPriceSatisRate = 0;
 		int count = 0;
 		int sum = 0;
@@ -350,7 +350,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		while(rs.next()) {
 			count++;
-			sum += rs.getInt("priceSatisfaction");
+			sum += rs.getInt("price_satisfaction");
 			
 		}
 		
@@ -410,7 +410,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		String sql = "select * from review rev "
 				+ "left Join restaurant res ON "
 				+ "rev.restaurant_id = res.restaurant_id "
-				+ "where res.category = ? order by createdAt asc";
+				+ "where res.category = ? order by createdAt asc LIMIT 0, 6";
 		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, category);
