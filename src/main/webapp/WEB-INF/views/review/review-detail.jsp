@@ -190,16 +190,6 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="blog__sidebar__categories">
-                            <h5>카테고리</h5>
-                            <ul>
-                                <li><a href="#">양식 <span>18</span></a></li>
-                                <li><a href="#"> 펍<span>20</span></a></li>
-                                <li><a href="#">한식 <span>07</span></a></li>
-                                <li><a href="#">디저트 <span>22</span></a></li>
-                                <li><a href="#">회 <span>19</span></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

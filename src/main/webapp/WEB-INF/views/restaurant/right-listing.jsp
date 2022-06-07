@@ -65,41 +65,39 @@
 								<ul>
                                     <li class="star-rate-li">
                                     	<p class="star-rate-text">평점</p>
-	                                    	<c:choose>
-		                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
-		                                     		<span class="star-rate-star">
-					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
-					                                		<span class="icon_star"></span>
-					                                	</c:forEach>
-				                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
-				                                			<span class="icon_star"></span>
-				                                		</c:forEach>
-				                                	</span>
-			                                	</c:when>
-			                                	<c:otherwise>
-			                                		<span class="star-rate-star">정보 없음</span>
-			                                	</c:otherwise>
-		                                	</c:choose>
-	                              
+                                    	<c:choose>
+	                                     	<c:when test="${ restaurant.avgRate ne null and restaurant.avgRate ne 0}">
+	                                     		<span class="star-rate-star">
+				                                	<c:forEach var="i" begin="1" end="${ restaurant.avgRate }" >
+				                                		<span class="icon_star"></span>
+				                                	</c:forEach>
+			                                		<c:forEach var="i" begin="${restaurant.avgRate + 1 }" end="5">
+			                                			<span class="icon_star"></span>
+			                                		</c:forEach>
+			                                	</span>
+		                                	</c:when>
+		                                	<c:otherwise>
+		                                		<span class="star-rate-star">정보 없음</span>
+		                                	</c:otherwise>
+	                                	</c:choose>
                                      </li>
                                     <li class="star-rate-li">
                                     	<p class="star-rate-text">가격만족도</p> 
-	                                    	<c:choose>
-		                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
-		                                   			<span class="star-rate-star">
-					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
-					                                		<span class="icon_star"></span>
-					                                	</c:forEach>
-				                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
-				                                			<span class="icon_star"></span>
-				                                		</c:forEach>
-					                                </span>
-		                                		</c:when>
-		                                		<c:otherwise>
-		                                			<span class="star-rate-star">정보 없음</span>
-		                                		</c:otherwise>
-	                                		</c:choose>
-                                		
+                                    	<c:choose>
+	                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
+	                                   			<span class="star-rate-star">
+				                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
+				                                		<span class="icon_star"></span>
+				                                	</c:forEach>
+			                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
+			                                			<span class="icon_star"></span>
+			                                		</c:forEach>
+				                                </span>
+	                                		</c:when>
+	                                		<c:otherwise>
+	                                			<span class="star-rate-star">정보 없음</span>
+	                                		</c:otherwise>
+                                		</c:choose>
                                     </li>
                                 </ul>
 							</div>

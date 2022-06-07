@@ -81,4 +81,20 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		
 		return images;
 	}
+
+	@Override
+	public List<ReviewImages> selectByRestaurantId(int restaurantId) throws SQLException {
+		
+		List<ReviewImages> images = new ArrayList<>();
+		
+		String sql = "select * from review_images where restaurant_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, restaurantId);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			images.add(createFromResultSet(rs));
+		}
+		
+		return images;
+	}
 }
