@@ -6,6 +6,7 @@
     <title>${restaurants.name }</title>
     <link rel="stylesheet" href="${resources}/css/review/review-detail.css">
     <link rel="stylesheet" href="${resources}/css/restaurant/restaurant-detail.css">
+    <link rel="stylesheet" href="${resources}/css/restaurant/modal.css">
 </head>
 
 <body>
@@ -52,25 +53,32 @@
                     	</c:if>
 
                         <div class="listing__details__gallery">
-                            <h4>식당 사진</h4>
+                            <h4>식당 리뷰 사진</h4>
                             <div class="listing__details__gallery__pic">
                                 <div class="listing__details__gallery__item">
                                     <img class="listing__details__gallery__item__large"
                                         src="${restaurant.imgUrl}" alt="">
-                                    <span><i class="fa fa-camera"></i> 170 Image</span>
+                                    <c:choose>
+                                    	<c:when test="!empty ${restaurant.imgUrl}">
+                                    		<span><i class="fa fa-camera"></i> ${fn:length(reviewImgs) + 1 } Image</span>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    	<span><i class="fa fa-camera"></i> ${fn:length(reviewImgs) } Image</span>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="listing__details__gallery__slider owl-carousel">
-                                    <img data-imgbigurl="${resources}/img/listing/details/listing-details-1.jpg"
-                                        src="${resources}/img/listing/details/thumb-1.jpg" alt="">
-                                    <img data-imgbigurl="${resources}/img/listing/details/listing-details-1.jpg"
-                                        src="${resources}/img/listing/details/thumb-2.jpg" alt="">
-                                    <img data-imgbigurl="${resources}/img/listing/details/listing-details-1.jpg"
-                                        src="${resources}/img/listing/details/thumb-3.jpg" alt="">
-                                    <img data-imgbigurl="${resources}/img/listing/details/listing-details-1.jpg"
-                                        src="${resources}/img/listing/details/thumb-4.jpg" alt="">
+                                	<c:forEach var="img" items="${reviewImgs }">
+	                                    <img class="img" data-imgbigurl="${img.imgUrl}"
+	                                        src="${img.imgUrl}" alt="" onclick="modalEvent(this)">
+                                	</c:forEach>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal">
+						  <span class="close">&times;</span>
+						  <img class="modal_content">
+						</div>
                        
                        <%-- 리뷰 div 시작 --%>
                         <div class="listing__details__comment">
@@ -133,11 +141,33 @@
                                					<c:forEach var="i" begin="${restaurant.avgRate+ 1 }" end="5">
                                						<i class="star-rate-icon icon_star_alt"></i>
                                					</c:forEach>
-                                			</span>
+                                			</span>(${ restaurant.avgRate })
                              			</c:if>
                              			
                              			<c:if test="${ restaurant.avgRate eq 0 }">
-                             				<span class="star-rate-star">데이터를 수집 중 입니다.</span>
+                             				<span class="star-rate-star"></span>
+                             				<p style = "color:black">데이터를 수집 중 입니다.</p>
+                             			</c:if>
+                             		</span> 
+                                 </li>
+                                 
+                                 <li class="star-rate-li">
+                                 	<span>
+                                 		<p class="star-rate-text">가격만족도</p> 
+                                		<c:if test="${ restaurant.avgPriceSatisRate ne 0 }">
+                                			<span class="star-rate-star">
+                                				<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
+                                					<i class="star-rate-icon icon_star"></i>
+                                				</c:forEach>
+                               					<c:forEach var="i" begin="${restaurant.avgPriceSatisRate+ 1 }" end="5">
+                               						<i class="star-rate-icon icon_star_alt"></i>
+                               					</c:forEach>
+                                			</span>(${ restaurant.avgPriceSatisRate })
+                             			</c:if>
+                             			
+                             			<c:if test="${ restaurant.avgPriceSatisRate eq 0 }">
+                             				<span class="star-rate-star"></span>
+                             				<p style = "color:black">데이터를 수집 중 입니다.</p>
                              			</c:if>
                              		</span> 
                                  </li>
@@ -157,6 +187,7 @@
      <!-- Js Plugins -->
  	<%@ include file="../includes/plugins.jsp" %>
  	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
+ 	<script type="text/javascript" src="${resources}/js/restaurant/modal.js"></script>
 </body>
 
 </html>

@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
 
-<section class = "current-review-6">	
+<div class = "current-review-6">	
 	<c:set var="reviewURL" value="${reviewImageByReviewId}" />
 	<c:set var="restaurant" value="${restaurantList}" />
 	<c:forEach var = "reviewContent" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1" varStatus="status">
 	
          	
-          <div class="col-lg-4 col-md-4">
-			<div class="FoodLog__Item">
+          <div class="col-lg-4 col-md-4 item_margin">
+			<div class="FoodLog__Item" onclick="location.href='${root}/reviews/review?reviewId=${reviewContent.reviewId }'">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
 						<!-- 리뷰제목 -->
@@ -17,19 +17,28 @@
 					</div>
 				</div>
 				<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
+				
+				<!-- review URL 과 dummy img URL 둘 중 하나가 null 이 아닐때 -->
 				<c:choose>
-					<c:when test = "${reviewURL[status.index].imgUrl ne null}">
-						<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
+					<c:when test = "${reviewURL[status.index].imgUrl ne null or reviewContent.dummyImg ne null}">
+						<c:choose>
+							<c:when test = "${reviewURL[status.index].imgUrl ne null}">
+								<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
+							</c:when>
+							<c:otherwise>
+								<img class="FoodLog__item__pic" src="${reviewContent.dummyImg}">
+							</c:otherwise>
+						</c:choose>
 					</c:when>
 					<c:otherwise>
-						<img class="FoodLog__item__pic" src="${reviewContent.dummyImg}">
+						<img class="FoodLog__item__pic" src="${resources}/img/no-image/noimageavailable.png">
 					</c:otherwise>
 				</c:choose>
 				
 				 
 				
 
-				<div class="FoodLog__item__text">
+				<div class="FoodLog__item__text" >
 			  		<div class="FoodLog__item__text__inside">
 			      		<ul>
 			      			<li>
@@ -84,7 +93,7 @@
                               </li>
 			      			  
 			      			  <li class = "home-review-last-child">
-			      			  		<p class = "home-review-text-title">리뷰내용</p>
+			      			  		<p class = "home-review-text-title">리뷰요약</p>
 			      			  		<c:choose>
 			      			  			<c:when test = "${reviewContent.content ne null}">
 			      			  				<p class = "home-review-text">${reviewContent.content}</p>
@@ -104,4 +113,4 @@
 			</div>
 		</div>
 	</c:forEach>
-</section>
+</div>

@@ -8,3 +8,8 @@
 .listing {
     width: 100% !important;
 }
+
+.list-heart {
+    width: 39px !important;
+    height: 39px !important;
+}

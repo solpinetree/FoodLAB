@@ -181,12 +181,13 @@ public class ReviewService {
 		return dto;
 	}
 	
-	public Integer save(Review review, String restaurantName) throws SQLException {
+	public Review save(Review review, String restaurantName) throws SQLException {
 		review.setRestaurantId(restaurantService.getRestaurantIdFromName(restaurantName));
 		ReviewDAO dao = new ReviewDAOImpl();
 		Integer reviewId = dao.insert(review);
+		review.setReviewId(reviewId);
 		dao.close();
-		return reviewId;
+		return review;
 	}
 	
 	public ReviewDTO select(int reviewId) throws SQLException{

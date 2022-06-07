@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../includes/common.jsp" %>
+<%@ include file="../includes/path.jsp" %>
 
 <script type="text/javascript" src="${resources}/js/restaurant/archive-process.js"></script>
 

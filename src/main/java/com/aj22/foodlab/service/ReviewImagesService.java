@@ -55,4 +55,12 @@ public class ReviewImagesService {
 		
 		return images;
 	}
+	
+	public List<ReviewImages> findByRestaurantId(int restaurantId) throws SQLException{
+		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
+		List<ReviewImages> images = dao.selectByRestaurantId(restaurantId);
+		dao.close();
+		
+		return images;
+	}
 }

@@ -47,11 +47,6 @@ public class ReviewController {
 	@Autowired
 	private S3FileUploadService s3Service;
 
-   @PostMapping("/images")
-    public String upload(@RequestParam("images") MultipartFile multipartFile) throws IOException {
-        s3Service.upload(multipartFile, "review");
-        return "test";
-    }
 
 	// 푸드로그 게시판
 	@GetMapping("/list")
@@ -94,16 +89,14 @@ public class ReviewController {
 			HttpServletRequest request) throws SQLException, IOException {
 		
 		String loadUrl = null;
-		Integer reviewId = reviewService.save(review, restaurantName);
+		review = reviewService.save(review, restaurantName);
 		
-		review.setReviewId(reviewId);
-
 		reviewImagesService.saveReviewImages(multipartRequest, review);
 
-		if (reviewId == null) {
+		if (review.getReviewId() == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			loadUrl = "redirect:/reviews/review?reviewId=" + reviewId;
+			loadUrl = "redirect:/reviews/review?reviewId=" + review.getReviewId();
 		}
 
 		return loadUrl;
@@ -111,6 +104,7 @@ public class ReviewController {
 	
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
+		System.out.println("들어오냐?");
 		ReviewDTO review = reviewService.select(reviewId);
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("sessionMember");
