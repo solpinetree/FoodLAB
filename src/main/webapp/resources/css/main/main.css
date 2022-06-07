@@ -10,14 +10,15 @@ ul{
 	flex-wrap : wrap;
 	
 	flex-direction: row;
-  	height: 100%;
-  	
+
   	
 }
 .FoodLog__Item{
+	height: 100%;
 	border-radius: 20px;
+
 	border: 1px solid #f9adbd;
-	
+	cursor: pointer;
 	
 	max-width: calc(100% - 0px);
     width: 100%;
@@ -25,6 +26,9 @@ ul{
 	flex: 1 1 33%; /* flex: 1 1 0 */
   	overflow: auto;
   	
+}
+.item_margin{
+	margin: 10px 0px;
 }
 
 .FoodLog__item__pic {
@@ -74,12 +78,13 @@ ul{
 }
 
 .home-review-last-child .review-text-title{
-	margin-top: 0px;
-	margin-bottom: 20px;
+	margin-top: 10px;
 }
 .home-star-rate-text{
 	width: 30%;
 	font-weight: bold;
+	display:inline;
+	margin-right: 25px;
 }
 
 .home-star-rate-star{

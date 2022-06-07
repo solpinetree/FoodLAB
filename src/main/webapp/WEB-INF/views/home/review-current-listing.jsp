@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
 
-<section class = "current-review-6">	
+<div class = "current-review-6">	
 	<c:set var="reviewURL" value="${reviewImageByReviewId}" />
 	<c:set var="restaurant" value="${restaurantList}" />
 	<c:forEach var = "reviewContent" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1" varStatus="status">
 	
          	
-          <div class="col-lg-4 col-md-4">
-			<div class="FoodLog__Item">
+          <div class="col-lg-4 col-md-4 item_margin">
+			<div class="FoodLog__Item" onclick="location.href='${root}/reviews/review?reviewId=${reviewContent.reviewId }'">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
 						<!-- 리뷰제목 -->
@@ -29,7 +29,7 @@
 				 
 				
 
-				<div class="FoodLog__item__text">
+				<div class="FoodLog__item__text" >
 			  		<div class="FoodLog__item__text__inside">
 			      		<ul>
 			      			<li>
@@ -84,7 +84,7 @@
                               </li>
 			      			  
 			      			  <li class = "home-review-last-child">
-			      			  		<p class = "home-review-text-title">리뷰내용</p>
+			      			  		<p class = "home-review-text-title">리뷰요약</p>
 			      			  		<c:choose>
 			      			  			<c:when test = "${reviewContent.content ne null}">
 			      			  				<p class = "home-review-text">${reviewContent.content}</p>
@@ -104,4 +104,4 @@
 			</div>
 		</div>
 	</c:forEach>
-</section>
+</div>
