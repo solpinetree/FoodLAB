@@ -17,7 +17,7 @@
 <%
 //Type the message you want to send to the user.
 
-	String host = "http://localhost:8085/foodlab/";
+	String host = "http://158.247.206.153:8085/foodlab/";
 	String from = "ksi020506@naver.com";
 	String to = (String)session.getAttribute("useremail");
 	String subject = "FoodLAB 회원가입을 위한 이메일 확인 메일입니다.";
