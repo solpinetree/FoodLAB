@@ -47,19 +47,19 @@
 				</div>
 			</div>
 			
-			
+			<!--  
 			<div class = "row">
-				<!-- 이미지 슬라이드  -->
+				<!
 				
 				<div class = "col-balance-1 col-lg-6 col-md-6">
-					<div class = "most__search__tab"> <!-- padding 값 넣어주려고 한거임 나중에 css수정해서 이 부분 없애야됨 -->
+					<div class = "most__search__tab"> 
 						<div id="slide" class="img-box">
 						
 					        <img class="slide__link" src="${resources}/img/blog/blog-1.jpg" alt="">
 					        <img class="slide__link" src="${resources}/img/blog/blog-2.jpg" alt="">
 					        <img class="slide__link" src="${resources}/img/blog/blog-3.jpg" alt="">
 					      
-					        <!-- 이전, 다음 버튼 구현 -->
+					    
 					        <button id = "prev">&lang;</button> 
         					<button id = "next">&rang;</button>
     					</div>
@@ -67,65 +67,27 @@
     					
 					</div>
 				</div>
-	
-				
+			</div> -->
 			
+			<div class = "row">
 				<!-- 각 이미지마다 리뷰 3개씩 -->
-				<div class = "col-balance-1 col-lg-6 col-md-6">
-					<div class = "most__search__tab">
-						<div class="slide__item">
-                            <div class="slide__item__text">
-                               <!-- 추후에 db에서 받아올것임 리뷰 2줄로 제한해서 -->
-                               <h5>리뷰1</h5>
-                               
-                               <div class="slide__item__text__rating">
-                                   <div class="slide__item__rating__star">
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star-half_alt"></span>
-                                   </div>
-                               </div>        
-                            </div>                
-                        </div>
-                        
-                        <div class="slide__item">
-                            <div class="slide__item__text">
-                               <h5>리뷰2</h5>
-                               
-                               <div class="slide__item__text__rating">
-                                   <div class="slide__item__rating__star">
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star-half_alt"></span>
-                                   </div>
-                               </div>        
-                            </div>                
-                        </div>
-                        
-                        <div class="slide__item">
-                            <div class="slide__item__text">
-                               <h5>리뷰3</h5>
-                               
-                               <div class="slide__item__text__rating">
-                                   <div class="slide__item__rating__star">
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star"></span>
-                                       <span class="icon_star-half_alt"></span>
-                                   </div>
-                               </div>        
-                            </div>                
-                        </div>
+				<div class="col-lg-12 col-md-12">
+                    <!-- 추후에 db에서 받아올것임 리뷰 2줄로 제한해서 -->
+                    
+                    <!-- 식당정보 -->
+                    <div id = "restaurant-content">
+                    
                     </div>
-				</div>				
-			</div>
+                            
+                 </div>                
+			</div>				
 		</div>
 	</section>
+	
+	
+	
+	
+	
     <!-- Most Search Section Begin -->
     <section class="most-search spad">
         <div class="container">
@@ -153,27 +115,22 @@
 			                	</c:if>
 			                	
 	                            <li class="nav-item nav-item-category">
-	                                <p class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab">
+	                                <p class="nav-link" data-toggle="tab" onclick = "reviewCategoryTab('${category}')" role="tab" >
 	                                    <span class="flaticon-039-fork"></span>
 	                                    ${category}
 	                                </p>
 	                            </li>
 			                </c:forEach>
-			                
-			               
                         </ul>
                      </div>
                  </div>
             </div>
+            
             <div class="row">
             	<div class="col-lg-12 col-md-12">
-                        <div class="tab-content">
-                        	<div class="tab-pane active" id="${category}" role="tabpanel">
-                        		<div id = "reviews-content">
+                       <div id = "reviews-content">
 						               
-						        </div>
-						    </div>
-					    </div>
+						</div>
 				</div> 
             </div>
            </div>
@@ -212,5 +169,6 @@
 	<%@ include file="includes/plugins.jsp" %>
 </body>
 <script type = "text/javascript" src = "${resources}/js/main/reviewRequest.js"></script>
+<script type = "text/javascript" src = "${resources}/js/main/restaurantRequest.js"></script>
 <script type = "text/javascript" src = "${resources}/js/main/slideshow.js"></script>
 </html>

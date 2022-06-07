@@ -25,4 +25,6 @@ public interface RestaurantDAO {
 	
 	int RestaurantAvgRateUpdate(int id, float avg_rate, float avgPriceSatisRate) throws SQLException;
 	
+	
+	
 }

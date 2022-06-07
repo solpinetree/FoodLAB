@@ -7,7 +7,27 @@ ul{
 .FoodLog__Item{
 	border-radius: 20px;
 	border: 1px solid #f9adbd;
+	
+	
+	max-width: calc(100% - 0px);
+    float: left;
+    
+    width: 100%;
+    
+    flex-direction: row
+    
+
 }
+
+.FoodLog__item__pic {
+	height: 260px;
+	position: relative;
+	cursor: pointer;
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+}
+
 .home-star-rate-li .home-star-rate-box{
 	display: flex;
 	float: left;
