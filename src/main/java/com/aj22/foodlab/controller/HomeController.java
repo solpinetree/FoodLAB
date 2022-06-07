@@ -1,32 +1,25 @@
 package com.aj22.foodlab.controller;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aj22.foodlab.service.RestaurantService;
-import com.aj22.foodlab.service.ReviewImagesService;
-import com.aj22.foodlab.service.ReviewService;
-import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.RestaurantDTO;
+import com.aj22.foodlab.service.RestaurantService;
+import com.aj22.foodlab.service.ReviewImagesService;
+import com.aj22.foodlab.service.ReviewService;
 
 /**
  * Handles requests for the application home page.
@@ -94,7 +87,7 @@ public class HomeController {
 		//ReviewId 에 따른 image url 과 restaurant name 을 찾는 for문
 		for(Review r : reviewByRestaurantCategoryList) {
 			restaurantList.add(restaurantService.selectById(r.getRestaurantId()));
-			reviewImageByReviewId = reviewImageService.findByReviewId(r.getReviewId());
+			reviewImageByReviewId.add(reviewImageService.findByReviewId(r.getReviewId()).size() == 0 ? null :reviewImageService.findByReviewId(r.getReviewId()).get(0));
 		}
 		
 		

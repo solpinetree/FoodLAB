@@ -20,7 +20,7 @@
 				
 				<!-- review URL 과 dummy img URL 둘 중 하나가 null 이 아닐때 -->
 				<c:choose>
-					<c:when test = "${reviewURL[status.index].imgUrl ne null or reviewContent.dummyImg ne null}">
+					<c:when test = "${reviewURL[status.index] ne null}">
 						<c:choose>
 							<c:when test = "${reviewURL[status.index].imgUrl ne null}">
 								<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
