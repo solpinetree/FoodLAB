@@ -2,27 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
 
-<section class = "current-review-6">	
-	<c:set var="reviewURL" value="${reviewImageByReviewId}" />
-	<c:set var="restaurant" value="${restaurantList}" />
-	<c:forEach var = "reviewContent" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1" varStatus="status">
-	
-         	
-          <div class="col-lg-4 col-md-4">
+<section class = "current-review-6">
+	<c:forEach var = "restaurantContent" items = "${restaurantByAvgRate}" begin = "0" end = "2" step = "1" varStatus="status">
+		<div class="col-lg-4 col-md-4">
 			<div class="FoodLog__Item">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
-						<!-- 리뷰제목 -->
-						<h5>${reviewContent.title}</h5> <!-- 게시물 이름 -->
+						<!-- 식당이름 -->
+						<h5>${restaurantContent.name}</h5> <!-- 게시물 이름 -->
 					</div>
 				</div>
 				<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
 				<c:choose>
-					<c:when test = "${reviewURL[status.index].imgUrl ne null}">
-						<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
+					<c:when test = "${restaurantContent.imgUrl ne null}">
+						<img class="FoodLog__item__pic" src="${restaurantContent.imgUrl}">
 					</c:when>
 					<c:otherwise>
-						<img class="FoodLog__item__pic" src="${reviewContent.dummyImg}">
+						<!-- default 이미지 -->
+						<img class="FoodLog__item__pic" src="">
 					</c:otherwise>
 				</c:choose>
 				
@@ -31,24 +28,19 @@
 
 				<div class="FoodLog__item__text">
 			  		<div class="FoodLog__item__text__inside">
-			      		<ul>
-			      			<li>
-			      				<h5 class = "home-review-text-title">${restaurant[status.index].name}</h5> <!-- 식당이름  -->
-			      				<hr>
-			      			</li>
-			      		
+			      		<ul>		      		
 			      			<li class="home-star-rate-li">
 			      				<div class = "home-star-rate-box">
                                    	<p class= "home-star-rate-text">평점</p> 
                                    	<c:choose>
-                                   		<c:when test="${ reviewContent.rate ne null and reviewContent.rate ne 0}">
+                                   		<c:when test="${ restaurantContent.avgRate ne null and restaurantContent.avgRate ne 0}">
                                    			<span class="home-star-rate-star">
-			                                	<c:forEach var="i" begin="1" end="${ reviewContent.rate }" >
+			                                	<c:forEach var="i" begin="1" end="${ restaurantContent.avgRate }" >
 			                                		<i class="star-rate-icon icon_star"></i>
 			                                	</c:forEach>
-		                                		<c:forEach var="i" begin="${reviewContent.rate + 1 }" end="5">
+		                                		<c:forEach var="i" begin="${restaurantContent.avgRate + 1 }" end="5">
 		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach> <span style = "color: black;">(${ reviewContent.rate })</span>
+		                                		</c:forEach> <span style = "color: black;">(${ restaurantContent.avgRate })</span>
 		                                		
 			                                </span>
                                 		</c:when>
@@ -63,15 +55,15 @@
 			      			 	<div class = "home-star-rate-box">
                                    <p class="home-star-rate-text">가격만족도</p>
 	                                	<c:choose>
-		                                  	<c:when test="${ reviewContent.priceSatisfaction ne null and reviewContent.priceSatisfaction ne 0}">
+		                                  	<c:when test="${ restaurantContent.avgPriceSatisRate ne null and restaurantContent.avgPriceSatisRate ne 0}">
 			                                  	<span class="home-star-rate-star">
-			                                	<c:forEach var="i" begin="1" end="${ reviewContent.priceSatisfaction }" >
+			                                	<c:forEach var="i" begin="1" end="${ restaurantContent.avgPriceSatisRate }" >
 			                                		<i class="star-rate-icon icon_star"></i>
 			                                	</c:forEach>
 			                                	
-			                               		<c:forEach var="i" begin="${reviewContent.priceSatisfaction + 1 }" end="5">
+			                               		<c:forEach var="i" begin="${restaurantContent.avgPriceSatisRate + 1 }" end="5">
 			                               			<i class="star-rate-icon icon_star_alt"></i>
-			                               		</c:forEach> <span style = "color: black;">(${ reviewContent.priceSatisfaction })</span>
+			                               		</c:forEach> <span style = "color: black;">(${ restaurantContent.avgPriceSatisRate })</span>
 		                               			</span>
 	                               			</c:when>
 	                               			<c:otherwise>
@@ -82,20 +74,34 @@
                          		</div>
                          		
                               </li>
-			      			  
-			      			  <li class = "home-review-last-child">
-			      			  		<p class = "home-review-text-title">리뷰내용</p>
-			      			  		<c:choose>
-			      			  			<c:when test = "${reviewContent.content ne null}">
-			      			  				<p class = "home-review-text">${reviewContent.content}</p>
-			      			  			</c:when>
-			      			  			
-			      			  			<c:otherwise>
-			      			  				<p class = "home-review-text">리뷰 내용 없음</p>
-			      			  			</c:otherwise>
-			      					</c:choose>
-			      			  </li>
 			      			
+			      			
+			      			
+			      	
+							<li>
+								<span class="icon_pin_alt"></span> ${restaurantContent.address}
+							</li>
+							<c:if test="${!empty restaurantContent.tel }">
+								<li><span class="icon_phone"></span> ${ restaurantContent.tel}</li>
+							</c:if>
+							<c:if test="${empty restaurantContent.tel}">
+								<li><span class="icon_phone"></span> 정보 없음</li>
+							</c:if>
+							<li>
+								<span class="icon_archive_alt"></span> 
+								누적 리뷰수 : 
+								<text style="font-weight: bold;">${restaurantContent.numOfReviews }</text>
+							</li>
+
+							<div class="home-review-text">
+								<c:if test="${!empty restaurantContent.operationHour }">
+									<div class="home-review-text">${ restaurantContent.operationHour}
+									</div>
+								</c:if>
+								<c:if test="${empty restaurantContent.operationHour }">
+									<div class="home-review-text">정보없음</div>
+								</c:if>
+							</div>
 			      			  
 			      		  </ul>
 					</div>
@@ -103,5 +109,6 @@
 				</div>     
 			</div>
 		</div>
+	
 	</c:forEach>
 </section>

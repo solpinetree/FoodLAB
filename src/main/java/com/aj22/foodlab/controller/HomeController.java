@@ -62,13 +62,34 @@ public class HomeController {
 	}
 	
 	
+	@RequestMapping(value = "/loadRestaurantList", produces = "application/text;charset=utf8")
+	public String getReviewByCategory(Model model) throws SQLException {
+		
+		System.out.println("RestaurantList");
+		//오늘의 서비스왕 관련 메서드
+		List<RestaurantDTO> restaurantByAvgRate = restaurantService.selectListWithLimit(0, 3); // 3개만 가져옴
+		
+
+		//오늘의 서비스왕 관련 model
+		model.addAttribute("restaurantByAvgRate", restaurantByAvgRate);
+
+		return "home/restaurant-avgRate-listing";
+
+	}
+	
+	
+	
+	
 	//index.jsp 메인화면에서 category에 따른 탭 나누는 부분
 	@RequestMapping(value = "/loadReviewList", produces = "application/text;charset=utf8")
 	public String getReviewByCategory(@RequestParam("category") String category, Model model) throws SQLException {
 		
+		//오늘의 서비스왕 관련 메서드
+		List<RestaurantDTO> restaurantByAvgRate = restaurantService.selectListWithLimit(0, 3); // 3개만 가져옴
 		
-		System.out.println("loadReviewList");
-		System.out.println("loadReviewController");
+		
+		
+		// 푸드로그 관련 메서드
 		List<Review> reviewByRestaurantCategoryList  = reviewService.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
 		List<RestaurantDTO> restaurantList = new ArrayList<>();
 		List<ReviewImages> reviewImageByReviewId = new ArrayList<>();
@@ -79,6 +100,11 @@ public class HomeController {
 			reviewImageByReviewId = reviewImageService.findByReviewId(r.getReviewId());
 		}
 		
+		
+		//오늘의 서비스왕 관련 model
+		model.addAttribute("restaurantByAvgRate", restaurantByAvgRate);
+		
+		//푸드로그 관련 model
 		model.addAttribute("reviewImageByReviewId", reviewImageByReviewId); // imageURL
 		model.addAttribute("restaurantList", restaurantList); // restaurant Name
 		model.addAttribute("reviewByRestaurantCategoryList", reviewByRestaurantCategoryList); // Review

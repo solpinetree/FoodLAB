@@ -61,6 +61,22 @@ public class RestaurantService {
 		return dto;
 	}
 	
+	public List<RestaurantDTO> selectListWithLimit(int startidx, int listSize) throws SQLException{
+		List<Restaurant> restaurants = null;
+		List<RestaurantDTO> dto = new ArrayList<>();
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurants = dao.selectList(startidx, listSize);
+		
+		for(Restaurant restaurant : restaurants) {
+			dto.add(convertToDto(restaurant));
+		}
+		
+		dao.close();
+		return dto;
+		
+	}
+	
 	public List<RestaurantDTO> findByCategory(String category) throws SQLException{
 		List<Restaurant> restaurants = null;
 		List<RestaurantDTO> dto = new ArrayList<>();
