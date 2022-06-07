@@ -162,23 +162,21 @@
 			                
 			               
                         </ul>
+                     </div>
+                 </div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-12 col-md-12">
                         <div class="tab-content">
                         	<div class="tab-pane active" id="${category}" role="tabpanel">
-                        		<div class="row">
-                        		
-			                        <div id = "reviews-content">
+                        		<div id = "reviews-content">
 						               
-						            </div>
 						        </div>
-					        </div>
-				        </div>
-			           
-                    </div>
-                
-                	
-                </div>
-          	</div>
-          </div>
+						    </div>
+					    </div>
+				</div> 
+            </div>
+           </div>
     </section>
     	
     
@@ -194,7 +192,7 @@
                </div>
 
                <div class = "col-lg-8 col-md-8">
-               		<a href = "${root}/chat/chat"><img src="resources/img/logos/FoodlabOpenChatLogo.PNG" alt="Foodlab OpenChat Logo"></a>
+               		<a href = "${root}/chat/chat"><img src="${resources}/img/logos/FoodlabOpenChatLogo.png" alt="Foodlab OpenChat Logo"></a>
                </div>
                
                <div class = "col-lg-4 col-md-4">

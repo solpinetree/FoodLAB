@@ -5,7 +5,6 @@
 <section class = "current-review-6">	
 	<c:set var="reviewURL" value="${reviewImageByReviewId}" />
 	<c:set var="restaurant" value="${restaurantList}" />
-	
 	<c:forEach var = "reviewContent" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1" varStatus="status">
 	
          	
@@ -20,10 +19,10 @@
 				<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
 				<c:choose>
 					<c:when test = "${reviewURL[status.index].imgUrl ne null}">
-						<div class="FoodLog__item__pic set-bg" data-setbg="${resources}/${reviewURL[status.index].imgUrl}"></div>
+						<div class="FoodLog__item__pic set-bg" data-setbg="${reviewURL[status.index].imgUrl}"></div>
 					</c:when>
 					<c:otherwise>
-						<div class="FoodLog__item__pic set-bg" data-setbg="${resources}/${reviewContent.dummyImg}"></div>
+						<div class="FoodLog__item__pic set-bg" data-setbg="${reviewContent.dummyImg}"></div>
 					</c:otherwise>
 				</c:choose>
 				
@@ -49,7 +48,7 @@
 			                                	</c:forEach>
 		                                		<c:forEach var="i" begin="${reviewContent.rate + 1 }" end="5">
 		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach> <span>(${ reviewContent.rate })</span>
+		                                		</c:forEach> <span style = "font-color: black;">(${ reviewContent.rate })</span>
 		                                		
 			                                </span>
                                 		</c:when>
@@ -72,7 +71,7 @@
 			                                	
 			                               		<c:forEach var="i" begin="${reviewContent.priceSatisfaction + 1 }" end="5">
 			                               			<i class="star-rate-icon icon_star_alt"></i>
-			                               		</c:forEach> <span>(${ reviewContent.priceSatisfaction })</span>
+			                               		</c:forEach> <span style = "font-color: black;">(${ reviewContent.priceSatisfaction })</span>
 		                               			</span>
 	                               			</c:when>
 	                               			<c:otherwise>
@@ -85,7 +84,7 @@
                               </li>
 			      			  
 			      			  <li class = "home-review-last-child">
-			      			  		<p class = "review-text-title">리뷰내용</p>
+			      			  		<p class = "home-review-text-title">리뷰내용</p>
 			      			  		<c:choose>
 			      			  			<c:when test = "${reviewContent.content ne null}">
 			      			  				<p class = "home-review-text">${reviewContent.content}</p>
