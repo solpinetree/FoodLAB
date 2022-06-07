@@ -52,14 +52,15 @@ public class ReviewService {
 		
 		
 		
-		int res_id = restaurantService.getRestaurantIdFromName(keyword);
-		int member_id = memberService.getMemberIdFromName(keyword);					
+			int res_id = restaurantService.getRestaurantIdFromName(keyword);
+			int member_id = memberService.getMemberIdFromName(keyword);			
+			ReviewDAO dao = new ReviewDAOImpl();			
 		
-		int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
+			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
-		return pagination;
+			return pagination;
 		
 		
 	}
