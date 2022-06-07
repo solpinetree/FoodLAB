@@ -66,7 +66,7 @@ public class RestaurantService {
 		List<RestaurantDTO> dto = new ArrayList<>();
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		restaurants = dao.selectList(startidx, listSize);
+		restaurants = dao.selectListWithLimit(startidx, listSize);
 		
 		for(Restaurant restaurant : restaurants) {
 			dto.add(convertToDto(restaurant));
