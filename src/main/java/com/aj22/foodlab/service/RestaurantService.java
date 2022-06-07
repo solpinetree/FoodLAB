@@ -202,11 +202,11 @@ public class RestaurantService {
 		return cnt;
 	}
 	
-	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
+	public int RestaurantAvgRateUpdate(int id, float avg_rate, float avgPriceSatisRate) throws SQLException{
 		int cnt = 0;
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
-		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate);
+		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate, avgPriceSatisRate);
 		dao.close();
 		
 		return cnt;
