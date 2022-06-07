@@ -33,7 +33,7 @@
 							style="border-radius: 40px 40px 0 0;">
 					</c:otherwise>
 				</c:choose>
-				
+					
 							<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
 		
 								<div class="listing__item__pic__btns">
@@ -52,7 +52,7 @@
 									</c:if>
 						   		</div>
 
-						<	/div>
+						</div>
 
 
 
