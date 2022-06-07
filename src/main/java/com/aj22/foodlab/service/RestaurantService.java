@@ -151,13 +151,9 @@ public class RestaurantService {
 		id = dao.getRestaurantIDByName(name);
 		dao.close();
 		if(id!=null) {
-		return id;
+			return id;
 		}
-		else 
 		return 1;
-		
-		
-		
 	}
 	
 	public String getRestaurantNameById(int id) throws SQLException {

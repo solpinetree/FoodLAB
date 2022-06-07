@@ -59,12 +59,12 @@ public class ReviewService {
 			logger.info(option);
 			int res_id = restaurantService.getRestaurantIdFromName(keyword);
 			int member_id = memberService.getMemberIdFromName(keyword);
-			logger.info(Integer.toString(res_id));
-			logger.info(Integer.toString(member_id));
+			logger.info("res_id in getPaginationBySearchKeywordContent: "+Integer.toString(res_id));
+			logger.info("member_id in getPaginationBySearchKeywordContent: "+Integer.toString(member_id));
 		
 			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
 			
-			logger.info(Integer.toString(numOfRecords));
+			logger.info("numOfRecords in getPaginationBySearchKeywordContent: " +Integer.toString(numOfRecords));
 			
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
@@ -72,6 +72,19 @@ public class ReviewService {
 			return pagination;
 		
 		
+	}
+	
+	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
+		
+
+		int cnt = 0;
+		
+		ReviewDAO dao = new ReviewDAOImpl();
+		cnt = dao.countRecords(name,member_id,restaruant_id,option);
+		dao.close();
+		
+		return cnt;
+
 	}
 	
 	public int getNumOfRecordByName(String keyword, String option) throws SQLException{
@@ -192,7 +205,9 @@ public class ReviewService {
 	
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
-		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
+		
+		logger.info("in setReviewWriterAndRestaurantAndLikesAndTimes review.getREstaurantId() = ? " + review.getRestaurantId());;
+		dto.setRestaurant(review.getRestaurantId() == 0? null : restaurantService.selectById(review.getRestaurantId()));
 		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {
@@ -286,19 +301,6 @@ public class ReviewService {
 		return false;
 	}
 	
-	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
-		
 
-		int cnt = 0;
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		cnt = dao.countRecords(name,member_id,restaruant_id,option);
-		dao.close();
-		
-		return cnt;
-
-		
-
-	}
 	
 }

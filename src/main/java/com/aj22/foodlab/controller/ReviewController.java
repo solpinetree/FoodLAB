@@ -77,7 +77,6 @@ public class ReviewController {
 			model.addAttribute("reviews", reviewService.selectList(pagination, search, option));
 			model.addAttribute("search", search);
 			model.addAttribute("numOfResults", reviewService.getNumOfRecordByName(search, option));
-			logger.info("controlleroption="+option);
 		
 		return "review/reviews";
 	}
