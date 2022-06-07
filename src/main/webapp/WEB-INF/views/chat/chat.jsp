@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="${resources}/css/chat/chat.css">
 
 <head>
-    <title>Chatrooms</title>
+    <title>푸드톡</title>
 	<link rel="stylesheet" href="${resources}/css/chat/chat-divide.css"> 
 	<link rel="stylesheet" href="${resources}/css/chat/chat.css">
 </head>

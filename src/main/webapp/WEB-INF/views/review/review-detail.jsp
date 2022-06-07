@@ -157,39 +157,6 @@
                        		<%@ include file="../map/map.jsp"%>
                			 </c:if>
                			 
-                        <div class="blog__sidebar__recent">
-                            <h5>최근 게시물</h5>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="${resources }/img/blog/recent-1.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> 샐러드</span>
-                                    <h6>그릴드 치킨 바질 샐러드</h6>
-                                    <p><i class="fa fa-clock-o"></i> 5/16/2022</p>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="${resources}/img/blog/recent-2.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> 퓨전한식</span>
-                                    <h6>대나무밥 써니사이드업</h6>
-                                    <p><i class="fa fa-clock-o"></i> 5/17/22</p>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="${ resources}/img/blog/recent-3.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <span><i class="fa fa-tags"></i> 디저트</span>
-                                    <h6>달지 않은 마카롱</h6>
-                                    <p><i class="fa fa-clock-o"></i> 5/18/22</p>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

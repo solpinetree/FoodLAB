@@ -204,6 +204,20 @@ public class ReviewService {
 		return dto;
 	}
 	
+	public ReviewDTO selectForList(int reviewId) throws SQLException{
+		Review review = null;
+		ReviewDTO dto = null;
+
+		ReviewDAO dao = new ReviewDAOImpl();
+		review = dao.select(reviewId);
+		dao.close();
+		
+		dto = new ReviewDTO(review);
+		dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
+		
+		return dto;
+	}
+	
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
 		

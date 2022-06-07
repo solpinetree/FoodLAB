@@ -64,7 +64,7 @@ public class CommentController {
                 if(username != null) {
                 	html += 
                 			"<button type='button' class='reply-btn' id="+ dto.getCommentId() + ">"
-    					+		"<i class='fa fa-reply'></i> 대댓글 달기"
+    					+		"<i class='fa fa-reply'></i> reply"
     					+	"</button>";
                 }
                 
@@ -100,7 +100,7 @@ public class CommentController {
 	       if(isMember) {
 	           html += 
             		"<button type='button' class='reply-btn' id="+ comment.getCommentId() + ">"
-				+		"<i class='fa fa-reply'></i> 대댓글 달기"
+				+		"<i class='fa fa-reply'></i> reply"
 				+	"</button>";
 	       }
 	                

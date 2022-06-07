@@ -41,7 +41,7 @@ public class LikesService {
 		dao.close();
 		
 		for(int id : reviewIds) {
-			reviews.add(reviewService.select(id));
+			reviews.add(reviewService.selectForList(id));
 		}
 		
 		return reviews;
