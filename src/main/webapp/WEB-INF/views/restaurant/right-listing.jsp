@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
-
+<link rel="stylesheet" href='${resources }/css/main/main.css?after'>
 <section class="listing nice-scroll" id="restaurantList">
 	<div id="resultNumDiv">
 		<c:if test="${!empty category}">
@@ -46,7 +46,7 @@
 
 
 				<div class="listing__item__text" style="cursor:pointer" onclick="location.href='${root}/restaurants/detail?restaurantId=${restaurant.restaurantId}'">
-					<div class="listing__item__text__inside">
+					<div class="">
 						<h5>${restaurant.name}</h5>
 						<!--
 						<div class="listing__item__text__rating">
