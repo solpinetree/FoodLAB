@@ -76,13 +76,11 @@ public class ReviewController {
 			throws SQLException {
 		
 			Pagination pagination = reviewService.getPaginationBySearchKeywordContent(currentPage, search, option);
-			model.addAttribute("pagination", pagination);			
+			model.addAttribute("pagination", pagination);
 			model.addAttribute("reviews", reviewService.selectList(pagination, search, option));
 			model.addAttribute("search", search);
 			model.addAttribute("numOfResults", reviewService.getNumOfRecordByName(search, option));
-			logger.info(option);
-			logger.info(Integer.toString(pagination.getNumOfRecords()));
-
+		
 		return "review/reviews";
 	}
 

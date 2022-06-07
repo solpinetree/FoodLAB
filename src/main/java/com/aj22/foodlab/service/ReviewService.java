@@ -256,13 +256,13 @@ public class ReviewService {
 		return false;
 	}
 	
-	public int getNumOfRecordByNameContent(String name, String option, int restaruant_id, int member_id) throws SQLException {
+	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
 		
 
 		int cnt = 0;
 		
 		ReviewDAO dao = new ReviewDAOImpl();
-		cnt = dao.countRecords(name,member_id,restaruant_id, option);
+		cnt = dao.countRecordsByName(name, option,member_id,restaruant_id);
 		dao.close();
 		
 		return cnt;
