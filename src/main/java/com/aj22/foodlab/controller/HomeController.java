@@ -54,14 +54,7 @@ public class HomeController {
 		
 		model.addAttribute("categories", restaurantService.getCategories());
 		
-		
-		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
+
 		
 		return "/index";
 	}
@@ -86,7 +79,9 @@ public class HomeController {
 		model.addAttribute("restaurantName", restaurantName); // restaurant Name
 		model.addAttribute("reviewByRestaurantCategoryList", reviewByRestaurantCategoryList); // Review
 		
+
 		return "home/review-current-listing";
+
 	}
 	
 }

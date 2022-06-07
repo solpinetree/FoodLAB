@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aj22.foodlab.domain.Chat;
 import com.aj22.foodlab.dto.ChatDTO;
@@ -73,21 +74,20 @@ public class ChatController {
 		return "chat/chat-divide";
 	}
 	
-	@PostMapping("/chatroom/insert")
+	@RequestMapping("/chatroom/insert")
+	@ResponseBody
 	public String chatInsertforDB(@RequestParam Map<String, Object> map) throws SQLException, ParseException {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		System.out.println(timeStamp);
 		
 		Integer chatroomId = Integer.parseInt((String) map.get("chatroomId"));
 		Integer memberId = Integer.parseInt((String) map.get("memberId"));
-		System.out.println("MemberId : " +  memberId);
 		String content = (String) map.get("chatContent");
 		
 		Chat chat = new Chat(chatroomId , memberId, content, null);
 		
 		int insertchk = chatService.insert(chat);
 		
-		System.out.println("insert check : " + insertchk);
 		
 		return null;
 		

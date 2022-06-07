@@ -129,6 +129,15 @@ public class RestaurantService {
 		return id;
 	}
 	
+	public String getRestaurantNameById(int id) throws SQLException {
+		String restaurantName = null;
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		restaurantName = dao.getRestaurantNameById(id);
+		dao.close();
+		return restaurantName;
+		
+	}
+	
 	
 	public Pagination getPaginationBySearchKeyword(int currentPage, String keyword) throws SQLException{
 		
@@ -188,6 +197,16 @@ public class RestaurantService {
 		
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		cnt = dao.countRecordsByName(name);
+		dao.close();
+		
+		return cnt;
+	}
+	
+	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
+		int cnt = 0;
+		
+		RestaurantDAO dao = new RestaurantDAOImpl();
+		cnt = dao.RestaurantAvgRateUpdate(id, avg_rate);
 		dao.close();
 		
 		return cnt;

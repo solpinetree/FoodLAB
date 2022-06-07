@@ -78,28 +78,39 @@
                             
                             <%-- 하나의 리뷰 --%>
                             <c:forEach var="review" items="${ reviews}">
-	                            <div class="listing__details__comment__item">
-	                                <div class="listing__details__comment__item__pic">
-	                                    <img src="${resources}/img/defaultProfile.jpeg" alt="">
-	                                </div>
-	                                <div class="listing__details__comment__item__text">
-	                                    <div class="listing__details__comment__item__rating">
-	                                 		<c:if test="${ review.rate ne null }">
-	                                   			<span class="star-rate-star">
-				                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
-				                                		<i class="star-rate-icon icon_star"></i>
-				                                	</c:forEach>
-			                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
-			                                			<i class="star-rate-icon icon_star_alt"></i>
-			                                		</c:forEach>
-				                                </span>
-                                			</c:if>
-	                                    </div>
-	                                    <span>${review.createdAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
-	                                    <h5>${review.writer.username }</h5>
-	                                    <p>${review.content }</p>
-	                                </div>
-	                            </div>
+                            	<a href="${root }/reviews/review?reviewId=${review.reviewId}">
+		                            <div class="listing__details__comment__item">
+		                                <div class="listing__details__comment__item__pic">
+		                                    <img src="${resources}/img/defaultProfile.jpeg" alt="">
+		                                </div>
+		                                <div class="listing__details__comment__item__text">
+		                                    <div class="listing__details__comment__item__rating">
+		                                 		<c:if test="${ review.rate ne null }">
+		                                   			<span class="star-rate-star">
+					                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
+					                                		<i class="star-rate-icon icon_star"></i>
+					                                	</c:forEach>
+				                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
+				                                			<i class="star-rate-icon icon_star_alt"></i>
+				                                		</c:forEach>
+					                                </span>
+	                                			</c:if>
+		                                    </div>
+	                                		<c:choose>
+												<c:when test="${review.isDummy eq 0 }">
+													 <span>${review.createdAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
+		                                   			 <h5>${review.writer.username }</h5>
+												</c:when>
+												<c:otherwise>
+													 <span>${review.dummyCreatedAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
+		                                   			 <h5>${review.dummyUsername }</h5>
+												</c:otherwise>
+											</c:choose>
+		                                   
+		                                    <p>${review.content }</p>
+		                                </div>
+		                            </div>
+	                            </a>
                             </c:forEach>
                             <%-- 하나의 리뷰 --%>
                         </div>
@@ -124,6 +135,7 @@
                                					</c:forEach>
                                 			</span>
                              			</c:if>
+                             			
                              			<c:if test="${ restaurant.avgRate eq 0 }">
                              				<span class="star-rate-star">데이터를 수집 중 입니다.</span>
                              			</c:if>

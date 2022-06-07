@@ -276,6 +276,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		return cnt;
 	}
 	
+	@Override
 	public int countRecords_category(String category) throws SQLException {
 		int cnt = 0;
 		
@@ -290,5 +291,37 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		
 		return cnt;
 	}
+	@Override
+	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
+		int cnt = 0;
+		
+		String sql = "update restaurant set avg_rate = ? where restaurant_id = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setFloat(1,  avg_rate);
+		pstmt.setInt(2, id);
+		
+		cnt = pstmt.executeUpdate();
+		return cnt;
+	}
+	
+	@Override
+	public String getRestaurantNameById(int id) throws SQLException{
+		String restaurantName = null;
+		
+		String sql = "select name from restaurant where restaurant_id=?";
+		
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			restaurantName = rs.getString("name");
+		}
+		
+		return restaurantName;
+		
+	}
+
 
 }
