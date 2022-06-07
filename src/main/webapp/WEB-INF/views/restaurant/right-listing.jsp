@@ -20,28 +20,39 @@
 			<!--  식당 하나 div 시작 -->
 			<div class="listing__item">
 
-				<div class="listing__item__pic set-bg"
-					style="background-image:url(${restaurant.imgUrl});"
-					style="border-radius: 40px 40px 0 0;">
-					<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
+				
+				<c:choose>
+					<c:when test = "${restaurant.imgUrl ne null}">
+						<div class="listing__item__pic set-bg"
+							style="background-image:url(${restaurant.imgUrl});"
+							style="border-radius: 40px 40px 0 0;">
+					</c:when>
+					<c:otherwise>
+						<div class="listing__item__pic set-bg"
+							style="background-image:url('${resources}/img/no-image/noimageavailable.png');"
+							style="border-radius: 40px 40px 0 0;">
+					</c:otherwise>
+				</c:choose>
+				
+							<div class="listing__item__pic__tag" style="background: #f9adbd">${restaurant.category}</div>
+		
+								<div class="listing__item__pic__btns">
+									<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
+										<span class="icon_zoom-in_alt"></span>
+									</a> 
+									<c:if test="${!empty sessionScope.sessionMember.username}">
+										<script type="text/javascript">
+											if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
+												drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
+											}else{
+												removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
+											}			
+										</script>
+									<span class="heartDiv${restaurant.restaurantId }"></span>
+									</c:if>
+						   		</div>
 
-					<div class="listing__item__pic__btns">
-						<a href="javascript:drawMarker('${restaurant.address }', '${restaurant.name }')">
-							<span class="icon_zoom-in_alt"></span>
-						</a> 
-						<c:if test="${!empty sessionScope.sessionMember.username}">
-							<script type="text/javascript">
-								if(${restaurant.memberIdsArchivingThis}.includes(${sessionScope.sessionMember.id})){
-									drawHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})
-								}else{
-									removeHeart(${restaurant.restaurantId},${sessionScope.sessionMember.id})								
-								}			
-							</script>
-							<span class="heartDiv${restaurant.restaurantId }"></span>
-						</c:if>
-					</div>
-
-				</div>
+						<	/div>
 
 
 
@@ -91,13 +102,6 @@
                                 		
                                     </li>
                                 </ul>
-						
-						
-						
-						
-						
-						
-						
 							</div>
 						</div>
 									

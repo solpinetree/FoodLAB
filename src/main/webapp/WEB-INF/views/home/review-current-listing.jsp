@@ -57,7 +57,7 @@
 			                                	</c:forEach>
 		                                		<c:forEach var="i" begin="${reviewContent.rate + 1 }" end="5">
 		                                			<i class="star-rate-icon icon_star_alt"></i>
-		                                		</c:forEach> <span style = "color: black;">(${ reviewContent.rate })</span>
+		                                		</c:forEach> <span style = "color: black;">(${ reviewContent.rate }.0)</span>
 		                                		
 			                                </span>
                                 		</c:when>
@@ -80,7 +80,7 @@
 			                                	
 			                               		<c:forEach var="i" begin="${reviewContent.priceSatisfaction + 1 }" end="5">
 			                               			<i class="star-rate-icon icon_star_alt"></i>
-			                               		</c:forEach> <span style = "color: black;">(${ reviewContent.priceSatisfaction })</span>
+			                               		</c:forEach> <span style = "color: black;">(${ reviewContent.priceSatisfaction }.0)</span>
 		                               			</span>
 	                               			</c:when>
 	                               			<c:otherwise>
