@@ -67,7 +67,6 @@
 	    <!-- Js Plugins -->
 	 	<%@ include file="../includes/plugins.jsp" %>
 	 	<script type="text/javascript" src="${resources}/js/nav-text-in-black.js"></script>
-        <script type="text/javascript" src="${resources}/js/mypagescripts.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
