@@ -610,7 +610,8 @@ legend {
       align-items: center;
   font-family: 'Poppins', sans-serif;
   background-position: center center;
-  width:42%;
+  width:38%;
+  margin-left: 20%;
 }
 
 .s003 form {
