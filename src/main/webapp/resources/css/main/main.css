@@ -27,19 +27,21 @@ ul{
   	overflow: auto;
   	
 }
+
+.FoodLog__item__pic {
+	height: 260px;
+	position: relative;
+	cursor: pointer;
+	border-top: 1px solid #f9adbd;
+	border-bottom: 1px solid #f9adbd;
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+}
 .item_margin{
 	margin: 10px 0px;
 }
 
-.FoodLog__item__pic {
-	height: 260px;
-	cursor: pointer;
-	padding-left: 5px;
-    padding-right: 5px;
-    width: 100%;
-    
-   
-}
 
 .home-star-rate-li .home-star-rate-box{
 	float: left;
@@ -226,11 +228,7 @@ button:focus {
 	
 	
 }
-.FoodLog__item__pic {
-	height: 260px;
-	position: relative;
-	cursor: pointer;
-}
+
 /* 占식댐옙占싱몌옙 */
 .FoodLog__item__text__inside h5 {
 	font-size: 20px;

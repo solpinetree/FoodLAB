@@ -19,7 +19,7 @@
 					</c:when>
 					<c:otherwise>
 						<!-- default 이미지 -->
-						<img class="FoodLog__item__pic" src="">
+						<img class="FoodLog__item__pic" src="${resources}/img/no-image/noimageavailable.png">
 					</c:otherwise>
 				</c:choose>
 				

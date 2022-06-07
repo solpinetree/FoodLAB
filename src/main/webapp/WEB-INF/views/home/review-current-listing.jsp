@@ -17,12 +17,21 @@
 					</div>
 				</div>
 				<!-- 리뷰 썸네일 review_images url 하고 연결시켜줘야함 dao 메서드 하나 필요 -->
+				
+				<!-- review URL 과 dummy img URL 둘 중 하나가 null 이 아닐때 -->
 				<c:choose>
-					<c:when test = "${reviewURL[status.index].imgUrl ne null}">
-						<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
+					<c:when test = "${reviewURL[status.index].imgUrl ne null or reviewContent.dummyImg ne null}">
+						<c:choose>
+							<c:when test = "${reviewURL[status.index].imgUrl ne null}">
+								<img class="FoodLog__item__pic" src="${reviewURL[status.index].imgUrl}">
+							</c:when>
+							<c:otherwise>
+								<img class="FoodLog__item__pic" src="${reviewContent.dummyImg}">
+							</c:otherwise>
+						</c:choose>
 					</c:when>
 					<c:otherwise>
-						<img class="FoodLog__item__pic" src="${reviewContent.dummyImg}">
+						<img class="FoodLog__item__pic" src="${resources}/img/no-image/noimageavailable.png">
 					</c:otherwise>
 				</c:choose>
 				
