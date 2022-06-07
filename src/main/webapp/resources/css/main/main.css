@@ -10,12 +10,13 @@ ul{
 	flex-wrap : wrap;
 	
 	flex-direction: row;
-  	height: 100%;
-  	
+
   	
 }
 .FoodLog__Item{
+	height: 100%;
 	border-radius: 20px;
+
 	border: 1px solid #f9adbd;
 	
 	
@@ -25,6 +26,9 @@ ul{
 	flex: 1 1 33%; /* flex: 1 1 0 */
   	overflow: auto;
   	
+}
+.item_margin{
+	margin: 10px 0px;
 }
 
 .FoodLog__item__pic {

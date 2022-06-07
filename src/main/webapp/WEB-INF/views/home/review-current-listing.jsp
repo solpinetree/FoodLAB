@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/path.jsp"%>
 
-<section class = "current-review-6">	
+<div class = "current-review-6">	
 	<c:set var="reviewURL" value="${reviewImageByReviewId}" />
 	<c:set var="restaurant" value="${restaurantList}" />
 	<c:forEach var = "reviewContent" items = "${reviewByRestaurantCategoryList}" begin = "0" end = "5" step = "1" varStatus="status">
 	
          	
-          <div class="col-lg-4 col-md-4">
+          <div class="col-lg-4 col-md-4 item_margin">
 			<div class="FoodLog__Item">
 				<div class = "FoodLog__Title">
 					<div class = "FoodLog__item__text__inside">
@@ -104,4 +104,4 @@
 			</div>
 		</div>
 	</c:forEach>
-</section>
+</div>
