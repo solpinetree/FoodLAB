@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aj22.foodlab.dao.review.image.ReviewImagesDAO;
 import com.aj22.foodlab.dao.review.image.ReviewImagesDAOImpl;
-import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.domain.ReviewImages;
 import com.aj22.foodlab.dto.FileDTO;
 import com.aj22.foodlab.util.FileUpload;
@@ -33,7 +32,7 @@ public class ReviewImagesService {
 		return res;
 	}
 	
-	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, Review review) throws IOException, SQLException {
+	public void saveReviewImages(MultipartHttpServletRequest multipartRequest, int reviewId) throws IOException, SQLException {
 		multipartRequest.setCharacterEncoding("utf-8");
 		Iterator<String> fileNames = multipartRequest.getFileNames();	
 		
@@ -42,7 +41,7 @@ public class ReviewImagesService {
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
 			if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
-				save(new ReviewImages(review.getReviewId(), s3Service.upload(mFile, "review"), review.getRestaurantId()));
+				save(new ReviewImages(reviewId, s3Service.upload(mFile, "review")));
 			}
 		}
 	}

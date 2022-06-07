@@ -21,8 +21,4 @@ public class Review {
 	private Timestamp updatedAt;
 	private Integer writerId;
 	private Integer restaurantId;
-	private Integer isDummy;
-	private String dummyUsername;
-	private String dummyImg;
-	private String dummyCreatedAt;
 }

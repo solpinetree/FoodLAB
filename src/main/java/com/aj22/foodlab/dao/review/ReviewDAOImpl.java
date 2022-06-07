@@ -117,7 +117,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return cnt;
 	}
 
-	
 	@Override
 	public Review select(int id) throws SQLException {
 		
@@ -166,13 +165,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		Timestamp updatedAt = rs.getTimestamp("updatedAt");
 		int writerId = rs.getInt("member_id");
 		int restaurantId = rs.getInt("restaurant_id");
-		int isDummy = rs.getInt("is_dummy");
-		String dummyUsername = rs.getString("dummy_username");
-		String dummyImg = rs.getString("dummy_img");
-		String dummyCreatedAt = rs.getString("dummy_createdAt");
 		
 		review = new Review(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
-				 writerId, restaurantId, isDummy, dummyUsername, dummyImg, dummyCreatedAt);
+				 writerId, restaurantId);
 	
 		return review;
 	}
@@ -381,24 +376,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 
-	@Override
-	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
-		List<Review> reviewsByCategory = new ArrayList<>();
-		
-		String sql = "select * from review rev "
-				+ "left Join restaurant res ON "
-				+ "rev.restaurant_id = res.restaurant_id "
-				+ "where res.category = ? order by createdAt asc";
-		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, category);
-		rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			reviewsByCategory.add(createFromResultSet(rs));
-		}
-		return reviewsByCategory;
-		
-	}
 
 }

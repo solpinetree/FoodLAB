@@ -219,14 +219,6 @@ public class ReviewService {
 		return avg_rate;
 	}
 	
-	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
-		List<Review> reviewsByCategory = new ArrayList<>();
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		reviewsByCategory = dao.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
-		return reviewsByCategory;
-	
-	}
 	public Pagination getPagination(int currentPage) throws SQLException {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, getNumOfRecord(), NumOfRecordsPerPage);
