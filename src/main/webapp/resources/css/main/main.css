@@ -15,7 +15,7 @@ ul{
 }
 .FoodLog__Item{
 	height: 100%;
-	border-radius: 20px;
+	order-radius: 20px;
 
 	border: 1px solid #f9adbd;
 	cursor: pointer;

@@ -2,8 +2,7 @@
 <%@ include file="includes/common.jsp" %>
 
 <head>
-    <title>Food LAB</title>
-    
+    <title>푸드랩</title>
     <link rel="stylesheet" href='${resources }/css/main/main.css'>
 </head>
 
@@ -15,28 +14,35 @@
     </div> 
 
     <!-- Header Section Begin -->
-	<jsp:include page="includes/header.jsp"/>
+	<jsp:include page="includes/header.jsp">
+        <jsp:param name="isIndex" value="true"/>
+    </jsp:include>
     <!-- Header Section End -->
  
 
     <!-- Food Lab Main page Background -->
-    <section class="hero set-bg" data-setbg="resources/img/hero/hero-bg.jpg">
+    <section class="hero" style="min-height:100%;  background-size: cover; background-image: url('${resources}/img/hero/main-background.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero__text">
                         <div class="section-title-main">
-                            <h2 class="welcome-main-text">맛집 연구소</h2>
+                            <h2 class="welcome-main-text"></h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Js Plugins -->
+    <%@ include file="includes/plugins.jsp" %>
+
+</body>
     
 
 	<!-- 오늘의 서비스왕  -->
-	<section class = "most-search spad">
+	<%--<section class = "most-search spad">
 		<div class = "container">
 			<div class = "row">
 				<div class = "col-lg-12">
@@ -165,8 +171,7 @@
 
     <!-- Js Plugins -->
 	<%@ include file="includes/plugins.jsp" %>
-</body>
+</body> --%>
 <script type = "text/javascript" src = "${resources}/js/main/reviewRequest.js"></script>
 <script type = "text/javascript" src = "${resources}/js/main/restaurantRequest.js"></script>
-<script type = "text/javascript" src = "${resources}/js/main/slideshow.js"></script>
 </html>

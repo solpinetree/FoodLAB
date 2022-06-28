@@ -44,13 +44,7 @@ public class HomeController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws SQLException{
 		logger.info("index.jsp 진입");
-		
-		
-		
 		model.addAttribute("categories", restaurantService.getCategories());
-		
-
-		
 		return "/index";
 	}
 	

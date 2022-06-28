@@ -196,6 +196,7 @@ public class RestaurantService {
 		}else {
 			numOfRecords = getNumOfRecordOfCategory(category);
 		}
+
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
