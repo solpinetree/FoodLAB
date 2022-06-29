@@ -1,4 +1,4 @@
-package com.aj22.foodlab.dao.retaurant.menu;
+package com.aj22.foodlab.dao.restaurant.menu;
 
 import java.sql.SQLException;
 import java.util.List;

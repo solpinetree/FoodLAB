@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aj22.foodlab.dao.retaurant.archived.ArchivedRestaurantDAO;
-import com.aj22.foodlab.dao.retaurant.archived.ArchivedRestaurantDAOImpl;
+import com.aj22.foodlab.dao.restaurant.archived.ArchivedRestaurantDAO;
+import com.aj22.foodlab.dao.restaurant.archived.ArchivedRestaurantDAOImpl;
 import com.aj22.foodlab.domain.ArchivedRestaurant;
 import com.aj22.foodlab.dto.RestaurantDTO;
 

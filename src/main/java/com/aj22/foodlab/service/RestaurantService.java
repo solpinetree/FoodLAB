@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aj22.foodlab.controller.ReviewController;
-import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
-import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
-import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAO;
-import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAOImpl;
+import com.aj22.foodlab.dao.restaurant.RestaurantDAO;
+import com.aj22.foodlab.dao.restaurant.RestaurantDAOImpl;
+import com.aj22.foodlab.dao.restaurant.menu.RestaurantMenuDAO;
+import com.aj22.foodlab.dao.restaurant.menu.RestaurantMenuDAOImpl;
 import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.RestaurantMenu;
 import com.aj22.foodlab.dto.RestaurantDTO;

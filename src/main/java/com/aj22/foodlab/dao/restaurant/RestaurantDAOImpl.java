@@ -1,4 +1,4 @@
-package com.aj22.foodlab.dao.retaurant;
+package com.aj22.foodlab.dao.restaurant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

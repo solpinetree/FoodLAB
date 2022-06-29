@@ -1,4 +1,4 @@
-package com.aj22.foodlab.dao.retaurant.archived;
+package com.aj22.foodlab.dao.restaurant.archived;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aj22.foodlab.domain.ArchivedRestaurant;
-import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.util.ConnectionProvider;
 
 public class ArchivedRestaurantDAOImpl implements ArchivedRestaurantDAO{

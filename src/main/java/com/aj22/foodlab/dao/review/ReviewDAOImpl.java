@@ -14,13 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aj22.foodlab.controller.ReviewController;
-import com.aj22.foodlab.dao.member.MemberDAO;
-import com.aj22.foodlab.dao.member.MemberDAOImpl;
-import com.aj22.foodlab.dao.retaurant.RestaurantDAO;
-import com.aj22.foodlab.dao.retaurant.RestaurantDAOImpl;
-import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAO;
-import com.aj22.foodlab.dao.retaurant.menu.RestaurantMenuDAOImpl;
-import com.aj22.foodlab.domain.Restaurant;
 import com.aj22.foodlab.domain.Review;
 import com.aj22.foodlab.service.MemberService;
 import com.aj22.foodlab.service.RestaurantService;
