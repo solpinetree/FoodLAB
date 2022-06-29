@@ -1,214 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../includes/common.jsp"%>
+         pageEncoding="UTF-8" %>
+<%@ include file="../includes/common.jsp" %>
 
 <head>
-<title>푸드로그</title>
+    <title>푸드로그</title>
 
-<!-- search panel 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-<link href="${resources }/css/review/search-panel.css" rel="stylesheet" />
-<!-- search panel 끝 -->
-<link rel="stylesheet" href='${resources }/css/review/table.css'>
-<link rel="stylesheet" href='${resources }/css/review/pagination.css'>
+    <!-- search panel 시작 -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+    <link href="${resources }/css/review/search-panel.css" rel="stylesheet"/>
+    <!-- search panel 끝 -->
+    <link rel="stylesheet" href='${resources }/css/review/pagination.css'>
+    <link rel="stylesheet" href='${resources }/css/review/reviews.css'>
 </head>
 
 <body>
-	<!-- Page Preloder -->
 
 <div id="review-content">
-	<!-- Header Section Begin -->
-	<jsp:include page="../includes/header.jsp" />
-	<!-- Header Section End -->
+    <!-- Header Section Begin -->
+    <jsp:include page="../includes/header.jsp"/>
+    <!-- Header Section End -->
 
 
-	<!-- Blog Section Begin -->
-	<section class="blog-section spad" style="padding-top: 80px">
-		<div class="container">
-			<section class="ftco-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="table-wrap">
-								<table class="table table-striped">
-									<thead>
-										<tr class="arow table-thead">
-											<th class="category">카테고리</th>
-											<th class="restaurant-name">식당 이름</th>
-											<th class="title">글 제목</th>
-											<th class="rate">평점</th>
-											<th class="writer">작성자</th>
-											<th class="createdAt">작성날짜</th>
-											<th class="likes"><img
-												src="${resources }/img/icon/heart-red.png" alt="좋아요 수"
-												class="list-heart" /></th>
-										</tr>
-									</thead>
-									<tbody>
+    <!-- Blog Section Begin -->
+    <section class="blog-section spad" style="padding-top: 150px">
+        <div class="main-header__wrapper">
+            <!--   recent-activity start's here -->
+            <section class="recent-activity">
+                <div class="recent-activity__wrapper">
+                    <!-- 리뷰 한 행(3개) 시작 -->
+                    <div class="recent-activity__row">
+                        <!-- 글 있는 리뷰 하나 시작 -->
+                        <div class="recent-activity__col feedback">
+                            <div class="img-container">
+                                <img src="https://s3-media1.fl.yelpcdn.com/photo/4Z4gf-FjMiANLWuwKn9hMw/30s.jpg"
+                                     alt="profile-icon"/>
+                            </div>
+                            <div class="caption-wrapper">
+                                <span class="recent-activity__name"><a href="javascript:void(0);">Fred N.</a></span>
+                            </div>
+                            <a href="javascript:void(0);">
+                                <img
+                                    src="https://s3-media4.fl.yelpcdn.com/bphoto/u3WfxOE1DKuAENePexRmXg/l.jpg"
+                                    alt="rest-photo" width="298.98px" height="115px"/></a>
+                            <h3 class="recent-activity__heading"><a href="javascript:void(0);">Stay Gold Deli</a></h3>
+                            <span class="break-line">1</span>
+                            <div class="restaurants__rating">
+                                <div class="restaurants__rating__star five-stars">Rating</div>
+                            </div>
+                            <p>
+                                I was pretty disappointed and perplexed by my experience here.
+                                I was assured by the counter person that my order was plenty
+                                for 2, which it wasn't. Why he would down-sell
+                                me is a...
+                                <a href="">Countinue reading</a>
+                            </p>
+                            <a href="javascript:void(0);" class="recent-activity__likes facebook">
+                                <span class="recent-activity__likes fb-img-like">
+                                    <svg width="24" height="24" class="icon_svg"><path
+                                            d="M22.35 9.13A3 3 0 0020 8h-3V4.28A3.28 3.28 0 0013.72 1a2 2 0 00-1.9 1.37L9.28 10H2a1 1 0 00-1 1v11a1 1 0 001 1h13.25c.21 0 5.11-.08 6.7-7.12l1-4.21a3 3 0 00-.6-2.54zM3 12h6v9H3v-9zm18-.77l-1 4.2C18.78 20.85 15.38 21 15.25 21H11v-9.84L13.72 3c.707 0 1.28.573 1.28 1.28V9a1 1 0 001 1h4a1 1 0 01.78.38 1 1 0 01.22.85z"></path>
+                                    </svg>
+                                </span>
+                                <span class="recent-activity__likes text-like">좋아요</span>
+                            </a>
+                        </div>
+                        <!-- 글 있는 리뷰 하나 끝 -->
+                    </div>
+                    <!-- 리뷰 한 행(3개) 끝 -->
+                </div>
+            </section>
+            <!--   /recent-activity end's here -->
 
-										<c:forEach items="${ reviews}" var="review">
-											<tr class="arow"
-												onclick="location.href='${root}/reviews/review?reviewId=${review.reviewId }'">
-												<td class="category"><a href="#"
-													class="btn btn-category">${ review.restaurant.category }</a></td>
-												<td class="restaurant-name">${ review.restaurant.name }</td>
-												<td class="title">${ review.title}</td>
-												<td class="rate">
-													<c:if test="${ review.rate ne null }">
-														<c:forEach var="i" begin="1" end="${review.rate }">
-															<span class="star-rate-icon icon_star"></span>
-														</c:forEach>
-													</c:if></td>
-												<c:choose>
-													<c:when test="${review.isDummy eq 0 }">
-														<td class="writer">${ review.writer.username }</td>
-														<td class="createdAt">${ review.createdAt }</td>
-													</c:when>
-													<c:otherwise>
-														<td class="writer">${ review.dummyUsername }</td>
-														<td class="createdAt">${ review.dummyCreatedAt }</td>
-													</c:otherwise>
-												</c:choose>
-												<td class="likes"><span>${ fn:length(review.membersIdsWhoLike) }</span>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-								<c:if test="${ !empty sessionScope.sessionMember.username }">
-									<a href="${root }/reviews/write"><button class="reviews-write-btn">리뷰 작성하기</button></a>
-								</c:if>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			</div>
-			
-			<div class="row">
-			
-				<!--  search panel 시작 -->
-				 <div class="s003">
-			      <form>
-			        <div class="inner-form">
-			          <div class="input-field first-wrap">
-			            <div class="input-select">
-			              <select id="selectbox" data-trigger="" name="choices-single-defaul" onchange="selectOption()">
-			                <option value="searchAll" placeholder="">제목+내용</option>
-			                <option value="res">식당 이름</option>
-			                <option value="writer">작성자</option>
-			              </select>
-			            </div>
-			          </div>
-			          <div class="input-field second-wrap">			          
-			            <input type="text" name="search_text" id="search"  onkeypress="searchclick(event)"> 
-			          </div>
-			          <div class="input-field third-wrap">
-			            <button class="btn-search" type="button" onClick="searchclickIcon()">
-			              <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-			                <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-			              </svg>
-			            </button>
-			          </div>
-			        </div>
-			      </form>
-			    </div>
-			    <!--  search panel 끝 -->
-			
-				<!-- pagination 시작 -->
-				<div id="paginationBox" class="paginationBox">
-					<ul class="pagination">
-						<c:if test="${pagination.previousPage}">
-						
-						<c:choose>
-						<c:when test="${empty search}">
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl('${pagination.currentPage-1}')">Previous</a></li>
-						</c:when>
-						
-						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl_search('${pagination.currentPage-1}','${search}','${option}')">Previous</a></li>
-						</c:otherwise>
-						</c:choose>
-						
-						</c:if>
-	
-						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-						<c:choose>
-						<c:when test="${empty search}">
-							<li
-								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
-								class="page-link" href="#"
-								onClick="loadUrl('${idx}')">
-									${idx} </a></li>
-						</c:when>
-						<c:otherwise>
-							<li
-								class="page-item <c:out value="${pagination.currentPage == idx ? 'active' : ''}"/> "><a
-								class="page-link" href="#"
-								onClick="loadUrl_search('${idx}','${search}','${option}')">
-									${idx} </a></li>
-						</c:otherwise>
-						</c:choose>
-						</c:forEach>
-	
-						<c:if test="${pagination.nextPage}">
-						<c:choose>
-						<c:when test="${empty search}">
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl('${pagination.currentPage+1}')">Next</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="#"
-								onClick="loadUrl_search()'${pagination.currentPage+1}','${search}','${option}')">Next</a></li>
-						</c:otherwise>
-						</c:choose>
-						</c:if>
-					</ul>
-				</div>
-				<!-- pagination 끝 -->
-				
-			</div>
-					
-			
-					
+            <div class="show-more-wrapper">
+                <div class="show-more">
+                    <a href="javascript:void(0);">
+                        <svg width="24" height="24" class="icon_svg"><path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path></svg>
+                        리뷰 더보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
 
 
-			<script type="text/javascript">
-				function loadUrl(page){
-					var url = "${root}/reviews/list";
-					url = url + "?currentPage=" + page;
-					location.href = url;
-				}
-				
-				function loadUrl_search(page,search,option) {
-					var url = "${root}/reviews/loadListBySearchKeyword";
-					url = url + "?currentPage=" + page + "&search=" + search + "&option=" + option;
-					location.href = url;
-				}
-			</script>
+    <!-- Footer Section Begin -->
+    <jsp:include page="../includes/footer.jsp"/>
+    <!-- Footer Section End -->
 
-		
-	</section>
-	<!-- Blog Section End -->
+    <!-- Js Plugins -->
+    <%@ include file="../includes/plugins.jsp" %>
+    <script type="text/javascript"
+            src="${resources}/js/nav-text-in-black.js"></script>
+    <script type="text/javascript"
+            src="${resources}/js/review/search.js"></script>
 
-
-	<!-- Footer Section Begin -->
-	<jsp:include page="../includes/footer.jsp" />
-	<!-- Footer Section End -->
-
-	<!-- Js Plugins -->
-	<%@ include file="../includes/plugins.jsp"%>
-	<script type="text/javascript"
-		src="${resources}/js/nav-text-in-black.js"></script>
-	<script type="text/javascript"
-		src="${resources}/js/review/choices.js"></script>
-	<script type="text/javascript"
-		src="${resources}/js/review/search-panel.js"></script>
-	<script type="text/javascript"
-		src="${resources}/js/review/search.js"></script>
-	
 </div>
 </body>
 

@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="${resources}/css/review/stars.css">
 <link rel="stylesheet" href="${resources}/css/review/image-upload.css">
 <link rel="stylesheet" href="${resources}/css/review/review-write.css">
-<link rel="stylesheet" href="${resources}/css/review/uploading.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd0f4b1049158f735df04c6710e2c5b&libraries=services"></script>
@@ -139,12 +138,6 @@
 						<!--  미리보기 fieldset 시작 -->
 						<fieldset>
 							<div class="form-card">
-								<div class="row justify-content-center">
-									<div class="col-7 text-center">
-										<br><br><br><br><br><br><br><br><br><br><br><br>
-										<jsp:include page="uploading.jsp" />
-									</div>
-								</div><br><br>
 								<div class="row justify-content-center"></div>
 								<h5 class="purple-text text-center" style="font-size: 15px">
 										잠시 후 방금 작성한 리뷰 페이지로 이동합니다.</h5>

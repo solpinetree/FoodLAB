@@ -26,7 +26,7 @@ import com.aj22.foodlab.service.LikesService;
 import com.aj22.foodlab.service.ReviewImagesService;
 import com.aj22.foodlab.service.ReviewService;
 import com.aj22.foodlab.util.Pagination;
-import com.aj22.foodlab.util.S3FileUploadService;
+//import com.aj22.foodlab.util.S3FileUploadService;
 
 
 /**
@@ -44,8 +44,8 @@ public class ReviewController {
 	private LikesService likesService;
 	@Autowired
 	private ReviewImagesService reviewImagesService;
-	@Autowired
-	private S3FileUploadService s3Service;
+//	@Autowired
+//	private S3FileUploadService s3Service;
 
 
 	// 푸드로그 게시판

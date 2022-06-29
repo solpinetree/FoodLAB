@@ -291,9 +291,9 @@ ol {
 
 .header.header--normal {
 	/* background: #ffffff; */
-	background: #F2F2F2;
-	-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+	background: #fffcfb;
+	/*-webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);*/
+	/*box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);*/
 	position: fixed;
 }
 
