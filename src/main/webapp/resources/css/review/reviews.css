@@ -36,11 +36,13 @@ RECENT-ACTIVITY
 h3.recent-activity__heading {
     margin-left: 13px;
     margin-top: 9px;
-    margin-bottom: 13px;
+    margin-bottom: 5px;
 }
 
 h3.recent-activity__heading a {
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
+    font-weight: bold;
     line-height: 1.3em;
     color: #0073bb;
     text-decoration: none;
@@ -63,8 +65,13 @@ h3.recent-activity__heading a {
 
 .recent-activity__col .restaurants__rating {
     margin-bottom: 7px;
-    padding: 11px 0 0 11px;
+    padding: 0 0 0 11px;
 }
+
+.star-rate-icon{
+    color: var(--yellow);
+}
+
 
 .recent-activity__col img {
     max-width: 100%;
@@ -100,14 +107,15 @@ h3.recent-activity__heading a {
 
 .recent-activity__name {
     display: block;
-    padding-bottom: 11px;
+    /*padding-bottom: 11px;*/
 }
 
 .recent-activity__name a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: bold;
-    color: #0073bb;
+    color: black;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
 .recent-activity__col.feedback {
@@ -125,9 +133,20 @@ h3.recent-activity__heading a {
     padding: 10px 10px 10px 10px;
 }
 
+.img-container{
+    width: 60px;
+    height: 60px;
+}
+
+.userinfo-wrapper{
+    vertical-align: baseline;
+    display: inline;
+}
+
 .caption-wrapper {
-    display: inline-block;
-    vertical-align: bottom;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 6px;
 }
 
 .recent-activity__caption {
@@ -155,7 +174,7 @@ h3.recent-activity__heading a {
     color: #999;
     padding: 7px 0 7px 0;
     text-decoration: none;
-    margin-left: 4px;
+    margin-left: 13px;
 }
 
 .recent-activity__likes.facebook:hover .text-like {

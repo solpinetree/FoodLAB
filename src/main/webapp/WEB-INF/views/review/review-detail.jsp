@@ -116,7 +116,7 @@
 		                                     	<c:when test="${ review.priceSatisfaction ne null and review.priceSatisfaction ne 0}">
 		                                     		<span class="star-rate-star">
 					                                	<c:forEach var="i" begin="1" end="${ review.priceSatisfaction }" >
-					                                		<i class="star-rate-icon icon_star"></i>
+
 					                                	</c:forEach>
 				                                		<c:forEach var="i" begin="${review.priceSatisfaction + 1 }" end="5">
 				                                			<i class="star-rate-icon icon_star_alt"></i>

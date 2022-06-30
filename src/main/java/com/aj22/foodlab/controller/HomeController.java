@@ -42,14 +42,13 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws SQLException{
-		logger.info("index.jsp 진입");
+	public String home() throws SQLException{
 //		model.addAttribute("categories", restaurantService.getCategories());
 		return "/index";
 	}
 	
 	
-	@RequestMapping(value = "/loadRestaurantList", produces = "application/text;charset=utf8")
+/*	@RequestMapping(value = "/loadRestaurantList", produces = "application/text;charset=utf8")
 	public String getReviewByCategory(Model model) throws SQLException {
 		
 		System.out.println("RestaurantList");
@@ -95,6 +94,6 @@ public class HomeController {
 
 		return "home/review-current-listing";
 
-	}
+	} */
 	
 }

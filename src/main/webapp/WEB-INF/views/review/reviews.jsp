@@ -31,21 +31,29 @@
                     <div class="recent-activity__row">
                         <!-- 글 있는 리뷰 하나 시작 -->
                         <div class="recent-activity__col feedback">
-                            <div class="img-container">
-                                <img src="https://s3-media1.fl.yelpcdn.com/photo/4Z4gf-FjMiANLWuwKn9hMw/30s.jpg"
-                                     alt="profile-icon"/>
-                            </div>
-                            <div class="caption-wrapper">
-                                <span class="recent-activity__name"><a href="javascript:void(0);">Fred N.</a></span>
+                            <div class="userinfo-wrapper">
+                                <div class="img-container">
+                                    <img src="${resources}/img/defaultProfile.jpeg"
+                                         alt="profile-icon"/>
+                                </div>
+                                <div class="caption-wrapper">
+                                    <span class="recent-activity__name"><a href="javascript:void(0);">Fred N.</a></span>
+                                    <span class="recent-activity__caption">리뷰 작성</span>
+                                </div>
                             </div>
                             <a href="javascript:void(0);">
                                 <img
                                     src="https://s3-media4.fl.yelpcdn.com/bphoto/u3WfxOE1DKuAENePexRmXg/l.jpg"
-                                    alt="rest-photo" width="298.98px" height="115px"/></a>
+                                    alt="rest-photo" width="100%"/></a>
                             <h3 class="recent-activity__heading"><a href="javascript:void(0);">Stay Gold Deli</a></h3>
-                            <span class="break-line">1</span>
                             <div class="restaurants__rating">
-                                <div class="restaurants__rating__star five-stars">Rating</div>
+                                <div class="restaurants__rating__star five-stars">
+                                    <i class="star-rate-icon icon_star"></i>
+                                    <i class="star-rate-icon icon_star"></i>
+                                    <i class="star-rate-icon icon_star"></i>
+                                    <i class="star-rate-icon icon_star"></i>
+                                    <i class="star-rate-icon icon_star_alt"></i>
+                                </div>
                             </div>
                             <p>
                                 I was pretty disappointed and perplexed by my experience here.

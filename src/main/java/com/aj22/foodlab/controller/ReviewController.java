@@ -47,22 +47,17 @@ public class ReviewController {
 //	@Autowired
 //	private S3FileUploadService s3Service;
 
-
 	// 푸드로그 게시판
 	@GetMapping("/list")
 	public String loadReviewListPage(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
-		
 		Pagination pagination = reviewService.getPagination(currentPage);
-		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("reviews", reviewService.selectList(pagination));
-
 		return "review/reviews";
 	}
 	
 	//search
-	
 	@RequestMapping(value = "/loadListBySearchKeyword", produces = "application/text;charset=utf8")
 	public String loadRestaurantListDivSelectedBySearch(Model model,
 			@RequestParam(required = false, defaultValue = "1") int currentPage, @RequestParam("search") String search, @RequestParam("option") String option)
@@ -104,7 +99,6 @@ public class ReviewController {
 	
 	@GetMapping("/review")
 	public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
-		System.out.println("들어오냐?");
 		ReviewDTO review = reviewService.select(reviewId);
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("sessionMember");
