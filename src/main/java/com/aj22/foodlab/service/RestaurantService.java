@@ -128,25 +128,13 @@ public class RestaurantService {
 	}
 	
 	public RestaurantDTO selectById(int id) throws SQLException{
-		if(id == 0) {
-			Restaurant restaurant = null;
-			RestaurantDAO dao = new RestaurantDAOImpl();
-			restaurant = dao.select(1);
-			dao.close();
-			return convertToDto(restaurant); 
-		}
-		
-		else {
 		Restaurant restaurant = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
 		restaurant = dao.select(id);
 		dao.close();
 		return convertToDto(restaurant);
-		}
-		
 	}
 
-	
 	public List<String> getCategories() throws SQLException{
 		List<String> categories = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();
@@ -154,8 +142,7 @@ public class RestaurantService {
 		dao.close();
 		return categories;
 	}
-	
-	
+
 	public Integer getRestaurantIdFromName(String name) throws SQLException {
 		Integer id = null;
 		RestaurantDAO dao = new RestaurantDAOImpl();

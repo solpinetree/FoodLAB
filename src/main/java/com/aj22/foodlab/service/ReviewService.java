@@ -31,7 +31,7 @@ public class ReviewService {
 	private LikesService likesService;
 
 	
-	static final int NumOfRecordsPerPage = 8;
+	static final int NumOfRecordsPerPage = 12;
 	
 	public int getNumOfRecord() throws SQLException{
 		int cnt = 0;
@@ -210,16 +210,7 @@ public class ReviewService {
 	
 	private ReviewDTO setReviewWriterAndRestaurantAndLikesAndTimes(ReviewDTO dto, Review review, String page) throws SQLException {
 		dto.setWriter(memberService.selectById(review.getWriterId()));
-		
-		logger.info("in setReviewWriterAndRestaurantAndLikesAndTimes review.getREstaurantId() = ? " + review.getRestaurantId());;
-		
-		
-		
-		dto.setRestaurant(review.getRestaurantId() == 0? null : restaurantService.selectById(review.getRestaurantId()));
-		
-		
-		
-		
+		dto.setRestaurant(restaurantService.selectById(review.getRestaurantId()));
 		dto.setMembersIdsWhoLike(likesService.selectMemberIdByReviewId(review.getReviewId()));
 		
 		switch(page) {

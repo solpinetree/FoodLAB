@@ -19,7 +19,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	// FoodDAOImpl 媛�泥닿� ���깅���� Connection�� ���깅����.
 	public RestaurantDAOImpl() {
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -28,7 +27,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		}
 	}
 	
-	// DB ���� 諛���
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
 		if(stmt != null) stmt.close();

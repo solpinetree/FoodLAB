@@ -33,7 +33,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Autowired
 	private MemberService memberService;
 	
-	// FoodDAOImpl 媛앹껜媛� �깮�꽦�맆�븣 Connection�룄 �깮�꽦�맂�떎.
 	public ReviewDAOImpl() {
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -42,7 +41,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 		}
 	}
 	
-	// DB �옄�썝 諛섎궔
 	@Override
 	public void close() throws SQLException{
 		if(rs != null) rs.close();
@@ -69,7 +67,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		pstmt.setInt(7, review.getRestaurantId());
 		pstmt.executeUpdate();
 		
-		rs = pstmt.getGeneratedKeys(); 	// 荑쇰━ �떎�뻾 �썑 �깮�꽦�맂 AI 媛� 諛섑솚
+		rs = pstmt.getGeneratedKeys();
 		if(rs.next()) {
 			autoIncrement = rs.getInt(1);
 		}
@@ -159,13 +157,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		Timestamp updatedAt = rs.getTimestamp("updatedAt");
 		int writerId = rs.getInt("member_id");
 		int restaurantId = rs.getInt("restaurant_id");
-		int isDummy = rs.getInt("is_dummy");
-		String dummyUsername = rs.getString("dummy_username");
-		String dummyImg = rs.getString("dummy_img");
-		String dummyCreatedAt = rs.getString("dummy_createdAt");
 		
 		review = new Review(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
-				 writerId, restaurantId, isDummy, dummyUsername, dummyImg, dummyCreatedAt);
+				 writerId, restaurantId);
 	
 		return review;
 	}
@@ -185,7 +179,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 			reviews.add(createFromResultSet(rs));
 		}
 
-		
 		return reviews;
 	}
 	

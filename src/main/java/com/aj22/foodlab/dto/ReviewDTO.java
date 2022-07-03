@@ -23,10 +23,6 @@ public class ReviewDTO {
 	private MemberDTO writer;
 	private RestaurantDTO restaurant;
 	private List<Integer> membersIdsWhoLike;
-	private Integer isDummy;
-	private String dummyUsername;
-	private String dummyImg;
-	private String dummyCreatedAt;
 	
 	public ReviewDTO(Review review) {
 		this.reviewId = review.getReviewId();
@@ -40,10 +36,6 @@ public class ReviewDTO {
 		this.writer = null;
 		this.restaurant = null;
 		this.membersIdsWhoLike = null;
-		this.isDummy = review.getIsDummy();
-		this.dummyUsername = review.getDummyUsername();
-		this.dummyImg = review.getDummyImg();
-		this.dummyCreatedAt = review.getDummyCreatedAt();
 	}
 }
 
