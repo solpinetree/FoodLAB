@@ -61,6 +61,7 @@ h3.recent-activity__heading a {
     vertical-align: top;
     box-sizing: border-box;
     margin-right: 30px;
+    height: 376px;
 }
 
 .recent-activity__col .restaurants__rating {

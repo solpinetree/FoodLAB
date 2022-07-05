@@ -23,8 +23,6 @@ public class ReviewImagesService {
 	
 	@Autowired
 	FileUpload fileUpload;
-//	@Autowired
-//	S3FileUploadService s3Service;
 
 	public int save(ReviewImages reviewImage) throws SQLException{
 		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
@@ -42,7 +40,7 @@ public class ReviewImagesService {
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
 			if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
-//				save(new ReviewImages(review.getReviewId(), s3Service.upload(mFile, "review"), review.getRestaurantId()));
+				save(new ReviewImages(review.getReviewId(), dto.getSavedPath() , review.getRestaurantId()));
 			}
 		}
 	}

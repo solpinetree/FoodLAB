@@ -20,7 +20,6 @@ p {
 #msform {
 	text-align: center;
 	position: relative;
-	margin-top: 20px
 }
 
 #msform fieldset {
@@ -37,6 +36,7 @@ p {
 .form-card {
 	/*   text-align: left; */
 	flex-direction: row;
+	margin-bottom: 10px;
 }
 
 #msform fieldset:not(:first-of-type) {
@@ -68,7 +68,7 @@ p {
 
 #msform .action-button {
 	width: 100px;
-	background: var(--theme-color);;
+	background: lightgrey;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -80,12 +80,12 @@ p {
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-	background-color: #f03250
+	background-color: #474350
 }
 
 #msform .action-button-previous {
 	width: 100px;
-	background: #616161;
+	background: lightgrey;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -98,7 +98,7 @@ p {
 
 #msform .action-button-previous:hover, #msform .action-button-previous:focus
 	{
-	background-color: #000000
+	background-color: #474350
 }
 
 .card {
@@ -109,7 +109,7 @@ p {
 
 .fs-title {
 	font-size: 25px;
-	color: #f03250;
+	color: #474350;
 	margin-bottom: 15px;
 	font-weight: normal;
 	text-align: left
@@ -130,17 +130,18 @@ p {
 
 .fieldlabels {
 	color: gray;
-	text-align: left
+	text-align: left;
+	float: left;
 }
 
 #progressbar {
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	overflow: hidden;
 	color: lightgrey
 }
 
 #progressbar .active {
-	color: var(--theme-color);
+	color: #474350;
 }
 
 #progressbar li {
@@ -154,40 +155,40 @@ p {
 
 #progressbar #search:before {
 	font-family: FontAwesome;
-	content: "\f002"
+	content: ""
 }
 
 #progressbar #personal:before {
 	font-family: FontAwesome;
-	content: "\f005"
+	content: ""
 }
 
 #progressbar #thumbnail:before {
 	font-family: FontAwesome;
-	content: "\f030"
+	content: ""
 }
 
 #progressbar #confirm:before {
 	font-family: FontAwesome;
-	content: "\f00c"
+	content: ""
 }
 
 #progressbar #review:before {
 	font-family: FontAwesome;
-	content: "\f040"
+	content: ""
 }
 
 #progressbar li:before {
-	width: 50px;
-	height: 50px;
+	width: 0px;
+	height: 30px;
 	line-height: 45px;
 	display: block;
 	font-size: 20px;
 	color: #ffffff;
-	background: lightgray;
-	border-radius: 50%;
+	#background: lightgray;
+	#border-radius: 50%;
 	margin: 0 auto 10px auto;
-	padding: 2px
+	padding: 0px
 }
 
 #progressbar li:after {
@@ -202,7 +203,7 @@ p {
 }
 
 #progressbar li.active:before, #progressbar li.active:after {
-	background: var(--theme-color);
+	background: #474350;
 }
 
 .progress {
@@ -229,8 +230,8 @@ p {
 .searchButton {
 	width: 10%;
 	height: 36px;
-	border: 1px solid var(--theme-color);;
-	background: var(--theme-color);;
+	border: 1px solid #474350;
+	background: #474350;
 	text-align: center;
 	color: #fff;
 	border-radius: 20px;
@@ -467,7 +468,7 @@ h5 {
 	width: 100%;
 	height: 50vh;
 	border: 1px solid #ccc;
-	border-radius: 30px;
+	border-radius: 3px;
 	margin-bottom: 10px;
 }
 
@@ -476,11 +477,11 @@ h5 {
 }
 
 .swiper .swiper-button-prev, .swiper .swiper-button-next {
-	color: #f9adbd;
+	color: lightgrey;
 }
 
 .swiper .swiper-pagination-bullet-active {
-	background: #f9adbd;
+	background: lightgrey;
 }
 
 .file-input {

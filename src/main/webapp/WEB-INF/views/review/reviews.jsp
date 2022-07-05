@@ -52,10 +52,10 @@
                                                 <i class="star-rate-icon icon_star_alt"></i>
                                             </div>
                                         </div>
-                                        <p>
-                                            ${reviews[status + i].content}
-                                            <br><a href="">Continue reading</a>
-                                        </p>
+                                        <div class="text-container">
+                                            <p class="review-content">${reviews[status + i].content}</p>
+                                            <a href="">Continue reading</a>
+                                        </div>
                                         <a href="javascript:void(0);" class="recent-activity__likes facebook">
                                             <span class="recent-activity__likes fb-img-like">
                                                 <svg width="24" height="24" class="icon_svg"><path
