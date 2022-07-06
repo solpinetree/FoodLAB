@@ -12,11 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Review {
 	private Integer reviewId;
-	private Integer numberInParty;
 	private String content;
-	private Integer priceSatisfaction;
 	private Integer rate;
-	private String title;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	private Integer writerId;

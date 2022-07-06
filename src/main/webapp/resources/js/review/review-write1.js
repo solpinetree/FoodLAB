@@ -106,4 +106,11 @@ document.reviewForm.addEventListener("keyup", evt => {
     } else {
         contentNextBtn.style.display = "none";
     }
+
 });
+
+
+function allowSubmit(){
+    var submitBtn = document.getElementById("submitBtn");
+    submitBtn.style.display = "block";
+}

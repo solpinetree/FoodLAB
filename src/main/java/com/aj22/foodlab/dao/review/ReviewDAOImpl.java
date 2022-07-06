@@ -55,16 +55,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 		Integer autoIncrement = null;
 
 		String sql = "INSERT INTO review" + 
-				"(number_in_party, content, price_satisfaction, rate, title, member_id, restaurant_id) " + 
-				"VALUES(?, ?, ?, ?, ?, ?, ?)";
+				"(content, rate, member_id, restaurant_id) " +
+				"VALUES(?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		pstmt.setInt(1, review.getNumberInParty());
-		pstmt.setString(2, review.getContent());
-		pstmt.setInt(3, review.getPriceSatisfaction());
-		pstmt.setInt(4, review.getRate());
-		pstmt.setString(5, review.getTitle());
-		pstmt.setInt(6, review.getWriterId());
-		pstmt.setInt(7, review.getRestaurantId());
+		pstmt.setString(1, review.getContent());
+		pstmt.setInt(2, review.getRate());
+		pstmt.setInt(3, review.getWriterId());
+		pstmt.setInt(4, review.getRestaurantId());
 		pstmt.executeUpdate();
 		
 		rs = pstmt.getGeneratedKeys();
@@ -95,11 +92,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 		String sql = "update review set number_in_party=?, content=?, price_satisfaction=?, rate=?,"
 				+ " title=?, updatedAt=?, restaurant_id=? where review_id=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, review.getNumberInParty());
 		pstmt.setString(2, review.getContent());
-		pstmt.setInt(3, review.getPriceSatisfaction());
 		pstmt.setInt(4, review.getRate());
-		pstmt.setString(5, review.getTitle());
 		pstmt.setTimestamp(6, review.getUpdatedAt());
 		pstmt.setInt(7, review.getRestaurantId());
 		pstmt.setInt(8, review.getWriterId());
@@ -148,17 +142,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		Review review = null;
 		
 		int reviewId = rs.getInt("review_id");
-		int numberInParty = rs.getInt("number_in_party");
 		String content = rs.getString("content");
-		int priceSatisfaction = rs.getInt("price_satisfaction");
 		int rate = rs.getInt("rate");
-		String title = rs.getString("title");
 		Timestamp createdAt = rs.getTimestamp("createdAt");
 		Timestamp updatedAt = rs.getTimestamp("updatedAt");
 		int writerId = rs.getInt("member_id");
 		int restaurantId = rs.getInt("restaurant_id");
 		
-		review = new Review(reviewId, numberInParty, content, priceSatisfaction, rate, title, createdAt, updatedAt,
+		review = new Review(reviewId, content, rate, createdAt, updatedAt,
 				 writerId, restaurantId);
 	
 		return review;

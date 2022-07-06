@@ -40,8 +40,10 @@
         <c:forEach var="i" begin="1" end="4">
             <div style="float:left" class="file-upload-content${i }">
                 <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload('${i}')" class="remove-image">Remove <span
-                            class="image-title${i }">Uploaded Image</span></button>
+                    <button type="button" onclick="removeUpload('${i}')" class="remove-image">
+                        <span
+                            class="image-title${i }">Uploaded Image</span> 삭제
+                    </button>
                 </div>
             </div>
         </c:forEach>
@@ -50,9 +52,10 @@
 
     <input type="button" name="next" id="photoNextBtn"
            class="next contentNextBtn action-button" value="NEXT"
-           style="display: block"/>
+           style="display: block; margin: 101px 0px 10px 5px;"/>
     <input type="button" name="previous"
-           class="previous action-button-previous" value="PREVIOUS"/>
+           class="previous action-button-previous" value="PREVIOUS"
+            style="margin: 101px 5px 10px 0px"/>
 </fieldset>
 
 

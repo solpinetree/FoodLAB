@@ -61,12 +61,28 @@ public class ReviewService {
 		
 			return pagination;
 		
-		
 	}
-	
+
+	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
+		List<Review> reviews = null;
+		List<ReviewDTO> reviewDTOs = new ArrayList<>();
+
+		ReviewDAO dao = new ReviewDAOImpl();
+		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
+		dao.close();
+
+		for(Review review : reviews) {
+			ReviewDTO dto = new ReviewDTO(review);
+			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
+			reviewDTOs.add(dto);
+		}
+
+		return reviewDTOs;
+	}
+
+
 	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
 		
-
 		int cnt = 0;
 		
 		ReviewDAO dao = new ReviewDAOImpl();
@@ -74,7 +90,6 @@ public class ReviewService {
 		dao.close();
 		
 		return cnt;
-
 	}
 	
 	public int getNumOfRecordByName(String keyword, String option) throws SQLException{
@@ -85,15 +100,7 @@ public class ReviewService {
 		
 		return numOfRecords;
 	}
-	
 
-	
-	public ReviewDTO convertToDto(Review review) throws SQLException{
-		ReviewDTO dto = new ReviewDTO(review);
-		return dto;
-	}
-	
-	
 	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
 		int cnt = 0;
 		
@@ -102,23 +109,6 @@ public class ReviewService {
 		dao.close();
 		
 		return cnt;
-	}
-	
-	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
-		List<Review> reviews = null;
-		List<ReviewDTO> reviewDTOs = new ArrayList<>();
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage());
-		dao.close();
-		
-		for(Review review : reviews) {
-			ReviewDTO dto = new ReviewDTO(review);
-			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
-			reviewDTOs.add(dto);
-		}
-			
-		return reviewDTOs;
 	}
 	
 	
@@ -154,21 +144,6 @@ public class ReviewService {
 		}
 		
 		return reviewDTOs;
-	}
-	
-	public List<ReviewDTO> findContentBySearchWithLimit(Pagination pagination, String name) throws SQLException{
-		List<Review> reviews = null;
-		List<ReviewDTO> dto = new ArrayList<>();
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		reviews = dao.findContentBySearchWithLimit(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), name);
-		dao.close();
-		
-		for(Review review : reviews) {
-			dto.add(convertToDto(review));
-		}
-		
-		return dto;
 	}
 	
 	public Review save(Review review, String restaurantName) throws SQLException {
@@ -257,14 +232,14 @@ public class ReviewService {
 		
 		return avgPriceSatisRate;
 	}
-	
+
 	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
 		List<Review> reviewsByCategory = new ArrayList<>();
-		
+
 		ReviewDAO dao = new ReviewDAOImpl();
 		reviewsByCategory = dao.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
 		return reviewsByCategory;
-	
+
 	}
 	public Pagination getPagination(int currentPage) throws SQLException {
 		Pagination pagination = new Pagination();

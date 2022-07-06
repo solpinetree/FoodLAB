@@ -88,33 +88,35 @@
 								<input type="hidden" name="restaurantName" id="restaurantName"/>
 								<br>
 								<div class="cont" style="max-width: 479px;">
-									<div class="stars" style="width: 100%">
-										<input class="star star-5" id="star-5-2" type="radio"
-											name="rate" value="5" /> <label class="star star-5"
-											for="star-5-2"></label>
-										<input class="star star-4"
-											id="star-4-2" type="radio" name="rate" value="4" /> <label
-											class="star star-4" for="star-4-2"></label>
+									<div class="stars" style="width: 68%">
+										<input class="star star-5"
+											id="star-5 star" type="radio" name="rate" value="1" onclick="allowSubmit()"/>
+										<label class="star star-5" for="star-5 star" ></label>
+										<input class="star star-4" id="star-4 star" type="radio"
+											name="rate" value="2" onclick="allowSubmit()"/>
+										<label class="star star-4" for="star-4 star" ></label>
 										<input
-											class="star star-3" id="star-3-2" type="radio" name="rate"
-											value="3" /> <label class="star star-3" for="star-3-2"></label>
-										<input class="star star-2" id="star-2-2" type="radio"
-											name="rate" value="2" /> <label class="star star-2"
-											for="star-2-2"></label>
-										<input class="star star-1"
-											id="star-1-2" type="radio" name="rate" value="1" /> <label
-											class="star star-1" for="star-1-2"></label>
+											class="star star-3" id="star-3 star" type="radio" name="rate"
+											value="3" onclick="allowSubmit()"/>
+										<label class="star star-3" for="star-3 star"></label>
+										<input class="star star-2"
+											id="star-2 star" type="radio" name="rate" value="4" onclick="allowSubmit()"/>
+										<label
+											class="star star-2" for="star-2 star"></label>
+										<input class="star star-1" id="star-1 star" type="radio"
+											name="rate" value="5" onclick="allowSubmit()"/>
+										<label class="star star-1"
+											for="star-1 star"></label>
 									</div>
 								</div>
 							</div>
 
-							<input type="button" name="next"
-								class="next action-button submitBtn" value="SUBMIT" /> 
+							<input type="submit" name="next" id="submitBtn"
+								class="next action-button submitBtn" value="SUBMIT" style="display:none;" />
 							<input
 								type="button" name="previous"
 								class="previous action-button-previous" value="PREVIOUS" />
 							<input type="hidden" name="writerId" value="${sessionScope.sessionMember.id}"/>
-							<input type="submit" name="submit" id="reviewSubmitBtn" style="display:none" />
 						</fieldset>
 						<!--   별점을 등록하는 fieldset 끝 -->
 					</form>

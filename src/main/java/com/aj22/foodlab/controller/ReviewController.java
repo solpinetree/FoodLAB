@@ -91,7 +91,7 @@ public class ReviewController {
 		if (review.getReviewId() == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			loadUrl = "redirect:/reviews/review?reviewId=" + review.getReviewId();
+			loadUrl = "redirect:/reviews/list";
 		}
 
 		return loadUrl;

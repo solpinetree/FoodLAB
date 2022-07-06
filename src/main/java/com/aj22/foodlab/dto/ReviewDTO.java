@@ -13,11 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ReviewDTO {
 	private Integer reviewId;
-	private Integer numberInParty;
 	private String content;
-	private Integer priceSatisfaction;
 	private Integer rate;
-	private String title;
 	private String createdAt;
 	private String updatedAt;
 	private MemberDTO writer;
@@ -26,11 +23,8 @@ public class ReviewDTO {
 	
 	public ReviewDTO(Review review) {
 		this.reviewId = review.getReviewId();
-		this.numberInParty = review.getNumberInParty();
 		this.content = review.getContent();
-		this.priceSatisfaction = review.getPriceSatisfaction();
 		this.rate = review.getRate();
-		this.title = review.getTitle();
 		this.createdAt = null;
 		this.updatedAt = null;
 		this.writer = null;
