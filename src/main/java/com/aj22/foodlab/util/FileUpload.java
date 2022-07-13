@@ -34,7 +34,9 @@ public class FileUpload {
 		String savedName = getSavedName(originName);	
 		String savedPath = getSavedPath(uploadPath, savedDirectory, savedName); 
 		
-		filedto = new FileDTO(originName, savedName, savedDirectory);
+		filedto = new FileDTO(originName, savedPath);
+
+		System.out.println(savedPath+ ": savedPath in FileUpload");
 		
 		createDirectoryIfDirectoryNotExist(uploadPath+ File.separator + savedDirectory);
 		uploadFileBytesToPath(file.getBytes(), savedPath);

@@ -49,8 +49,7 @@ public class ReviewImagesService {
 		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
 		List<ReviewImages> images = dao.select(reviewId);
 		dao.close();
-		
-		
+
 		return images;
 	}
 	
@@ -60,5 +59,13 @@ public class ReviewImagesService {
 		dao.close();
 		
 		return images;
+	}
+
+	public ReviewImages getThumbnail(int reviewId) throws SQLException{
+		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
+		ReviewImages thumbnail = dao.selectLimit1(reviewId);
+		dao.close();
+
+		return thumbnail;
 	}
 }

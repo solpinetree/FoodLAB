@@ -10,4 +10,5 @@ public interface ReviewImagesDAO {
 	void close() throws SQLException;
 	List<ReviewImages> select(int id) throws SQLException;
 	List<ReviewImages> selectByRestaurantId(int restaurantId) throws SQLException;
+	ReviewImages selectLimit1(int id) throws SQLException;
 }

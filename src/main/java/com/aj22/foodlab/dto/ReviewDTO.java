@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aj22.foodlab.domain.Review;
 
+import com.aj22.foodlab.domain.ReviewImages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,8 @@ public class ReviewDTO {
 	private MemberDTO writer;
 	private RestaurantDTO restaurant;
 	private List<Integer> membersIdsWhoLike;
-	
+
+	private ReviewImages thumbnail;
 	public ReviewDTO(Review review) {
 		this.reviewId = review.getReviewId();
 		this.content = review.getContent();
@@ -30,6 +32,7 @@ public class ReviewDTO {
 		this.writer = null;
 		this.restaurant = null;
 		this.membersIdsWhoLike = null;
+		this.thumbnail = null;
 	}
 }
 

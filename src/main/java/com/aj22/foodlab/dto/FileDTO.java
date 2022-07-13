@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class FileDTO {
 	private String originName;
-	private	String savedName;
 	private String savedPath;
 }
