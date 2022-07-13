@@ -97,4 +97,19 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		
 		return images;
 	}
+
+	@Override
+	public ReviewImages selectLimit1(int reviewId) throws SQLException{
+		ReviewImages result = null;
+
+		String sql = "select * from review_images where review_id=? limit 1";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, reviewId);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			result = createFromResultSet(rs);
+		}
+
+		return result;
+	}
 }

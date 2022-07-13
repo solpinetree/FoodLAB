@@ -29,6 +29,8 @@ public class ReviewService {
 	private MemberService memberService;
 	@Autowired
 	private LikesService likesService;
+	@Autowired
+	private ReviewImagesService reviewImagesService;
 
 	
 	static final int NumOfRecordsPerPage = 12;
@@ -45,17 +47,10 @@ public class ReviewService {
 	
 	public Pagination getPaginationBySearchKeywordContent(int currentPage, String keyword, String option) throws SQLException{
 		
-			logger.info(keyword);
-			logger.info(option);
 			int res_id = restaurantService.getRestaurantIdFromName(keyword);
 			int member_id = memberService.getMemberIdFromName(keyword);
-			logger.info("res_id in getPaginationBySearchKeywordContent: "+Integer.toString(res_id));
-			logger.info("member_id in getPaginationBySearchKeywordContent: "+Integer.toString(member_id));
-		
 			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
-			
-			logger.info("numOfRecords in getPaginationBySearchKeywordContent: " +Integer.toString(numOfRecords));
-			
+
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
 		
@@ -74,6 +69,7 @@ public class ReviewService {
 		for(Review review : reviews) {
 			ReviewDTO dto = new ReviewDTO(review);
 			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
+			dto.setThumbnail(reviewImagesService.getThumbnail(review.getReviewId()));
 			reviewDTOs.add(dto);
 		}
 
@@ -123,6 +119,7 @@ public class ReviewService {
 		for(Review review : reviews) {
 			ReviewDTO dto = new ReviewDTO(review);
 			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
+			dto.setThumbnail(reviewImagesService.getThumbnail(review.getReviewId()));
 			reviewDTOs.add(dto);
 		}
 			

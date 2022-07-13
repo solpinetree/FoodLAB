@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,22 +34,19 @@ import com.aj22.foodlab.util.Pagination;
  * Handles requests for the application home page.
  */
 @Controller
+@AllArgsConstructor
 @RequestMapping("/reviews")
 public class ReviewController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
-
-	@Autowired
-	private ReviewService reviewService;
-	@Autowired
-	private LikesService likesService;
-	@Autowired
-	private ReviewImagesService reviewImagesService;
+	private final ReviewService reviewService;
+	private final LikesService likesService;
+	private final ReviewImagesService reviewImagesService;
 //	@Autowired
 //	private S3FileUploadService s3Service;
 
 	// 푸드로그 게시판
-	@GetMapping("/list")
+	@GetMapping("")
 	public String loadReviewListPage(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
 		Pagination pagination = reviewService.getPagination(currentPage);
@@ -58,7 +56,7 @@ public class ReviewController {
 	}
 	
 	//search
-	@RequestMapping(value = "/loadListBySearchKeyword", produces = "application/text;charset=utf8")
+	@GetMapping(value = "/loadListBySearchKeyword", produces = "application/text;charset=utf8")
 	public String loadRestaurantListDivSelectedBySearch(Model model,
 			@RequestParam(required = false, defaultValue = "1") int currentPage, @RequestParam("search") String search, @RequestParam("option") String option)
 			throws SQLException {		
@@ -91,7 +89,7 @@ public class ReviewController {
 		if (review.getReviewId() == null) {
 			// TODO 리뷰 인서트 실패한 경우 로직
 		} else {
-			loadUrl = "redirect:/reviews/list";
+			loadUrl = "redirect:/reviews";
 		}
 
 		return loadUrl;
