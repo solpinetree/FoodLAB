@@ -11,4 +11,6 @@ public interface ReviewImagesDAO {
 	List<ReviewImages> select(int id) throws SQLException;
 	List<ReviewImages> selectByRestaurantId(int restaurantId) throws SQLException;
 	ReviewImages selectLimit1(int id) throws SQLException;
+
+    int countByReviewId(int reviewId) throws SQLException;
 }

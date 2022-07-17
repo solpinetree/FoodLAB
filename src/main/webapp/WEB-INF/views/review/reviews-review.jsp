@@ -17,25 +17,42 @@
                                 </div>
                                 <div class="caption-wrapper">
                                     <span class="recent-activity__name"><a href="javascript:void(0);">${reviews[status + i].writer.username}</a></span>
-                                    <span class="recent-activity__caption">리뷰 작성</span>
+                                    <span class="recent-activity__caption">리뷰 작성
+                                        <%-- 사진을 같이 첨부했다면 몇개의 사진을 업로드 했는지 정보를 주기 위함 --%>
+                                        <c:if test="${ reviews[status +i].numOfUploadedImgs ne 0}">
+                                            - ${ reviews[status +i].numOfUploadedImgs} 개의 사진 업로드
+                                        </c:if>
+                                    </span>
                                 </div>
                             </div>
-                            <a href="javascript:void(0);">
-                                <img
-                                        src="https://s3-media4.fl.yelpcdn.com/bphoto/u3WfxOE1DKuAENePexRmXg/l.jpg"
-                                        alt="rest-photo" width="100%" class="thumb-with-content"/>
-                            </a>
+                            <c:if test="${ reviews[status +i].numOfUploadedImgs ne 0}">
+                                <a href="javascript:void(0);">
+                                    <img
+                                            src="${resources}/upload/${reviews[status +i].thumbnail.savedPath}"
+                                            alt="rest-photo" width="100%" class="thumb-with-content"/>
+                                </a>
+                            </c:if>
                             <h3 class="recent-activity__heading"><a href="javascript:void(0);">${reviews[status + i].restaurant.name}</a></h3>
                             <div class="restaurants__rating">
                                 <div class="restaurants__rating__star five-stars">
-                                    <i class="star-rate-icon icon_star"></i>
-                                    <i class="star-rate-icon icon_star"></i>
-                                    <i class="star-rate-icon icon_star"></i>
-                                    <i class="star-rate-icon icon_star"></i>
-                                    <i class="star-rate-icon icon_star_alt"></i>
+                                    <c:forEach begin="1" end="${ reviews[status +i].rate }" >
+                                        <i class="star-rate-icon icon_star"></i>
+                                    </c:forEach>
+                                    <c:forEach begin="${reviews[status +i].rate +1}" end="5">
+                                        <i class="star-rate-icon icon_star_alt"></i>
+                                    </c:forEach>
                                 </div>
                             </div>
-                            <div class="text-container">
+                            <c:choose>
+                                <%-- 썸네일이 있는지 없는지에 따라 리뷰 텍스트에 부여되는 Height이 달라져야 하므로 따로 처리 --%>
+                                <c:when test="${!empty reviews[status +i].thumbnail.savedPath}">
+                                    <div class="text-container-with-thumbnail">
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="text-container-without-thumbnail">
+                                </c:otherwise>
+
+                            </c:choose>
                                 <p class="review-content">${reviews[status + i].content}  <a href="">Continue reading</a></p>
                             </div>
                             <a href="javascript:void(0);" class="recent-activity__likes facebook">

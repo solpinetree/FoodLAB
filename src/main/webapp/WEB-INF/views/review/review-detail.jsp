@@ -76,7 +76,7 @@
 				
 								<c:forEach var="reviewImage" items="${ reviewImages}">
 					                <div class="swiper-slide">
-									   <img style="width:100%; height:100%; object-fit: contain" src="${reviewImage.imgUrl}" alt="리뷰 등록 이미지"/>
+									   <img style="width:100%; height:100%; object-fit: contain" src="${reviewImage.savedPath}" alt="리뷰 등록 이미지"/>
 					                </div>
 								</c:forEach>
 								

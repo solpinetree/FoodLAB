@@ -32,7 +32,7 @@
                         <ul>
                             <li><a href="${root}/">홈</a></li>
                             <li>
-                                <a href="${root}/reviews/list">리뷰 보기</a>
+                                <a href="${root}/reviews">리뷰 보기</a>
                                 <c:if test="${sessionScope.sessionMember.username ne null}">
                                     <ul class="dropdown">
                                         <li>

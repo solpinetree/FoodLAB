@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class FileDTO {
-	private String originName;
 	private String savedPath;
 }

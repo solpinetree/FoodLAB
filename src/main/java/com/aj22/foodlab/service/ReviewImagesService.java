@@ -38,8 +38,8 @@ public class ReviewImagesService {
 		while(fileNames.hasNext()) {
 			String fileName = fileNames.next();
 			MultipartFile mFile = multipartRequest.getFile(fileName);
-			FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
-			if(dto.getOriginName() != null && !dto.getOriginName().equals("")) {
+			if(mFile.getOriginalFilename() != null && !mFile.getOriginalFilename().equals("")) {
+				FileDTO dto = fileUpload.uploadFileToDirectoryUnderUploadPath(mFile, "review");
 				save(new ReviewImages(review.getReviewId(), dto.getSavedPath() , review.getRestaurantId()));
 			}
 		}
@@ -67,5 +67,13 @@ public class ReviewImagesService {
 		dao.close();
 
 		return thumbnail;
+	}
+
+	public int countByReviewId(int reviewId) throws SQLException{
+		ReviewImagesDAO dao = new ReviewImagesDAOImpl();
+		int cnt = dao.countByReviewId(reviewId);
+		dao.close();
+
+		return cnt;
 	}
 }

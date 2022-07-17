@@ -61,7 +61,7 @@ h3.recent-activity__heading a {
     vertical-align: top;
     box-sizing: border-box;
     margin-right: 30px;
-    height: 376px;
+    height: 314px;
     margin-bottom: 20px;
 }
 
@@ -153,7 +153,7 @@ h3.recent-activity__heading a {
 
 .recent-activity__caption {
     display: block;
-    width: 106px;
+    width: 100%;
     font-size: 14px;
     padding-bottom: 15px;
 }
@@ -351,5 +351,11 @@ h3.recent-activity__heading a {
     object-fit: cover;
 }
 
+.text-container-with-thumbnail{
+    height: 40px;
+}
 
+.text-container-without-thumbnail{
+    height: 130px;
+}
 
