@@ -42,11 +42,11 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		int res = 0;
 
 		String sql = "INSERT INTO review_images" + 
-				"(review_id, img_url, restaurant_id) " + 
+				"(review_id, saved_name, restaurant_id) " +
 				"VALUES(?, ?, ?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, reviewImage.getReviewId());
-		pstmt.setString(2, reviewImage.getImgUrl());
+		pstmt.setString(2, reviewImage.getSavedPath());
 		pstmt.setInt(3, reviewImage.getRestaurantId());
 		res = pstmt.executeUpdate();
 		
@@ -58,7 +58,7 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		ReviewImages reviewImages = null;
 		
 		int reviewId = rs.getInt("review_id");
-		String imgUrl = rs.getString("img_url");
+		String imgUrl = rs.getString("saved_name");
 		int restaurantId = rs.getInt("restaurant_id");
 		
 		reviewImages = new ReviewImages(reviewId, imgUrl, restaurantId);
@@ -111,5 +111,21 @@ public class ReviewImagesDAOImpl implements ReviewImagesDAO {
 		}
 
 		return result;
+	}
+
+	@Override
+	public int countByReviewId(int reviewId) throws SQLException{
+		int cnt = 0;
+
+		String sql = "select count(*) from review_images where review_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, reviewId);
+		rs = pstmt.executeQuery();
+
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+
+		return cnt;
 	}
 }

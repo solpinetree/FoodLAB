@@ -69,8 +69,8 @@
                                 </div>
                                 <div class="listing__details__gallery__slider owl-carousel">
                                 	<c:forEach var="img" items="${reviewImgs }">
-	                                    <img class="img" data-imgbigurl="${img.imgUrl}"
-	                                        src="${img.imgUrl}" alt="" onclick="modalEvent(this)">
+	                                    <img class="img" data-imgbigurl="${img.savedPath}"
+                                             src="${img.savedPath}" alt="" onclick="modalEvent(this)">
                                 	</c:forEach>
                                 </div>
                             </div>

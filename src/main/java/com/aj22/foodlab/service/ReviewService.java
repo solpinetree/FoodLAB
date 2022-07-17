@@ -70,6 +70,7 @@ public class ReviewService {
 			ReviewDTO dto = new ReviewDTO(review);
 			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
 			dto.setThumbnail(reviewImagesService.getThumbnail(review.getReviewId()));
+			dto.setNumOfUploadedImgs(reviewImagesService.countByReviewId(review.getReviewId()));
 			reviewDTOs.add(dto);
 		}
 

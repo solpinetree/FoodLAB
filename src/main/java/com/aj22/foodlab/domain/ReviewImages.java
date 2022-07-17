@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewImages {
 	private int reviewId;
-	private String imgUrl;
+	private String savedPath;
 	private int restaurantId;
 }

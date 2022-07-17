@@ -21,8 +21,8 @@ public class ReviewDTO {
 	private MemberDTO writer;
 	private RestaurantDTO restaurant;
 	private List<Integer> membersIdsWhoLike;
-
 	private ReviewImages thumbnail;
+	private int numOfUploadedImgs;
 	public ReviewDTO(Review review) {
 		this.reviewId = review.getReviewId();
 		this.content = review.getContent();
@@ -33,6 +33,7 @@ public class ReviewDTO {
 		this.restaurant = null;
 		this.membersIdsWhoLike = null;
 		this.thumbnail = null;
+		this.numOfUploadedImgs = 0;
 	}
 }
 
