@@ -33,7 +33,7 @@ public class ReviewService {
 	private ReviewImagesService reviewImagesService;
 
 	
-	static final int NumOfRecordsPerPage = 12;
+	static final int NumOfRecordsPerPage = 12;	// 한 page당 12개의 리뷰를 로딩한다.
 	
 	public int getNumOfRecord() throws SQLException{
 		int cnt = 0;
@@ -43,19 +43,6 @@ public class ReviewService {
 		dao.close();
 		
 		return cnt;
-	}
-	
-	public Pagination getPaginationBySearchKeywordContent(int currentPage, String keyword, String option) throws SQLException{
-		
-			int res_id = restaurantService.getRestaurantIdFromName(keyword);
-			int member_id = memberService.getMemberIdFromName(keyword);
-			int numOfRecords = getNumOfRecordByNameContent(keyword, option,res_id,member_id);
-
-			Pagination pagination = new Pagination();
-			pagination.pageInfo(currentPage, numOfRecords, NumOfRecordsPerPage);
-		
-			return pagination;
-		
 	}
 
 	public List<ReviewDTO> selectList(Pagination pagination) throws SQLException{
@@ -77,27 +64,6 @@ public class ReviewService {
 		return reviewDTOs;
 	}
 
-
-	public int getNumOfRecordByNameContent(String name, String option, int member_id, int restaruant_id) throws SQLException {
-		
-		int cnt = 0;
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		cnt = dao.countRecords(name,member_id,restaruant_id,option);
-		dao.close();
-		
-		return cnt;
-	}
-	
-	public int getNumOfRecordByName(String keyword, String option) throws SQLException{
-		
-		int res_id = restaurantService.getRestaurantIdFromName(keyword);
-		int member_id = memberService.getMemberIdFromName(keyword);	
-		int numOfRecords = getNumOfRecordByNameContent(keyword, option,member_id,res_id);
-		
-		return numOfRecords;
-	}
-
 	public int countRecordsByRestaurantId(int restaurantId) throws SQLException{
 		int cnt = 0;
 		
@@ -107,25 +73,7 @@ public class ReviewService {
 		
 		return cnt;
 	}
-	
-	
-	public List<ReviewDTO> selectList(Pagination pagination,String search,String option) throws SQLException{
-		List<Review> reviews = null;
-		List<ReviewDTO> reviewDTOs = new ArrayList<>();
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		reviews = dao.selectList(pagination.getFirstReviewId(), pagination.getNumOfRecordsPerPage(), search, option);
-		dao.close();
-		
-		for(Review review : reviews) {
-			ReviewDTO dto = new ReviewDTO(review);
-			dto = setReviewWriterAndRestaurantAndLikesAndTimes(dto, review, "listPage");
-			dto.setThumbnail(reviewImagesService.getThumbnail(review.getReviewId()));
-			reviewDTOs.add(dto);
-		}
-			
-		return reviewDTOs;
-	}
+
 	
 	public List<ReviewDTO> findByRestaurantId(int restaurantId) throws SQLException{
 		List<Review> reviews = null;
@@ -230,15 +178,7 @@ public class ReviewService {
 		
 		return avgPriceSatisRate;
 	}
-
-	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
-		List<Review> reviewsByCategory = new ArrayList<>();
-
-		ReviewDAO dao = new ReviewDAOImpl();
-		reviewsByCategory = dao.CategoryJoinByReviewRestaurantIdAndRestaurantId(category);
-		return reviewsByCategory;
-
-	}
+	
 	public Pagination getPagination(int currentPage) throws SQLException {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, getNumOfRecord(), NumOfRecordsPerPage);
@@ -265,6 +205,7 @@ public class ReviewService {
 			simpleDateFormat = new SimpleDateFormat("MM/dd");
 		}
 		
+
 	    String formattedDate = simpleDateFormat.format(timestamp);
 	    return formattedDate;
 	}

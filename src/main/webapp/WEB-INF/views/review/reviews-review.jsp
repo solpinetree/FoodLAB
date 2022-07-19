@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../includes/common.jsp" %>
 
-<!--   recent-activity start's here -->
 <section class="recent-activity">
     <div class="recent-activity__wrapper">
         <c:forEach var="status" begin="0" end="${fn:length(reviews)-1}" step="3">
@@ -44,23 +43,32 @@
                                 </div>
                             </div>
                             <c:choose>
-                                <%-- 썸네일이 있는지 없는지에 따라 리뷰 텍스트에 부여되는 Height이 달라져야 하므로 따로 처리 --%>
+                            <%-- 썸네일이 있는지 없는지에 따라 리뷰 텍스트에 부여되는 Height이 달라져야 하므로 따로 처리 --%>
                                 <c:when test="${!empty reviews[status +i].thumbnail.savedPath}">
-                                    <div class="text-container-with-thumbnail">
+                                    <div class="text-content-with-thumbnail">
+                                        <div class="text-container-with-thumbnail  text-container review-content" id="review-content${status+i}">
                                 </c:when>
                                 <c:otherwise>
-                                    <div class="text-container-without-thumbnail">
+                                    <div class="text-content-without-thumbnail">
+                                    <div class="text-container-without-thumbnail  text-container review-content" id="review-content${status+i}">
                                 </c:otherwise>
 
-                            </c:choose>
-                                <p class="review-content">${reviews[status + i].content}  <a href="">Continue reading</a></p>
+                                </c:choose>
+                                    ${reviews[status + i].content}
+                                </div>
+                                <a href="" class="continue-reading" id="continue-reading${status+i}">Continue reading</a>
                             </div>
+                            <script type="text/javascript">
+                                if ($('#review-content${status+i}')[0].scrollHeight >  $('#review-content${status+i}')[0].clientHeight) {
+                                    document.getElementById('continue-reading${status+i}').style.display='block'
+                                }
+                            </script>
                             <a href="javascript:void(0);" class="recent-activity__likes facebook">
-                                            <span class="recent-activity__likes fb-img-like">
-                                                <svg width="24" height="24" class="icon_svg"><path
-                                                        d="M22.35 9.13A3 3 0 0020 8h-3V4.28A3.28 3.28 0 0013.72 1a2 2 0 00-1.9 1.37L9.28 10H2a1 1 0 00-1 1v11a1 1 0 001 1h13.25c.21 0 5.11-.08 6.7-7.12l1-4.21a3 3 0 00-.6-2.54zM3 12h6v9H3v-9zm18-.77l-1 4.2C18.78 20.85 15.38 21 15.25 21H11v-9.84L13.72 3c.707 0 1.28.573 1.28 1.28V9a1 1 0 001 1h4a1 1 0 01.78.38 1 1 0 01.22.85z"></path>
-                                                </svg>
-                                            </span>
+                                <span class="recent-activity__likes fb-img-like">
+                                    <svg width="24" height="24" class="icon_svg"><path
+                                            d="M22.35 9.13A3 3 0 0020 8h-3V4.28A3.28 3.28 0 0013.72 1a2 2 0 00-1.9 1.37L9.28 10H2a1 1 0 00-1 1v11a1 1 0 001 1h13.25c.21 0 5.11-.08 6.7-7.12l1-4.21a3 3 0 00-.6-2.54zM3 12h6v9H3v-9zm18-.77l-1 4.2C18.78 20.85 15.38 21 15.25 21H11v-9.84L13.72 3c.707 0 1.28.573 1.28 1.28V9a1 1 0 001 1h4a1 1 0 01.78.38 1 1 0 01.22.85z"></path>
+                                    </svg>
+                                </span>
                                 <span class="recent-activity__likes text-like">좋아요</span>
                             </a>
                         </div>
