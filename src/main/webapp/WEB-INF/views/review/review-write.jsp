@@ -90,21 +90,19 @@
 								<div class="cont" style="max-width: 479px;">
 									<div class="stars" style="width: 68%">
 										<input class="star star-5"
-											id="star-5 star" type="radio" name="rate" value="1" onclick="allowSubmit()"/>
+											id="star-5 star" type="radio" name="rate" value="5" onclick="allowSubmit()"/>
 										<label class="star star-5" for="star-5 star" ></label>
-										<input class="star star-4" id="star-4 star" type="radio"
-											name="rate" value="2" onclick="allowSubmit()"/>
+										<input class="star star-4"
+											   id="star-4 star" type="radio" name="rate" value="4" onclick="allowSubmit()"/>
 										<label class="star star-4" for="star-4 star" ></label>
-										<input
-											class="star star-3" id="star-3 star" type="radio" name="rate"
-											value="3" onclick="allowSubmit()"/>
+										<input class="star star-3"
+											   id="star-3 star" type="radio" name="rate" value="3" onclick="allowSubmit()"/>
 										<label class="star star-3" for="star-3 star"></label>
 										<input class="star star-2"
-											id="star-2 star" type="radio" name="rate" value="4" onclick="allowSubmit()"/>
-										<label
-											class="star star-2" for="star-2 star"></label>
-										<input class="star star-1" id="star-1 star" type="radio"
-											name="rate" value="5" onclick="allowSubmit()"/>
+											id="star-2 star" type="radio" name="rate" value="2" onclick="allowSubmit()"/>
+										<label class="star star-2" for="star-2 star"></label>
+										<input class="star star-1"
+											   id="star-1 star" type="radio" name="rate" value="1" onclick="allowSubmit()"/>
 										<label class="star star-1"
 											for="star-1 star"></label>
 									</div>
