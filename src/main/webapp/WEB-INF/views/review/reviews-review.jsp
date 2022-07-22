@@ -31,7 +31,7 @@
                                             alt="rest-photo" width="100%" class="thumb-with-content"/>
                                 </a>
                             </c:if>
-                            <h3 class="recent-activity__heading"><a href="javascript:void(0);">${reviews[status + i].restaurant.name}</a></h3>
+                            <h3 class="recent-activity__heading"><a href="${root}/restaurants/detail?restaurantId=${reviews[status + i].restaurant.restaurantId}">${reviews[status + i].restaurant.name}</a></h3>
                             <div class="restaurants__rating">
                                 <div class="restaurants__rating__star five-stars">
                                     <c:forEach begin="1" end="${ reviews[status +i].rate }" >
