@@ -237,27 +237,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 	@Override
-	public List<Review> findContentBySearchWithLimit(int startIdx, int listSize,String search) throws SQLException {
-		
-		List<Review> reviews = new ArrayList<>();
-		
-		String sql = "select * from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%') order by createdAt desc limit ?, ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, search);
-		pstmt.setString(2, search);
-		pstmt.setInt(3, startIdx);
-		pstmt.setInt(4, listSize);
-		rs = pstmt.executeQuery();
-		
-		while (rs.next()) {
-			reviews.add(createFromResultSet(rs));
-		}
-	
-		
-		return reviews;
-	}
-	
-	@Override
 	public int countRecords() throws SQLException{
 		int cnt = 0;
 		
@@ -334,95 +313,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 		}
 		
 		return avgPriceSatisRate;
-	}
-	
-	@Override
-	public int countRecords(String name, int member_id, int restaurant_id, String option) throws SQLException{
-		int cnt = 0;
-		
-		
-		logger.info("option in countRecords="+option);
-		
-		if(option.equals("searchAll")) {
-		logger.info("option="+option);
-		String sql = "select count(*) from review where content LIKE concat('%',?,'%') OR title LIKE concat('%',?,'%')";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, name);
-		pstmt.setString(2, name);
-		rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			cnt = rs.getInt(1);
-		}
-		
-		return cnt;
-		
-		}
-		
-		if(option.equals("res")) {
-			
-			logger.info("option="+option);
-			String sql = "select count(*) from review where dummy_restaurant_name=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				cnt = rs.getInt(1);
-			}
-			
-			return cnt;
-			
-		}else if(option.equals("writer")) {
-			
-			logger.info("option="+option);
-			String sql = "select count(*) from review where dummy_username=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				cnt = rs.getInt(1);
-			}
-			
-			return cnt;
-			
-			}
-		
-		
-		else {
-		
-			return 5;
-		}
-	}
-
-
-
-
-	@Override
-	public List<Review> CategoryJoinByReviewRestaurantIdAndRestaurantId(String category) throws SQLException{
-		List<Review> reviewsByCategory = new ArrayList<>();
-		
-		String sql = "select * from review rev "
-				+ "left Join restaurant res ON "
-				+ "rev.restaurant_id = res.restaurant_id "
-				+ "where res.category = ? order by createdAt asc LIMIT 0, 6";
-		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, category);
-		rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			reviewsByCategory.add(createFromResultSet(rs));
-		}
-		return reviewsByCategory;
-		
-	}
-
-	@Override
-	public int countRecordsByName(String name, String option, int member_id, int restaurant_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
