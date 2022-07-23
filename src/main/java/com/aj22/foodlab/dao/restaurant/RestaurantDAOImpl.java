@@ -139,13 +139,12 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		String name = rs.getString("name");
 		String address = rs.getString("address");
 		float avgRate = rs.getFloat("avg_rate");
-		float avgPriceSatisRate = rs.getFloat("avg_pricesatis_rate");
 		String tel = rs.getString("tel");
 		String category = rs.getString("category");
 		String imgUrl = rs.getString("img_url");
 		String operationHour = rs.getString("operation_hour");
 		
-		restaurant = new Restaurant(restaurantId, name, address, avgRate, avgPriceSatisRate, tel, category, imgUrl, operationHour);
+		restaurant = new Restaurant(restaurantId, name, address, avgRate, tel, category, imgUrl, operationHour);
 
 		return restaurant;
 	}
