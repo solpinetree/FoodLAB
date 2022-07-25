@@ -1,0 +1,1 @@
+GET  {{host}}/restaurants/loadListDiv?category=전체
