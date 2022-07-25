@@ -50,34 +50,6 @@
                                		</c:choose>
                                	</div>	
                              </li>
-                             
-			      			 <li class="home-star-rate-li">
-			      			 	<div class = "home-star-rate-box">
-                                   <p class="home-star-rate-text">가격만족도</p>
-	                                	<c:choose>
-		                                  	<c:when test="${ restaurantContent.avgPriceSatisRate ne null and restaurantContent.avgPriceSatisRate ne 0}">
-			                                  	<span class="home-star-rate-star">
-			                                	<c:forEach var="i" begin="1" end="${ restaurantContent.avgPriceSatisRate }" >
-			                                		<i class="star-rate-icon icon_star"></i>
-			                                	</c:forEach>
-			                                	
-			                               		<c:forEach var="i" begin="${restaurantContent.avgPriceSatisRate + 1 }" end="5">
-			                               			<i class="star-rate-icon icon_star_alt"></i>
-			                               		</c:forEach> <span style = "color: black; font-weight: bold">(${ restaurantContent.avgPriceSatisRate })</span>
-		                               			</span>
-	                               			</c:when>
-	                               			<c:otherwise>
-	                               				<span class="star-rate-star">정보 없음</span>
-	                               			</c:otherwise>
-                               			</c:choose>
-                         			
-                         		</div>
-                         		
-                              </li>
-			      			
-			      			
-			      			
-			      	
 							<li>
 								<span class="icon_pin_alt"></span> ${restaurantContent.address}
 							</li>

@@ -79,26 +79,6 @@
 		                                	</c:choose>
 	                              
                                      </li>
-                                    <li class="star-rate-li">
-                                    	<p class="star-rate-text star-rate-styling">가격만족도</p> 
-	                                    	<c:choose>
-		                                   		<c:when test="${ restaurant.avgPriceSatisRate ne null and restaurant.avgPriceSatisRate ne 0}">
-		                                   			<span class="star-rate-star">
-					                                	<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
-					                                		<span class="icon_star"></span>
-					                                	</c:forEach>
-				                                		<c:forEach var="i" begin="${restaurant.avgPriceSatisRate + 1 }" end="5">
-				                                			<span class="icon_star"></span>
-				                                		</c:forEach>
-				                                		<span style="color:black; font-weight:bold;">(${restaurant.avgRate})</span>
-					                                </span>
-		                                		</c:when>
-		                                		<c:otherwise>
-		                                			<span class="star-rate-star" style="font-weight:bold">정보 없음</span>
-		                                		</c:otherwise>
-	                                		</c:choose>
-                                		
-                                    </li>
                                 </ul>
 							</div>
 						</div>

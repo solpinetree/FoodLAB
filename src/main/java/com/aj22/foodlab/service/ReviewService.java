@@ -168,24 +168,12 @@ public class ReviewService {
 		return avg_rate;
 	}
 	
-	
-	public float reviewPriceSatisAvgRateSelectByRestaurantId(int id) throws SQLException{
-		float avgPriceSatisRate = 0;
-		
-		ReviewDAO dao = new ReviewDAOImpl();
-		avgPriceSatisRate = dao.reviewPriceSatisAvgRateSelectByRestaurantId(id);
-		dao.close();
-		
-		return avgPriceSatisRate;
-	}
-	
 	public Pagination getPagination(int currentPage) throws SQLException {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(currentPage, getNumOfRecord(), NumOfRecordsPerPage);
 		
 		return pagination;
 	}
-	
 	
 	static String formatTimestampForDetail(Timestamp timestamp) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
