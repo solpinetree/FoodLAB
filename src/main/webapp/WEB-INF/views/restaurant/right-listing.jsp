@@ -86,11 +86,6 @@
                                 </ul>
 							</div>
 						</div>
-									
-						
-						
-						
-						
 						
 						<ul class="listing_information">
 							<li class="listing_information_margin">
