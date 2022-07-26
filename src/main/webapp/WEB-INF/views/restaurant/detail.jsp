@@ -150,27 +150,6 @@
                              			</c:if>
                              		</span> 
                                  </li>
-                                 
-                                 <li class="star-rate-li">
-                                 	<span>
-                                 		<p class="star-rate-text">가격만족도</p> 
-                                		<c:if test="${ restaurant.avgPriceSatisRate ne 0 }">
-                                			<span class="star-rate-star">
-                                				<c:forEach var="i" begin="1" end="${ restaurant.avgPriceSatisRate }" >
-                                					<i class="star-rate-icon icon_star"></i>
-                                				</c:forEach>
-                               					<c:forEach var="i" begin="${restaurant.avgPriceSatisRate+ 1 }" end="5">
-                               						<i class="star-rate-icon icon_star_alt"></i>
-                               					</c:forEach>
-                                			</span>(${ restaurant.avgPriceSatisRate })
-                             			</c:if>
-                             			
-                             			<c:if test="${ restaurant.avgPriceSatisRate eq 0 }">
-                             				<span class="star-rate-star"></span>
-                             				<p style = "color:black">데이터를 수집 중 입니다.</p>
-                             			</c:if>
-                             		</span> 
-                                 </li>
                              </ul>
                         </div>
                         <%@ include file="../map/map.jsp"%>

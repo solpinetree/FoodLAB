@@ -45,16 +45,14 @@ public class ReviewController {
 
     // 푸드로그 게시판
     @GetMapping("")
-    public String loadReviewListPage() {
+    public String loadReviewBoard() {
         return "review/reviews";
     }
 
     // pagination에 따라서 리뷰 게시물들에 대한 정보를 넘겨준다.
     @GetMapping(value = "/loadReviews", produces = "application/text;charset=utf8")
-    public String loadReviews(Model model,
-                                                        @RequestParam(required = false, defaultValue = "1") int currentPage) throws SQLException {
+    public String loadReviews(Model model, @RequestParam(required = true) int currentPage) throws SQLException {
         Pagination pagination = reviewService.getPagination(currentPage);
-        model.addAttribute("pagination", pagination);
         model.addAttribute("reviews", reviewService.selectList(pagination));
 
         return "review/reviews-review";

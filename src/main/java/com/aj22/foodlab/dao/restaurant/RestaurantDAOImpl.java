@@ -139,13 +139,12 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		String name = rs.getString("name");
 		String address = rs.getString("address");
 		float avgRate = rs.getFloat("avg_rate");
-		float avgPriceSatisRate = rs.getFloat("avg_pricesatis_rate");
 		String tel = rs.getString("tel");
 		String category = rs.getString("category");
 		String imgUrl = rs.getString("img_url");
 		String operationHour = rs.getString("operation_hour");
 		
-		restaurant = new Restaurant(restaurantId, name, address, avgRate, avgPriceSatisRate, tel, category, imgUrl, operationHour);
+		restaurant = new Restaurant(restaurantId, name, address, avgRate, tel, category, imgUrl, operationHour);
 
 		return restaurant;
 	}
@@ -310,14 +309,13 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		return cnt;
 	}
 	@Override
-	public int RestaurantAvgRateUpdate(int id, float avg_rate, float avgPriceSatisRate) throws SQLException{
+	public int RestaurantAvgRateUpdate(int id, float avg_rate) throws SQLException{
 		int cnt = 0;
 		
-		String sql = "update restaurant set avg_rate = ?, avg_pricesatis_rate = ? where restaurant_id = ?";
+		String sql = "update restaurant set avg_rate = ? where restaurant_id = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setFloat(1,  avg_rate);
-		pstmt.setFloat(2,  avgPriceSatisRate);
-		pstmt.setInt(3, id);
+		pstmt.setInt(2, id);
 		
 		cnt = pstmt.executeUpdate();
 		return cnt;
