@@ -193,41 +193,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return reviews;
 		}
-		
-		if(option.equals("res")) {			
-	
-			String sql = "select * from review where dummy_restaurant_name LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, keyword);
-			pstmt.setInt(2, startIdx);
-			pstmt.setInt(3, listSize);
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				reviews.add(createFromResultSet(rs));
-			}
 
-			
-			return reviews;
-		}
-		
-		if(option.equals("writer")) {
-			
-			String sql = "select * from review where dummy_username LIKE concat('%',?,'%') order by createdAt desc limit ?, ? ";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, keyword);
-			pstmt.setInt(2, startIdx);
-			pstmt.setInt(3, listSize);
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				reviews.add(createFromResultSet(rs));
-			}
-		
-			return reviews;
-		}
 		
 		else {
 		
