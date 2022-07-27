@@ -104,17 +104,6 @@
 					                                </span>
 	                                			</c:if>
 		                                    </div>
-	                                		<c:choose>
-												<c:when test="${review.isDummy eq 0 }">
-													 <span>${review.createdAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
-		                                   			 <h5>${review.writer.username }</h5>
-												</c:when>
-												<c:otherwise>
-													 <span>${review.dummyCreatedAt } &nbsp;&nbsp; ♥ ${fn:length(review.membersIdsWhoLike) }</span>
-		                                   			 <h5>${review.dummyUsername }</h5>
-												</c:otherwise>
-											</c:choose>
-		                                   
 		                                    <p>${review.content }</p>
 		                                </div>
 		                            </div>
