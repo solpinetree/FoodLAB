@@ -56,7 +56,10 @@
                                 </c:choose>
                                     ${reviews[status + i].content}
                                 </div>
-                                <a href="" class="continue-reading" id="continue-reading${status+i}">Continue reading</a>
+                                <a
+                                    href="${root}/restaurants/detail?restaurantId=${reviews[status+i].restaurant.restaurantId}#${reviews[status+i].reviewId}"
+                                    class="continue-reading" id="continue-reading${status+i}">
+                                    Continue reading</a>
                             </div>
                             <script type="text/javascript">
                                 if ($('#review-content${status+i}')[0].scrollHeight >  $('#review-content${status+i}')[0].clientHeight) {
