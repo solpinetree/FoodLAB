@@ -1,1 +1,4 @@
+GET {{host}}/restaurants/detail?restaurantId=0
+###
 GET  {{host}}/restaurants/loadListDiv?category=전체
+

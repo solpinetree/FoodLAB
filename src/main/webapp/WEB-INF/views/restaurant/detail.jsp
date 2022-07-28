@@ -83,35 +83,11 @@
                        <%-- 리뷰 div 시작 --%>
                         <div class="listing__details__comment">
                             <h4>리뷰</h4>
-                            
-                            <%-- 하나의 리뷰 --%>
-                            <c:forEach var="review" items="${ reviews}">
-                            	<a href="${root }/reviews/review?reviewId=${review.reviewId}">
-		                            <div class="listing__details__comment__item">
-		                                <div class="listing__details__comment__item__pic">
-		                                    <img src="${resources}/img/defaultProfile.jpeg" alt="">
-		                                </div>
-		                                <div class="listing__details__comment__item__text">
-		                                    <div class="listing__details__comment__item__rating">
-		                                 		<c:if test="${ review.rate ne null }">
-		                                   			<span class="star-rate-star">
-					                                	<c:forEach var="i" begin="1" end="${ review.rate }" >
-					                                		<i class="star-rate-icon icon_star"></i>
-					                                	</c:forEach>
-				                                		<c:forEach var="i" begin="${review.rate + 1 }" end="5">
-				                                			<i class="star-rate-icon icon_star_alt"></i>
-				                                		</c:forEach>
-					                                </span>
-	                                			</c:if>
-		                                    </div>
-		                                    <p>${review.content }</p>
-		                                </div>
-		                            </div>
-	                            </a>
-                            </c:forEach>
-                            <%-- 하나의 리뷰 --%>
+
+							<%@ include file="restaurant-reviews.jsp" %>
+
                         </div>
-                        <%-- 리뷰 div 시작 --%>
+                        <%-- 리뷰 div 끝 --%>
                         
                     </div>
                 </div>
