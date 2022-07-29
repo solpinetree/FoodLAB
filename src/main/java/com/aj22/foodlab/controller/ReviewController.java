@@ -78,27 +78,6 @@ public class ReviewController {
         return loadUrl;
     }
 
-    @GetMapping("/review")
-    public String viewReviewDetailPage(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
-        ReviewDTO review = reviewService.select(reviewId);
-        HttpSession session = request.getSession();
-        MemberDTO member = (MemberDTO) session.getAttribute("sessionMember");
-
-        // 리뷰를 삭제할 경우를 대비해서 전의 페이지 url 을 저장한다.
-        if (member != null) {
-            if (member.equals(review.getWriter())) {
-                String referer = (String) request.getHeader("REFERER");
-                session.setAttribute("urlHistory", referer);
-            }
-            model.addAttribute("heartImgUrl", likesService.getHeartImgUrl(new Likes(member.getId(), reviewId)));
-        }
-
-        model.addAttribute("review", review);
-        model.addAttribute("reviewImages", reviewImagesService.findByReviewId(reviewId));
-
-        return "review/review-detail";
-    }
-
     @GetMapping("/delete")
     public String deleteReview(@RequestParam("reviewId") int reviewId, Model model, HttpServletRequest request) throws SQLException {
 
