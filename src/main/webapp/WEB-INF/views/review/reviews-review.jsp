@@ -31,7 +31,7 @@
                                             alt="rest-photo" width="100%" class="thumb-with-content"/>
                                 </a>
                             </c:if>
-                            <h3 class="recent-activity__heading"><a href="javascript:void(0);">${reviews[status + i].restaurant.name}</a></h3>
+                            <h3 class="recent-activity__heading"><a href="${root}/restaurants/detail?restaurantId=${reviews[status + i].restaurant.restaurantId}">${reviews[status + i].restaurant.name}</a></h3>
                             <div class="restaurants__rating">
                                 <div class="restaurants__rating__star five-stars">
                                     <c:forEach begin="1" end="${ reviews[status +i].rate }" >
@@ -56,7 +56,10 @@
                                 </c:choose>
                                     ${reviews[status + i].content}
                                 </div>
-                                <a href="" class="continue-reading" id="continue-reading${status+i}">Continue reading</a>
+                                <a
+                                    href="${root}/restaurants/detail?restaurantId=${reviews[status+i].restaurant.restaurantId}#${reviews[status+i].reviewId}"
+                                    class="continue-reading" id="continue-reading${status+i}">
+                                    Continue reading</a>
                             </div>
                             <script type="text/javascript">
                                 if ($('#review-content${status+i}')[0].scrollHeight >  $('#review-content${status+i}')[0].clientHeight) {
