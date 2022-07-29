@@ -41,7 +41,7 @@
                                     </ul>
                                 </c:if>
                             </li>
-                            <li><a href="${root}/restaurants/list">식당 탐색</a> </li>
+                            <li><a href="${root}/restaurants">식당 탐색</a> </li>
                             <li><a href="${root}/chat">푸드톡</a></li>
                         </ul>
                     </nav>

@@ -31,7 +31,7 @@
                                             alt="rest-photo" width="100%" class="thumb-with-content"/>
                                 </a>
                             </c:if>
-                            <h3 class="recent-activity__heading"><a href="${root}/restaurants/detail?restaurantId=${reviews[status + i].restaurant.restaurantId}">${reviews[status + i].restaurant.name}</a></h3>
+                            <h3 class="recent-activity__heading"><a href="${root}/restaurants/${reviews[status + i].restaurant.restaurantId}">${reviews[status + i].restaurant.name}</a></h3>
                             <div class="restaurants__rating">
                                 <div class="restaurants__rating__star five-stars">
                                     <c:forEach begin="1" end="${ reviews[status +i].rate }" >
@@ -57,7 +57,7 @@
                                     ${reviews[status + i].content}
                                 </div>
                                 <a
-                                    href="${root}/restaurants/detail?restaurantId=${reviews[status+i].restaurant.restaurantId}#${reviews[status+i].reviewId}"
+                                    href="${root}/restaurants/${reviews[status+i].restaurant.restaurantId}#${reviews[status+i].reviewId}"
                                     class="continue-reading" id="continue-reading${status+i}">
                                     Continue reading</a>
                             </div>

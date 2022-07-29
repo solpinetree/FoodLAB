@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,7 +30,7 @@ public class RestaurantController {
 	@Autowired
 	private ReviewImagesService reviewImagesService;
 
-	@GetMapping("/list")
+	@GetMapping("")
 	public String restaurantListPage(Model model, @RequestParam(required = false, defaultValue = "1") int currentPage)
 			throws SQLException {
 
@@ -65,8 +66,8 @@ public class RestaurantController {
 		return "restaurant/right-listing";
 	}
 
-	@GetMapping("/detail")
-	public String restaurantDetail(@RequestParam int restaurantId, Model model) throws SQLException {
+	@GetMapping("/{restaurantId}")
+	public String restaurantDetail(@PathVariable int restaurantId, Model model) throws SQLException {
 		
 		restaurantService.RestaurantAvgRateUpdate(restaurantId, reviewService.reviewAvgRateSelectByRestaurantId(restaurantId));
 		
